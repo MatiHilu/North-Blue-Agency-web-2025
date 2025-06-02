@@ -1,0 +1,528 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    cursor: none;
+  }
+}
+
+/* Animated Gradient Text */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-y {
+  0%,
+  100% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+}
+
+@keyframes gradient-xy {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 400% 400%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-gradient-y {
+  background-size: 400% 400%;
+  animation: gradient-y 3s ease infinite;
+}
+
+.animate-gradient-xy {
+  background-size: 400% 400%;
+  animation: gradient-xy 4s ease infinite;
+}
+
+/* Animated Border Button */
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animated-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(
+    from 0deg,
+    #ff4081,
+    #00b2ff,
+    #ff4081,
+    #00b2ff,
+    #ff4081
+  );
+  border-radius: inherit;
+  animation: rotate-border 3s linear infinite;
+  z-index: -1;
+}
+
+.btn-animated-border::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn-white-hover:hover:before {
+  width: 300px;
+  height: 300px;
+}
+
+/* White Button Hover Effects */
+.btn-white-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: #374151 !important;
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-white-hover::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #ff4081, #00b2ff);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.btn-white-hover:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 64, 129, 0.3);
+}
+
+/* Mobile Menu Animations - Mejoradas */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideInFromTop 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.mobile-menu-exit {
+  animation: slideOutToTop 0.5s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+.mobile-menu-item {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.mobile-menu-item-exit {
+  animation: fadeOutDown 0.4s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+  opacity: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Animación para elementos del dropdown */
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-enter {
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+/* Modal Animations - Mejoradas */
+@keyframes modalBackdropFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modalBackdropFadeOut {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@keyframes modalShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.modal-backdrop-enter {
+  animation: modalBackdropFadeIn 0.3s ease-out forwards;
+}
+
+.modal-backdrop-exit {
+  animation: modalBackdropFadeOut 0.3s ease-in forwards;
+}
+
+.modal-content-enter {
+  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.modal-content-exit {
+  animation: modalSlideOut 0.3s ease-in forwards;
+}
+
+.modal-shake {
+  animation: modalShake 0.5s ease-in-out;
+}
+
+/* Efectos de partículas para el modal */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+}
+
+.modal-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #ff4081, #00b2ff);
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.modal-particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.modal-particle:nth-child(2) {
+  top: 80%;
+  left: 80%;
+  animation-delay: 1s;
+}
+.modal-particle:nth-child(3) {
+  top: 40%;
+  left: 90%;
+  animation-delay: 2s;
+}
+.modal-particle:nth-child(4) {
+  top: 90%;
+  left: 10%;
+  animation-delay: 0.5s;
+}
+.modal-particle:nth-child(5) {
+  top: 10%;
+  left: 70%;
+  animation-delay: 1.5s;
+}
+
+/* Mejoras en los inputs del modal */
+.modal-input-focus {
+  position: relative;
+}
+
+.modal-input-focus::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4081, #00b2ff);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.modal-input-focus:focus-within::after {
+  width: 100%;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-default {
+  background: #ff4081;
+}
+
+.cursor-hover {
+  background: linear-gradient(45deg, #ff4081, #00b2ff);
+  transform: translate(-50%, -50%) scale(2);
+  animation: gradient-xy 2s ease infinite;
+}
+
+.cursor-text {
+  background: #00b2ff;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.cursor-button {
+  background: conic-gradient(from 0deg, #ff4081, #00b2ff, #ff4081);
+  transform: translate(-50%, -50%) scale(3);
+  animation: rotate-border 1s linear infinite;
+}
+
+/* Hide default cursor on interactive elements */
+.cursor-none {
+  cursor: none !important;
+}
+
+.cursor-none * {
+  cursor: none !important;
+}
+
+/* Prevenir scroll horizontal */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Asegurar que el contenedor no cause overflow */
+.container {
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Mejorar el dropdown de servicios */
+.services-dropdown {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Eliminar el gap que causa el problema del hover */
+  margin-top: 0;
+  top: calc(100% - 1px);
+}
+
+/* Crear un área invisible para mantener el hover */
+.services-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: transparent;
+}
+
+/* Animación para el dropdown móvil */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-services-dropdown {
+  animation: slideDown 0.3s ease-out;
+}
