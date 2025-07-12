@@ -9,6 +9,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  // Configuración para mejorar SEO y generación de sitemap
+  trailingSlash: false,
+  generateEtags: false,
+  // Configuración para optimizar el build
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
+};
 
-export default nextConfig
+export default nextConfig;
