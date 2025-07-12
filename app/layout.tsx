@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import CustomCursor from "@/components/custom-cursor";
+//import CustomCursor from "@/components/custom-cursor";
 import ScrollToTop from "@/components/scroll-to-top";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,8 +23,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} cursor-none`}>
-        <CustomCursor />
+      <body className={inter.className}>
+        {/* <CustomCursor /> */}
         <ScrollToTop />
         <Header />
         <main className="overflow-hidden">{children}</main>

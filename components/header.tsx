@@ -13,7 +13,7 @@ import {
   Megaphone,
   Search,
   BarChart3,
-  Camera,
+  Target,
   PenTool,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,10 +67,10 @@ export default function Header() {
       description: "Análisis y reportes detallados",
     },
     {
-      title: "Fotografía",
-      href: "/services/fotografia",
-      icon: <Camera size={20} />,
-      description: "Contenido visual profesional",
+      title: "Campañas y Ads",
+      href: "/services/campanas-ads",
+      icon: <Target size={20} />,
+      description: "Publicidad digital estratégica",
     },
     {
       title: "Diseño Gráfico",
@@ -80,20 +80,27 @@ export default function Header() {
     },
   ];
 
-  // Prevenir errores de hidratación
   useEffect(() => {
     setIsMounted(true);
+    // Initialize scroll state after mounting
+    if (typeof window !== "undefined") {
+      setIsScrolled(window.scrollY > 50);
+    }
   }, []);
 
   useEffect(() => {
+    if (!isMounted) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+
     if (isMenuOpen) {
       // Guardar la posición actual del scroll
       const scrollY = window.scrollY;
@@ -117,12 +124,14 @@ export default function Header() {
     }
 
     return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
+      if (typeof document !== "undefined") {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+      }
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isMounted]);
 
   // Función para cerrar el menú con animación
   const closeMenu = () => {
@@ -162,11 +171,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-20 w-full">
             <div className="flex-shrink-0">
               <Image
-                src={
-                  isScrolled
-                    ? "/North-Blue-Agency.svg"
-                    : "/North-Blue-Agency-Light.svg"
-                }
+                src="/North-Blue-Agency-Light.svg"
                 alt="North Blue Agency"
                 width={180}
                 height={40}
@@ -324,15 +329,16 @@ export default function Header() {
               >
                 Blog
               </Link>
-              <Button
-                className="btn-animated-border bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
-                onClick={() => {
-                  closeMenu();
-                  setIsContactModalOpen(true);
-                }}
-              >
-                Contactar
-              </Button>
+              <Link href="/contact">
+                <Button
+                  className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
+                  Contactar
+                </Button>
+              </Link>
             </nav>
 
             {/* Botón hamburguesa fijo */}
@@ -514,20 +520,23 @@ export default function Header() {
                   >
                     Blog
                   </Link>
-                  <Button
-                    className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-8 ${
-                      isMenuClosing
-                        ? "mobile-menu-item-exit"
-                        : "mobile-menu-item"
-                    }`}
-                    style={{ animationDelay: isMenuClosing ? "0.5s" : "0.6s" }}
-                    onClick={() => {
-                      closeMenu();
-                      setIsContactModalOpen(true);
-                    }}
-                  >
-                    Contactar
-                  </Button>
+                  <Link href="/contact">
+                    <Button
+                      className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-8 ${
+                        isMenuClosing
+                          ? "mobile-menu-item-exit"
+                          : "mobile-menu-item"
+                      }`}
+                      style={{
+                        animationDelay: isMenuClosing ? "0.5s" : "0.6s",
+                      }}
+                      onClick={() => {
+                        closeMenu();
+                      }}
+                    >
+                      Contactar
+                    </Button>
+                  </Link>
                 </nav>
               </div>
 

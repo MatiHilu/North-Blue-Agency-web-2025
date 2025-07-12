@@ -17,7 +17,6 @@ import {
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ServiceCard from "@/components/service-card";
-import ContactSection from "@/components/contact-section";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
 
 export default function HomePage() {
@@ -63,7 +62,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="btn-animated-border bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4"
+                  className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4"
                   onClick={() => setIsContactModalOpen(true)}
                 >
                   Comenzar proyecto
@@ -296,8 +295,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <ContactSection />
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
+        <div className="container mx-auto px-4">
+          <div className="text-center text-white max-w-4xl mx-auto">
+            <AnimatedSection>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                ¿Listo para transformar tu negocio?
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                Contáctanos hoy y descubre cómo podemos llevar tu marca al
+                siguiente nivel.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white text-[#ff4081] hover:bg-gray-100 border-white text-lg px-8 py-4"
+                  >
+                    Contactar ahora
+                    <ArrowRight className="ml-2" size={20} />
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-[#ff4081] text-lg px-8 py-4"
+                  onClick={() => setIsContactModalOpen(true)}
+                >
+                  Solicitar llamada
+                </Button>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

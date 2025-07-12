@@ -36,6 +36,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
       setIsVisible(true);

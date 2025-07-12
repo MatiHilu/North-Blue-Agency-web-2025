@@ -10,7 +10,7 @@ import {
   Megaphone,
   Search,
   BarChart3,
-  Camera,
+  Target,
   PenTool,
 } from "lucide-react";
 import Link from "next/link";
@@ -112,19 +112,19 @@ const services = [
     price: "Desde $400/mes",
   },
   {
-    id: "fotografia",
-    title: "Fotografía y Video",
+    id: "campanas-ads",
+    title: "Campañas y Ads",
     description:
-      "Producción de contenido visual profesional para tus campañas, incluyendo fotografía de producto, corporativa y videos promocionales.",
-    icon: <Camera className="w-full h-full" />,
+      "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Facebook Ads, Instagram y otras plataformas para maximizar tu ROI.",
+    icon: <Target className="w-full h-full" />,
     features: [
-      "Fotografía de producto",
-      "Videos promocionales",
-      "Contenido para redes",
-      "Post-producción",
+      "Google Ads",
+      "Facebook e Instagram Ads",
+      "Campañas de remarketing",
+      "Optimización de ROI",
     ],
     gradient: "from-[#ff4081] to-[#ff6b9d]",
-    price: "Desde $500/sesión",
+    price: "Desde $800/mes + presupuesto publicitario",
   },
   {
     id: "diseno-grafico",

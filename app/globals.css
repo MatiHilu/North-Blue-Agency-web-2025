@@ -65,7 +65,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: none;
+    /* cursor: none; */
   }
 }
 
@@ -435,7 +435,7 @@
 }
 
 /* Custom Cursor */
-.custom-cursor {
+/* .custom-cursor {
   position: fixed;
   width: 20px;
   height: 20px;
@@ -445,37 +445,37 @@
   transition: transform 0.1s ease;
   mix-blend-mode: difference;
   transform: translate(-50%, -50%);
-}
+} */
 
-.cursor-default {
+/* .cursor-default {
   background: #ff4081;
-}
+} */
 
-.cursor-hover {
+/* .cursor-hover {
   background: linear-gradient(45deg, #ff4081, #00b2ff);
   transform: translate(-50%, -50%) scale(2);
   animation: gradient-xy 2s ease infinite;
-}
+} */
 
-.cursor-text {
+/* .cursor-text {
   background: #00b2ff;
   transform: translate(-50%, -50%) scale(1.5);
-}
+} */
 
-.cursor-button {
+/* .cursor-button {
   background: conic-gradient(from 0deg, #ff4081, #00b2ff, #ff4081);
   transform: translate(-50%, -50%) scale(3);
   animation: rotate-border 1s linear infinite;
-}
+} */
 
 /* Hide default cursor on interactive elements */
-.cursor-none {
+/* .cursor-none {
   cursor: none !important;
-}
+} */
 
-.cursor-none * {
+/* .cursor-none * {
   cursor: none !important;
-}
+} */
 
 /* Prevenir scroll horizontal */
 html,

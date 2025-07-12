@@ -62,7 +62,12 @@ const projectData: Record<string, any> = {
       "4.8/5 rating promedio en plataformas de reseñas",
       "60% aumento en ventas durante los primeros 6 meses",
     ],
-    services: ["Branding", "Redes Sociales", "Fotografía", "Desarrollo Web"],
+    services: [
+      "Branding",
+      "Redes Sociales",
+      "Campañas y Ads",
+      "Desarrollo Web",
+    ],
     technologies: [
       "Adobe Creative Suite",
       "WordPress",
@@ -339,7 +344,11 @@ export default function ProjectDetailPage() {
                 <Button
                   size="lg"
                   className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                  onClick={() => (window.location.href = "#contact")}
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.location.href = "#contact";
+                    }
+                  }}
                 >
                   Comenzar mi proyecto
                 </Button>

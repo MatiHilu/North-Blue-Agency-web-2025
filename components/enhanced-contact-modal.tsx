@@ -29,6 +29,8 @@ export default function EnhancedContactModal({
 
   // Prevent body scroll when modal is open
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
       setIsVisible(true);

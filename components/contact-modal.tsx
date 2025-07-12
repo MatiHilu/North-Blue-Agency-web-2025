@@ -162,7 +162,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             >
               <Button
                 type="submit"
-                className="btn-animated-border w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 Enviar mensaje
               </Button>

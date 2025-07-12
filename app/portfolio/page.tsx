@@ -41,7 +41,7 @@ const projects = [
       "85% mejora en reconocimiento de marca",
       "150% crecimiento en redes sociales",
     ],
-    services: ["Branding", "Redes Sociales", "Fotografía"],
+    services: ["Branding", "Redes Sociales", "Campañas y Ads"],
     featured: true,
   },
   {
@@ -109,7 +109,7 @@ const projects = [
       "70% mejora en retención de clientes",
       "250% crecimiento en Instagram",
     ],
-    services: ["Branding", "Redes Sociales", "Fotografía"],
+    services: ["Branding", "Redes Sociales", "Campañas y Ads"],
     featured: false,
   },
 ];
