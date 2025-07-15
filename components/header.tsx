@@ -14,7 +14,7 @@ import {
   Search,
   BarChart3,
   Target,
-  PenTool,
+  Keyboard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
@@ -73,10 +73,10 @@ export default function Header() {
       description: "Publicidad digital estratégica",
     },
     {
-      title: "Diseño Gráfico",
-      href: "/services/diseno-grafico",
-      icon: <PenTool size={20} />,
-      description: "Piezas gráficas impactantes",
+      title: "Contenido",
+      href: "/services/creacion-contenido",
+      icon: <Keyboard size={20} />,
+      description: "Para redes sociales",
     },
   ];
 
@@ -202,7 +202,7 @@ export default function Header() {
       />
 
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 cursor-none ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-lg"
             : "bg-transparent"
@@ -248,44 +248,49 @@ export default function Header() {
 
                 {/* Desktop Dropdown con animación */}
                 <div
-                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 z-50 services-dropdown transition-all duration-300 ease-out ${
+                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px]   py-2 z-50  transition-all duration-300 ease-out ${
                     isServicesOpen
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 translate-y-2 scale-95 pointer-events-none"
                   }`}
                 >
-                  <div className="grid grid-cols-4 gap-6">
-                    {services.map((service, index) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        className={`group p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#ff4081]/5 hover:to-[#00b2ff]/5 transition-all duration-200 transform hover:scale-105 ${
-                          isServicesOpen ? "animate-fadeInUp" : ""
-                        }`}
-                        style={{ animationDelay: `${index * 50}ms` }}
-                      >
-                        <div className="flex items-center space-x-3 mb-2">
-                          <div className="w-10 h-10 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  <div
+                    className={`bg-white border-gray-100 p-8 rounded-2xl shadow-2xl services-dropdown`}
+                  >
+                    <div className="grid grid-cols-4 gap-6">
+                      {services.map((service, index) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="group p-2 rounded-xl hover:bg-gradient-to-br hover:from-[#ff4081]/5 hover:to-[#00b2ff]/5 transition-all duration-200 transform hover:scale-100"
+                          style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                          <div className="w-10 aspect-square bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                             {service.icon}
                           </div>
-                          <h3 className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors">
-                            {service.title}
-                          </h3>
-                        </div>
-                        <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
-                          {service.description}
-                        </p>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors">
+                              {service.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
+                              {service.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-6 pt-6 border-t border-gray-100 text-center">
+                      <Link
+                        href="/services"
+                        className="inline-flex items-center text-[#ff4081] hover:text-[#ff4081]/80 font-medium"
+                      >
+                        Ver todos los servicios
+                        <ChevronDown
+                          size={16}
+                          className="ml-1 rotate-[-90deg]"
+                        />
                       </Link>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-gray-100 text-center">
-                    <Link
-                      href="/services"
-                      className="inline-flex items-center text-[#ff4081] hover:text-[#ff4081]/80 font-medium"
-                    >
-                      Ver todos los servicios
-                      <ChevronDown size={16} className="ml-1 rotate-[-90deg]" />
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -452,22 +457,16 @@ export default function Header() {
                             <Link
                               key={service.href}
                               href={service.href}
-                              className={`block text-base text-white/90 hover:text-white transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/10 text-center transform hover:scale-105 border border-white/20 hover:border-white/40 ${
-                                isMobileServicesOpen && !isServicesClosing
-                                  ? "animate-fadeInUp"
-                                  : ""
-                              }`}
+                              className={`block text-base text-white/90 hover:text-white transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/10 text-center transform hover:scale-105 border border-white/20 hover:border-white/40`}
                               style={{ animationDelay: `${index * 50}ms` }}
                               onClick={closeMenu}
                             >
-                              <div className="flex flex-col items-center space-y-2">
-                                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                                  {service.icon}
-                                </div>
-                                <span className="text-sm font-medium leading-tight">
-                                  {service.title}
-                                </span>
+                              <div className="w-8 aspect-square bg-white/20 rounded-lg flex items-center justify-center">
+                                {service.icon}
                               </div>
+                              <span className="text-sm font-medium leading-tight">
+                                {service.title}
+                              </span>
                             </Link>
                           ))}
                         </div>
