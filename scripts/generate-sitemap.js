@@ -34,7 +34,7 @@ async function generateSitemap() {
       "/services/seo",
       "/services/analytics",
       "/services/campanas-ads",
-      "/services/diseno-grafico",
+      "/services/creacion-contenido",
     ];
 
     // Datos de ejemplo para blog y portfolio

@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
+import { usePathname } from "next/navigation";
+import ReactCountryFlag from "react-country-flag";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +30,23 @@ export default function Header() {
   const [isMounted, setIsMounted] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [isServicesClosing, setIsServicesClosing] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+
+  const supportedLocales = ["arg", "es", "uk", "us"];
+  const localeCountryMap: Record<string, string> = {
+    arg: "AR",
+    es: "ES",
+    uk: "GB",
+    us: "US",
+  };
+  const pathname = usePathname();
+  const segments = pathname.split("/");
+  const currentLocale = supportedLocales.includes(segments[1])
+    ? segments[1]
+    : null;
+  const basePath = currentLocale
+    ? pathname.replace(`/${currentLocale}`, "")
+    : pathname;
 
   const services = [
     {
@@ -226,6 +245,7 @@ export default function Header() {
               </Link>
             </div>
 
+            {/* Desktop nav */}
             <nav className="hidden lg:flex items-center space-x-8">
               {/* Services Dropdown */}
               <div
@@ -344,6 +364,69 @@ export default function Header() {
                   Contactar
                 </Button>
               </Link>
+              {/* Language Selector */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsLangOpen(true)}
+                onMouseLeave={() => setIsLangOpen(false)}
+              >
+                <button
+                  className={`flex items-center transition-colors font-medium mt-3`}
+                >
+                  <span className="text-xl mr-1">
+                    {currentLocale ? (
+                      <ReactCountryFlag
+                        countryCode={localeCountryMap[currentLocale]}
+                        svg
+                        style={{ width: "1.5em", height: "1.5em" }}
+                      />
+                    ) : (
+                      <ReactCountryFlag
+                        countryCode="gb"
+                        svg
+                        style={{ width: "1.5em", height: "1.5em" }}
+                      />
+                    )}
+                  </span>
+                  <ChevronDown
+                    size={16}
+                    className={`flex items-center transition-colors font-medium ${
+                      isScrolled
+                        ? "text-gray-700 "
+                        : "text-[#00b2ff] hover:text-[#00b2ff]/80"
+                    }`}
+                  />
+                </button>
+                <div className="right-0 rounded-lg pt-3 shadow-lg overflow-hidden transition-all">
+                  <div
+                    className={`absolute right-0
+                       bg-white rounded-lg shadow-lg overflow-hidden transition-all ${
+                         isLangOpen
+                           ? "opacity-100 scale-100"
+                           : "opacity-0 scale-95 pointer-events-none"
+                       }`}
+                  >
+                    {supportedLocales.map((loc) => (
+                      <Link
+                        key={loc}
+                        href={`/${loc}${basePath}`}
+                        className="flex items-center px-4 py-2 hover:bg-gray-100"
+                      >
+                        <span className="text-xl mr-2 w-8 h-8">
+                          <ReactCountryFlag
+                            countryCode={localeCountryMap[loc]}
+                            svg
+                            style={{ width: "1.5em", height: "1.5em" }}
+                          />
+                        </span>
+                        <span className="text-sm font-medium">
+                          {loc.toUpperCase()}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </nav>
 
             {/* Botón hamburguesa fijo */}
@@ -536,6 +619,26 @@ export default function Header() {
                       Contactar
                     </Button>
                   </Link>
+                  {/* Language Selector Mobile */}
+                  <div className="mt-8 text-center">
+                    <h3 className="text-xl font-semibold mb-2">Idioma</h3>
+                    <div className="flex justify-center space-x-4">
+                      {supportedLocales.map((loc) => (
+                        <Link
+                          key={loc}
+                          href={`/${loc}${basePath}`}
+                          onClick={closeMenu}
+                          className="text-3xl"
+                        >
+                          <ReactCountryFlag
+                            countryCode={localeCountryMap[loc]}
+                            svg
+                            style={{ width: "1.5em", height: "1.5em" }}
+                          />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </nav>
               </div>
 

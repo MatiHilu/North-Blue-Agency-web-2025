@@ -11,7 +11,7 @@ import {
   Search,
   BarChart3,
   Target,
-  PenTool,
+  Keyboard,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
@@ -127,19 +127,19 @@ const services = [
     price: "Desde $800/mes + presupuesto publicitario",
   },
   {
-    id: "diseno-grafico",
-    title: "Diseño Gráfico",
-    description:
-      "Creamos piezas gráficas impactantes para todos tus canales de comunicación, desde material impreso hasta contenido digital.",
-    icon: <PenTool className="w-full h-full" />,
+    id: "creacion-contenido",
+    title: "Creación de Contenido",
+    description: "Contenido creativo para redes sociales",
+    icon: <Keyboard className="w-full h-full" />,
     features: [
-      "Material publicitario",
-      "Presentaciones",
-      "Infografías",
-      "Packaging",
+      "Publicaciones estáticas atractivas",
+      "Historias animadas",
+      "Videos cortos (Reels, TikToks)",
+      "Carruseles informativos",
+      "Edición profesional de imágenes y videos",
     ],
-    gradient: "from-[#00b2ff] to-[#33c3ff]",
-    price: "Desde $200/pieza",
+    gradient: "from-[#ff4081] to-[#00b2ff]",
+    price: "Desde $150/publicación",
   },
 ];
 

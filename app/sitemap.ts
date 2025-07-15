@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/seo",
     "/services/analytics",
     "/services/campanas-ads",
-    "/services/diseno-grafico",
+    "/services/creacion-contenido",
   ];
 
   // Obtener datos dinámicos

@@ -11,7 +11,7 @@ import {
   Search,
   BarChart3,
   Target,
-  PenTool,
+  Keyboard,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
@@ -131,7 +131,7 @@ const services = [
     title: "Diseño Gráfico",
     description:
       "Creamos piezas gráficas impactantes para todos tus canales de comunicación, desde material impreso hasta contenido digital.",
-    icon: <PenTool className="w-full h-full" />,
+    icon: <Keyboard className="w-full h-full" />,
     features: [
       "Material publicitario",
       "Presentaciones",
