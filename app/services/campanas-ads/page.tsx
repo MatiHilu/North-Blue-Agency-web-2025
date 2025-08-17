@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Publicidad digital estratégica que genera resultados medibles",
   description:
     "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Facebook Ads, Instagram y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
-  gradient: "from-[#ff4081] to-[#ff6b9d]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $800/mes + presupuesto publicitario",
   duration: "Configuración: 1-2 semanas",
   features: [
@@ -248,14 +248,14 @@ export default function CampanasAdsPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

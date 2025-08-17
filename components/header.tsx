@@ -15,6 +15,8 @@ import {
   BarChart3,
   Target,
   Keyboard,
+  Facebook,
+  Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
@@ -289,7 +291,7 @@ export default function Header() {
                             {service.icon}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors mt-1">
                               {service.title}
                             </h3>
                             <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
@@ -328,6 +330,7 @@ export default function Header() {
               >
                 Nosotros
               </Link>
+
               <Link
                 href="/portfolio"
                 className={`transition-colors font-medium ${
@@ -364,69 +367,6 @@ export default function Header() {
                   Contactar
                 </Button>
               </Link>
-              {/* Language Selector */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsLangOpen(true)}
-                onMouseLeave={() => setIsLangOpen(false)}
-              >
-                <button
-                  className={`flex items-center transition-colors font-medium mt-3`}
-                >
-                  <span className="text-xl mr-1">
-                    {currentLocale ? (
-                      <ReactCountryFlag
-                        countryCode={localeCountryMap[currentLocale]}
-                        svg
-                        style={{ width: "1.5em", height: "1.5em" }}
-                      />
-                    ) : (
-                      <ReactCountryFlag
-                        countryCode="gb"
-                        svg
-                        style={{ width: "1.5em", height: "1.5em" }}
-                      />
-                    )}
-                  </span>
-                  <ChevronDown
-                    size={16}
-                    className={`flex items-center transition-colors font-medium ${
-                      isScrolled
-                        ? "text-gray-700 "
-                        : "text-[#00b2ff] hover:text-[#00b2ff]/80"
-                    }`}
-                  />
-                </button>
-                <div className="right-0 rounded-lg pt-3 shadow-lg overflow-hidden transition-all">
-                  <div
-                    className={`absolute right-0
-                       bg-white rounded-lg shadow-lg overflow-hidden transition-all ${
-                         isLangOpen
-                           ? "opacity-100 scale-100"
-                           : "opacity-0 scale-95 pointer-events-none"
-                       }`}
-                  >
-                    {supportedLocales.map((loc) => (
-                      <Link
-                        key={loc}
-                        href={`/${loc}${basePath}`}
-                        className="flex items-center px-4 py-2 hover:bg-gray-100"
-                      >
-                        <span className="text-xl mr-2 w-8 h-8">
-                          <ReactCountryFlag
-                            countryCode={localeCountryMap[loc]}
-                            svg
-                            style={{ width: "1.5em", height: "1.5em" }}
-                          />
-                        </span>
-                        <span className="text-sm font-medium">
-                          {loc.toUpperCase()}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </nav>
 
             {/* Botón hamburguesa fijo */}
@@ -481,22 +421,9 @@ export default function Header() {
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="relative z-10 flex flex-col h-full text-white px-4 pt-20 pb-20">
+            <div className="relative z-10 flex flex-col h-full text-white px-4 pt-32 pb-20">
               <div className="flex-1 flex flex-col items-center justify-center">
                 <nav className="flex flex-col items-center space-y-6 text-center w-full max-w-sm">
-                  <Link
-                    href="/"
-                    className={`text-3xl font-bold hover:scale-110 transition-transform duration-300 ${
-                      isMenuClosing
-                        ? "mobile-menu-item-exit"
-                        : "mobile-menu-item"
-                    }`}
-                    style={{ animationDelay: isMenuClosing ? "0s" : "0.1s" }}
-                    onClick={closeMenu}
-                  >
-                    Inicio
-                  </Link>
-
                   {/* Mobile Services Dropdown */}
                   <div
                     className={`w-full ${
@@ -507,7 +434,7 @@ export default function Header() {
                     style={{ animationDelay: isMenuClosing ? "0.1s" : "0.2s" }}
                   >
                     <button
-                      className="text-3xl font-bold hover:scale-110 transition-transform duration-300 flex items-center justify-center w-full"
+                      className="text-3xl font-bold hover:scale-110 transition-transform duration-300 flex items-center justify-center w-full ml-2"
                       onClick={toggleMobileServices}
                     >
                       Servicios
@@ -540,14 +467,14 @@ export default function Header() {
                             <Link
                               key={service.href}
                               href={service.href}
-                              className={`block text-base text-white/90 hover:text-white transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/10 text-center transform hover:scale-105 border border-white/20 hover:border-white/40`}
+                              className={`block text-base text-white/90 hover:text-white transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/10 text-start transform hover:scale-105 border border-white/20 hover:border-white/40`}
                               style={{ animationDelay: `${index * 50}ms` }}
                               onClick={closeMenu}
                             >
                               <div className="w-8 aspect-square bg-white/20 rounded-lg flex items-center justify-center">
                                 {service.icon}
                               </div>
-                              <span className="text-sm font-medium leading-tight">
+                              <span className="text-sm block leading-tight mt-4">
                                 {service.title}
                               </span>
                             </Link>
@@ -578,6 +505,7 @@ export default function Header() {
                   >
                     Nosotros
                   </Link>
+
                   <Link
                     href="/portfolio"
                     className={`text-3xl font-bold hover:scale-110 transition-transform duration-300 ${
@@ -585,7 +513,7 @@ export default function Header() {
                         ? "mobile-menu-item-exit"
                         : "mobile-menu-item"
                     }`}
-                    style={{ animationDelay: isMenuClosing ? "0.3s" : "0.4s" }}
+                    style={{ animationDelay: isMenuClosing ? "0.5s" : "0.6s" }}
                     onClick={closeMenu}
                   >
                     Portfolio
@@ -597,20 +525,20 @@ export default function Header() {
                         ? "mobile-menu-item-exit"
                         : "mobile-menu-item"
                     }`}
-                    style={{ animationDelay: isMenuClosing ? "0.4s" : "0.5s" }}
+                    style={{ animationDelay: isMenuClosing ? "0.6s" : "0.7s" }}
                     onClick={closeMenu}
                   >
                     Blog
                   </Link>
                   <Link href="/contact">
                     <Button
-                      className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-8 ${
+                      className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-2 ${
                         isMenuClosing
                           ? "mobile-menu-item-exit"
                           : "mobile-menu-item"
                       }`}
                       style={{
-                        animationDelay: isMenuClosing ? "0.5s" : "0.6s",
+                        animationDelay: isMenuClosing ? "0.7s" : "0.8s",
                       }}
                       onClick={() => {
                         closeMenu();
@@ -620,7 +548,7 @@ export default function Header() {
                     </Button>
                   </Link>
                   {/* Language Selector Mobile */}
-                  <div className="mt-8 text-center">
+                  {/* <div className="mt-8 text-center">
                     <h3 className="text-xl font-semibold mb-2">Idioma</h3>
                     <div className="flex justify-center space-x-4">
                       {supportedLocales.map((loc) => (
@@ -638,34 +566,43 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
-                  </div>
+                  </div> */}
                 </nav>
               </div>
 
               {/* Social Links */}
               <div
-                className={`flex justify-center space-x-6 pb-8 ${
+                className={`flex justify-center space-x-6 pb-8 mt-8 ${
                   isMenuClosing ? "mobile-menu-item-exit" : "mobile-menu-item"
                 }`}
-                style={{ animationDelay: isMenuClosing ? "0.6s" : "0.7s" }}
+                style={{ animationDelay: isMenuClosing ? "0.8s" : "0.9s" }}
               >
                 <a
                   href="#"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                 >
-                  <span className="text-sm font-bold">FB</span>
+                  <Facebook size={20} />
                 </a>
                 <a
                   href="#"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                 >
-                  <span className="text-sm font-bold">IG</span>
+                  <Instagram size={20} />
                 </a>
                 <a
                   href="#"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                 >
-                  <span className="text-sm font-bold">LI</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    className="bi bi-linkedin"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                  </svg>
                 </a>
               </div>
             </div>

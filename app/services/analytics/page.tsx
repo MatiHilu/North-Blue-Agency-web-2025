@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Toma decisiones inteligentes basadas en datos reales",
   description:
     "Implementamos sistemas de medición avanzados que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital.",
-  gradient: "from-[#00b2ff] to-[#33c3ff]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $400/mes",
   duration: "Implementación: 1-2 semanas",
   features: [
@@ -249,14 +249,14 @@ export default function AnalyticsPage() {
                 >
                   Solicitar cotización
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
-                </Button>
+                </Button> */}
               </div>
             </AnimatedSection>
           </div>

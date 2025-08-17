@@ -225,14 +225,14 @@ export default function CreacionContenidoPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

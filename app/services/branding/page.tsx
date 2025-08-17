@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Crea una identidad única que conecte con tu audiencia",
   description:
     "Desarrollamos identidades visuales completas que reflejan la esencia de tu marca y la diferencian en el mercado. Desde el concepto inicial hasta la aplicación en todos los puntos de contacto.",
-  gradient: "from-[#00b2ff] to-[#33c3ff]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $1,500",
   duration: "4-8 semanas",
   features: [
@@ -248,14 +248,14 @@ export default function BrandingPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

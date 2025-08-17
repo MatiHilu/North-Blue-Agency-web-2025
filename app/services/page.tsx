@@ -33,7 +33,7 @@ const services = [
       "Publicidad en redes",
       "Análisis y reportes",
     ],
-    gradient: "from-[#ff4081] to-[#ff6b9d]",
+    gradient: "from-[#ff4081] to-[#00b2ff]",
     price: "Desde $800/mes",
   },
   {
@@ -48,7 +48,7 @@ const services = [
       "Papelería corporativa",
       "Aplicaciones digitales",
     ],
-    gradient: "from-[#00b2ff] to-[#33c3ff]",
+    gradient: "from-[#00b2ff] to-[#ff4081]",
     price: "Desde $1,500",
   },
   {
@@ -63,7 +63,7 @@ const services = [
       "E-commerce",
       "Mantenimiento",
     ],
-    gradient: "from-[#ff4081] to-[#ff6b9d]",
+    gradient: "from-[#ff4081] to-[#00b2ff]",
     price: "Desde $2,000",
   },
   {
@@ -78,7 +78,7 @@ const services = [
       "Marketing automation",
       "Analytics",
     ],
-    gradient: "from-[#00b2ff] to-[#33c3ff]",
+    gradient: "from-[#00b2ff] to-[#ff4081]",
     price: "Desde $1,200/mes",
   },
   {
@@ -93,7 +93,7 @@ const services = [
       "Link building",
       "Reportes mensuales",
     ],
-    gradient: "from-[#ff4081] to-[#ff6b9d]",
+    gradient: "from-[#ff4081] to-[#00b2ff]",
     price: "Desde $600/mes",
   },
   {
@@ -108,7 +108,7 @@ const services = [
       "Reportes automáticos",
       "KPIs estratégicos",
     ],
-    gradient: "from-[#00b2ff] to-[#33c3ff]",
+    gradient: "from-[#00b2ff] to-[#ff4081]",
     price: "Desde $400/mes",
   },
   {
@@ -123,11 +123,11 @@ const services = [
       "Campañas de remarketing",
       "Optimización de ROI",
     ],
-    gradient: "from-[#ff4081] to-[#ff6b9d]",
+    gradient: "from-[#ff4081] to-[#00b2ff]",
     price: "Desde $800/mes + presupuesto publicitario",
   },
   {
-    id: "diseno-grafico",
+    id: "creacion-contenido",
     title: "Creación de Contenido",
     description: "Contenido creativo para redes sociales",
     icon: <Keyboard className="w-full h-full" />,
@@ -138,7 +138,7 @@ const services = [
       "Carruseles informativos",
       "Edición profesional de imágenes y videos",
     ],
-    gradient: "from-[#ff4081] to-[#00b2ff]",
+    gradient: "from-[#00b2ff] to-[#ff4081]",
     price: "Desde $150/publicación",
   },
 ];

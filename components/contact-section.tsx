@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, Send } from "lucide-react";
 import AnimatedSection from "./animated-section";
-import EnhancedContactModal from "./enhanced-contact-modal";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -17,8 +16,6 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
-
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,10 +25,6 @@ export default function ContactSection() {
 
   return (
     <>
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
       <section
         id="contact"
         className="py-20 bg-gradient-to-br from-gray-50 to-white"
@@ -86,9 +79,8 @@ export default function ContactSection() {
                       className="border-gray-300 focus:border-[#ff4081]"
                     />
                     <Button
-                      type="button"
+                      type="submit"
                       className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
-                      onClick={() => setIsContactModalOpen(true)}
                     >
                       Enviar mensaje
                       <Send size={16} className="ml-2" />
@@ -128,6 +120,17 @@ export default function ContactSection() {
                     </div>
 
                     <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#00b2ff] to-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Clock className="text-white" size={20} />
+                      </div>
+                      <div>
+                        <p className="font-semibold">Horario</p>
+                        <p className="text-gray-600">Lun - Vie: 9:00 - 18:00</p>
+                        {/* <p className="text-gray-600">Sáb: 10:00 - 14:00</p> */}
+                      </div>
+                    </div>
+
+                    {/* <div className="flex items-center space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center">
                         <MapPin className="text-white" size={20} />
                       </div>
@@ -135,7 +138,7 @@ export default function ContactSection() {
                         <p className="font-semibold">Ubicación</p>
                         <p className="text-gray-600">Ciudad, País</p>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -145,7 +148,7 @@ export default function ContactSection() {
                     <li>✓ Estrategias personalizadas</li>
                     <li>✓ Resultados medibles</li>
                     <li>✓ Equipo experto</li>
-                    <li>✓ Soporte 24/7</li>
+                    {/* <li>✓ Soporte 24/7</li> */}
                   </ul>
                 </div>
               </div>

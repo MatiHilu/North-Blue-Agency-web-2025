@@ -33,12 +33,31 @@ export default function ContactPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || "Error enviando mensaje");
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        budget: "",
+        message: "",
+      });
+    } catch (err: any) {
+      console.error("Error en handleSubmit:", err);
+      alert(err.message || "Error al enviar mensaje");
+    }
   };
 
   const handleChange = (
@@ -257,7 +276,7 @@ export default function ContactPage() {
                           Enviar mensaje
                           <Send size={20} className="ml-2" />
                         </Button>
-                        <Button
+                        {/* <Button
                           type="button"
                           variant="outline"
                           className="border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white h-12"
@@ -265,7 +284,7 @@ export default function ContactPage() {
                         >
                           Solicitar llamada
                           <Phone size={16} className="ml-2" />
-                        </Button>
+                        </Button> */}
                       </div>
                     </form>
                   </CardContent>
@@ -331,7 +350,7 @@ export default function ContactPage() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInRight" delay={300}>
+              {/* <AnimatedSection animation="fadeInRight" delay={300}>
                 <Card className="border-0 shadow-xl">
                   <CardContent className="p-8">
                     <h4 className="text-xl font-bold mb-4">
@@ -360,7 +379,7 @@ export default function ContactPage() {
                     </div>
                   </CardContent>
                 </Card>
-              </AnimatedSection>
+              </AnimatedSection> */}
 
               <AnimatedSection animation="fadeInRight" delay={400}>
                 <div className="bg-gradient-to-br from-[#ff4081]/10 to-[#00b2ff]/10 p-8 rounded-xl">
@@ -389,7 +408,7 @@ export default function ContactPage() {
                       />
                       <span>Equipo experto</span>
                     </li>
-                    <li className="flex items-center space-x-3">
+                    {/* <li className="flex items-center space-x-3">
                       <CheckCircle
                         className="text-[#00b2ff] flex-shrink-0"
                         size={20}
@@ -402,7 +421,7 @@ export default function ContactPage() {
                         size={20}
                       />
                       <span>Precios competitivos</span>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </AnimatedSection>

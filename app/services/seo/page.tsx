@@ -17,7 +17,7 @@ const serviceData = {
     "Domina los primeros lugares de Google y aumenta tu tráfico orgánico",
   description:
     "Nuestro servicio de SEO está diseñado para posicionar tu sitio web en los primeros resultados de búsqueda de Google. Utilizamos técnicas white-hat probadas y estrategias personalizadas para aumentar tu visibilidad orgánica y atraer tráfico cualificado.",
-  gradient: "from-[#ff4081] to-[#ff6b9d]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $600/mes",
   duration: "3-12 meses",
   features: [
@@ -249,14 +249,14 @@ export default function SEOPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

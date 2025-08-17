@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Construye una comunidad sólida y aumenta tu engagement",
   description:
     "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento. Creamos estrategias personalizadas que conectan con tu audiencia y generan resultados medibles.",
-  gradient: "from-[#ff4081] to-[#ff6b9d]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $800/mes",
   duration: "3-6 meses",
   features: [
@@ -248,14 +248,14 @@ export default function RedesSocialesPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

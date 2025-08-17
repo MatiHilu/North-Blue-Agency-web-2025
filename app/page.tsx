@@ -41,52 +41,52 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
-            <AnimatedSection>
-              <h1
-                className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
-                style={{ lineHeight: "1.2" }}
+            {/* <AnimatedSection> */}
+            <h1
+              className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
+              style={{ lineHeight: "1.2" }}
+            >
+              Transformamos tu
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
+                presencia digital
+              </span>
+            </h1>
+            {/* </AnimatedSection> */}
+
+            {/*  <AnimatedSection delay={300}> */}
+            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Somos North Blue Agency, especialistas en marketing digital que
+              impulsan marcas hacia el éxito con estrategias innovadoras y
+              resultados medibles.
+            </p>
+            {/* </AnimatedSection> */}
+
+            {/* <AnimatedSection delay={600}> */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4 w-[250px]"
+                onClick={() => setIsContactModalOpen(true)}
               >
-                Transformamos tu
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
-                  presencia digital
-                </span>
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection delay={300}>
-              <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Somos North Blue Agency, especialistas en marketing digital que
-                impulsan marcas hacia el éxito con estrategias innovadoras y
-                resultados medibles.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={600}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                Comenzar proyecto
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
+              <Link href="/portfolio">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4"
-                  onClick={() => setIsContactModalOpen(true)}
+                  variant="outline"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-4 md:w-[246px]"
                 >
-                  Comenzar proyecto
-                  <ArrowRight className="ml-2" size={20} />
+                  Ver portfolio
                 </Button>
-                <Link href="/portfolio">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="btn-white-hover border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-4"
-                  >
-                    Ver portfolio
-                  </Button>
-                </Link>
-              </div>
-            </AnimatedSection>
+              </Link>
+            </div>
+            {/* </AnimatedSection> */}
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
@@ -103,7 +103,7 @@ export default function HomePage() {
                 servicios
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
               Ofrecemos soluciones integrales de marketing digital para hacer
               crecer tu negocio
             </p>

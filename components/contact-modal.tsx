@@ -35,12 +35,23 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    // Close modal after submission
-    onClose();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Error enviando mensaje");
+      // Opcional: mostrar notificación de éxito
+      console.log("Mensaje enviado:", formData);
+      onClose();
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      alert("Error al enviar mensaje");
+    }
   };
 
   if (!isVisible) return null;

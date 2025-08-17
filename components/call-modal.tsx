@@ -59,26 +59,34 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setIsSubmitting(false);
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      onClose();
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        preferredDate: "",
-        preferredTime: "",
-        timezone: "",
-        topic: "",
-        notes: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    }, 2000);
+      if (!res.ok) throw new Error("Error agendando consulta");
+      setShowSuccess(true);
+      setTimeout(() => {
+        onClose();
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          preferredDate: "",
+          preferredTime: "",
+          timezone: "",
+          topic: "",
+          notes: "",
+        });
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+      alert("Error al agendar consulta");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {

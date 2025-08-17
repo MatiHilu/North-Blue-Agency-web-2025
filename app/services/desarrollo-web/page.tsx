@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Sitios web que convierten visitantes en clientes",
   description:
     "Creamos sitios web modernos, rápidos y optimizados para conversión. Utilizamos las últimas tecnologías y mejores prácticas de UX/UI para garantizar una experiencia excepcional.",
-  gradient: "from-[#ff4081] to-[#ff6b9d]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $2,000",
   duration: "6-12 semanas",
   features: [
@@ -248,14 +248,14 @@ export default function DesarrolloWebPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
-                <Button
+                  {/* <Button
                   size="lg"
                   variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
+                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
+                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

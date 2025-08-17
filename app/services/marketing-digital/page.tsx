@@ -16,7 +16,7 @@ const serviceData = {
   subtitle: "Estrategias completas para maximizar tu ROI",
   description:
     "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
-  gradient: "from-[#00b2ff] to-[#33c3ff]",
+  gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $1,200/mes",
   duration: "6-12 meses",
   features: [
@@ -249,14 +249,14 @@ export default function MarketingDigitalPage() {
                 >
                   Solicitar cotización
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="btn-white-hover border-white text-white hover:bg-white hover:text-[#ff4081]"
                   onClick={() => setIsCallModalOpen(true)}
                 >
                   Agendar consulta gratuita
-                </Button>
+                </Button> */}
               </div>
             </AnimatedSection>
           </div>

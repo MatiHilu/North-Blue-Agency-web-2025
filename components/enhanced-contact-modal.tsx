@@ -51,19 +51,26 @@ export default function EnhancedContactModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.preventDefault();
     setIsSubmitting(true);
-
-    // Simular envío
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setIsSubmitting(false);
-    setShowSuccess(true);
-
-    // Auto cerrar después del éxito
-    setTimeout(() => {
-      onClose();
-      setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Error enviando mensaje");
+      setShowSuccess(true);
+      setTimeout(() => {
+        onClose();
+        setFormData({ name: "", email: "", message: "" });
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+      alert("Error al enviar mensaje");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
