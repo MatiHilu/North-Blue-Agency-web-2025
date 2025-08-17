@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "msapplication-config": "/browserconfig.xml",
   },
 };
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TCWT9RJD";
 export default function RootLayout({
   children,
 }: {
