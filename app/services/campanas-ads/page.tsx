@@ -8,7 +8,6 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
-import CallModal from "@/components/call-modal";
 import { useState } from "react";
 
 const serviceData = {
@@ -75,17 +74,12 @@ const faqs = [
 
 export default function CampanasAdsPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   return (
     <>
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
-      />
-      <CallModal
-        isOpen={isCallModalOpen}
-        onClose={() => setIsCallModalOpen(false)}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -248,14 +242,6 @@ export default function CampanasAdsPage() {
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                  {/* <Button
-                  size="lg"
-                  variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
-                  onClick={() => setIsCallModalOpen(true)}
-                >
-                  Agendar consulta gratuita
-                </Button> */}
                 </Button>
               </div>
             </AnimatedSection>

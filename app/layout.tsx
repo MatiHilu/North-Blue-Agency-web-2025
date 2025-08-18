@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/header";
+import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 //import CustomCursor from "@/components/custom-cursor";
 import ScrollToTop from "@/components/scroll-to-top";
@@ -100,6 +101,7 @@ export default function RootLayout({
         {/* <CustomCursor /> */}
         <ScrollToTop />
         <Header />
+        <Toaster />
         <main className="overflow-hidden">{children}</main>
         <Footer />
       </body>

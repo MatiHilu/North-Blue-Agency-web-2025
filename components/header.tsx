@@ -232,7 +232,11 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20 w-full">
             <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
+              <Link
+                href="/"
+                className="flex items-center"
+                onClick={closeMenu} // <-- aquí cerramos el menú al clickar en el logo
+              >
                 <Image
                   src={
                     isScrolled

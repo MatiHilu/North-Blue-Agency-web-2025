@@ -9,18 +9,42 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, Clock, MapPin, Send } from "lucide-react";
 import AnimatedSection from "./animated-section";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, url: window.location.href }),
+      });
+      if (!res.ok) throw new Error("Error enviando mensaje");
+      toast({
+        title: "¡Mensaje enviado!",
+        description:
+          "Gracias por contactarnos. Te responderemos en las próximas 24 horas.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error enviando mensaje:", error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema enviando tu mensaje. Intenta más tarde.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,6 +83,7 @@ export default function ContactSection() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
+                      disabled={isSubmitting}
                     />
                     <Input
                       type="email"
@@ -68,6 +93,7 @@ export default function ContactSection() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
+                      disabled={isSubmitting}
                     />
                     <Textarea
                       placeholder="Cuéntanos sobre tu proyecto"
@@ -77,13 +103,21 @@ export default function ContactSection() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
+                      disabled={isSubmitting}
                     />
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Enviar mensaje
-                      <Send size={16} className="ml-2" />
+                      {isSubmitting ? (
+                        "Enviando..."
+                      ) : (
+                        <>
+                          Enviar mensaje
+                          <Send size={16} className="ml-2" />
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>

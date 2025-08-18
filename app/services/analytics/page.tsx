@@ -8,7 +8,6 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
-import CallModal from "@/components/call-modal";
 import { useState } from "react";
 
 const serviceData = {
@@ -75,7 +74,6 @@ const faqs = [
 
 export default function AnalyticsPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   return (
     <>
@@ -83,10 +81,7 @@ export default function AnalyticsPage() {
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
       />
-      <CallModal
-        isOpen={isCallModalOpen}
-        onClose={() => setIsCallModalOpen(false)}
-      />
+
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -151,7 +146,7 @@ export default function AnalyticsPage() {
                   {serviceData.benefits.map(
                     (benefit: string, index: number) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-6 h-6 bg-gradient-to-r from-[#00b2ff] to-[#33c3ff] rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-6 h-6 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0">
                           <Check className="text-white" size={14} />
                         </div>
                         <span className="text-gray-700">{benefit}</span>
@@ -174,7 +169,7 @@ export default function AnalyticsPage() {
                             key={index}
                             className="flex items-start space-x-3"
                           >
-                            <div className="w-5 h-5 bg-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                               <Check className="text-white" size={12} />
                             </div>
                             <span className="text-gray-700">{feature}</span>
@@ -207,7 +202,7 @@ export default function AnalyticsPage() {
                 <AnimatedSection key={index} delay={index * 100}>
                   <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                     <CardContent className="p-6">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#00b2ff] to-[#33c3ff] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center mx-auto mb-4">
                         <span className="text-white font-bold">
                           {index + 1}
                         </span>
@@ -231,7 +226,7 @@ export default function AnalyticsPage() {
         />
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#00b2ff] to-[#33c3ff]">
+        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -249,14 +244,6 @@ export default function AnalyticsPage() {
                 >
                   Solicitar cotización
                 </Button>
-                {/* <Button
-                  size="lg"
-                  variant="outline"
-                  className="btn-white-hover border-white text-white hover:bg-white hover:text-[#00b2ff]"
-                  onClick={() => setIsCallModalOpen(true)}
-                >
-                  Agendar consulta gratuita
-                </Button> */}
               </div>
             </AnimatedSection>
           </div>
