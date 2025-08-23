@@ -58,7 +58,7 @@ const faqs = [
   {
     question: "¿En qué redes sociales se enfocan?",
     answer:
-      "Trabajamos principalmente en Instagram, Facebook, LinkedIn, TikTok y Twitter. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
+      "Trabajamos principalmente en Instagram, Facebook, LinkedIn y TikTok. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
   },
   {
     question: "¿Crean todo el contenido visual?",
@@ -207,7 +207,7 @@ export default function RedesSocialesPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-sm max-w-[200px] mx-auto">
                         {step.description}
                       </p>
                     </CardContent>
@@ -231,7 +231,7 @@ export default function RedesSocialesPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos hoy y descubre cómo podemos transformar tu presencia
                 digital
               </p>

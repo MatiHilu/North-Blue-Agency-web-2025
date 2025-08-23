@@ -85,8 +85,15 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 transform -translate-x-1/2 animate-bounce">
+        {/* Scroll Indicator: make it clickable & smooth-scroll to #services */}
+        <div
+          className="absolute bottom-8 transform -translate-x-1/2 animate-bounce cursor-pointer"
+          onClick={() =>
+            document
+              .getElementById("services")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
@@ -94,7 +101,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section id="services" className="py-36 bg-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">

@@ -48,10 +48,10 @@ const serviceData = {
     },
   ],
   benefits: [
-    "Aumento del 200% en tráfico orgánico",
+    "Aumento del tráfico orgánico",
     "Mejora en rankings de keywords objetivo",
     "Mayor autoridad de dominio",
-    "ROI superior al marketing pagado",
+    "ROI superior al marketing SEM",
   ],
 };
 
@@ -208,7 +208,7 @@ export default function SEOPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -232,7 +232,7 @@ export default function SEOPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para dominar Google?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos hoy y descubre cómo podemos posicionar tu sitio web
                 en los primeros lugares
               </p>

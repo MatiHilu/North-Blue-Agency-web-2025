@@ -16,7 +16,7 @@ const serviceData = {
   description:
     "Generamos publicaciones visuales y multimedia atractivas que amplifican tu presencia en redes sociales. Desde imágenes, videos cortos hasta carruseles, adaptados a cada plataforma para maximizar el engagement.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $150/publicación",
+  price: "Desde $20/publicación",
   duration: "1-3 días por pieza",
   features: [
     "Publicaciones estáticas atractivas",
@@ -65,7 +65,7 @@ const faqs = [
   {
     question: "¿Programan las publicaciones por nosotros?",
     answer:
-      "Sí, podemos programar las publicaciones directamente en tus plataformas sociales con las herramientas que prefieras.",
+      "No programamos las publicaciones directamente en tus plataformas. Eso lo ofrecemos en el servicio de gestión de redes sociales.",
   },
 ];
 
@@ -186,7 +186,7 @@ export default function CreacionContenidoPage() {
                         <span className="text-white font-bold">{idx + 1}</span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[250px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -208,7 +208,7 @@ export default function CreacionContenidoPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para potenciar tus redes sociales?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos y comienza a generar contenido que cautiva a tu
                 audiencia
               </p>

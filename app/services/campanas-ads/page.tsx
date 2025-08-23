@@ -14,15 +14,14 @@ const serviceData = {
   title: "Campañas y Ads",
   subtitle: "Publicidad digital estratégica que genera resultados medibles",
   description:
-    "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Facebook Ads, Instagram y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
+    "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Meta Ads y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $800/mes + presupuesto publicitario",
-  duration: "Configuración: 1-2 semanas",
+  duration: "Configuración: 2-3 semanas",
   features: [
     "Google Ads (Search, Display, Shopping)",
-    "Facebook e Instagram Ads",
+    "Meta Ads y TikTok Ads",
     "LinkedIn Ads para B2B",
-    "YouTube Ads y video marketing",
     "Remarketing y retargeting",
     "Optimización de conversiones",
     "A/B testing de creatividades",
@@ -47,9 +46,7 @@ const serviceData = {
     },
   ],
   benefits: [
-    "ROI promedio de 4:1 en campañas",
-    "Reducción del 40% en costo por adquisición",
-    "Aumento del 250% en leads cualificados",
+    "Aumento de leads cualificados",
     "Escalabilidad comprobada de resultados",
   ],
 };
@@ -58,12 +55,12 @@ const faqs = [
   {
     question: "¿En qué plataformas publicitarias trabajan?",
     answer:
-      "Gestionamos campañas en Google Ads, Facebook, Instagram, LinkedIn, YouTube, TikTok Ads y otras plataformas según tu audiencia objetivo y industria específica.",
+      "Gestionamos campañas en Google Ads, Meta Ads, LinkedIn, TikTok Ads y otras plataformas según tu audiencia objetivo y industria específica.",
   },
   {
     question: "¿Cuál es el presupuesto mínimo recomendado?",
     answer:
-      "Recomendamos un presupuesto publicitario mínimo de $1,000/mes por plataforma para obtener datos significativos y resultados óptimos, aunque trabajamos con presupuestos diversos.",
+      "Recomendamos un presupuesto publicitario mínimo de $500/mes por plataforma para obtener datos significativos y resultados óptimos, aunque trabajamos con presupuestos diversos.",
   },
   {
     question: "¿Cómo miden el éxito de las campañas?",
@@ -207,7 +204,7 @@ export default function CampanasAdsPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[250px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>

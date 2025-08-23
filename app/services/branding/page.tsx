@@ -16,8 +16,8 @@ const serviceData = {
   description:
     "Desarrollamos identidades visuales completas que reflejan la esencia de tu marca y la diferencian en el mercado. Desde el concepto inicial hasta la aplicación en todos los puntos de contacto.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $1,500",
-  duration: "4-8 semanas",
+  price: "Desde $600",
+  duration: "2-3 semanas",
   features: [
     "Investigación de mercado y competencia",
     "Definición de personalidad de marca",
@@ -58,7 +58,7 @@ const faqs = [
   {
     question: "¿Incluye el registro de marca?",
     answer:
-      "No incluimos el registro legal de marca, pero sí verificamos disponibilidad y te asesoramos sobre el proceso. Podemos recomendarte abogados especializados si lo necesitas.",
+      "No incluimos el registro legal de marca, pero sí verificamos disponibilidad.",
   },
   {
     question: "¿Qué pasa si no me gusta el diseño inicial?",
@@ -68,7 +68,7 @@ const faqs = [
   {
     question: "¿Entregan archivos en diferentes formatos?",
     answer:
-      "Sí, entregamos todos los archivos en formatos vectoriales (AI, EPS), rasterizados (PNG, JPG) y PDF, optimizados para uso digital e impreso.",
+      "Sí, entregamos todos los archivos en formatos vectoriales (AI), rasterizados (PNG, JPG) y PDF, optimizados para uso digital.",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function BrandingPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -231,7 +231,7 @@ export default function BrandingPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos hoy y descubre cómo podemos transformar tu presencia
                 digital
               </p>

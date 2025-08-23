@@ -169,7 +169,7 @@ export default function AboutPage() {
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
                 Somos un equipo apasionado de profesionales dedicados a
-                transformar la presencia digital de las empresas
+                transformar la presencia digital
               </p>
             </AnimatedSection>
           </div>
@@ -194,8 +194,8 @@ export default function AboutPage() {
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   Comenzamos como un pequeño equipo de especialistas apasionados
                   por el marketing digital. Hoy, somos una agencia reconocida
-                  que ha ayudado a más de 150 empresas a transformar su
-                  presencia online.
+                  que ha ayudado a más de 75 empresas a transformar su presencia
+                  online.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Nuestro enfoque se basa en la combinación perfecta entre

@@ -16,7 +16,7 @@ const serviceData = {
   description:
     "Creamos sitios web modernos, rápidos y optimizados para conversión. Utilizamos las últimas tecnologías y mejores prácticas de UX/UI para garantizar una experiencia excepcional.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $2,000",
+  price: "Desde $1200",
   duration: "6-12 semanas",
   features: [
     "Diseño responsivo y mobile-first",
@@ -25,8 +25,6 @@ const serviceData = {
     "Integración con analytics",
     "Formularios de contacto avanzados",
     "CMS fácil de usar",
-    "Certificado SSL incluido",
-    "Hosting y mantenimiento",
   ],
   process: [
     {
@@ -47,8 +45,8 @@ const serviceData = {
     },
   ],
   benefits: [
-    "Aumento del 250% en conversiones",
-    "Mejor posicionamiento en Google",
+    "Aumento de conversiones",
+    "Posicionamiento en Google",
     "Experiencia de usuario superior",
     "Reducción en tasa de rebote",
   ],
@@ -207,7 +205,7 @@ export default function DesarrolloWebPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -231,7 +229,7 @@ export default function DesarrolloWebPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos hoy y descubre cómo podemos transformar tu presencia
                 digital
               </p>

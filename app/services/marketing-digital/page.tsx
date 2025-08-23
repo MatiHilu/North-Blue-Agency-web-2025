@@ -16,13 +16,17 @@ const serviceData = {
   description:
     "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $1,200/mes",
+  price: "Desde $2000/mes",
   duration: "6-12 meses",
   features: [
     "Estrategia multicanal personalizada",
+    "Analisis de competencia",
+    "Revisión y mejora de sitio web",
+    "Mantenimiento y soporte",
+    "Gestión de redes sociales",
     "SEO y posicionamiento orgánico",
     "Campañas SEM en Google Ads",
-    "Email marketing automatizado",
+    "Email marketing",
     "Marketing de contenidos",
     "Retargeting y remarketing",
     "Analytics y seguimiento avanzado",
@@ -47,7 +51,6 @@ const serviceData = {
     },
   ],
   benefits: [
-    "ROI promedio del 400%",
     "Aumento en leads cualificados",
     "Mayor visibilidad online",
     "Crecimiento sostenible",
@@ -68,7 +71,7 @@ const faqs = [
   {
     question: "¿Qué incluye el seguimiento y analytics?",
     answer:
-      "Instalamos herramientas como Google Analytics, Facebook Pixel, y configuramos dashboards personalizados. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
+      "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
   },
 ];
 
@@ -207,7 +210,7 @@ export default function MarketingDigitalPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -231,7 +234,7 @@ export default function MarketingDigitalPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Contáctanos hoy y descubre cómo podemos transformar tu presencia
                 digital
               </p>

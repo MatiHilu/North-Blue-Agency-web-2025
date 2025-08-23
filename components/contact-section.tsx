@@ -149,7 +149,9 @@ export default function ContactSection() {
                       </div>
                       <div>
                         <p className="font-semibold">Teléfono</p>
-                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                        <p className="text-gray-600">
+                          +54 11 5324 8376 / +54 11 3054 5828
+                        </p>
                       </div>
                     </div>
 
@@ -159,7 +161,9 @@ export default function ContactSection() {
                       </div>
                       <div>
                         <p className="font-semibold">Horario</p>
-                        <p className="text-gray-600">Lun - Vie: 9:00 - 18:00</p>
+                        <p className="text-gray-600">
+                          Lun - Vie: 9:00 - 18:00 (GTM -3)
+                        </p>
                         {/* <p className="text-gray-600">Sáb: 10:00 - 14:00</p> */}
                       </div>
                     </div>

@@ -11,20 +11,22 @@ import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
 
 const serviceData = {
-  title: "Analytics y Reportes",
-  subtitle: "Toma decisiones inteligentes basadas en datos reales",
+  title: "Analytics - Reportes Web y Redes Sociales",
+  subtitle:
+    "Toma decisiones inteligentes basadas en datos reales de tu sitio y redes sociales",
   description:
-    "Implementamos sistemas de medición avanzados que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital.",
+    "Implementamos sistemas de medición avanzados para web y redes sociales que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital en cada canal.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
   price: "Desde $400/mes",
   duration: "Implementación: 1-2 semanas",
   features: [
     "Configuración de Google Analytics 4",
     "Google Tag Manager avanzado",
-    "Dashboards personalizados en Looker Studio",
     "Seguimiento de conversiones",
     "Análisis de embudos de venta",
-    "Reportes automáticos mensuales",
+    "Analítica de redes sociales (Facebook, Instagram, TikTok, LinkedIn)",
+    "Seguimiento de engagement y crecimiento de seguidores",
+    "Reportes mensuales",
     "KPIs estratégicos por industria",
     "Recomendaciones de optimización",
   ],
@@ -38,7 +40,7 @@ const serviceData = {
       description: "Implementamos tracking avanzado y herramientas",
     },
     {
-      title: "Dashboards",
+      title: "Reporting",
       description: "Creamos reportes visuales personalizados",
     },
     {
@@ -47,7 +49,8 @@ const serviceData = {
     },
   ],
   benefits: [
-    "Visibilidad completa del customer journey",
+    "Visibilidad completa del customer journey en web y redes sociales",
+    "Medición de engagement y alcance en redes sociales",
     "ROI claro de todas las campañas",
     "Identificación de oportunidades de mejora",
     "Decisiones basadas en datos reales",
@@ -55,15 +58,15 @@ const serviceData = {
 };
 
 const faqs = [
-  {
+  /*   {
     question: "¿Qué herramientas de analytics utilizan?",
     answer:
       "Trabajamos principalmente con Google Analytics 4, Google Tag Manager, Looker Studio, y herramientas especializadas según la industria como Hotjar, Mixpanel o herramientas de ecommerce.",
-  },
+  }, */
   {
     question: "¿Con qué frecuencia recibo reportes?",
     answer:
-      "Proporcionamos reportes automáticos mensuales, dashboards en tiempo real, y reportes personalizados según tus necesidades específicas. También ofrecemos sesiones de revisión trimestral.",
+      "Proporcionamos reportes mensuales personalizados según tus necesidades específicas. También ofrecemos sesiones de revisión trimesal.",
   },
   {
     question: "¿Pueden integrar datos de diferentes plataformas?",
@@ -208,7 +211,7 @@ export default function AnalyticsPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
