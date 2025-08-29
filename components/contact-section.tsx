@@ -150,7 +150,21 @@ export default function ContactSection() {
                       <div>
                         <p className="font-semibold">Teléfono</p>
                         <p className="text-gray-600">
-                          +54 11 5324 8376 / +54 11 3054 5828
+                          <a
+                            href="tel:+541153248376"
+                            className="hover:underline"
+                            aria-label="Llamar a +54 11 5324 8376"
+                          >
+                            +54 11 5324 8376
+                          </a>
+                          {" / "}
+                          <a
+                            href="tel:+541130545828"
+                            className="hover:underline"
+                            aria-label="Llamar a +54 11 3054 5828"
+                          >
+                            +54 11 3054 5828
+                          </a>
                         </p>
                       </div>
                     </div>
