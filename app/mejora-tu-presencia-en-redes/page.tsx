@@ -128,7 +128,7 @@ export default function RedesSocialesPage() {
             <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-between">
             <div className="container mx-auto px-4 relative z-10">
               <AnimatedSection>
                 <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -158,10 +158,10 @@ export default function RedesSocialesPage() {
             </div>
             <div className="container mx-auto px-4 relative z-10 ">
               <AnimatedSection animation="fadeInLeft">
-                <Card className="h-full border-0 shadow-xl max-w-[600px]">
+                <Card className="h-full border-0 shadow-xl max-w-[550px]">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Envíanos un mensaje
+                      Comienza a generar contenido ya!
                     </h3>
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <Input

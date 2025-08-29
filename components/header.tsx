@@ -582,20 +582,26 @@ export default function Header() {
                 style={{ animationDelay: isMenuClosing ? "0.8s" : "0.9s" }}
               >
                 <a
-                  href="#"
+                  href="https://www.facebook.com/north.blue.agency/"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Facebook size={20} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/north.blue.agency/"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Instagram size={20} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/northblue-agency/"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
