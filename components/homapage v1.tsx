@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Script from "next/script";
-import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,13 +8,11 @@ import {
   Star,
   Users,
   TrendingUp,
+  Award,
   Smartphone,
   Palette,
   Globe,
   Megaphone,
-  Lightbulb,
-  Target,
-  Rocket,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
@@ -27,47 +22,8 @@ import EnhancedContactModal from "@/components/enhanced-contact-modal";
 export default function HomePage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  const homeSchemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Inicio | North Blue Agency",
-      url: BASE_URL,
-      description:
-        "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
-      keywords:
-        "agencia de marketing digital, marketing digital profesional, North Blue Agency",
-      isPartOf: { "@type": "WebSite", url: BASE_URL },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-        ],
-      },
-    },
-  ];
-
   return (
     <div className="min-h-screen">
-      <SEOHead
-        title="North Blue Agency - Marketing Digital Profesional"
-        description="Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital."
-        canonical="/"
-        keywords={[
-          "agencia de marketing digital",
-          "marketing digital profesional",
-          "North Blue Agency",
-        ]}
-      />
-      {homeSchemas.map((schema, i) => (
-        <Script
-          key={i}
-          id={`schema-home-${i}`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
       {/* Contact Modal */}
       <EnhancedContactModal
         isOpen={isContactModalOpen}
@@ -318,60 +274,27 @@ export default function HomePage() {
             <AnimatedSection animation="fadeInRight" delay={200}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
-                <Card className="relative bg-white/90 backdrop-blur-xl shadow-2xl border border-white/40">
+                <Card className="relative bg-white shadow-2xl border-0">
                   <CardContent className="p-8">
                     <div className="text-center">
-                      {/* <div className="mx-auto mb-6 w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#ff4081] to-[#00b2ff] p-[2px]">
-                        <div className="w-full h-full bg-white rounded-2xl grid place-items-center">
-                          <Users className="w-10 h-10 text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] to-[#00b2ff]" />
-                        </div>
-                      </div> */}
-                      <h3 className="text-2xl font-bold mb-3">
-                        Nuestro proceso de trabajo
+                      <Award className="w-16 h-16 mx-auto mb-4 text-[#ff4081]" />
+                      <h3 className="text-2xl font-bold mb-4">
+                        Certificados y reconocimientos
                       </h3>
-                      <p className="text-gray-600 mb-8">
-                        Colaboramos en etapas claras para avanzar rápido, con
-                        foco en objetivos.
+                      <p className="text-gray-600 mb-6">
+                        Nuestro equipo cuenta con certificaciones de Google,
+                        Facebook, y otras plataformas líderes.
                       </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                        <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
-                          <div className="w-10 h-10 rounded-lg bg-[#ff4081]/10 text-[#ff4081] flex items-center justify-center mb-3">
-                            <Lightbulb className="w-5 h-5" />
-                          </div>
-                          <div className="font-semibold">Descubrimiento</div>
-                          <div className="text-sm text-gray-500">
-                            Brief y objetivos
-                          </div>
+                      <div className="flex justify-center space-x-4">
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <span className="text-xs font-bold">G</span>
                         </div>
-                        <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
-                          <div className="w-10 h-10 rounded-lg bg-[#6f8cff]/10 text-[#6f8cff] flex items-center justify-center mb-3">
-                            <Target className="w-5 h-5" />
-                          </div>
-                          <div className="font-semibold">Estrategia</div>
-                          <div className="text-sm text-gray-500">
-                            Plan y roadmap
-                          </div>
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <span className="text-xs font-bold">FB</span>
                         </div>
-                        <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
-                          <div className="w-10 h-10 rounded-lg bg-[#00b2ff]/10 text-[#00b2ff] flex items-center justify-center mb-3">
-                            <Rocket className="w-5 h-5" />
-                          </div>
-                          <div className="font-semibold">Ejecución</div>
-                          <div className="text-sm text-gray-500">
-                            Producción y optimización
-                          </div>
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <span className="text-xs font-bold">IG</span>
                         </div>
-                      </div>
-                      <div className="flex justify-center">
-                        <Link href="/servicios">
-                          <Button
-                            variant="outline"
-                            className="border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white"
-                          >
-                            Conocer el proceso
-                            <ArrowRight className="ml-2" size={18} />
-                          </Button>
-                        </Link>
                       </div>
                     </div>
                   </CardContent>
@@ -395,7 +318,7 @@ export default function HomePage() {
                 siguiente nivel.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contacto">
+                <Link href="/contact">
                   <Button
                     size="lg"
                     variant="outline"

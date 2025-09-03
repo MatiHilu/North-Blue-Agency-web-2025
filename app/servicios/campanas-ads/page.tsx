@@ -9,72 +9,122 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "Desarrollo Web",
-  subtitle: "Sitios web que convierten visitantes en clientes",
+  title: "Campañas y Ads",
+  subtitle: "Publicidad digital estratégica que genera resultados medibles",
   description:
-    "Creamos sitios web modernos, rápidos y optimizados para conversión. Utilizamos las últimas tecnologías y mejores prácticas de UX/UI para garantizar una experiencia excepcional.",
+    "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Meta Ads y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $1200",
-  duration: "6-12 semanas",
+  price: "Desde $800/mes + presupuesto publicitario",
+  duration: "Configuración: 2-3 semanas",
   features: [
-    "Diseño responsivo y mobile-first",
-    "Optimización para velocidad de carga",
-    "SEO técnico implementado",
-    "Integración con analytics",
-    "Formularios de contacto avanzados",
-    "CMS fácil de usar",
+    "Google Ads (Search, Display, Shopping)",
+    "Meta Ads y TikTok Ads",
+    "LinkedIn Ads para B2B",
+    "Remarketing y retargeting",
+    "Optimización de conversiones",
+    "A/B testing de creatividades",
+    "Reportes detallados de ROI",
   ],
   process: [
     {
-      title: "Planificación",
-      description: "Definimos arquitectura y funcionalidades",
+      title: "Análisis y estrategia",
+      description: "Definimos objetivos, audiencias y presupuestos",
     },
     {
-      title: "Diseño UX/UI",
-      description: "Creamos wireframes y diseños visuales",
-    },
-    {
-      title: "Desarrollo",
-      description: "Programamos con tecnologías modernas",
+      title: "Configuración",
+      description: "Creamos campañas optimizadas en cada plataforma",
     },
     {
       title: "Lanzamiento",
-      description: "Publicamos y optimizamos el sitio",
+      description: "Activamos campañas con seguimiento en tiempo real",
+    },
+    {
+      title: "Optimización",
+      description: "Ajustamos basándonos en datos y performance",
     },
   ],
   benefits: [
-    "Aumento de conversiones",
-    "Posicionamiento en Google",
-    "Experiencia de usuario superior",
-    "Reducción en tasa de rebote",
+    "Aumento de leads cualificados",
+    "Escalabilidad comprobada de resultados",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué tecnologías utilizan para el desarrollo?",
+    question: "¿En qué plataformas publicitarias trabajan?",
     answer:
-      "Utilizamos tecnologías modernas como Next.js, React, TypeScript, y Tailwind CSS para el frontend, y Node.js o Python para el backend, según las necesidades del proyecto.",
+      "Gestionamos campañas en Google Ads, Meta Ads, LinkedIn, TikTok Ads y otras plataformas según tu audiencia objetivo y industria específica.",
   },
   {
-    question: "¿El sitio web será responsivo?",
+    question: "¿Cuál es el presupuesto mínimo recomendado?",
     answer:
-      "Absolutamente. Todos nuestros sitios web son desarrollados con un enfoque mobile-first, garantizando una experiencia óptima en todos los dispositivos.",
+      "Recomendamos un presupuesto publicitario mínimo de $500/mes por plataforma para obtener datos significativos y resultados óptimos, aunque trabajamos con presupuestos diversos.",
   },
   {
-    question: "¿Incluye el hosting y dominio?",
+    question: "¿Cómo miden el éxito de las campañas?",
     answer:
-      "Sí, incluimos hosting por el primer año y te ayudamos con la configuración del dominio. También ofrecemos planes de mantenimiento continuo.",
+      "Medimos KPIs específicos según tus objetivos: ROAS, CPA, CTR, conversiones, leads generados, ventas, y proporcionamos reportes detallados con recomendaciones de optimización.",
   },
 ];
 
-export default function DesarrolloWebPage() {
+export default function CampanasAdsPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "Publicidad digital",
+    url: `${BASE_URL}/servicios/campanas-ads`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/campanas-ads`,
+        },
+      ],
+    },
+    keywords: "ads, campañas, publicidad digital, google ads, meta ads",
+  };
 
   return (
     <>
+      <SEOHead
+        title="Campañas y Ads - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/campanas-ads"
+        keywords={[
+          "ads",
+          "campañas",
+          "publicidad digital",
+          "Google Ads",
+          "Meta Ads",
+        ]}
+      />
+      <Script
+        id="schema-service-ads"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
@@ -93,7 +143,7 @@ export default function DesarrolloWebPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
@@ -205,7 +255,7 @@ export default function DesarrolloWebPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
+                      <p className="text-gray-600 max-w-[250px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -227,11 +277,11 @@ export default function DesarrolloWebPage() {
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para comenzar?
+                ¿Listo para maximizar tu ROI?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Contáctanos hoy y descubre cómo nuestras campañas publicitarias
+                pueden transformar tu negocio
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

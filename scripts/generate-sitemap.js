@@ -18,23 +18,23 @@ async function generateSitemap() {
     // Rutas estáticas
     const staticRoutes = [
       "",
-      "/about",
+      "/nosotros",
       "/blog",
-      "/contact",
+      "/contacto",
       "/portfolio",
-      "/services",
+      "/servicios",
     ];
 
     // Rutas de servicios
     const serviceRoutes = [
-      "/services/redes-sociales",
-      "/services/branding",
-      "/services/desarrollo-web",
-      "/services/marketing-digital",
-      "/services/seo",
-      "/services/analytics",
-      "/services/campanas-ads",
-      "/services/creacion-contenido",
+      "/servicios/redes-sociales",
+      "/servicios/branding",
+      "/servicios/desarrollo-web",
+      "/servicios/marketing-digital",
+      "/servicios/seo",
+      "/servicios/analytics",
+      "/servicios/campanas-ads",
+      "/servicios/creacion-contenido",
     ];
 
     // Datos de ejemplo para blog y portfolio
@@ -120,7 +120,7 @@ async function generateSitemap() {
 
 function getChangeFrequency(route) {
   // Página principal y servicios cambian más frecuentemente
-  if (route === "" || route === "/services") {
+  if (route === "" || route === "/servicios") {
     return "weekly";
   }
 
@@ -135,7 +135,7 @@ function getChangeFrequency(route) {
   }
 
   // Páginas de servicios individuales
-  if (route.startsWith("/services/")) {
+  if (route.startsWith("/servicios/")) {
     return "monthly";
   }
 
@@ -159,7 +159,7 @@ function getPriority(route) {
   }
 
   // Páginas de servicios individuales
-  if (route.startsWith("/services/")) {
+  if (route.startsWith("/servicios/")) {
     return 0.8;
   }
 

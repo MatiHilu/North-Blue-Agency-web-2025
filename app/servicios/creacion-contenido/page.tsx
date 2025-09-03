@@ -9,82 +9,131 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "SEO y Posicionamiento",
-  subtitle:
-    "Domina los primeros lugares de Google y aumenta tu tráfico orgánico",
+  title: "Creación de Contenido",
+  subtitle: "Contenido creativo para redes sociales",
   description:
-    "Nuestro servicio de SEO está diseñado para posicionar tu sitio web en los primeros resultados de búsqueda de Google. Utilizamos técnicas white-hat probadas y estrategias personalizadas para aumentar tu visibilidad orgánica y atraer tráfico cualificado.",
+    "Generamos publicaciones visuales y multimedia atractivas que amplifican tu presencia en redes sociales. Desde imágenes, videos cortos hasta carruseles, adaptados a cada plataforma para maximizar el engagement.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $600/mes",
-  duration: "3-12 meses",
+  price: "Desde $20/publicación",
+  duration: "1-3 días por pieza",
   features: [
-    "Auditoría SEO completa",
-    "Investigación de palabras clave",
-    "Optimización on-page",
-    "Optimización técnica",
-    "Creación de contenido SEO",
-    "Link building estratégico",
-    "SEO local y Google My Business",
-    "Reportes mensuales detallados",
+    "Publicaciones estáticas atractivas",
+    "Historias animadas",
+    "Videos cortos (Reels, TikToks)",
+    "Carruseles informativos",
+    "Edición profesional de imágenes y videos",
   ],
   process: [
     {
-      title: "Auditoría inicial",
-      description: "Análisis completo de tu sitio web y competencia",
+      title: "Brief inicial",
+      description: "Recogemos tus objetivos y estilo de marca",
     },
     {
-      title: "Estrategia",
-      description: "Definimos keywords y plan de optimización",
+      title: "Planificación",
+      description: "Diseñamos el calendario y tipo de contenido",
     },
     {
-      title: "Optimización",
-      description: "Implementamos mejoras técnicas y de contenido",
+      title: "Creación",
+      description: "Desarrollamos las piezas visuales y multimedia",
     },
     {
-      title: "Monitoreo",
-      description: "Seguimiento de rankings y ajustes continuos",
+      title: "Entrega",
+      description: "Programamos y entregamos el contenido listo para publicar",
     },
   ],
   benefits: [
-    "Aumento del tráfico orgánico",
-    "Mejora en rankings de keywords objetivo",
-    "Mayor autoridad de dominio",
-    "ROI superior al marketing SEM",
+    "Mayor engagement en tus publicaciones",
+    "Contenido optimizado para cada plataforma",
+    "Consistencia y coherencia de marca",
+    "Imágenes y videos de alta calidad",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma ver resultados en SEO?",
+    question: "¿Qué tipo de contenido ofrecen?",
     answer:
-      "Los primeros resultados suelen verse entre 3-6 meses, dependiendo de la competencia y el estado inicial del sitio. El SEO es una estrategia a largo plazo que genera resultados sostenibles.",
+      "Ofrecemos desde publicaciones estáticas, historias animadas, videos cortos hasta carruseles informativos, adaptados a tu estrategia y plataforma.",
   },
   {
-    question: "¿Garantizan el primer lugar en Google?",
+    question: "¿Cuántas revisiones incluyen?",
     answer:
-      "No ofrecemos garantías de posiciones específicas ya que Google cambia constantemente sus algoritmos. Sin embargo, garantizamos mejoras significativas en visibilidad y tráfico orgánico.",
+      "Incluimos hasta 2 rondas de revisiones por pieza para asegurar que estás satisfecho con el resultado final.",
   },
   {
-    question: "¿Qué incluye la auditoría SEO?",
+    question: "¿Programan las publicaciones por nosotros?",
     answer:
-      "La auditoría incluye análisis técnico, de contenido, velocidad de carga, estructura del sitio, enlaces, competencia y oportunidades de mejora con un plan de acción detallado.",
+      "No programamos las publicaciones directamente en tus plataformas. Eso lo ofrecemos en el servicio de gestión de redes sociales.",
   },
 ];
 
-export default function SEOPage() {
+export default function CreacionContenidoPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    keywords:
+      "creación de contenido, contenido para redes, reels, tiktoks, carruseles, diseño gráfico",
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "Creación de contenido",
+    url: `${BASE_URL}/servicios/creacion-contenido`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/creacion-contenido`,
+        },
+      ],
+    },
+  };
 
   return (
     <>
+      <SEOHead
+        title="Creación de Contenido - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/creacion-contenido"
+        keywords={[
+          "creación de contenido",
+          "contenido para redes",
+          "reels",
+          "tiktoks",
+          "carruseles",
+          "diseño gráfico",
+        ]}
+      />
+      <Script
+        id="schema-service-contenido"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
       />
       <div className="min-h-screen">
-        {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+        {/* Hero Section */}
         <section
           className={`py-20 bg-gradient-to-br ${serviceData.gradient} text-white relative overflow-hidden`}
         >
@@ -92,24 +141,21 @@ export default function SEOPage() {
             <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
-
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
                 Volver a servicios
               </Link>
-
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                 {serviceData.subtitle}
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
                   <div className="flex items-center space-x-2">
@@ -129,7 +175,6 @@ export default function SEOPage() {
             </AnimatedSection>
           </div>
         </section>
-
         {/* Description Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -141,21 +186,17 @@ export default function SEOPage() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
                 </p>
-
                 <div className="space-y-4">
-                  {serviceData.benefits.map(
-                    (benefit: string, index: number) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <div className="w-6 h-6 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="text-white" size={14} />
-                        </div>
-                        <span className="text-gray-700">{benefit}</span>
+                  {serviceData.benefits.map((benefit, i) => (
+                    <div key={i} className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Check className="text-white" size={14} />
                       </div>
-                    )
-                  )}
+                      <span className="text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
                 </div>
               </AnimatedSection>
-
               <AnimatedSection animation="fadeInRight" delay={200}>
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
@@ -163,19 +204,14 @@ export default function SEOPage() {
                       Características incluidas
                     </h3>
                     <div className="space-y-4">
-                      {serviceData.features.map(
-                        (feature: string, index: number) => (
-                          <div
-                            key={index}
-                            className="flex items-start space-x-3"
-                          >
-                            <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <Check className="text-white" size={12} />
-                            </div>
-                            <span className="text-gray-700">{feature}</span>
+                      {serviceData.features.map((feature, i) => (
+                        <div key={i} className="flex items-start space-x-3">
+                          <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="text-white" size={12} />
                           </div>
-                        )
-                      )}
+                          <span className="text-gray-700">{feature}</span>
+                        </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -183,7 +219,6 @@ export default function SEOPage() {
             </div>
           </div>
         </section>
-
         {/* Process Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -192,23 +227,19 @@ export default function SEOPage() {
                 Nuestro proceso de trabajo
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                Seguimos una metodología clara para ofrecer contenido efectivo
               </p>
             </AnimatedSection>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {serviceData.process.map((step: any, index: number) => (
-                <AnimatedSection key={index} delay={index * 100}>
+              {serviceData.process.map((step, idx) => (
+                <AnimatedSection key={idx} delay={idx * 100}>
                   <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                     <CardContent className="p-6">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold">
-                          {index + 1}
-                        </span>
+                        <span className="text-white font-bold">{idx + 1}</span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
+                      <p className="text-gray-600 max-w-[250px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -218,23 +249,21 @@ export default function SEOPage() {
             </div>
           </div>
         </section>
-
         {/* FAQ Section */}
         <FAQSection
           title={`Preguntas sobre ${serviceData.title}`}
           faqs={faqs}
         />
-
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para dominar Google?
+                ¿Listo para potenciar tus redes sociales?
               </h2>
               <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos posicionar tu sitio web
-                en los primeros lugares
+                Contáctanos y comienza a generar contenido que cautiva a tu
+                audiencia
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -248,7 +277,6 @@ export default function SEOPage() {
             </AnimatedSection>
           </div>
         </section>
-
         {/* Contact Section */}
         <ContactSection />
       </div>

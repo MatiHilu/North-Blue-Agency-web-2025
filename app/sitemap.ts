@@ -8,23 +8,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Rutas estáticas principales
   const staticRoutes = [
     "",
-    "/about",
+    "/nosotros",
     "/blog",
-    "/contact",
+    "/contacto",
     "/portfolio",
-    "/services",
+    "/servicios",
   ];
 
   // Rutas de servicios
   const serviceRoutes = [
-    "/services/redes-sociales",
-    "/services/branding",
-    "/services/desarrollo-web",
-    "/services/marketing-digital",
-    "/services/seo",
-    "/services/analytics",
-    "/services/campanas-ads",
-    "/services/creacion-contenido",
+    "/servicios/redes-sociales",
+    "/servicios/branding",
+    "/servicios/desarrollo-web",
+    "/servicios/marketing-digital",
+    "/servicios/seo",
+    "/servicios/analytics",
+    "/servicios/campanas-ads",
+    "/servicios/creacion-contenido",
   ];
 
   // Obtener datos dinámicos

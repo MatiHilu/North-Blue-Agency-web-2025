@@ -9,82 +9,123 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "Analytics - Reportes Web y Redes Sociales",
-  subtitle:
-    "Toma decisiones inteligentes basadas en datos reales de tu sitio y redes sociales",
+  title: "Gestión de Redes Sociales",
+  subtitle: "Construye una comunidad sólida y aumenta tu engagement",
   description:
-    "Implementamos sistemas de medición avanzados para web y redes sociales que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital en cada canal.",
+    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento. Creamos estrategias personalizadas que conectan con tu audiencia y generan resultados medibles.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $400/mes",
-  duration: "Implementación: 1-2 semanas",
+  price: "Desde $800/mes",
+  duration: "3-6 meses",
   features: [
-    "Configuración de Google Analytics 4",
-    "Google Tag Manager avanzado",
-    "Seguimiento de conversiones",
-    "Análisis de embudos de venta",
-    "Analítica de redes sociales (Facebook, Instagram, TikTok, LinkedIn)",
-    "Seguimiento de engagement y crecimiento de seguidores",
-    "Reportes mensuales",
-    "KPIs estratégicos por industria",
-    "Recomendaciones de optimización",
+    "Estrategia de contenido personalizada",
+    "Creación de contenido visual y copywriting",
+    "Programación y publicación automatizada",
+    "Community management profesional",
+    "Gestión de comentarios y mensajes",
+    "Campañas publicitarias segmentadas",
+    "Análisis de métricas y KPIs",
+    "Reportes mensuales detallados",
   ],
   process: [
     {
       title: "Análisis inicial",
-      description: "Evaluamos tus objetivos y sistemas actuales",
+      description: "Evaluamos tu presencia actual y definimos objetivos",
     },
     {
-      title: "Configuración",
-      description: "Implementamos tracking avanzado y herramientas",
+      title: "Estrategia",
+      description: "Creamos un plan de contenido personalizado",
     },
     {
-      title: "Reporting",
-      description: "Creamos reportes visuales personalizados",
+      title: "Implementación",
+      description: "Ejecutamos la estrategia con contenido de calidad",
     },
     {
       title: "Optimización",
-      description: "Analizamos datos y proporcionamos insights",
+      description: "Ajustamos basándonos en métricas y resultados",
     },
   ],
   benefits: [
-    "Visibilidad completa del customer journey en web y redes sociales",
-    "Medición de engagement y alcance en redes sociales",
-    "ROI claro de todas las campañas",
-    "Identificación de oportunidades de mejora",
-    "Decisiones basadas en datos reales",
+    "Aumento del 300% en engagement promedio",
+    "Crecimiento orgánico de seguidores",
+    "Mayor reconocimiento de marca",
+    "Generación de leads cualificados",
   ],
 };
 
 const faqs = [
-  /*   {
-    question: "¿Qué herramientas de analytics utilizan?",
-    answer:
-      "Trabajamos principalmente con Google Analytics 4, Google Tag Manager, Looker Studio, y herramientas especializadas según la industria como Hotjar, Mixpanel o herramientas de ecommerce.",
-  }, */
   {
-    question: "¿Con qué frecuencia recibo reportes?",
+    question: "¿En qué redes sociales se enfocan?",
     answer:
-      "Proporcionamos reportes mensuales personalizados según tus necesidades específicas. También ofrecemos sesiones de revisión trimesal.",
+      "Trabajamos principalmente en Instagram, Facebook, LinkedIn y TikTok. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
   },
   {
-    question: "¿Pueden integrar datos de diferentes plataformas?",
+    question: "¿Crean todo el contenido visual?",
     answer:
-      "Sí, integramos datos de múltiples fuentes como redes sociales, email marketing, CRM, plataformas de ecommerce y herramientas de publicidad para una vista unificada.",
+      "Sí, nuestro equipo creativo desarrolla todo el contenido visual incluyendo posts, stories, videos cortos y carruseles, manteniendo la coherencia con tu identidad de marca.",
+  },
+  {
+    question: "¿Responden a comentarios y mensajes?",
+    answer:
+      "Absolutamente. Nuestro community management incluye respuesta a comentarios, mensajes directos y gestión de la comunidad en horarios establecidos.",
   },
 ];
 
-export default function AnalyticsPage() {
+export default function RedesSocialesPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    keywords: "redes sociales, community management, contenido",
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "Redes Sociales",
+    url: `${BASE_URL}/servicios/redes-sociales`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/redes-sociales`,
+        },
+      ],
+    },
+  };
 
   return (
     <>
+      <SEOHead
+        title="Gestión de Redes Sociales - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/redes-sociales"
+        keywords={["redes sociales", "community management", "contenido"]}
+      />
+      <Script
+        id="schema-service-redes"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
       />
-
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -99,7 +140,7 @@ export default function AnalyticsPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
@@ -211,7 +252,7 @@ export default function AnalyticsPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
+                      <p className="text-gray-600 text-sm max-w-[200px] mx-auto">
                         {step.description}
                       </p>
                     </CardContent>
@@ -233,16 +274,16 @@ export default function AnalyticsPage() {
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para tomar decisiones inteligentes?
+                ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Contáctanos hoy y descubre cómo los datos pueden transformar tu
-                estrategia digital
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Contáctanos hoy y descubre cómo podemos transformar tu presencia
+                digital
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="btn-white-hover bg-white text-[#00b2ff] hover:bg-gray-100 transform hover:scale-105 transition-all"
+                  className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización

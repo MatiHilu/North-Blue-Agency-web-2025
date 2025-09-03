@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="grid grid-cols-1 md:grid-cols-2">
               <li>
                 <Link
-                  href="/services/redes-sociales"
+                  href="/servicios/redes-sociales"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Redes Sociales
@@ -94,7 +94,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/branding"
+                  href="/servicios/branding"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Branding
@@ -102,7 +102,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/desarrollo-web"
+                  href="/servicios/desarrollo-web"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Desarrollo Web
@@ -110,7 +110,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/marketing-digital"
+                  href="/servicios/marketing-digital"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Marketing Digital
@@ -118,7 +118,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/redes-sociales"
+                  href="/servicios/redes-sociales"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   SEO
@@ -126,7 +126,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/branding"
+                  href="/servicios/branding"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Analytics
@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/desarrollo-web"
+                  href="/servicios/desarrollo-web"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Campañas y Ads
@@ -142,7 +142,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/marketing-digital"
+                  href="/servicios/marketing-digital"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Contenido
@@ -156,7 +156,7 @@ export default function Footer() {
             <ul className="">
               <li>
                 <Link
-                  href="/about"
+                  href="/nosotros"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Nosotros
@@ -180,7 +180,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/contacto"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Contacto

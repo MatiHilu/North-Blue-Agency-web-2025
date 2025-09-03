@@ -9,77 +9,128 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "Marketing Digital Integral",
-  subtitle: "Estrategias completas para maximizar tu ROI",
+  title: "SEO y Posicionamiento",
+  subtitle:
+    "Domina los primeros lugares de Google y aumenta tu tráfico orgánico",
   description:
-    "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
+    "Nuestro servicio de SEO está diseñado para posicionar tu sitio web en los primeros resultados de búsqueda de Google. Utilizamos técnicas white-hat probadas y estrategias personalizadas para aumentar tu visibilidad orgánica y atraer tráfico cualificado.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $2000/mes",
-  duration: "6-12 meses",
+  price: "Desde $600/mes",
+  duration: "3-12 meses",
   features: [
-    "Estrategia multicanal personalizada",
-    "Analisis de competencia",
-    "Revisión y mejora de sitio web",
-    "Mantenimiento y soporte",
-    "Gestión de redes sociales",
-    "SEO y posicionamiento orgánico",
-    "Campañas SEM en Google Ads",
-    "Email marketing",
-    "Marketing de contenidos",
-    "Retargeting y remarketing",
-    "Analytics y seguimiento avanzado",
-    "Optimización continua",
+    "Auditoría SEO completa",
+    "Investigación de palabras clave",
+    "Optimización on-page",
+    "Optimización técnica",
+    "Creación de contenido SEO",
+    "Link building estratégico",
+    "SEO local y Google My Business",
+    "Reportes mensuales detallados",
   ],
   process: [
     {
-      title: "Auditoría",
-      description: "Analizamos tu situación digital actual",
+      title: "Auditoría inicial",
+      description: "Análisis completo de tu sitio web y competencia",
     },
     {
       title: "Estrategia",
-      description: "Diseñamos un plan integral personalizado",
-    },
-    {
-      title: "Ejecución",
-      description: "Implementamos todas las tácticas planificadas",
+      description: "Definimos keywords y plan de optimización",
     },
     {
       title: "Optimización",
-      description: "Mejoramos continuamente los resultados",
+      description: "Implementamos mejoras técnicas y de contenido",
+    },
+    {
+      title: "Monitoreo",
+      description: "Seguimiento de rankings y ajustes continuos",
     },
   ],
   benefits: [
-    "Aumento en leads cualificados",
-    "Mayor visibilidad online",
-    "Crecimiento sostenible",
+    "Aumento del tráfico orgánico",
+    "Mejora en rankings de keywords objetivo",
+    "Mayor autoridad de dominio",
+    "ROI superior al marketing SEM",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma ver resultados?",
+    question: "¿Cuánto tiempo toma ver resultados en SEO?",
     answer:
-      "Los primeros resultados suelen verse entre 30-60 días, pero el marketing digital es un proceso continuo. Los mejores resultados se obtienen con estrategias a largo plazo de 6-12 meses.",
+      "Los primeros resultados suelen verse entre 3-6 meses, dependiendo de la competencia y el estado inicial del sitio. El SEO es una estrategia a largo plazo que genera resultados sostenibles.",
   },
   {
-    question: "¿Trabajan con presupuestos publicitarios específicos?",
+    question: "¿Garantizan el primer lugar en Google?",
     answer:
-      "Sí, adaptamos las estrategias a tu presupuesto disponible. Recomendamos un mínimo de $500 mensuales para publicidad, pero podemos trabajar con presupuestos mayores para mejores resultados.",
+      "No ofrecemos garantías de posiciones específicas ya que Google cambia constantemente sus algoritmos. Sin embargo, garantizamos mejoras significativas en visibilidad y tráfico orgánico.",
   },
   {
-    question: "¿Qué incluye el seguimiento y analytics?",
+    question: "¿Qué incluye la auditoría SEO?",
     answer:
-      "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
+      "La auditoría incluye análisis técnico, de contenido, velocidad de carga, estructura del sitio, enlaces, competencia y oportunidades de mejora con un plan de acción detallado.",
   },
 ];
 
-export default function MarketingDigitalPage() {
+export default function SEOPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    keywords: "SEO, posicionamiento web, optimización en buscadores",
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "SEO",
+    url: `${BASE_URL}/servicios/seo`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Paquetes SEO",
+      itemListElement: serviceData.features.map((f: string) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: f },
+      })),
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/seo`,
+        },
+      ],
+    },
+  };
 
   return (
     <>
+      <SEOHead
+        title="SEO y Posicionamiento - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/seo"
+        keywords={["SEO", "posicionamiento web", "optimización en buscadores"]}
+      />
+      <Script
+        id="schema-service-seo"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
@@ -98,7 +149,7 @@ export default function MarketingDigitalPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
@@ -232,11 +283,11 @@ export default function MarketingDigitalPage() {
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para comenzar?
+                ¿Listo para dominar Google?
               </h2>
               <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital
+                Contáctanos hoy y descubre cómo podemos posicionar tu sitio web
+                en los primeros lugares
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

@@ -18,6 +18,9 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
 
 const services = [
@@ -146,8 +149,65 @@ const services = [
 export default function ServicesPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
+  const servicesSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Servicios - North Blue Agency",
+      url: `${BASE_URL}/servicios`,
+      description:
+        "Soluciones integrales de marketing digital: redes sociales, branding, desarrollo web, SEO, analytics y más.",
+      keywords:
+        "servicios de marketing digital, servicios North Blue Agency, agencia marketing",
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: services.map((s, idx) => ({
+          "@type": "Service",
+          position: idx + 1,
+          name: s.title,
+          description: s.description,
+          areaServed: "ES",
+          provider: { "@type": "Organization", name: "North Blue Agency" },
+          url: `${BASE_URL}/servicios/${s.id}`,
+          offers: { "@type": "Offer", priceCurrency: "USD" },
+        })),
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Servicios",
+            item: `${BASE_URL}/servicios`,
+          },
+        ],
+      },
+    },
+  ];
+
   return (
     <>
+      <SEOHead
+        title="Servicios - North Blue Agency - Marketing Digital Profesional"
+        description="Soluciones integrales de marketing digital: redes sociales, branding, desarrollo web, SEO, analytics y más."
+        canonical="/servicios"
+        keywords={[
+          "servicios de marketing digital",
+          "North Blue Agency servicios",
+          "agencia marketing",
+        ]}
+      />
+      {servicesSchemas.map((schema, i) => (
+        <Script
+          key={i}
+          id={`schema-services-${i}`}
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <EnhancedContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
@@ -193,7 +253,7 @@ export default function ServicesPage() {
                         <h3 className="text-xl font-bold mb-2">
                           {service.title}
                         </h3>
-                        <p className="text-sm opacity-90">{service.price}</p>
+                        {/* <p className="text-sm opacity-90">{service.price}</p> */}
                       </div>
 
                       <div className="p-6 flex-1 flex flex-col">
@@ -219,7 +279,7 @@ export default function ServicesPage() {
                         </div>
 
                         <Link
-                          href={`/services/${service.id}`}
+                          href={`/servicios/${service.id}`}
                           className="mt-auto"
                         >
                           <Button

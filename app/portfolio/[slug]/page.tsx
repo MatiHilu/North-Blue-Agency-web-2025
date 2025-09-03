@@ -7,6 +7,9 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const projectData: Record<string, any> = {
   "ecommerce-fashion": {
@@ -112,6 +115,7 @@ export default function ProjectDetailPage() {
     "@type": "CreativeWork",
     name: project.title,
     description: project.description,
+    keywords: `${project.category}, ${project.services.join(", ")}`,
     creator: {
       "@type": "Organization",
       name: "North Blue Agency",
@@ -122,12 +126,40 @@ export default function ProjectDetailPage() {
       "@type": "Organization",
       name: project.client,
     },
+    url: `${BASE_URL}/portfolio/${slug}`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Portfolio",
+          item: `${BASE_URL}/portfolio`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: project.title,
+          item: `${BASE_URL}/portfolio/${slug}`,
+        },
+      ],
+    },
   };
 
   return (
     <>
-      <script
+      <SEOHead
+        title={`${project.title} - Caso de Estudio`}
+        description={project.description}
+        canonical={`/portfolio/${slug}`}
+        keywords={[project.category, ...project.services]}
+        ogType="article"
+      />
+      <Script
+        id="schema-project"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
       />
 

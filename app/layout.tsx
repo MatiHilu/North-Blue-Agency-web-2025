@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 
 import LayoutShell from "@/components/layout-shell";
+import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <link
           rel="apple-touch-icon"
@@ -95,7 +96,7 @@ export default function RootLayout({
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1091881779764699');
+      fbq('init', '1820619308818518');
       fbq('track', 'PageView');
     `,
           }}
@@ -104,18 +105,28 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
       <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1091881779764699&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=1820619308818518&ev=PageView&noscript=1"/>
     `,
           }}
         />
         {/* <!-- End Meta Pixel Code --> */}
       </head>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+        />
         {/* <!-- Google Tag Manager (noscript) --> */}
         <noscript
           dangerouslySetInnerHTML={{
             __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCWT9RJD}"
+              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCWT9RJD"
                       height="0" width="0"
                       style="display:none;visibility:hidden"></iframe>
             `,

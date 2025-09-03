@@ -7,7 +7,10 @@ import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
+import SEOHead from "@/components/seo-head";
 
 const projects = [
   {
@@ -131,7 +134,9 @@ export default function PortfolioPage() {
     name: "Portfolio - North Blue Agency",
     description:
       "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
-    url: "https://northblueagency.com/portfolio",
+    url: `${BASE_URL}/portfolio`,
+    keywords:
+      "portfolio, casos de estudio, proyectos, marketing digital, branding, desarrollo web",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: projects.map((project, index) => ({
@@ -145,18 +150,46 @@ export default function PortfolioPage() {
         },
         dateCreated: project.year,
         genre: project.category,
+        url: `${BASE_URL}/portfolio/${project.id}`,
       })),
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Portfolio",
+          item: `${BASE_URL}/portfolio`,
+        },
+      ],
     },
   };
 
   return (
     <>
+      <SEOHead
+        title="Portfolio - North Blue Agency"
+        description="Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web"
+        canonical="/portfolio"
+        keywords={[
+          "portfolio",
+          "casos de estudio",
+          "proyectos",
+          "marketing digital",
+          "branding",
+          "desarrollo web",
+        ]}
+      />
       <EnhancedContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
       />
-      <script
+      <Script
+        id="schema-portfolio"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
       />
 

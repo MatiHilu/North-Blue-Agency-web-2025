@@ -55,22 +55,22 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 ### Páginas Estáticas
 
 - Página principal (/)
-- Sobre nosotros (/about)
+- Sobre nosotros (/nosotros)
 - Blog (/blog)
-- Contacto (/contact)
+- Contacto (/contacto)
 - Portfolio (/portfolio)
-- Servicios (/services)
+- Servicios (/servicios)
 
 ### Servicios Individuales
 
-- Redes Sociales (/services/redes-sociales)
-- Branding (/services/branding)
-- Desarrollo Web (/services/desarrollo-web)
-- Marketing Digital (/services/marketing-digital)
-- SEO (/services/seo)
-- Analytics (/services/analytics)
-- Campañas y Ads (/services/campanas-ads)
-- Diseño Gráfico (/services/diseno-grafico)
+- Redes Sociales (/servicios/redes-sociales)
+- Branding (/servicios/branding)
+- Desarrollo Web (/servicios/desarrollo-web)
+- Marketing Digital (/servicios/marketing-digital)
+- SEO (/servicios/seo)
+- Analytics (/servicios/analytics)
+- Campañas y Ads (/servicios/campanas-ads)
+- Diseño Gráfico (/servicios/diseno-grafico)
 
 ### Contenido Dinámico
 

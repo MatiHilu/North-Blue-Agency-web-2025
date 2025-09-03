@@ -1,26 +1,26 @@
-import Head from "next/head"
+import Head from "next/head";
 
 interface SEOProps {
-  title: string
-  description: string
-  canonical?: string
-  ogImage?: string
-  ogType?: string
-  schemas?: any[]
-  keywords?: string[]
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  schemas?: any[];
+  keywords?: string[];
 }
 
 export default function SEOHead({
   title,
   description,
   canonical,
-  ogImage = "/og-image.jpg",
+  ogImage = "/NorthBlue-Agency.png",
   ogType = "website",
   schemas = [],
   keywords = [],
 }: SEOProps) {
-  const fullTitle = `${title} | North Blue Agency`
-  const baseUrl = "https://northblueagency.com"
+  const fullTitle = `${title} | North Blue Agency`;
+  const baseUrl = "https://northblueagency.com";
 
   return (
     <Head>
@@ -51,8 +51,12 @@ export default function SEOHead({
 
       {/* Schema.org Structured Data */}
       {schemas.map((schema, index) => (
-        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       ))}
     </Head>
-  )
+  );
 }

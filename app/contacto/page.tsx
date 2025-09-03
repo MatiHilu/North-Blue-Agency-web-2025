@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,6 +20,7 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/animated-section";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
+import SEOHead from "@/components/seo-head";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -73,6 +76,62 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Contacto - North Blue Agency"
+        description="Ponte en contacto con North Blue Agency para iniciar tu proyecto."
+        canonical="/contacto"
+        keywords={[
+          "contacto",
+          "agencia de marketing",
+          "North Blue Agency",
+          "consultoría",
+        ]}
+      />
+      <Script
+        id="schema-contact"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contacto - North Blue Agency",
+            url: `${BASE_URL}/contacto`,
+            description:
+              "Ponte en contacto con North Blue Agency para iniciar tu proyecto.",
+            keywords:
+              "contacto, agencia de marketing, North Blue Agency, consultoría",
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Inicio",
+                  item: BASE_URL,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Contacto",
+                  item: `${BASE_URL}/contacto`,
+                },
+              ],
+            },
+            mainEntity: {
+              "@type": "Organization",
+              name: "North Blue Agency",
+              url: BASE_URL,
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                email: "info@northblueagency.com",
+                availableLanguage: ["es", "en"],
+              },
+            },
+          }),
+        }}
+      />
       {/* Contact Modal */}
       <EnhancedContactModal
         isOpen={isContactModalOpen}

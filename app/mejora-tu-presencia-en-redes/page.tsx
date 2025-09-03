@@ -2,6 +2,8 @@
 import type React from "react";
 
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check, Clock, TrendingUp, Send } from "lucide-react";
@@ -13,6 +15,7 @@ import QuoteModal from "@/components/quote-modal";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
   title: "Gestión de Redes Sociales",
@@ -114,6 +117,56 @@ export default function RedesSocialesPage() {
   };
   return (
     <>
+      <SEOHead
+        title="Gestión de Redes Sociales - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/mejora-tu-presencia-en-redes"
+        keywords={[
+          "gestión de redes sociales",
+          "social media",
+          "community management",
+          "estrategia de contenido",
+          "instagram",
+          "tiktok",
+        ]}
+      />
+      <Script
+        id="schema-landing-redes"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: serviceData.title,
+            description: serviceData.description,
+            keywords:
+              "gestión de redes sociales, social media, community management, estrategia de contenido, instagram, tiktok",
+            areaServed: "ES",
+            provider: { "@type": "Organization", name: "North Blue Agency" },
+            serviceType: "Redes Sociales",
+            url: `${BASE_URL}/mejora-tu-presencia-en-redes`,
+            offers: { "@type": "Offer", priceCurrency: "USD" },
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Inicio",
+                  item: BASE_URL,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Redes Sociales",
+                  item: `${BASE_URL}/mejora-tu-presencia-en-redes`,
+                },
+              ],
+            },
+          }),
+        }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}

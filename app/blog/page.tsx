@@ -1,126 +1,114 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Calendar, User, Clock } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
+import wordpress from "@/lib/wordpress";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
-const blogPosts = [
-  {
-    id: "tendencias-marketing-digital-2024",
-    title: "Las 10 Tendencias de Marketing Digital que Dominarán 2024",
-    excerpt:
-      "Descubre las estrategias y tecnologías que están revolucionando el marketing digital este año.",
-    content: "El marketing digital evoluciona constantemente...",
-    author: "María González",
-    date: "2024-01-15",
-    readTime: "8 min",
-    category: "Marketing Digital",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Tendencias", "Marketing Digital", "2024", "Estrategia"],
-    featured: true,
-  },
-  {
-    id: "guia-completa-seo-2024",
-    title: "Guía Completa de SEO para 2024: Todo lo que Necesitas Saber",
-    excerpt:
-      "Una guía exhaustiva sobre las mejores prácticas de SEO y cómo implementarlas en tu sitio web.",
-    content: "El SEO sigue siendo fundamental...",
-    author: "Carlos Rodríguez",
-    date: "2024-01-10",
-    readTime: "12 min",
-    category: "SEO",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["SEO", "Google", "Posicionamiento", "Guía"],
-    featured: true,
-  },
-  {
-    id: "redes-sociales-pequeñas-empresas",
-    title: "Cómo las Pequeñas Empresas Pueden Triunfar en Redes Sociales",
-    excerpt:
-      "Estrategias efectivas y económicas para que las PYMES destaquen en redes sociales.",
-    content: "Las redes sociales ofrecen oportunidades únicas...",
-    author: "Ana Martínez",
-    date: "2024-01-05",
-    readTime: "6 min",
-    category: "Redes Sociales",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Redes Sociales", "PYMES", "Estrategia", "Social Media"],
-    featured: true,
-  },
-  {
-    id: "diseño-web-conversiones",
-    title: "Diseño Web que Convierte: Principios y Mejores Prácticas",
-    excerpt:
-      "Aprende cómo diseñar sitios web que no solo se ven bien, sino que también generan conversiones.",
-    content: "Un buen diseño web va más allá de la estética...",
-    author: "Diego López",
-    date: "2023-12-28",
-    readTime: "10 min",
-    category: "Desarrollo Web",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Diseño Web", "UX/UI", "Conversiones", "CRO"],
-    featured: false,
-  },
-  {
-    id: "email-marketing-efectivo",
-    title: "Email Marketing Efectivo: Cómo Crear Campañas que Funcionan",
-    excerpt:
-      "Descubre las claves para crear campañas de email marketing que generen resultados reales.",
-    content: "El email marketing sigue siendo uno de los canales...",
-    author: "María González",
-    date: "2023-12-20",
-    readTime: "7 min",
-    category: "Email Marketing",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Email Marketing", "Automatización", "Conversiones"],
-    featured: false,
-  },
-  {
-    id: "branding-digital-marca-personal",
-    title: "Branding Digital: Cómo Construir una Marca Personal Sólida",
-    excerpt:
-      "Guía paso a paso para desarrollar y fortalecer tu marca personal en el entorno digital.",
-    content: "En la era digital, tu marca personal es tu activo más valioso...",
-    author: "Carlos Rodríguez",
-    date: "2023-12-15",
-    readTime: "9 min",
-    category: "Branding",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Branding", "Marca Personal", "Identidad Digital"],
-    featured: false,
-  },
-];
+// Cargar posts desde WordPress en servidor y mapear al shape que usa la UI
+type UIArticle = {
+  id: string;
+  title: string;
+  excerpt: string;
+  content?: string;
+  author: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image: string;
+  tags: string[];
+  featured: boolean;
+};
 
-const categories = [
-  "Todos",
-  "Marketing Digital",
-  "SEO",
-  "Redes Sociales",
-  "Desarrollo Web",
-  "Branding",
-  "Email Marketing",
-];
+async function getPostsForUI(): Promise<UIArticle[]> {
+  const posts = await wordpress.getAllPosts();
+  return posts.map((p) => {
+    const text = (p.content || "").replace(/<[^>]*>/g, "");
+    const words = text.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200));
 
-export default function BlogPage() {
+    return {
+      id: p.slug,
+      title: p.title,
+      excerpt: p.excerpt,
+      content: p.content,
+      author: p.author || "North Blue Agency",
+      date: p.date,
+      readTime: `${minutes} min`,
+      category: p.categories?.[0] || "General",
+      image: p.featuredImage || "/placeholder.svg?height=400&width=600",
+      tags: p.tags || [],
+      featured: false,
+    };
+  });
+}
+
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams?: { q?: string | string[]; page?: string | string[] };
+}) {
+  const allPosts: UIArticle[] = await getPostsForUI();
+  // read query params (server-side via searchParams) - await the proxy per Next.js runtime
+  const sp = await searchParams;
+  const rawQ = sp?.q;
+  const q = Array.isArray(rawQ) ? rawQ[0] : rawQ ?? "";
+  const rawPage = sp?.page;
+  let pageNum = 1;
+  if (rawPage) {
+    const p = Array.isArray(rawPage) ? rawPage[0] : rawPage;
+    const parsed = parseInt(p || "1", 10);
+    pageNum = Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
+  }
+
+  const PER_PAGE = 9;
+
+  // filter posts by search query (title, excerpt, content, tags, category)
+  const filteredPosts = q
+    ? allPosts.filter((p) => {
+        const hay = (
+          p.title +
+          " " +
+          p.excerpt +
+          " " +
+          (p.content || "") +
+          " " +
+          p.tags.join(" ") +
+          " " +
+          p.category
+        ).toLowerCase();
+        return hay.includes(q.toLowerCase());
+      })
+    : allPosts;
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / PER_PAGE));
+  if (pageNum > totalPages) pageNum = totalPages;
+  const start = (pageNum - 1) * PER_PAGE;
+  const blogPosts = filteredPosts.slice(start, start + PER_PAGE);
+  const querySuffix = q ? `&q=${encodeURIComponent(q)}` : "";
+
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Blog - North Blue Agency",
     description:
       "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
-    url: "https://northblueagency.com/blog",
+    url: `${BASE_URL}/blog`,
+    keywords:
+      "blog, marketing digital, SEO, redes sociales, desarrollo web, tips",
     publisher: {
       "@type": "Organization",
       name: "North Blue Agency",
       logo: {
         "@type": "ImageObject",
-        url: "https://northblueagency.com/North-Blue-Agency.svg",
+        url: `${BASE_URL}/North-Blue-Agency.svg`,
       },
     },
-    blogPost: blogPosts.map((post) => ({
+    // expose all posts in schema (use full list)
+    blogPost: allPosts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt,
@@ -129,17 +117,43 @@ export default function BlogPage() {
         name: post.author,
       },
       datePublished: post.date,
-      url: `https://northblueagency.com/blog/${post.id}`,
-      image: `https://northblueagency.com${post.image}`,
+      url: `${BASE_URL}/blog/${post.id}`,
+      image: post.image?.startsWith("http")
+        ? post.image
+        : `${BASE_URL}${post.image}`,
       publisher: {
         "@type": "Organization",
         name: "North Blue Agency",
       },
     })),
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${BASE_URL}/blog`,
+        },
+      ],
+    },
   };
 
   return (
     <>
+      <SEOHead
+        title="Blog - North Blue Agency"
+        description="Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web"
+        canonical="/blog"
+        keywords={[
+          "blog",
+          "marketing digital",
+          "SEO",
+          "redes sociales",
+          "desarrollo web",
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
@@ -170,7 +184,7 @@ export default function BlogPage() {
         </section>
 
         {/* Featured Posts */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -253,21 +267,40 @@ export default function BlogPage() {
                 ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* All Posts */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Todos los Artículos
+                Todos los{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
+                  Artículos
+                </span>
               </h2>
             </AnimatedSection>
+
+            {/* Search form */}
+            <div className="max-w-3xl mx-auto mb-8">
+              <form method="get" className="flex items-center gap-3">
+                <input
+                  name="q"
+                  defaultValue={q}
+                  placeholder="Buscar en artículos..."
+                  className="flex-1 px-4 py-3 rounded-lg border border-gray-200"
+                />
+                <input type="hidden" name="page" value="1" />
+                <Button type="submit" className="whitespace-nowrap">
+                  Buscar
+                </Button>
+              </form>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post, index) => (
                 <AnimatedSection key={post.id} delay={index * 50}>
-                  <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 overflow-hidden">
+                  {/* <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 overflow-hidden">
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden">
                         <img
@@ -310,15 +343,128 @@ export default function BlogPage() {
                         </Link>
                       </div>
                     </CardContent>
+                  </Card> */}
+                  <Card className="group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden h-full">
+                    <CardContent className="p-0 h-full flex flex-col">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={post.image || "/placeholder.svg"}
+                          alt={post.title}
+                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex items-center text-sm text-gray-500 mb-3">
+                          <User size={14} className="mr-1" />
+                          {post.author}
+                          <span className="mx-2">•</span>
+                          <Calendar size={14} className="mr-1" />
+                          {new Date(post.date).toLocaleDateString("es-ES")}
+                          <span className="mx-2">•</span>
+                          <Clock size={14} className="mr-1" />
+                          {post.readTime}
+                        </div>
+
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-[#ff4081] transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 flex-1 leading-relaxed">
+                          {post.excerpt}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {post.tags.slice(0, 3).map((tag, idx) => (
+                            <span
+                              key={idx}
+                              className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        <Link href={`/blog/${post.id}`} className="mt-auto">
+                          <Button
+                            variant="outline"
+                            className="w-full group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
+                          >
+                            Leer artículo completo
+                            <ArrowRight
+                              size={16}
+                              className="ml-2 group-hover/btn:translate-x-1 transition-transform"
+                            />
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
                   </Card>
                 </AnimatedSection>
               ))}
+            </div>
+
+            {/* Pagination */}
+            <div className="mt-8 flex items-center justify-center space-x-2">
+              {pageNum > 1 ? (
+                <Link
+                  href={`/blog?page=${pageNum - 1}${
+                    q ? `&q=${encodeURIComponent(q)}` : ""
+                  }`}
+                  className="px-3 py-2 bg-white border rounded"
+                >
+                  Anterior
+                </Link>
+              ) : (
+                <span className="px-3 py-2 bg-gray-100 border rounded text-gray-400">
+                  Anterior
+                </span>
+              )}
+
+              {Array.from({ length: totalPages }).map((_, i) => {
+                const p = i + 1;
+                const href = `/blog?page=${p}${
+                  q ? `&q=${encodeURIComponent(q)}` : ""
+                }`;
+                return (
+                  <Link
+                    key={p}
+                    href={href}
+                    className={`px-3 py-2 border rounded ${
+                      p === pageNum
+                        ? "bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white"
+                        : "bg-white"
+                    }`}
+                  >
+                    {p}
+                  </Link>
+                );
+              })}
+
+              {pageNum < totalPages ? (
+                <Link
+                  href={`/blog?page=${pageNum + 1}${
+                    q ? `&q=${encodeURIComponent(q)}` : ""
+                  }`}
+                  className="px-3 py-2 bg-white border rounded"
+                >
+                  Siguiente
+                </Link>
+              ) : (
+                <span className="px-3 py-2 bg-gray-100 border rounded text-gray-400">
+                  Siguiente
+                </span>
+              )}
             </div>
           </div>
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
+        {/*  <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -340,7 +486,7 @@ export default function BlogPage() {
               </div>
             </AnimatedSection>
           </div>
-        </section>
+        </section> */}
 
         {/* Contact Section */}
         <ContactSection />

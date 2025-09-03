@@ -9,71 +9,122 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "Campañas y Ads",
-  subtitle: "Publicidad digital estratégica que genera resultados medibles",
+  title: "Marketing Digital Integral",
+  subtitle: "Estrategias completas para maximizar tu ROI",
   description:
-    "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Meta Ads y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
+    "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $800/mes + presupuesto publicitario",
-  duration: "Configuración: 2-3 semanas",
+  price: "Desde $2000/mes",
+  duration: "6-12 meses",
   features: [
-    "Google Ads (Search, Display, Shopping)",
-    "Meta Ads y TikTok Ads",
-    "LinkedIn Ads para B2B",
-    "Remarketing y retargeting",
-    "Optimización de conversiones",
-    "A/B testing de creatividades",
-    "Reportes detallados de ROI",
+    "Estrategia multicanal personalizada",
+    "Analisis de competencia",
+    "Revisión y mejora de sitio web",
+    "Mantenimiento y soporte",
+    "Gestión de redes sociales",
+    "SEO y posicionamiento orgánico",
+    "Campañas SEM en Google Ads",
+    "Email marketing",
+    "Marketing de contenidos",
+    "Retargeting y remarketing",
+    "Analytics y seguimiento avanzado",
+    "Optimización continua",
   ],
   process: [
     {
-      title: "Análisis y estrategia",
-      description: "Definimos objetivos, audiencias y presupuestos",
+      title: "Auditoría",
+      description: "Analizamos tu situación digital actual",
     },
     {
-      title: "Configuración",
-      description: "Creamos campañas optimizadas en cada plataforma",
+      title: "Estrategia",
+      description: "Diseñamos un plan integral personalizado",
     },
     {
-      title: "Lanzamiento",
-      description: "Activamos campañas con seguimiento en tiempo real",
+      title: "Ejecución",
+      description: "Implementamos todas las tácticas planificadas",
     },
     {
       title: "Optimización",
-      description: "Ajustamos basándonos en datos y performance",
+      description: "Mejoramos continuamente los resultados",
     },
   ],
   benefits: [
-    "Aumento de leads cualificados",
-    "Escalabilidad comprobada de resultados",
+    "Aumento en leads cualificados",
+    "Mayor visibilidad online",
+    "Crecimiento sostenible",
   ],
 };
 
 const faqs = [
   {
-    question: "¿En qué plataformas publicitarias trabajan?",
+    question: "¿Cuánto tiempo toma ver resultados?",
     answer:
-      "Gestionamos campañas en Google Ads, Meta Ads, LinkedIn, TikTok Ads y otras plataformas según tu audiencia objetivo y industria específica.",
+      "Los primeros resultados suelen verse entre 30-60 días, pero el marketing digital es un proceso continuo. Los mejores resultados se obtienen con estrategias a largo plazo de 6-12 meses.",
   },
   {
-    question: "¿Cuál es el presupuesto mínimo recomendado?",
+    question: "¿Trabajan con presupuestos publicitarios específicos?",
     answer:
-      "Recomendamos un presupuesto publicitario mínimo de $500/mes por plataforma para obtener datos significativos y resultados óptimos, aunque trabajamos con presupuestos diversos.",
+      "Sí, adaptamos las estrategias a tu presupuesto disponible. Recomendamos un mínimo de $500 mensuales para publicidad, pero podemos trabajar con presupuestos mayores para mejores resultados.",
   },
   {
-    question: "¿Cómo miden el éxito de las campañas?",
+    question: "¿Qué incluye el seguimiento y analytics?",
     answer:
-      "Medimos KPIs específicos según tus objetivos: ROAS, CPA, CTR, conversiones, leads generados, ventas, y proporcionamos reportes detallados con recomendaciones de optimización.",
+      "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
   },
 ];
 
-export default function CampanasAdsPage() {
+export default function MarketingDigitalPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    keywords: "marketing digital, estrategia multicanal, SEM SEO",
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "Marketing Digital",
+    url: `${BASE_URL}/servicios/marketing-digital`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/marketing-digital`,
+        },
+      ],
+    },
+  };
 
   return (
     <>
+      <SEOHead
+        title="Marketing Digital Integral - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/marketing-digital"
+        keywords={["marketing digital", "estrategia multicanal", "SEM", "SEO"]}
+      />
+      <Script
+        id="schema-service-mkt"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
@@ -92,7 +143,7 @@ export default function CampanasAdsPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
@@ -204,7 +255,7 @@ export default function CampanasAdsPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 max-w-[250px] mx-auto text-sm">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -226,11 +277,11 @@ export default function CampanasAdsPage() {
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para maximizar tu ROI?
+                ¿Listo para comenzar?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Contáctanos hoy y descubre cómo nuestras campañas publicitarias
-                pueden transformar tu negocio
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Contáctanos hoy y descubre cómo podemos transformar tu presencia
+                digital
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

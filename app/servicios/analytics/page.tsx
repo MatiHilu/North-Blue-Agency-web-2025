@@ -9,78 +9,127 @@ import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
 import { useState } from "react";
+import Script from "next/script";
+import { BASE_URL } from "@/lib/jsonld";
+import SEOHead from "@/components/seo-head";
 
 const serviceData = {
-  title: "Branding e Identidad Visual",
-  subtitle: "Crea una identidad única que conecte con tu audiencia",
+  title: "Analytics - Reportes Web y Redes Sociales",
+  subtitle:
+    "Toma decisiones inteligentes basadas en datos reales de tu sitio y redes sociales",
   description:
-    "Desarrollamos identidades visuales completas que reflejan la esencia de tu marca y la diferencian en el mercado. Desde el concepto inicial hasta la aplicación en todos los puntos de contacto.",
+    "Implementamos sistemas de medición avanzados para web y redes sociales que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital en cada canal.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $600",
-  duration: "2-3 semanas",
+  price: "Desde $400/mes",
+  duration: "Implementación: 1-2 semanas",
   features: [
-    "Investigación de mercado y competencia",
-    "Definición de personalidad de marca",
-    "Diseño de logotipo y variaciones",
-    "Paleta de colores estratégica",
-    "Tipografías corporativas",
-    "Manual de identidad visual",
-    "Aplicaciones en papelería",
-    "Adaptaciones digitales",
+    "Configuración de Google Analytics 4",
+    "Google Tag Manager avanzado",
+    "Seguimiento de conversiones",
+    "Análisis de embudos de venta",
+    "Analítica de redes sociales (Facebook, Instagram, TikTok, LinkedIn)",
+    "Seguimiento de engagement y crecimiento de seguidores",
+    "Reportes mensuales",
+    "KPIs estratégicos por industria",
+    "Recomendaciones de optimización",
   ],
   process: [
     {
-      title: "Descubrimiento",
-      description: "Entendemos tu negocio, valores y objetivos",
+      title: "Análisis inicial",
+      description: "Evaluamos tus objetivos y sistemas actuales",
     },
     {
-      title: "Conceptualización",
-      description: "Desarrollamos conceptos creativos únicos",
+      title: "Configuración",
+      description: "Implementamos tracking avanzado y herramientas",
     },
     {
-      title: "Diseño",
-      description: "Creamos la identidad visual completa",
+      title: "Reporting",
+      description: "Creamos reportes visuales personalizados",
     },
     {
-      title: "Implementación",
-      description: "Aplicamos la marca en todos los materiales",
+      title: "Optimización",
+      description: "Analizamos datos y proporcionamos insights",
     },
   ],
   benefits: [
-    "Mayor reconocimiento de marca",
-    "Diferenciación competitiva",
-    "Coherencia en comunicaciones",
-    "Aumento en valor percibido",
+    "Visibilidad completa del customer journey en web y redes sociales",
+    "Medición de engagement y alcance en redes sociales",
+    "ROI claro de todas las campañas",
+    "Identificación de oportunidades de mejora",
+    "Decisiones basadas en datos reales",
   ],
 };
 
 const faqs = [
-  {
-    question: "¿Incluye el registro de marca?",
+  /*   {
+    question: "¿Qué herramientas de analytics utilizan?",
     answer:
-      "No incluimos el registro legal de marca, pero sí verificamos disponibilidad.",
+      "Trabajamos principalmente con Google Analytics 4, Google Tag Manager, Looker Studio, y herramientas especializadas según la industria como Hotjar, Mixpanel o herramientas de ecommerce.",
+  }, */
+  {
+    question: "¿Con qué frecuencia recibo reportes?",
+    answer:
+      "Proporcionamos reportes mensuales personalizados según tus necesidades específicas. También ofrecemos sesiones de revisión trimesal.",
   },
   {
-    question: "¿Qué pasa si no me gusta el diseño inicial?",
+    question: "¿Pueden integrar datos de diferentes plataformas?",
     answer:
-      "Incluimos hasta 3 rondas de revisiones sin costo adicional. Trabajamos contigo hasta que estés completamente satisfecho con el resultado final.",
-  },
-  {
-    question: "¿Entregan archivos en diferentes formatos?",
-    answer:
-      "Sí, entregamos todos los archivos en formatos vectoriales (AI), rasterizados (PNG, JPG) y PDF, optimizados para uso digital.",
+      "Sí, integramos datos de múltiples fuentes como redes sociales, email marketing, CRM, plataformas de ecommerce y herramientas de publicidad para una vista unificada.",
   },
 ];
 
-export default function BrandingPage() {
+export default function AnalyticsPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: serviceData.title,
+    description: serviceData.description,
+    keywords: "analytics, reportes web, analítica de redes sociales",
+    areaServed: "ES",
+    provider: { "@type": "Organization", name: "North Blue Agency" },
+    serviceType: "Analytics",
+    url: `${BASE_URL}/servicios/analytics`,
+    offers: { "@type": "Offer", priceCurrency: "USD" },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${BASE_URL}/servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: serviceData.title,
+          item: `${BASE_URL}/servicios/analytics`,
+        },
+      ],
+    },
+  };
 
   return (
     <>
+      <SEOHead
+        title="Analytics y Reportes - North Blue Agency"
+        description={serviceData.subtitle}
+        canonical="/servicios/analytics"
+        keywords={["analytics", "reportes web", "analítica de redes sociales"]}
+      />
+      <Script
+        id="schema-service-analytics"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
       />
+
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -95,7 +144,7 @@ export default function BrandingPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/services"
+                href="/servicios"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
@@ -229,16 +278,16 @@ export default function BrandingPage() {
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para comenzar?
+                ¿Listo para tomar decisiones inteligentes?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Contáctanos hoy y descubre cómo los datos pueden transformar tu
+                estrategia digital
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
+                  className="btn-white-hover bg-white text-[#00b2ff] hover:bg-gray-100 transform hover:scale-105 transition-all"
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización

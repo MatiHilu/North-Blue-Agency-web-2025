@@ -73,7 +73,7 @@ export function getPageConfig(path: string) {
 
   // Páginas principales
   if (
-    ["about", "contact", "services", "blog", "portfolio"].some(
+    ["nosotros", "contacto", "servicios", "blog", "portfolio"].some(
       (page) => path === `/${page}`
     )
   ) {
@@ -81,7 +81,7 @@ export function getPageConfig(path: string) {
   }
 
   // Páginas de servicios individuales
-  if (path.startsWith("/services/")) {
+  if (path.startsWith("/servicios/")) {
     return defaults.servicePages;
   }
 

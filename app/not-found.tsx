@@ -31,7 +31,7 @@ export default function NotFound() {
     },
     {
       title: "Servicios",
-      href: "/services",
+      href: "/servicios",
       icon: <Compass size={20} />,
       description: "Explora nuestros servicios",
     },
@@ -43,7 +43,7 @@ export default function NotFound() {
     },
     {
       title: "Contacto",
-      href: "/contact",
+      href: "/contacto",
       icon: <RefreshCw size={20} />,
       description: "Ponte en contacto con nosotros",
     },
@@ -136,7 +136,7 @@ export default function NotFound() {
                   Volver al Inicio
                 </Button>
               </Link>
-              {/* <Link href="/contact">
+              {/* <Link href="/contacto">
                 <Button
                   variant="outline"
                   className="border-2 border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white transition-all duration-300 px-8 py-3 text-lg"
@@ -198,7 +198,7 @@ export default function NotFound() {
               <p className="text-gray-400 text-sm">
                 ¿Necesitas ayuda específica?{" "}
                 <Link
-                  href="/contact"
+                  href="/contacto"
                   className="text-[#ff4081] hover:text-[#ff4081]/80 underline transition-colors"
                 >
                   Contáctanos

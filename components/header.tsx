@@ -53,49 +53,49 @@ export default function Header() {
   const services = [
     {
       title: "Redes Sociales",
-      href: "/services/redes-sociales",
+      href: "/servicios/redes-sociales",
       icon: <Smartphone size={20} />,
       description: "Gestión completa de redes sociales",
     },
     {
       title: "Branding",
-      href: "/services/branding",
+      href: "/servicios/branding",
       icon: <Palette size={20} />,
       description: "Identidades visuales únicas",
     },
     {
       title: "Desarrollo Web",
-      href: "/services/desarrollo-web",
+      href: "/servicios/desarrollo-web",
       icon: <Globe size={20} />,
       description: "Sitios web modernos y responsivos",
     },
     {
       title: "Marketing Digital",
-      href: "/services/marketing-digital",
+      href: "/servicios/marketing-digital",
       icon: <Megaphone size={20} />,
       description: "Estrategias integrales de marketing",
     },
     {
       title: "SEO",
-      href: "/services/seo",
+      href: "/servicios/seo",
       icon: <Search size={20} />,
       description: "Posicionamiento en buscadores",
     },
     {
       title: "Analytics",
-      href: "/services/analytics",
+      href: "/servicios/analytics",
       icon: <BarChart3 size={20} />,
       description: "Análisis y reportes detallados",
     },
     {
       title: "Campañas y Ads",
-      href: "/services/campanas-ads",
+      href: "/servicios/campanas-ads",
       icon: <Target size={20} />,
       description: "Publicidad digital estratégica",
     },
     {
       title: "Contenido",
-      href: "/services/creacion-contenido",
+      href: "/servicios/creacion-contenido",
       icon: <Keyboard size={20} />,
       description: "Para redes sociales",
     },
@@ -259,7 +259,7 @@ export default function Header() {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <Link href="/services">
+                <Link href="/servicios">
                   <button
                     className={`flex items-center transition-colors font-medium ${
                       isScrolled
@@ -307,7 +307,7 @@ export default function Header() {
                     </div>
                     <div className="mt-6 pt-6 border-t border-gray-100 text-center">
                       <Link
-                        href="/services"
+                        href="/servicios"
                         className="inline-flex items-center text-[#ff4081] hover:text-[#ff4081]/80 font-medium"
                       >
                         Ver todos los servicios
@@ -322,7 +322,7 @@ export default function Header() {
               </div>
 
               <Link
-                href="/about"
+                href="/nosotros"
                 className={`transition-colors font-medium ${
                   isScrolled
                     ? "text-gray-700 hover:text-[#ff4081]"
@@ -361,7 +361,7 @@ export default function Header() {
               >
                 Blog
               </Link>
-              <Link href="/contact">
+              <Link href="/contacto">
                 <Button
                   className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
                   onClick={() => {
@@ -486,7 +486,7 @@ export default function Header() {
                         </div>
                         <div className="mt-4 pt-4 border-t border-white/20 text-center">
                           <Link
-                            href="/services"
+                            href="/servicios"
                             className="text-white/80 hover:text-white text-sm font-medium transition-colors"
                             onClick={closeMenu}
                           >
@@ -498,7 +498,7 @@ export default function Header() {
                   </div>
 
                   <Link
-                    href="/about"
+                    href="/nosotros"
                     className={`text-3xl font-bold hover:scale-110 transition-transform duration-300 ${
                       isMenuClosing
                         ? "mobile-menu-item-exit"
@@ -534,7 +534,7 @@ export default function Header() {
                   >
                     Blog
                   </Link>
-                  <Link href="/contact">
+                  <Link href="/contacto">
                     <Button
                       className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-2 ${
                         isMenuClosing
