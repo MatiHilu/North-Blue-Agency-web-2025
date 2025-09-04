@@ -9,10 +9,12 @@ import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "North Blue Agency - Marketing Digital Profesional",
+  title: {
+    default: "North Blue Agency - Marketing Digital Profesional",
+    template: "%s | North Blue Agency",
+  },
   description:
     "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
-  generator: "v0.dev",
   icons: {
     icon: [
       { url: "/favicon.ico" },

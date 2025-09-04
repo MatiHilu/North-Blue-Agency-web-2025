@@ -347,11 +347,13 @@ export default async function BlogPage({
                   <Card className="group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden h-full">
                     <CardContent className="p-0 h-full flex flex-col">
                       <div className="relative overflow-hidden">
-                        <img
-                          src={post.image || "/placeholder.svg"}
-                          alt={post.title}
-                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
+                        <Link href={`/blog/${post.id}`} className="mt-auto">
+                          <img
+                            src={post.image || "/placeholder.svg"}
+                            alt={post.title}
+                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </Link>
                         <div className="absolute top-4 left-4">
                           <span className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white px-3 py-1 rounded-full text-sm font-semibold">
                             {post.category}
@@ -371,9 +373,11 @@ export default async function BlogPage({
                           {post.readTime}
                         </div>
 
-                        <h3 className="text-xl font-bold mb-3 group-hover:text-[#ff4081] transition-colors">
-                          {post.title}
-                        </h3>
+                        <Link href={`/blog/${post.id}`} className="mt-auto">
+                          <h3 className="text-xl font-bold mb-3 group-hover:text-[#ff4081] transition-colors">
+                            {post.title}
+                          </h3>
+                        </Link>
                         <p className="text-gray-600 mb-4 flex-1 leading-relaxed">
                           {post.excerpt}
                         </p>

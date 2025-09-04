@@ -53,6 +53,7 @@ export default function HomePage() {
         title="North Blue Agency - Marketing Digital Profesional"
         description="Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital."
         canonical="/"
+        syncWithH1={false}
         keywords={[
           "agencia de marketing digital",
           "marketing digital profesional",

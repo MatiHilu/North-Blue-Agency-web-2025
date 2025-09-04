@@ -3,11 +3,11 @@ import nodemailer from "nodemailer";
 
 // Configure transporter with Resend SMTP
 const transporter = nodemailer.createTransport({
-  host: process.env.RESEND_SMTP_HOST || "smtp.resend.com",
+  host: process.env.RESEND_SMTP_HOST || "smtp.hostinger.com",
   port: Number(process.env.RESEND_SMTP_PORT) || 465,
   secure: true,
   auth: {
-    user: process.env.RESEND_SMTP_USER || "resend",
+    user: process.env.RESEND_SMTP_USER || "hostinger",
     pass: process.env.RESEND_SMTP_PASS!,
   },
 });
