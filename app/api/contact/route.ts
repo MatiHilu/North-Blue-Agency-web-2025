@@ -51,7 +51,7 @@ export async function POST(request: Request) {
       .map(([key, value]) => `${key}: ${value}`)
       .join("\n");
 
-    // Send mail
+    // Send mail to site owner
     await transporter.sendMail({
       from: sender,
       replyTo: name && email ? `"${name}" <${email}>` : undefined,
@@ -61,6 +61,20 @@ export async function POST(request: Request) {
       html: htmlContent,
     });
 
+    // Send thank-you email to the user
+    if (email) {
+      await transporter.sendMail({
+        from: sender,
+        to: email,
+        subject: "Gracias por contactarnos",
+        text: `Hola ${
+          name || ""
+        },\n\nGracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto pronto.\n\nSaludos,\nNorth Blue Agency`,
+        html: `<p>Hola ${
+          name || ""
+        },</p><p>Gracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto pronto.</p><p>Saludos,<br/>North Blue Agency</p>`,
+      });
+    }
     return NextResponse.json({ ok: true });
   } catch (error: any) {
     console.error("Error sending email:", error);
