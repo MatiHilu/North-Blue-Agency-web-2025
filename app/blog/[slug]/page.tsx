@@ -17,6 +17,36 @@ import ContactSection from "@/components/contact-section";
 import wordpress from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
 import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+
+// Dynamic metadata for blog post pages
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = await wordpress.getPostBySlug(params.slug);
+  if (!post) {
+    return { title: "Artículo no encontrado", description: "" };
+  }
+  const title = post.title;
+  const description = post.excerpt;
+  const url = `${BASE_URL}/blog/${params.slug}`;
+  const imageUrl = post.featuredImage?.startsWith("http")
+    ? post.featuredImage
+    : `${BASE_URL}${post.featuredImage || "/NorthBlue-Agency.png"}`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: [imageUrl],
+    },
+  };
+}
 
 type Post = {
   slug: string;
