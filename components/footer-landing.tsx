@@ -124,7 +124,17 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 North Blue Agency. Todos los derechos reservados.</p>
+          <p className="mb-2">
+            &copy; 2025 North Blue Agency. Todos los derechos reservados.
+          </p>
+          <p className="text-sm">
+            <Link
+              href="/politica-privacidad"
+              className="hover:text-white underline underline-offset-4"
+            >
+              Política de Privacidad
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

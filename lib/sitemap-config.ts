@@ -73,9 +73,14 @@ export function getPageConfig(path: string) {
 
   // Páginas principales
   if (
-    ["nosotros", "contacto", "servicios", "blog", "portfolio"].some(
-      (page) => path === `/${page}`
-    )
+    [
+      "nosotros",
+      "contacto",
+      "servicios",
+      "blog",
+      "portfolio",
+      "politica-privacidad",
+    ].some((page) => path === `/${page}`)
   ) {
     return defaults.mainPages;
   }

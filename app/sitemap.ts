@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contacto",
     "/portfolio",
     "/servicios",
+    "/politica-privacidad",
   ];
 
   // Rutas de servicios
