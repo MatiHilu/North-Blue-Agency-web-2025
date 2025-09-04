@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Configure transporter with Resend SMTP
+// Configure transporter with SMTP settings (Hostinger)
 const transporter = nodemailer.createTransport({
-  host: process.env.RESEND_SMTP_HOST || "smtp.hostinger.com",
-  port: Number(process.env.RESEND_SMTP_PORT) || 465,
+  host: process.env.SMTP_HOST || "smtp.hostinger.com",
+  port: Number(process.env.SMTP_PORT) || 465,
   secure: true,
   auth: {
-    user: process.env.RESEND_SMTP_USER || "hostinger",
-    pass: process.env.RESEND_SMTP_PASS!,
+    user: process.env.SMTP_USER!,
+    pass: process.env.SMTP_PASS!,
   },
 });
 // Verify SMTP connection
@@ -24,8 +24,8 @@ transporter
 export async function POST(request: Request) {
   const data = await request.json();
   console.log("Contact data received:", data);
-  const user = process.env.RESEND_SMTP_USER;
-  const pass = process.env.RESEND_SMTP_PASS;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
   const sender = process.env.SENDER_EMAIL;
   if (!user || !pass) {
     console.error("Missing SMTP credentials:", { user, pass });
