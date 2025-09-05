@@ -71,31 +71,23 @@ export async function POST(request: Request) {
           name || ""
         },\n\nGracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto pronto.\n\nSaludos,\nNorth Blue Agency`,
         html: `<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>Gracias por contactarnos</title>
 </head>
-<body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#f5f5f5;">
-  <table align="center" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; margin:20px auto; background-color:#ffffff; border-radius:8px; overflow:hidden;">
-    <tr>
-      <td style="background-color:#0070f3; padding:20px; text-align:center;">
-        <h1 style="color:#ffffff; margin:0;">North Blue Agency</h1>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding:20px; color:#333333;">
-        <p style="font-size:16px;">Hola ${name || ""},</p>
-        <p style="font-size:14px;">Gracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto pronto.</p>
-        <p style="font-size:14px;">Saludos,<br/>North Blue Agency</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="background-color:#f0f0f0; padding:10px; text-align:center; font-size:12px; color:#777777;">
-        © ${new Date().getFullYear()} North Blue Agency. Todos los derechos reservados.
-      </td>
-    </tr>
-  </table>
+<body style="margin:0;padding:0;background-color:#ffffff;font-family:Arial, Helvetica, sans-serif;color:#111827;">
+  <div style="max-width:600px;margin:0 auto;padding:20px;line-height:1.5;">
+    <img src="${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://northblueagency.com"
+    }/NorthBlue-Agency.png" alt="North Blue Agency" width="150" style="display:block;margin:0 auto 20px;"/>
+    <h2 style="margin:0 0 20px;font-size:24px;font-weight:600;color:#111827;">North Blue Agency</h2>
+    <p style="margin:0 0 16px;font-size:16px;">Hola ${name || ""},</p>
+    <p style="margin:0 0 16px;font-size:14px;">Gracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.</p>
+    <p style="margin:0 0 24px;font-size:14px;">Saludos,<br/>North Blue Agency</p>
+    <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;" />
+    <p style="margin:0;font-size:12px;color:#6b7280;">© ${new Date().getFullYear()} North Blue Agency. Todos los derechos reservados.</p>
+  </div>
 </body>
 </html>`,
       });
