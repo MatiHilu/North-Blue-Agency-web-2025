@@ -69,25 +69,36 @@ export async function POST(request: Request) {
         subject: "Gracias por contactarnos",
         text: `Hola ${
           name || ""
-        },\n\nGracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto pronto.\n\nSaludos,\nNorth Blue Agency`,
+        },\n\n¡Gracias por contactarte con nosotros! Hemos recibido tu mensaje y nuestro equipo lo revisará para responderte lo antes posible.\n\nSaludos,\nNorth Blue Agency`,
         html: `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>Gracias por contactarnos</title>
 </head>
-<body style="margin:0;padding:0;background-color:#ffffff;font-family:Arial, Helvetica, sans-serif;color:#111827;">
-  <div style="max-width:600px;margin:0 auto;padding:20px;line-height:1.5;">
-    <img src="${
-      process.env.NEXT_PUBLIC_SITE_URL || "https://northblueagency.com"
-    }/NorthBlue-Agency.png" alt="North Blue Agency" width="150" style="display:block;margin:0 auto 20px;"/>
-    <h2 style="margin:0 0 20px;font-size:24px;font-weight:600;color:#111827;">North Blue Agency</h2>
-    <p style="margin:0 0 16px;font-size:16px;">Hola ${name || ""},</p>
-    <p style="margin:0 0 16px;font-size:14px;">Gracias por contactarte con nosotros. Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.</p>
-    <p style="margin:0 0 24px;font-size:14px;">Saludos,<br/>North Blue Agency</p>
-    <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;" />
-    <p style="margin:0;font-size:12px;color:#6b7280;">© ${new Date().getFullYear()} North Blue Agency. Todos los derechos reservados.</p>
-  </div>
+<body
+    style="margin:0;padding:60px;background:#1f2937;font-family:Arial, Helvetica, sans-serif; background-repeat: no-repeat;">
+    <div style="max-width:600px;margin:20px auto;border-radius:16px;overflow:hidden;">
+        <div style="background:#000;padding:20px;text-align:center;">
+            <img src="https://northblueagency.com/North-Blue-Agency-Light.svg" alt="North Blue Agency" height="60"
+                style="display:block;margin:0 auto;" />
+        </div>
+        <div style="padding:20px;background-color:#ffffff;line-height:1.5;min-height: 230px; padding-top: 40px;">
+            <h2 style="margin:0 0 10px;font-size:22px;color:#111827;">Hola Matías,</h2>
+            <p style="font-size:15px;color:#333333;margin:0 0 15px;">¡Gracias por contactarte con nosotros! Hemos
+                recibido tu mensaje y nuestro equipo lo revisará para responderte lo antes posible.</p>
+            <p style="font-size:15px;color:#333333;margin:0 0 25px;">Mientras tanto, te invitamos a conocer nuestro
+                <strong>Blog</strong>.
+            </p>
+            <a href="https://northblueagency.com/blog" target="_blank"
+                style="display:inline-block;padding:10px 20px;background:#00b2ff;color:#ffffff;text-decoration:none;border-radius:4px;">Ver
+                posteos</a>
+        </div>
+        <div style="background-color:#ff4081;padding:10px;text-align:center;">
+            <p style="font-size:12px;color:#fff;margin:0;">© 2025 North Blue Agency. Todos los derechos reservados.
+            </p>
+        </div>
+    </div>
 </body>
 </html>`,
       });
