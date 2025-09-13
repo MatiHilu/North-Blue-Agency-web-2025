@@ -1,17 +1,13 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import QuoteModal from "@/components/quote-modal";
-import { useState } from "react";
-import Script from "next/script";
+import { QuoteSection } from "@/components/quote-section";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
+// Migrado a Metadata API
+import type { Metadata } from "next";
 
 const serviceData = {
   title: "Branding e Identidad Visual",
@@ -75,8 +71,44 @@ const faqs = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: {
+    default: `${serviceData.title}`,
+    template: "%s | North Blue Agency",
+  },
+  description: serviceData.description,
+  alternates: { canonical: `${BASE_URL}/servicios/branding` },
+  keywords: [
+    "branding",
+    "identidad visual",
+    "diseño de marca",
+    "manual de identidad",
+    "logotipo",
+    "paleta de colores",
+    "North Blue Agency",
+  ],
+  openGraph: {
+    title: `${serviceData.title} - North Blue Agency`,
+    description: serviceData.description,
+    url: `${BASE_URL}/servicios/branding`,
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/images/og/servicios-branding.png`,
+        alt: `${serviceData.title} - North Blue Agency`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${serviceData.title} - North Blue Agency`,
+    description: serviceData.description,
+    images: [`${BASE_URL}/images/og/servicios-branding.png`],
+  },
+  publisher: "North Blue Agency",
+};
+
 export default function BrandingPage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -110,22 +142,6 @@ export default function BrandingPage() {
 
   return (
     <>
-      <SEOHead
-        title="Branding e Identidad Visual - North Blue Agency"
-        description={serviceData.subtitle}
-        canonical="/servicios/branding"
-        keywords={["branding", "identidad visual", "diseño de marca"]}
-      />
-      <Script
-        id="schema-service-branding"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-      />
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -269,29 +285,12 @@ export default function BrandingPage() {
           faqs={faqs}
         />
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
-          <div className="container mx-auto px-4 text-center">
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para comenzar?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                  onClick={() => setIsQuoteModalOpen(true)}
-                >
-                  Solicitar cotización
-                </Button>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
+        <QuoteSection
+          title="¿Listo para comenzar?"
+          subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
+                digital"
+          buttonText="Solicitar cotización"
+        />
 
         {/* Contact Section */}
         <ContactSection />

@@ -9,6 +9,8 @@ import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  // Base URL para que Next construya canónicos absolutos y OpenGraph URLs
+  metadataBase: new URL("https://northblueagency.com"),
   title: {
     default: "North Blue Agency - Marketing Digital Profesional",
     template: "%s | North Blue Agency",

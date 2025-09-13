@@ -16,7 +16,6 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import wordpress from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
 import type { Metadata } from "next";
 
 // Dynamic metadata for blog post pages
@@ -35,16 +34,46 @@ export async function generateMetadata({
   const imageUrl = post.featuredImage?.startsWith("http")
     ? post.featuredImage
     : `${BASE_URL}${post.featuredImage || "/NorthBlue-Agency.png"}`;
+  const keywords = Array.from(
+    new Set(
+      [
+        ...(post.tags || []),
+        ...(post.categories || []),
+        "North Blue Agency",
+      ].filter(Boolean)
+    )
+  );
+
   return {
-    title,
+    // Title with per-page template; root layout also applies its template
+    title: {
+      default: title,
+      template: "%s | North Blue Agency",
+    },
     description,
+    alternates: { canonical: url },
+    keywords,
     openGraph: {
-      title,
+      title: `${title} - North Blue Agency`,
       description,
       url,
       type: "article",
+      siteName: "North Blue Agency",
+      images: [
+        {
+          url: imageUrl,
+          alt: `${title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} - North Blue Agency`,
+      description,
       images: [imageUrl],
     },
+    authors: post.author ? [{ name: post.author }] : undefined,
+    publisher: post.author,
   };
 }
 
@@ -247,6 +276,7 @@ export default async function BlogPostPage({
         url: `${BASE_URL}/North-Blue-Agency.svg`,
       },
     },
+    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
     image: post.featuredImage?.startsWith("http")
       ? post.featuredImage
       : `${BASE_URL}${post.featuredImage || "/placeholder.svg"}`,
@@ -293,16 +323,19 @@ export default async function BlogPostPage({
     shareUrl
   )}`;
 
+  // Helper: determine if the author is Abril Lespade (diacritics/case-insensitive)
+  const isAbrilLespade = (() => {
+    const n = (post.author || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+    return n === "abril lespade";
+  })();
+
   return (
     <>
-      <SEOHead
-        title={post.title}
-        description={post.excerpt}
-        canonical={`/blog/${slug}`}
-        ogImage={post.featuredImage || "/NorthBlue-Agency.png"}
-        keywords={post.tags || []}
-        ogType="article"
-      />
+      {/* Metadata via generateMetadata */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -405,6 +438,7 @@ export default async function BlogPostPage({
                 <img
                   src={post.featuredImage || "/placeholder.svg"}
                   alt={post.title}
+                  title={post.title}
                   className="w-full rounded-lg shadow-lg mb-12"
                 />
               </AnimatedSection>
@@ -442,16 +476,44 @@ export default async function BlogPostPage({
                         <h3 className="text-lg font-bold mb-4">
                           Sobre el Autor
                         </h3>
-                        <div className="mb-4">
-                          <p className="font-semibold">{post.author}</p>
-                          <p className="text-sm text-gray-600">
-                            Marketing Specialist
-                          </p>
-                        </div>
-                        <p className="text-[10px] text-gray-600 mb-4">
-                          Especialista en marketing digital con más de 5 años de
-                          experiencia ayudando a empresas a crecer online.
-                        </p>
+                        {isAbrilLespade ? (
+                          <>
+                            <div className="mb-4">
+                              <p className="font-semibold">Abril Lespade</p>
+                              <p className="text-sm text-gray-600">
+                                Gerenta de Marketing
+                              </p>
+                            </div>
+                            <p className="text-[10px] text-gray-600 mb-4">
+                              Lidera la estrategia de redes sociales:
+                              contenidos, tono, comunidad y crecimiento. Su
+                              enfoque se centra en construir relaciones
+                              auténticas y duraderas con la audiencia. Al
+                              comprender las necesidades y las formas de las
+                              redes logra resultados significativos.
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <div className="mb-4">
+                              <p className="font-semibold">Matías Hilú</p>
+                              <p className="text-sm text-gray-600">
+                                CEO &amp; Gerente de Desarrollo Web
+                              </p>
+                            </div>
+                            <p className="text-[10px] text-gray-600 mb-4">
+                              Encargado del desarrollo web: performance, SEO
+                              técnico y optimización de conversión. Su enfoque
+                              está en crear sitios web rápidos, seguros y
+                              optimizados que no solo atraen tráfico, sino que
+                              también convierten visitantes en clientes. Con su
+                              experiencia técnica, garantiza que cada proyecto
+                              no solo cumpla con los estándares de la industria,
+                              sino que también ofrezca una experiencia de
+                              usuario excepcional.
+                            </p>
+                          </>
+                        )}
                       </CardContent>
                     </Card>
                   </AnimatedSection>

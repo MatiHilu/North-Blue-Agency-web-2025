@@ -20,7 +20,27 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/animated-section";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+
+/* export const metadata: Metadata = {
+  title: "Contacto",
+  description:
+    "Ponte en contacto con North Blue Agency para iniciar tu proyecto.",
+  alternates: { canonical: "/contacto" },
+  keywords: [
+    "contacto",
+    "agencia de marketing",
+    "North Blue Agency",
+    "consultoría",
+  ],
+  openGraph: {
+    title: "Contacto | North Blue Agency",
+    description:
+      "Ponte en contacto con North Blue Agency para iniciar tu proyecto.",
+    url: "https://northblueagency.com/contacto",
+    type: "website",
+  },
+}; */
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -76,17 +96,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen">
-      <SEOHead
-        title="Contacto - North Blue Agency"
-        description="Ponte en contacto con North Blue Agency para iniciar tu proyecto."
-        canonical="/contacto"
-        keywords={[
-          "contacto",
-          "agencia de marketing",
-          "North Blue Agency",
-          "consultoría",
-        ]}
-      />
+      {/* Metadata via export metadata */}
       <Script
         id="schema-contact"
         type="application/ld+json"

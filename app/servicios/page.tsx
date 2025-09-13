@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -17,11 +15,10 @@ import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import { useState } from "react";
-import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
+// Migrado a Metadata API
+import type { Metadata } from "next";
+import QuoteSection from "@/components/quote-section";
 
 const services = [
   {
@@ -146,72 +143,105 @@ const services = [
   },
 ];
 
-export default function ServicesPage() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+export const metadata: Metadata = {
+  title: {
+    default: "Nuestros Servicios - Soluciones de marketing digital",
+    template: "%s | North Blue Agency",
+  },
+  description:
+    "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+  alternates: { canonical: "/servicios" },
+  keywords: [
+    "servicios marketing digital",
+    "gestión redes sociales",
+    "branding",
+    "desarrollo web",
+    "SEO",
+    "analytics",
+    "North Blue Agency",
+  ],
+  openGraph: {
+    title: "Servicios - North Blue Agency",
+    description:
+      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+    url: `${BASE_URL}/servicios`,
+    siteName: "North Blue Agency",
+    type: "website",
+    locale: "es_ES",
+    images: [
+      {
+        url: `${BASE_URL}/og-images/servicios.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Servicios de North Blue Agency",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios - North Blue Agency",
+    description:
+      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+  },
+  publisher: "North Blue Agency",
+  authors: [{ name: "North Blue Agency", url: BASE_URL }],
+};
 
-  const servicesSchemas = [
+/**
+ * JSON-LD structured data matching this "Servicios" page.
+ * Exported so it can be injected into the page (<script type="application/ld+json">) if needed.
+ */
+export const servicesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
+      "@type": "Organization",
+      name: "North Blue Agency",
+      url: BASE_URL,
+      sameAs: [BASE_URL],
+      description:
+        "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web.",
+    },
+    {
+      "@type": "WebPage",
       name: "Servicios - North Blue Agency",
       url: `${BASE_URL}/servicios`,
       description:
-        "Soluciones integrales de marketing digital: redes sociales, branding, desarrollo web, SEO, analytics y más.",
-      keywords:
-        "servicios de marketing digital, servicios North Blue Agency, agencia marketing",
-      mainEntity: {
-        "@type": "ItemList",
-        itemListElement: services.map((s, idx) => ({
-          "@type": "Service",
-          position: idx + 1,
-          name: s.title,
-          description: s.description,
-          areaServed: "ES",
-          provider: { "@type": "Organization", name: "North Blue Agency" },
-          url: `${BASE_URL}/servicios/${s.id}`,
-          offers: { "@type": "Offer", priceCurrency: "USD" },
-        })),
-      },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Servicios",
-            item: `${BASE_URL}/servicios`,
-          },
-        ],
+        "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+      inLanguage: "es",
+      isPartOf: {
+        "@type": "WebSite",
+        url: BASE_URL,
+        name: "North Blue Agency",
       },
     },
-  ];
+    // Services mapped from the page's `services` array
+    ...services.map((s) => ({
+      "@type": "Service",
+      name: s.title,
+      serviceType: s.title,
+      description: s.description,
+      url: `${BASE_URL}/servicios/${s.id}`,
+      provider: {
+        "@type": "Organization",
+        name: "North Blue Agency",
+        url: BASE_URL,
+      },
+      offers: s.price
+        ? {
+            "@type": "Offer",
+            price: s.price,
+            priceCurrency: "USD",
+            url: `${BASE_URL}/servicios/${s.id}`,
+          }
+        : undefined,
+    })),
+  ],
+} as const;
 
+export default function ServicesPage() {
   return (
     <>
-      <SEOHead
-        title="Servicios - North Blue Agency - Marketing Digital Profesional"
-        description="Soluciones integrales de marketing digital: redes sociales, branding, desarrollo web, SEO, analytics y más."
-        canonical="/servicios"
-        keywords={[
-          "servicios de marketing digital",
-          "North Blue Agency servicios",
-          "agencia marketing",
-        ]}
-      />
-      {servicesSchemas.map((schema, i) => (
-        <Script
-          key={i}
-          id={`schema-services-${i}`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
@@ -336,28 +366,12 @@ export default function ServicesPage() {
         />
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
-          <div className="container mx-auto px-4 text-center">
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿No encuentras lo que buscas?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Creamos soluciones personalizadas para cada cliente. Contáctanos
-                y cuéntanos sobre tu proyecto.
-              </p>
-              <Button
-                size="lg"
-                className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                Solicitar cotización personalizada
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-            </AnimatedSection>
-          </div>
-        </section>
-
+        <QuoteSection
+          title="¿No encuentras lo que buscas?"
+          subtitle="Creamos soluciones personalizadas para cada cliente. Contáctanos
+                y hablanos sobre tu proyecto."
+          buttonText="Solicitar cotización personalizada"
+        />
         {/* Contact Section */}
         <ContactSection />
       </div>

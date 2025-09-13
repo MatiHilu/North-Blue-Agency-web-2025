@@ -9,7 +9,6 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
 
 const projectData: Record<string, any> = {
   "ecommerce-fashion": {
@@ -149,13 +148,7 @@ export default function ProjectDetailPage() {
 
   return (
     <>
-      <SEOHead
-        title={`${project.title} - Caso de Estudio`}
-        description={project.description}
-        canonical={`/portfolio/${slug}`}
-        keywords={[project.category, ...project.services]}
-        ogType="article"
-      />
+      {/* Metadata via generateMetadata */}
       <Script
         id="schema-project"
         type="application/ld+json"

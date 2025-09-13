@@ -1,16 +1,38 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ExternalLink, Calendar } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
-import { useState } from "react";
+
 import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+import QuoteSection from "@/components/quote-section";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
+  alternates: { canonical: "/portfolio" },
+  publisher: "North Blue Agency",
+  keywords: [
+    "portfolio",
+    "casos de estudio",
+    "proyectos",
+    "marketing digital",
+    "branding",
+    "desarrollo web",
+  ],
+  openGraph: {
+    title: "Portfolio | North Blue Agency",
+    description:
+      "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
+    url: "https://northblueagency.com/portfolio",
+    type: "website",
+  },
+};
 
 const projects = [
   {
@@ -126,73 +148,8 @@ const categories = [
 ];
 
 export default function PortfolioPage() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
-  const portfolioSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Portfolio - North Blue Agency",
-    description:
-      "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
-    url: `${BASE_URL}/portfolio`,
-    keywords:
-      "portfolio, casos de estudio, proyectos, marketing digital, branding, desarrollo web",
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: projects.map((project, index) => ({
-        "@type": "CreativeWork",
-        position: index + 1,
-        name: project.title,
-        description: project.description,
-        creator: {
-          "@type": "Organization",
-          name: "North Blue Agency",
-        },
-        dateCreated: project.year,
-        genre: project.category,
-        url: `${BASE_URL}/portfolio/${project.id}`,
-      })),
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Portfolio",
-          item: `${BASE_URL}/portfolio`,
-        },
-      ],
-    },
-  };
-
   return (
     <>
-      <SEOHead
-        title="Portfolio - North Blue Agency"
-        description="Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web"
-        canonical="/portfolio"
-        keywords={[
-          "portfolio",
-          "casos de estudio",
-          "proyectos",
-          "marketing digital",
-          "branding",
-          "desarrollo web",
-        ]}
-      />
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-      <Script
-        id="schema-portfolio"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
-      />
-
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
@@ -378,27 +335,12 @@ export default function PortfolioPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
-          <div className="container mx-auto px-4 text-center">
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para ser nuestro próximo caso de éxito?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Trabajemos juntos para transformar tu presencia digital y
-                alcanzar resultados extraordinarios
-              </p>
-              <Button
-                size="lg"
-                className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                Comenzar mi proyecto
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-            </AnimatedSection>
-          </div>
-        </section>
+        <QuoteSection
+          title="¿Listo para ser nuestro próximo caso de éxito?"
+          subtitle="Trabajemos juntos para transformar tu presencia digital y
+                alcanzar resultados extraordinarios"
+          buttonText="Comenzar mi proyecto"
+        />
 
         {/* Contact Section */}
         <ContactSection />

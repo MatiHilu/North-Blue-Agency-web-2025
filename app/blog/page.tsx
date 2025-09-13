@@ -6,7 +6,29 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import wordpress from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
+  alternates: { canonical: "/blog" },
+  publisher: "North Blue Agency",
+  keywords: [
+    "blog",
+    "marketing digital",
+    "SEO",
+    "redes sociales",
+    "desarrollo web",
+  ],
+  openGraph: {
+    title: "Blog | North Blue Agency",
+    description:
+      "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
+    url: "https://northblueagency.com/blog",
+    type: "website",
+  },
+};
 
 // Cargar posts desde WordPress en servidor y mapear al shape que usa la UI
 type UIArticle = {
@@ -142,18 +164,7 @@ export default async function BlogPage({
 
   return (
     <>
-      <SEOHead
-        title="Blog - North Blue Agency"
-        description="Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web"
-        canonical="/blog"
-        keywords={[
-          "blog",
-          "marketing digital",
-          "SEO",
-          "redes sociales",
-          "desarrollo web",
-        ]}
-      />
+      {/* Metadata via export metadata */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}

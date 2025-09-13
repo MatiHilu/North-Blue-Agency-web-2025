@@ -12,10 +12,31 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteModal from "@/components/quote-modal";
+import QuoteSection from "@/components/quote-section";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+
+/* export const metadata: Metadata = {
+  title: "Gestión de Redes Sociales",
+  description: "Construye una comunidad sólida y aumenta tu engagement",
+  alternates: { canonical: "/mejora-tu-presencia-en-redes" },
+  keywords: [
+    "gestión de redes sociales",
+    "social media",
+    "community management",
+    "estrategia de contenido",
+    "instagram",
+    "tiktok",
+  ],
+  openGraph: {
+    title: "Gestión de Redes Sociales | North Blue Agency",
+    description: "Construye una comunidad sólida y aumenta tu engagement",
+    url: "https://northblueagency.com/mejora-tu-presencia-en-redes",
+    type: "website",
+  },
+}; */
 
 const serviceData = {
   title: "Gestión de Redes Sociales",
@@ -117,19 +138,7 @@ export default function RedesSocialesPage() {
   };
   return (
     <>
-      <SEOHead
-        title="Gestión de Redes Sociales - North Blue Agency"
-        description={serviceData.subtitle}
-        canonical="/mejora-tu-presencia-en-redes"
-        keywords={[
-          "gestión de redes sociales",
-          "social media",
-          "community management",
-          "estrategia de contenido",
-          "instagram",
-          "tiktok",
-        ]}
-      />
+      {/* Metadata via export metadata */}
       <Script
         id="schema-landing-redes"
         type="application/ld+json"

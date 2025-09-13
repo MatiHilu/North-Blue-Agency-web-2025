@@ -1,17 +1,13 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import QuoteModal from "@/components/quote-modal";
-import { useState } from "react";
-import Script from "next/script";
+import QuoteSection from "@/components/quote-section";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
+// Eliminado SEOHead, usamos Metadata API
+import type { Metadata } from "next";
 
 const serviceData = {
   title: "Marketing Digital Integral",
@@ -77,58 +73,47 @@ const faqs = [
       "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
   },
 ];
-
-export default function MarketingDigitalPage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: serviceData.title,
+export const metadata: Metadata = {
+  title: {
+    default: `${serviceData.title}`,
+    template: "%s | North Blue Agency",
+  },
+  description: serviceData.description,
+  alternates: { canonical: `${BASE_URL}/servicios/marketing-digital` },
+  keywords: [
+    "marketing digital",
+    "estrategia multicanal",
+    "SEM",
+    "SEO",
+    "publicidad digital",
+    "email marketing",
+    "retargeting",
+    "analytics",
+    "North Blue Agency",
+  ],
+  openGraph: {
+    title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    keywords: "marketing digital, estrategia multicanal, SEM SEO",
-    areaServed: "ES",
-    provider: { "@type": "Organization", name: "North Blue Agency" },
-    serviceType: "Marketing Digital",
     url: `${BASE_URL}/servicios/marketing-digital`,
-    offers: { "@type": "Offer", priceCurrency: "USD" },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Servicios",
-          item: `${BASE_URL}/servicios`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: serviceData.title,
-          item: `${BASE_URL}/servicios/marketing-digital`,
-        },
-      ],
-    },
-  };
-
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
+        alt: `${serviceData.title} - North Blue Agency`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${serviceData.title} - North Blue Agency`,
+    description: serviceData.description,
+    images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
+  },
+  publisher: "North Blue Agency",
+};
+export default function MarketingDigitalPage() {
   return (
     <>
-      <SEOHead
-        title="Marketing Digital Integral - North Blue Agency"
-        description={serviceData.subtitle}
-        canonical="/servicios/marketing-digital"
-        keywords={["marketing digital", "estrategia multicanal", "SEM", "SEO"]}
-      />
-      <Script
-        id="schema-service-mkt"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-      />
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -176,7 +161,6 @@ export default function MarketingDigitalPage() {
             </AnimatedSection>
           </div>
         </section>
-
         {/* Description Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -230,7 +214,6 @@ export default function MarketingDigitalPage() {
             </div>
           </div>
         </section>
-
         {/* Process Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -265,37 +248,18 @@ export default function MarketingDigitalPage() {
             </div>
           </div>
         </section>
-
         {/* FAQ Section */}
         <FAQSection
           title={`Preguntas sobre ${serviceData.title}`}
           faqs={faqs}
         />
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
-          <div className="container mx-auto px-4 text-center">
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para comenzar?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                  onClick={() => setIsQuoteModalOpen(true)}
-                >
-                  Solicitar cotización
-                </Button>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
-
+        E{/* CTA Section */}
+        <QuoteSection
+          title="¿Listo para comenzar?"
+          subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
+                        digital"
+          buttonText="Solicitar cotización"
+        />
         {/* Contact Section */}
         <ContactSection />
       </div>

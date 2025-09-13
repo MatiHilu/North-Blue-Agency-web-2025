@@ -120,7 +120,7 @@ export default function EnhancedContactModal({
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed z-10"
             aria-label="Cerrar"
           >
-            <X size={16} />
+            <X size={16} color="#000" />
           </button>
 
           {!showSuccess ? (

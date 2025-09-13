@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,14 +10,137 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
-import { useState } from "react";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nosotros",
+  description:
+    "Conoce al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
+  keywords: [
+    "agencia de marketing digital",
+    "sobre nosotros",
+    "equipo",
+    "North Blue Agency",
+    "marketing",
+    "desarrollo web",
+    "redes sociales",
+  ],
+  alternates: { canonical: "https://northblueagency.com/nosotros" },
+  authors: [
+    { name: "Abril Lespade" },
+    { name: "Matías Hilú" },
+    { name: "North Blue Agency", url: "https://northblueagency.com" },
+  ],
+  publisher: "North Blue Agency",
+  openGraph: {
+    title: "Nosotros",
+    description:
+      "Conoce al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
+    url: "https://northblueagency.com/nosotros",
+    siteName: "North Blue Agency",
+    type: "website",
+    locale: "es_ES",
+    images: [
+      {
+        url: "https://northblueagency.com/North-Blue-Agency.png",
+        width: 1200,
+        height: 630,
+        alt: "Equipo de North Blue Agency",
+      },
+      {
+        url: "https://northblueagency.com/North-Blue-Agency.svg",
+        alt: "Logo North Blue Agency",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nosotros",
+    description:
+      "Conoce al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
+    images: ["https://northblueagency.com/North-Blue-Agency.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+// JSON-LD schemas exportados para reutilizar/incluir en <head> o en scripts
+export const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "North Blue Agency",
+  description:
+    "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web",
+  url: "https://northblueagency.com",
+  logo: "https://northblueagency.com/North-Blue-Agency.svg",
+  foundingDate: "2019",
+  keywords:
+    "agencia de marketing digital, sobre nosotros, equipo, North Blue Agency",
+  founder: [
+    {
+      "@type": "Person",
+      name: "Abril Lespade",
+    },
+    {
+      "@type": "Person",
+      name: "Matías Hilú",
+    },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "ES",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+54*9-11-3054-5828",
+    contactType: "customer service",
+    email: "info@northblueagency.com",
+  },
+  sameAs: [
+    "https://www.facebook.com/northblueagency",
+    "https://www.instagram.com/northblueagency",
+    "https://www.linkedin.com/company/northblueagency",
+  ],
+} as const;
+
+export const teamSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "North Blue Agency",
+  employee: [
+    {
+      "@type": "Person",
+      name: "Abril Lespade",
+      jobTitle: "Gerenta de Marketing",
+      description:
+        "Lidera la estrategia de redes sociales: contenidos, tono, comunidad y crecimiento.",
+      sameAs: ["https://www.linkedin.com/in/abril-lespade/"],
+    },
+    {
+      "@type": "Person",
+      name: "Matías Hilú",
+      jobTitle: "CEO & Gerente de Desarrollo Web",
+      description:
+        "Encargado del desarrollo web: performance, SEO técnico y optimización de conversión.",
+      sameAs: ["https://www.linkedin.com/in/matias-hilu/"],
+    },
+  ],
+} as const;
 
 const teamMembers = [
   {
     name: "Abril Lespade",
-    role: "Co-founder y líder de Redes Sociales",
+    role: "Gerenta de Marketing",
     image: "/Abirl-Lespade-NorthBlue-Agency.jpg?height=300&width=300",
     bio: "Lidera la estrategia de redes sociales: contenidos, tono, comunidad y crecimiento. Su enfoque se centra en construir relaciones auténticas y duraderas con la audiencia. Al comprender las necesidades y las formas de las redes logra resultados significativos.",
     social: {
@@ -29,7 +150,7 @@ const teamMembers = [
   },
   {
     name: "Matías Hilú",
-    role: "Co-founder y jefe de Desarrollo Web",
+    role: "CEO & Gerente de Desarrollo Web",
     image: "/Matías-Hilú-NorthBlue-Agency.png?height=300&width=300",
     bio: "Encargado del desarrollo web: performance, SEO técnico y optimización de conversión. Su enfoque está en crear sitios web rápidos, seguros y optimizados que no solo atraen tráfico, sino que también convierten visitantes en clientes. Con su experiencia técnica, garantiza que cada proyecto no solo cumpla con los estándares de la industria, sino que también ofrezca una experiencia de usuario excepcional.",
     social: {
@@ -96,85 +217,8 @@ const processSteps = [
 ];
 
 export default function AboutPage() {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "North Blue Agency",
-    description:
-      "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web",
-    url: "https://northblueagency.com",
-    logo: "https://northblueagency.com/North-Blue-Agency.svg",
-    foundingDate: "2019",
-    keywords:
-      "agencia de marketing digital, sobre nosotros, equipo, North Blue Agency",
-    founder: [
-      {
-        "@type": "Person",
-        name: "Abril Lespade",
-      },
-      {
-        "@type": "Person",
-        name: "Matías Hilú",
-      },
-    ],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "ES",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+1-555-123-4567",
-      contactType: "customer service",
-      email: "info@northblueagency.com",
-    },
-    sameAs: [
-      "https://www.facebook.com/northblueagency",
-      "https://www.instagram.com/northblueagency",
-      "https://www.linkedin.com/company/northblueagency",
-    ],
-  };
-
-  const teamSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "North Blue Agency",
-    employee: teamMembers.map((member) => ({
-      "@type": "Person",
-      name: member.name,
-      jobTitle: member.role,
-      description: member.bio,
-      ...(member.social?.linkedin ? { sameAs: [member.social.linkedin] } : {}),
-    })),
-  };
-
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
   return (
     <>
-      <SEOHead
-        title="Nosotros - North Blue Agency"
-        description="Conoce al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web."
-        canonical="/nosotros"
-        keywords={[
-          "agencia de marketing digital",
-          "sobre nosotros",
-          "equipo",
-          "North Blue Agency",
-        ]}
-      />
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
-      />
-
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
@@ -229,12 +273,12 @@ export default function AboutPage() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={200}>
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
+                <div className="relative flex justify-center">
+                  <div className="w-[350px] absolute translate-x-[58%] inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
                   <img
-                    src="/NorthBlue-Agency.png?height=400&width=600"
+                    src="/NorthBlue-Agency.png?height=400&width=400"
                     alt="Equipo North Blue Agency"
-                    className="relative rounded-3xl shadow-2xl w-full"
+                    className="relative rounded-3xl shadow-2xl w-[320px]"
                   />
                 </div>
               </AnimatedSection>

@@ -1,6 +1,36 @@
-"use client";
+// Página server component (no 'use client'): SEO manejado con Metadata API
+import type { Metadata } from "next";
 
-import SEOHead from "@/components/seo-head";
+export const metadata: Metadata = {
+  title: "Política de Privacidad",
+  description:
+    "Uso de datos para Meta Ads, Google Ads, LinkedIn Ads y Email Marketing. No compartimos datos con terceros fuera de estas plataformas.",
+  alternates: { canonical: "/politica-privacidad" },
+  keywords: [
+    "política de privacidad",
+    "privacy policy",
+    "protección de datos",
+    "cookies",
+    "Meta Ads",
+    "Google Ads",
+    "LinkedIn Ads",
+    "email marketing",
+  ],
+  publisher: "North Blue Agency",
+  openGraph: {
+    title: "Política de Privacidad | North Blue Agency",
+    description:
+      "Uso de datos para Meta Ads, Google Ads, LinkedIn Ads y Email Marketing. No compartimos datos con terceros fuera de estas plataformas.",
+    url: "https://northblueagency.com/politica-privacidad",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidad | North Blue Agency",
+    description:
+      "Uso de datos para Meta Ads, Google Ads, LinkedIn Ads y Email Marketing. No compartimos datos con terceros fuera de estas plataformas.",
+  },
+};
 
 export default function PoliticaPrivacidadPage() {
   const updated = new Date("2025-09-04");
@@ -9,24 +39,10 @@ export default function PoliticaPrivacidadPage() {
     month: "long",
     day: "numeric",
   });
-
+  // (No agregar llaves extra aquí)
   return (
     <div className="min-h-screen bg-white">
-      <SEOHead
-        title="Política de Privacidad"
-        description="Uso de datos para Meta Ads, Google Ads, LinkedIn Ads y Email Marketing. No compartimos datos con terceros fuera de estas plataformas."
-        canonical="/politica-privacidad"
-        keywords={[
-          "política de privacidad",
-          "privacy policy",
-          "protección de datos",
-          "cookies",
-          "Meta Ads",
-          "Google Ads",
-          "LinkedIn Ads",
-          "email marketing",
-        ]}
-      />
+      {/* Metadata provista por generateMetadata */}
 
       {/* Hero */}
       <section className="relative overflow-hidden">

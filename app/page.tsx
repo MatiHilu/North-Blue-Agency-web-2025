@@ -1,9 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -21,63 +17,44 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
+import HeroButtonModal from "@/components/home-hero-button";
+import HeroButtonNext from "@/components/home-hero-next-section-button";
 import ServiceCard from "@/components/service-card";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
+
+export const metadata: Metadata = {
+  title: {
+    default: "North Blue Agency - Marketing Digital Profesional",
+    template: "%s | North Blue Agency",
+  },
+  description:
+    "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+  alternates: { canonical: "/" },
+  keywords: [
+    "agencia de marketing digital",
+    "marketing digital",
+    "North Blue Agency",
+  ],
+  openGraph: {
+    title: "North Blue Agency - Marketing Digital Profesional",
+    description:
+      "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+    url: BASE_URL,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "North Blue Agency - Marketing Digital Profesional",
+    description:
+      "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+  },
+  publisher: "North Blue Agency",
+};
 
 export default function HomePage() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
-  const homeSchemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Inicio | North Blue Agency",
-      url: BASE_URL,
-      description:
-        "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
-      keywords:
-        "agencia de marketing digital, marketing digital profesional, North Blue Agency",
-      isPartOf: { "@type": "WebSite", url: BASE_URL },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-        ],
-      },
-    },
-  ];
-
   return (
     <div className="min-h-screen">
-      <SEOHead
-        title="North Blue Agency - Marketing Digital Profesional"
-        description="Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital."
-        canonical="/"
-        syncWithH1={false}
-        keywords={[
-          "agencia de marketing digital",
-          "marketing digital profesional",
-          "North Blue Agency",
-        ]}
-      />
-      {homeSchemas.map((schema, i) => (
-        <Script
-          key={i}
-          id={`schema-home-${i}`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      {/* Contact Modal */}
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-        {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4081]/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00b2ff]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -86,7 +63,6 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
-            {/* <AnimatedSection> */}
             <h1
               className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
               style={{ lineHeight: "1.2" }}
@@ -96,26 +72,13 @@ export default function HomePage() {
                 presencia digital
               </span>
             </h1>
-            {/* </AnimatedSection> */}
-
-            {/*  <AnimatedSection delay={300}> */}
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Somos North Blue Agency, especialistas en marketing digital que
               impulsan marcas hacia el éxito con estrategias innovadoras y
               resultados medibles.
             </p>
-            {/* </AnimatedSection> */}
-
-            {/* <AnimatedSection delay={600}> */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4 w-[250px]"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                Comenzar proyecto
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
+              <HeroButtonModal />
               <Link href="/portfolio">
                 <Button
                   size="lg"
@@ -126,23 +89,10 @@ export default function HomePage() {
                 </Button>
               </Link>
             </div>
-            {/* </AnimatedSection> */}
           </div>
         </div>
 
-        {/* Scroll Indicator: make it clickable & smooth-scroll to #services */}
-        <div
-          className="absolute bottom-8 transform -translate-x-1/2 animate-bounce cursor-pointer"
-          onClick={() =>
-            document
-              .getElementById("services")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
+        <HeroButtonNext />
       </section>
 
       {/* Services Section */}

@@ -1,17 +1,13 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import QuoteModal from "@/components/quote-modal";
-import { useState } from "react";
-import Script from "next/script";
+import QuoteSection from "@/components/quote-section";
 import { BASE_URL } from "@/lib/jsonld";
-import SEOHead from "@/components/seo-head";
+// SEOHead removido, usamos Metadata API
+import type { Metadata } from "next";
 
 const serviceData = {
   title: "Analytics - Reportes Web y Redes Sociales",
@@ -77,59 +73,46 @@ const faqs = [
       "Sí, integramos datos de múltiples fuentes como redes sociales, email marketing, CRM, plataformas de ecommerce y herramientas de publicidad para una vista unificada.",
   },
 ];
+export const metadata: Metadata = {
+  title: {
+    default: `${serviceData.title}`,
+    template: "%s | North Blue Agency",
+  },
+  description: serviceData.description,
+  alternates: { canonical: `${BASE_URL}/servicios/analytics` },
+  keywords: [
+    "analytics",
+    "reportes web",
+    "analítica de redes sociales",
+    "google analytics 4",
+    "google tag manager",
+    "reportes mensuales",
+    "north blue agency",
+  ],
+  openGraph: {
+    title: `${serviceData.title} - North Blue Agency`,
+    description: serviceData.description,
+    url: `${BASE_URL}/servicios/analytics`,
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/images/og/servicios-analytics.png`,
+        alt: `${serviceData.title} - North Blue Agency`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${serviceData.title} - North Blue Agency`,
+    description: serviceData.description,
+    images: [`${BASE_URL}/images/og/servicios-analytics.png`],
+  },
+  publisher: "North Blue Agency",
+};
 
 export default function AnalyticsPage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: serviceData.title,
-    description: serviceData.description,
-    keywords: "analytics, reportes web, analítica de redes sociales",
-    areaServed: "ES",
-    provider: { "@type": "Organization", name: "North Blue Agency" },
-    serviceType: "Analytics",
-    url: `${BASE_URL}/servicios/analytics`,
-    offers: { "@type": "Offer", priceCurrency: "USD" },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Servicios",
-          item: `${BASE_URL}/servicios`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: serviceData.title,
-          item: `${BASE_URL}/servicios/analytics`,
-        },
-      ],
-    },
-  };
-
   return (
     <>
-      <SEOHead
-        title="Analytics y Reportes - North Blue Agency"
-        description={serviceData.subtitle}
-        canonical="/servicios/analytics"
-        keywords={["analytics", "reportes web", "analítica de redes sociales"]}
-      />
-      <Script
-        id="schema-service-analytics"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-      />
-
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
@@ -274,28 +257,12 @@ export default function AnalyticsPage() {
         />
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
-          <div className="container mx-auto px-4 text-center">
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿Listo para tomar decisiones inteligentes?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Contáctanos hoy y descubre cómo los datos pueden transformar tu
-                estrategia digital
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="btn-white-hover bg-white text-[#00b2ff] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                  onClick={() => setIsQuoteModalOpen(true)}
-                >
-                  Solicitar cotización
-                </Button>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
+        <QuoteSection
+          title="¿Listo para tomar decisiones inteligentes?"
+          subtitle="Contáctanos hoy y descubre cómo los datos pueden transformar tu
+                estrategia digital"
+          buttonText="Solicitar cotización"
+        />
 
         {/* Contact Section */}
         <ContactSection />
