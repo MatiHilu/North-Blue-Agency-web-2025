@@ -38,6 +38,19 @@ También actualiza `app/robots.ts`:
 const baseUrl = "https://tu-dominio.com"; // Cambia esto por tu dominio real
 ```
 
+### 1.1 Locales/prefijos de idioma (para evitar URLs inexistentes)
+
+Ahora el sitemap usa locales configurables desde `lib/sitemap-config.ts`.
+
+- Si tu sitio NO usa prefijos de idioma, deja `locales` vacío (por defecto) o no definas `NEXT_PUBLIC_SITE_LOCALES`.
+- Si usas prefijos, define la variable de entorno `NEXT_PUBLIC_SITE_LOCALES` con una lista separada por coma. Ejemplo:
+
+```
+NEXT_PUBLIC_SITE_LOCALES=es,en
+```
+
+Esto generará URLs con `/{locale}` solo para esos locales. Si está vacío, se generan URLs sin prefijo.
+
 ### 2. Agregar contenido dinámico
 
 Edita `lib/data.ts` para conectar con tu fuente de datos real:

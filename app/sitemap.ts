@@ -1,9 +1,11 @@
 import { MetadataRoute } from "next";
 import { getAllBlogPosts, getAllPortfolioProjects } from "@/lib/data";
 import { sitemapConfig, getPageConfig } from "@/lib/sitemap-config";
+import fs from "fs";
+import path from "path";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { baseUrl } = sitemapConfig;
+  const { baseUrl, locales } = sitemapConfig;
 
   // Rutas estáticas principales
   const staticRoutes = [
@@ -32,15 +34,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await getAllBlogPosts();
   const portfolioProjects = await getAllPortfolioProjects();
 
-  // Locales soportados con prefijos de URL
-  const locales = ["arg", "es", "us", "uk"];
-  // Crear entradas del sitemap para rutas estáticas y de servicios en cada idioma
+  // Helper: verifica si existe un page.tsx real para la ruta
+  const appDir = path.join(process.cwd(), "app");
+  const routeExists = (route: string) => {
+    // '' -> app/page.tsx
+    if (route === "" || route === "/") {
+      return fs.existsSync(path.join(appDir, "page.tsx"));
+    }
+    const segments = route.split("/").filter(Boolean); // quita vacíos
+    const pagePath = path.join(appDir, ...segments, "page.tsx");
+    return fs.existsSync(pagePath);
+  };
+
+  // Determinar si usamos prefijos de locales o no
+  const activeLocales =
+    Array.isArray(locales) && locales.length > 0 ? locales : [""];
+
+  // Crear entradas del sitemap para rutas estáticas y de servicios en cada idioma (o sin prefijo)
   const staticRoutesAll = [...staticRoutes, ...serviceRoutes];
-  const localizedStaticEntries = locales.flatMap((locale) =>
-    staticRoutesAll.map((route) => {
+  const existingRoutes = staticRoutesAll.filter(routeExists);
+  const localizedStaticEntries = activeLocales.flatMap((locale) =>
+    existingRoutes.map((route) => {
       const config = getPageConfig(route);
+      const prefix = locale ? `/${locale}` : "";
       return {
-        url: `${baseUrl}/${locale}${route}`,
+        url: `${baseUrl}${prefix}${route}`,
         lastModified: new Date(),
         changeFrequency: config.changeFrequency as
           | "always"
@@ -56,23 +74,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // Crear entradas del sitemap para blog posts en cada idioma
-  const localizedBlogEntries = locales.flatMap((locale) =>
-    blogPosts.map((post) => ({
-      url: `${baseUrl}/${locale}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt || post.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }))
+  const localizedBlogEntries = activeLocales.flatMap((locale) =>
+    blogPosts.map((post) => {
+      const prefix = locale ? `/${locale}` : "";
+      return {
+        url: `${baseUrl}${prefix}/blog/${post.slug}`,
+        lastModified: new Date(post.updatedAt || post.publishedAt),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      };
+    })
   );
 
   // Crear entradas del sitemap para proyectos de portfolio en cada idioma
-  const localizedPortfolioEntries = locales.flatMap((locale) =>
-    portfolioProjects.map((project) => ({
-      url: `${baseUrl}/${locale}/portfolio/${project.slug}`,
-      lastModified: new Date(project.updatedAt || project.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }))
+  const localizedPortfolioEntries = activeLocales.flatMap((locale) =>
+    portfolioProjects.map((project) => {
+      const prefix = locale ? `/${locale}` : "";
+      return {
+        url: `${baseUrl}${prefix}/portfolio/${project.slug}`,
+        lastModified: new Date(project.updatedAt || project.publishedAt),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      };
+    })
   );
 
   // Combinar todas las entradas localizadas

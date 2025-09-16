@@ -8,6 +8,14 @@ export const sitemapConfig = {
   // URL base de tu sitio web - CAMBIAR POR TU DOMINIO REAL
   baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://northblueagency.com",
 
+  // Locales soportados con prefijos de URL. Si NO usas prefijos (/es, /en, etc.),
+  // déjalo vacío y el sitemap generará URLs sin prefijo.
+  // Puedes configurarlo por ENV: NEXT_PUBLIC_SITE_LOCALES="es,en" -> ["es","en"]
+  locales: (process.env.NEXT_PUBLIC_SITE_LOCALES || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
+
   // Configuración por defecto para diferentes tipos de páginas
   defaults: {
     // Páginas principales (home, about, contact, etc.)
