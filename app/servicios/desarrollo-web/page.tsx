@@ -15,7 +15,7 @@ const serviceData = {
   description:
     "Creamos sitios modernos, rápidos y orientados a la conversión. Aplicamos mejores prácticas de UX/UI y SEO técnico para maximizar resultados.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde: USD 1200",
+  price: "Desde: USD 1500",
   duration: "6–12 semanas",
   features: [
     "Diseño responsivo (mobile-first)",

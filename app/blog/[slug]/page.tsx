@@ -374,7 +374,10 @@ export default async function BlogPostPage({
                   </div>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                <h1
+                  className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+                  style={{ lineHeight: 1.2 }}
+                >
                   {post.title}
                 </h1>
                 <p className="text-xl text-white/90 mb-8">{post.excerpt}</p>
