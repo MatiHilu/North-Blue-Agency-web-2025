@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 
 import LayoutShell from "@/components/layout-shell";
+import WhatsAppFloatingButton from "@/components/whatsapp-floating-button";
 import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -139,6 +140,7 @@ export default function RootLayout({
         {/* <!-- End Google Tag Manager (noscript) --> */}
         {/* <CustomCursor /> */}
         <LayoutShell>{children}</LayoutShell>
+        <WhatsAppFloatingButton />
       </body>
     </html>
   );
