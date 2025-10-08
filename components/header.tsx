@@ -193,6 +193,7 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Image
                 src="/North-Blue-Agency-Light.svg"
+                title="North Blue Agency logo"
                 alt="North Blue Agency"
                 width={180}
                 height={40}
@@ -243,6 +244,7 @@ export default function Header() {
                       ? "/North-Blue-Agency.svg"
                       : "/North-Blue-Agency-Light.svg"
                   }
+                  title="North Blue Agency logo"
                   alt="North Blue Agency"
                   width={180}
                   height={40}
@@ -295,9 +297,9 @@ export default function Header() {
                             {service.icon}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors mt-1">
+                            <p className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors mt-1">
                               {service.title}
-                            </h3>
+                            </p>
                             <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
                               {service.description}
                             </p>
@@ -553,7 +555,7 @@ export default function Header() {
                   </Link>
                   {/* Language Selector Mobile */}
                   {/* <div className="mt-8 text-center">
-                    <h3 className="text-xl font-semibold mb-2">Idioma</h3>
+                    <p className="text-xl font-semibold mb-2">Idioma</p>
                     <div className="flex justify-center space-x-4">
                       {supportedLocales.map((loc) => (
                         <Link

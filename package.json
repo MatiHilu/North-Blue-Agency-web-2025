@@ -53,6 +53,7 @@
     "nodemailer": "^7.0.5",
     "react": "^19",
     "react-country-flag": "^3.1.0",
+    "react-countup": "^6.5.3",
     "react-day-picker": "8.10.1",
     "react-dom": "^19",
     "react-hook-form": "^7.54.1",

@@ -1,102 +1,104 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import { BASE_URL } from "@/lib/jsonld";
 import QuoteSection from "@/components/quote-section";
-// Migrado a Metadata API
+import { BASE_URL } from "@/lib/jsonld";
+// Eliminado SEOHead, usamos Metadata API
 import type { Metadata } from "next";
 
 const serviceData = {
-  title: "Gestión de Redes Sociales",
-  subtitle: "Construye una comunidad sólida y aumenta tu engagement",
+  title: "Marketing Digital Integral",
+  subtitle: "Estrategias completas para maximizar tu ROI",
   description:
-    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento. Creamos estrategias personalizadas que conectan con tu audiencia y generan resultados medibles.",
+    "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $800/mes",
-  duration: "3-6 meses",
+  price: "Desde $2000/mes",
+  duration: "6-12 meses",
   features: [
-    "Estrategia de contenido personalizada",
-    "Creación de contenido visual y copywriting",
-    "Programación y publicación automatizada",
-    "Community management profesional",
-    "Gestión de comentarios y mensajes",
-    "Campañas publicitarias segmentadas",
-    "Análisis de métricas y KPIs",
-    "Reportes mensuales detallados",
+    "Estrategia multicanal personalizada",
+    "Analisis de competencia",
+    "Revisión y mejora de sitio web",
+    "Mantenimiento y soporte",
+    "Gestión de redes sociales",
+    "SEO y posicionamiento orgánico",
+    "Campañas SEM en Google Ads",
+    "Email marketing",
+    "Marketing de contenidos",
+    "Retargeting y remarketing",
+    "Analytics y seguimiento avanzado",
+    "Optimización continua",
   ],
   process: [
     {
-      title: "Análisis inicial",
-      description: "Evaluamos tu presencia actual y definimos objetivos",
+      title: "Auditoría",
+      description: "Analizamos tu situación digital actual",
     },
     {
       title: "Estrategia",
-      description: "Creamos un plan de contenido personalizado",
+      description: "Diseñamos un plan integral personalizado",
     },
     {
-      title: "Implementación",
-      description: "Ejecutamos la estrategia con contenido de calidad",
+      title: "Ejecución",
+      description: "Implementamos todas las tácticas planificadas",
     },
     {
       title: "Optimización",
-      description: "Ajustamos basándonos en métricas y resultados",
+      description: "Mejoramos continuamente los resultados",
     },
   ],
   benefits: [
-    "Aumento del 300% en engagement promedio",
-    "Crecimiento orgánico de seguidores",
-    "Mayor reconocimiento de marca",
-    "Generación de leads cualificados",
+    "Aumento en leads cualificados",
+    "Mayor visibilidad online",
+    "Crecimiento sostenible",
   ],
 };
 
 const faqs = [
   {
-    question: "¿En qué redes sociales se enfocan?",
+    question: "¿Cuánto tiempo toma ver resultados?",
     answer:
-      "Trabajamos principalmente en Instagram, Facebook, LinkedIn y TikTok. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
+      "Los primeros resultados suelen verse entre 30-60 días, pero el marketing digital es un proceso continuo. Los mejores resultados se obtienen con estrategias a largo plazo de 6-12 meses.",
   },
   {
-    question: "¿Crean todo el contenido visual?",
+    question: "¿Trabajan con presupuestos publicitarios específicos?",
     answer:
-      "Sí, nuestro equipo creativo desarrolla todo el contenido visual incluyendo posts, stories, videos cortos y carruseles, manteniendo la coherencia con tu identidad de marca.",
+      "Sí, adaptamos las estrategias a tu presupuesto disponible. Recomendamos un mínimo de $500 mensuales para publicidad, pero podemos trabajar con presupuestos mayores para mejores resultados.",
   },
   {
-    question: "¿Responden a comentarios y mensajes?",
+    question: "¿Qué incluye el seguimiento y analytics?",
     answer:
-      "Absolutamente. Nuestro community management incluye respuesta a comentarios, mensajes directos y gestión de la comunidad en horarios establecidos.",
+      "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
   },
 ];
-
 export const metadata: Metadata = {
   title: {
     default: `${serviceData.title}`,
     template: "%s | North Blue Agency",
   },
-  description:
-    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento.",
-  alternates: { canonical: `${BASE_URL}/servicios/redes-sociales` },
+  description: serviceData.description,
+  alternates: { canonical: `${BASE_URL}/servicios/marketing-digital` },
   keywords: [
-    "gestión de redes sociales",
-    "community management",
-    "marketing en redes sociales",
-    "contenido para redes sociales",
-    "estrategia de redes sociales",
-    "publicidad en redes",
+    "marketing digital",
+    "estrategia multicanal",
+    "SEM",
+    "SEO",
+    "publicidad digital",
+    "email marketing",
+    "retargeting",
+    "analytics",
     "North Blue Agency",
   ],
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/redes-sociales`,
+    url: `${BASE_URL}/servicios/marketing-digital`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-redes-sociales.png`,
+        url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -105,12 +107,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-redes-sociales.png`],
+    images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
   },
   publisher: "North Blue Agency",
 };
-
-export default function RedesSocialesPage() {
+export default function MarketingDigitalPage() {
   return (
     <>
       <div className="min-h-screen">
@@ -125,58 +126,41 @@ export default function RedesSocialesPage() {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <AnimatedSection>
-                <div>
-                  <Link
-                    href="/servicios"
-                    className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
-                  >
-                    <ArrowLeft size={20} className="mr-2" />
-                    Volver a servicios
-                  </Link>
+            <AnimatedSection>
+              <Link
+                href="/servicios"
+                className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
+              >
+                <ArrowLeft size={20} className="mr-2" />
+                Volver a servicios
+              </Link>
 
-                  <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                    {serviceData.title}
-                  </h1>
-                  <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
-                    {serviceData.subtitle}
-                  </p>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                {serviceData.title}
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
+                {serviceData.subtitle}
+              </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
-                      <div className="flex items-center space-x-2">
-                        <Clock size={20} />
-                        <span className="font-semibold">
-                          {serviceData.duration}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
-                      <div className="flex items-center space-x-2">
-                        <TrendingUp size={20} />
-                        <span className="font-semibold">
-                          {serviceData.price}
-                        </span>
-                      </div>
-                    </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                  <div className="flex items-center space-x-2">
+                    <Clock size={20} />
+                    <span className="font-semibold">
+                      {serviceData.duration}
+                    </span>
                   </div>
                 </div>
-              </AnimatedSection>
-              <AnimatedSection animation="fadeInRight">
-                <Image
-                  src="/gestion-redes-sociales.png"
-                  title={serviceData.title}
-                  alt={serviceData.title}
-                  width={400}
-                  height={400}
-                  className="mx-auto"
-                />
-              </AnimatedSection>
-            </div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                  <div className="flex items-center space-x-2">
+                    <TrendingUp size={20} />
+                    <span className="font-semibold">{serviceData.price}</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </section>
-
         {/* Description Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -230,7 +214,6 @@ export default function RedesSocialesPage() {
             </div>
           </div>
         </section>
-
         {/* Process Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -255,7 +238,7 @@ export default function RedesSocialesPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm max-w-[200px] mx-auto">
+                      <p className="text-gray-600 max-w-[200px] mx-auto text-sm">
                         {step.description}
                       </p>
                     </CardContent>
@@ -265,21 +248,18 @@ export default function RedesSocialesPage() {
             </div>
           </div>
         </section>
-
         {/* FAQ Section */}
         <FAQSection
           title={`Preguntas sobre ${serviceData.title}`}
           faqs={faqs}
         />
-
-        {/* CTA Section */}
+        E{/* CTA Section */}
         <QuoteSection
           title="¿Listo para comenzar?"
           subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital"
+                        digital"
           buttonText="Solicitar cotización"
         />
-
         {/* Contact Section */}
         <ContactSection />
       </div>

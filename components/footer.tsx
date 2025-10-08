@@ -18,6 +18,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Image
               src="/North-Blue-Agency-Light.svg"
+              title="North Blue Agency logo"
               alt="North Blue Agency"
               width={200}
               height={45}

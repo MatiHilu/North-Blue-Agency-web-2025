@@ -139,16 +139,6 @@ export const teamSchema = {
 
 const teamMembers = [
   {
-    name: "Abril Lespade",
-    role: "Gerenta de Marketing",
-    image: "/Abirl-Lespade-NorthBlue-Agency.jpg?height=300&width=300",
-    bio: "Lidera la estrategia de redes sociales: contenidos, tono, comunidad y crecimiento. Su enfoque se centra en construir relaciones auténticas y duraderas con la audiencia. Al comprender las necesidades y las formas de las redes logra resultados significativos.",
-    social: {
-      // TODO: Actualizar URL de LinkedIn si corresponde
-      linkedin: "https://www.linkedin.com/in/abril-lespade/",
-    },
-  },
-  {
     name: "Matías Hilú",
     role: "CEO & Gerente de Desarrollo Web",
     image: "/Matías-Hilú-NorthBlue-Agency.png?height=300&width=300",
@@ -156,6 +146,16 @@ const teamMembers = [
     social: {
       // TODO: Actualizar URL de LinkedIn si corresponde
       linkedin: "https://www.linkedin.com/in/matias-hilu/",
+    },
+  },
+  {
+    name: "Abril Lespade",
+    role: "Gerenta de Marketing",
+    image: "/Abirl-Lespade-NorthBlue-Agency.jpg?height=300&width=300",
+    bio: "Lidera la estrategia de redes sociales: contenidos, tono, comunidad y crecimiento. Su enfoque se centra en construir relaciones auténticas y duraderas con la audiencia. Al comprender las necesidades y las formas de las redes logra resultados significativos.",
+    social: {
+      // TODO: Actualizar URL de LinkedIn si corresponde
+      linkedin: "https://www.linkedin.com/in/abril-lespade/",
     },
   },
 ];
@@ -274,7 +274,7 @@ export default function AboutPage() {
 
               <AnimatedSection animation="fadeInRight" delay={200}>
                 <div className="relative flex justify-center">
-                  <div className="w-[350px] absolute translate-x-[58%] inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
+                  <div className="w-[350px] absolute translate-x-[80%] inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
                   <img
                     src="/NorthBlue-Agency.png?height=400&width=400"
                     alt="Equipo North Blue Agency"
@@ -318,7 +318,7 @@ export default function AboutPage() {
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1640px] mx-auto">
               {values.map((value, index) => {
                 const Icon = value.icon as React.ElementType;
                 return (

@@ -97,7 +97,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 pt-[20vw] md:pt-4 transition-all duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 pt-[20vw] md:pt-4 transition-all duration-300 text-black ${
         isAnimating
           ? "bg-black/50 backdrop-blur-sm"
           : "bg-black/0 backdrop-blur-none"

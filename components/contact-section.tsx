@@ -55,7 +55,7 @@ export default function ContactSection() {
       >
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
               ¿Listo para{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-xy">
                 transformar
@@ -68,7 +68,7 @@ export default function ContactSection() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto text-black">
             <AnimatedSection animation="fadeInLeft">
               <Card className="h-full border-0 shadow-xl">
                 <CardContent className="p-8">

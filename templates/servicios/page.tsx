@@ -15,7 +15,6 @@ import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import { createCanonicalUrl, normalizeCanonicalPath } from "@/lib/canonical";
 import { BASE_URL } from "@/lib/jsonld";
 // Migrado a Metadata API
 import type { Metadata } from "next";
@@ -144,121 +143,101 @@ const services = [
   },
 ];
 
-export const createServicesMetadata = (
-  canonicalPath: string = "/servicios"
-): Metadata => {
-  const normalizedCanonical = normalizeCanonicalPath(canonicalPath);
-  const canonicalUrl = createCanonicalUrl(normalizedCanonical);
-
-  return {
-    title: {
-      default: "Nuestros Servicios - Soluciones de marketing digital",
-      template: "%s | North Blue Agency",
-    },
+export const metadata: Metadata = {
+  title: {
+    default: "Nuestros Servicios - Soluciones de marketing digital",
+    template: "%s | North Blue Agency",
+  },
+  description:
+    "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+  alternates: { canonical: "/servicios" },
+  keywords: [
+    "servicios marketing digital",
+    "gestión redes sociales",
+    "branding",
+    "desarrollo web",
+    "SEO",
+    "analytics",
+    "North Blue Agency",
+  ],
+  openGraph: {
+    title: "Servicios - North Blue Agency",
     description:
       "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-    alternates: { canonical: normalizedCanonical },
-    keywords: [
-      "servicios marketing digital",
-      "gestión redes sociales",
-      "branding",
-      "desarrollo web",
-      "SEO",
-      "analytics",
-      "North Blue Agency",
+    url: `${BASE_URL}/servicios`,
+    siteName: "North Blue Agency",
+    type: "website",
+    locale: "es_ES",
+    images: [
+      {
+        url: `${BASE_URL}/og-images/servicios.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Servicios de North Blue Agency",
+      },
     ],
-    openGraph: {
-      title: "Servicios - North Blue Agency",
-      description:
-        "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-      url: canonicalUrl,
-      siteName: "North Blue Agency",
-      type: "website",
-      locale: "es_ES",
-      images: [
-        {
-          url: `${BASE_URL}/og-images/servicios.jpg`,
-          width: 1200,
-          height: 630,
-          alt: "Servicios de North Blue Agency",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Servicios - North Blue Agency",
-      description:
-        "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-    },
-    publisher: "North Blue Agency",
-    authors: [{ name: "North Blue Agency", url: BASE_URL }],
-  };
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios - North Blue Agency",
+    description:
+      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+  },
+  publisher: "North Blue Agency",
+  authors: [{ name: "North Blue Agency", url: BASE_URL }],
 };
-
-export const metadata = createServicesMetadata();
 
 /**
  * JSON-LD structured data matching this "Servicios" page.
  * Exported so it can be injected into the page (<script type="application/ld+json">) if needed.
  */
-export const createServicesSchema = (canonicalPath: string = "/servicios") => {
-  const normalizedCanonical = normalizeCanonicalPath(canonicalPath);
-  const pageUrl = createCanonicalUrl(normalizedCanonical);
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+export const servicesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "North Blue Agency",
+      url: BASE_URL,
+      sameAs: [BASE_URL],
+      description:
+        "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web.",
+    },
+    {
+      "@type": "WebPage",
+      name: "Servicios - North Blue Agency",
+      url: `${BASE_URL}/servicios`,
+      description:
+        "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+      inLanguage: "es",
+      isPartOf: {
+        "@type": "WebSite",
+        url: BASE_URL,
+        name: "North Blue Agency",
+      },
+    },
+    // Services mapped from the page's `services` array
+    ...services.map((s) => ({
+      "@type": "Service",
+      name: s.title,
+      serviceType: s.title,
+      description: s.description,
+      url: `${BASE_URL}/servicios/${s.id}`,
+      provider: {
         "@type": "Organization",
         name: "North Blue Agency",
         url: BASE_URL,
-        sameAs: [BASE_URL],
-        description:
-          "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web.",
       },
-      {
-        "@type": "WebPage",
-        name: "Servicios - North Blue Agency",
-        url: pageUrl,
-        description:
-          "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-        inLanguage: "es",
-        isPartOf: {
-          "@type": "WebSite",
-          url: BASE_URL,
-          name: "North Blue Agency",
-        },
-      },
-      // Services mapped from the page's `services` array
-      ...services.map((s) => {
-        const serviceUrl = `${pageUrl}/${s.id}`;
-
-        return {
-          "@type": "Service",
-          name: s.title,
-          serviceType: s.title,
-          description: s.description,
-          url: serviceUrl,
-          provider: {
-            "@type": "Organization",
-            name: "North Blue Agency",
-            url: BASE_URL,
-          },
-          offers: s.price
-            ? {
-                "@type": "Offer",
-                price: s.price,
-                priceCurrency: "USD",
-                url: serviceUrl,
-              }
-            : undefined,
-        };
-      }),
-    ],
-  } as const;
-};
-
-export const servicesSchema = createServicesSchema();
+      offers: s.price
+        ? {
+            "@type": "Offer",
+            price: s.price,
+            priceCurrency: "USD",
+            url: `${BASE_URL}/servicios/${s.id}`,
+          }
+        : undefined,
+    })),
+  ],
+} as const;
 
 export default function ServicesPage() {
   return (

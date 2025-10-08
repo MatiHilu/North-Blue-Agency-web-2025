@@ -193,6 +193,7 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Image
                 src="/North-Blue-Agency-Light.svg"
+                title="North Blue Agency logo"
                 alt="North Blue Agency"
                 width={180}
                 height={40}
@@ -243,6 +244,7 @@ export default function Header() {
                       ? "/North-Blue-Agency.svg"
                       : "/North-Blue-Agency-Light.svg"
                   }
+                  title="North Blue Agency logo"
                   alt="North Blue Agency"
                   width={180}
                   height={40}
