@@ -317,9 +317,9 @@ export default function ProjectDetailPage() {
     // Diseño V2 (sin <Script> de schema; Metadata API como en Analytics)
     return (
       <>
-        <div className="bg-gray-900 text-white">
+        <main className="bg-gray-900 text-white">
           {/* Hero */}
-          <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-black opacity-90"></div>
             <div className="absolute top-0 left-0 w-full h-full bg-grid-white/[0.05]"></div>
 
@@ -369,9 +369,9 @@ export default function ProjectDetailPage() {
                 </div>
               </AnimatedSection>
             </div>
-          </header>
+          </section>
 
-          <main className="bg-white text-gray-800">
+          <div className="bg-white text-gray-800">
             <div className="container mx-auto px-4 space-y-24 pb-24">
               {/* Quién es el cliente */}
               <section className="py-16 sm:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -538,7 +538,7 @@ export default function ProjectDetailPage() {
                       {project.conclusion!.text}
                     </p>
                     {project.conclusion!.ongoing && (
-                      <div className="mx-auto lg:mx-0 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base sm:text-lg font-semibold text-white shadow-lg backdrop-blur">
+                      <div className="mx-auto lg:mx-0 inline-flex items-center gap-3 rounded-md lg:rounded-full border border-white/30 bg-white/20 px-2 lg:px-6 py-3 text-base sm:text-lg font-semibold text-white shadow-lg backdrop-blur">
                         <span className="inline-flex h-3 w-3 rounded-full bg-emerald-300 animate-pulse" />
                         Hasta hoy, siguen confiando en nosotros para el soporte
                         y la evolución de su plataforma.
@@ -571,7 +571,7 @@ export default function ProjectDetailPage() {
                 </div>
               </section>
             </div>
-          </main>
+          </div>
 
           {/* CTA Section */}
           <QuoteSection
@@ -582,7 +582,7 @@ export default function ProjectDetailPage() {
 
           {/* Contact Section */}
           <ContactSection />
-        </div>
+        </main>
       </>
     );
   }
