@@ -188,7 +188,7 @@ export default async function BlogPage({
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
                 Insights, tendencias y guías prácticas sobre marketing digital,
-                SEO y desarrollo web
+                Posicionamiento en buscadores, desarrollo web y redes sociales.
               </p>
             </AnimatedSection>
           </div>

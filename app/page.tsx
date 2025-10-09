@@ -181,7 +181,7 @@ export default function HomePage() {
 
             <AnimatedSection delay={100}>
               <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-bold">98%</div>
+                <div className="text-4xl md:text-5xl font-bold">100%</div>
                 <div className="text-lg opacity-90">Clientes satisfechos</div>
               </div>
             </AnimatedSection>
