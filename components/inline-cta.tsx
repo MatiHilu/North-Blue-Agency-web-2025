@@ -43,8 +43,8 @@ export default function InlineCTA({
         centered ? "mx-auto" : ""
       }`}
     >
-      <div className="flex items-center justify-between gap-6">
-        <div className="flex items-center gap-4 flex-1">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="flex flex-col lg:flex-row  lg:items-center gap-4 flex-1">
           <div className="shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-blue-500 flex items-center justify-center shadow-sm">
             <Zap className="w-5 h-5 text-white" />
           </div>
