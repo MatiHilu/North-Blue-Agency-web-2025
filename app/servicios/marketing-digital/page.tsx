@@ -9,6 +9,16 @@ import { BASE_URL } from "@/lib/jsonld";
 // Eliminado SEOHead, usamos Metadata API
 import type { Metadata } from "next";
 
+function normalizeLocation(value?: string) {
+  if (!value) return undefined;
+  const spaced = value.replace(/-/g, " ");
+  return spaced
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 const serviceData = {
   title: "Marketing Digital Integral",
   subtitle: "Estrategias completas para maximizar tu ROI",
@@ -73,45 +83,70 @@ const faqs = [
       "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
   },
 ];
-export const metadata: Metadata = {
-  title: {
-    default: `${serviceData.title}`,
-    template: "%s | North Blue Agency",
-  },
-  description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/marketing-digital` },
-  keywords: [
-    "marketing digital",
-    "estrategia multicanal",
-    "SEM",
-    "SEO",
-    "publicidad digital",
-    "email marketing",
-    "retargeting",
-    "analytics",
-    "North Blue Agency",
-  ],
-  openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const location = normalizeLocation(slug);
+  const slugPart = slug ? `-${slug}` : "";
+  const canonical = `${BASE_URL}/servicios/marketing-digital${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/marketing-digital${slugPart}`;
+
+  return {
+    title: {
+      default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
+      template: "%s | North Blue Agency",
+    },
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/marketing-digital`,
-    type: "website",
-    images: [
-      {
-        url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
-        alt: `${serviceData.title} - North Blue Agency`,
-      },
+    alternates: {
+      canonical,
+      languages: { es: canonical, en: canonicalEn },
+    },
+    keywords: [
+      "marketing digital",
+      "estrategia multicanal",
+      "SEM",
+      "SEO",
+      "publicidad digital",
+      "email marketing",
+      "retargeting",
+      "analytics",
+      "North Blue Agency",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
-  },
-  publisher: "North Blue Agency",
-};
-export default function MarketingDigitalPage() {
+    openGraph: {
+      title: `${serviceData.title}${
+        location ? ` - ${location}` : ""
+      } - North Blue Agency`,
+      description: serviceData.description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
+          alt: `${serviceData.title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title} - North Blue Agency`,
+      description: serviceData.description,
+      images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
+    },
+    publisher: "North Blue Agency",
+  };
+}
+export default function MarketingDigitalPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const locationText = normalizeLocation(slug);
   return (
     <>
       <div className="min-h-screen">
@@ -137,6 +172,7 @@ export default function MarketingDigitalPage() {
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
+                {locationText ? ` - ${locationText}` : ""}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                 {serviceData.subtitle}

@@ -82,7 +82,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="pl-20">
+          <div className="md:pl-20">
             <h3 className="text-lg font-semibold mb-4">Servicios</h3>
             <ul className="grid grid-cols-1 md:grid-cols-2">
               <li>
@@ -152,7 +152,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="pl-20">
+          <div className="md:pl-20">
             <h3 className="text-lg font-semibold mb-4">Empresa</h3>
             <ul className="">
               <li>

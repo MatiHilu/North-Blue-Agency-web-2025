@@ -10,6 +10,16 @@ import QuoteSection from "@/components/quote-section";
 // Migrado a Metadata API
 import type { Metadata } from "next";
 
+function normalizeLocation(value?: string) {
+  if (!value) return undefined;
+  const spaced = value.replace(/-/g, " ");
+  return spaced
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 const serviceData = {
   title: "Gestión de Redes Sociales",
   subtitle: "Construye una comunidad sólida y aumenta tu engagement",
@@ -72,45 +82,78 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: {
-    default: `${serviceData.title}`,
-    template: "%s | North Blue Agency",
-  },
-  description:
-    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento.",
-  alternates: { canonical: `${BASE_URL}/servicios/redes-sociales` },
-  keywords: [
-    "gestión de redes sociales",
-    "community management",
-    "marketing en redes sociales",
-    "contenido para redes sociales",
-    "estrategia de redes sociales",
-    "publicidad en redes",
-    "North Blue Agency",
-  ],
-  openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    url: `${BASE_URL}/servicios/redes-sociales`,
-    type: "website",
-    images: [
-      {
-        url: `${BASE_URL}/images/og/servicios-redes-sociales.png`,
-        alt: `${serviceData.title} - North Blue Agency`,
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const raw = searchParams?.Location;
+  const locationRaw = Array.isArray(raw) ? raw[0] : raw;
+  const location = normalizeLocation(locationRaw);
+  const slugPart = locationRaw ? `-${locationRaw}` : "";
+  const canonical = `${BASE_URL}/servicios/redes-sociales${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/redes-sociales${slugPart}`;
+
+  return {
+    title: {
+      default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
+      template: "%s | North Blue Agency",
+    },
+    description:
+      "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento.",
+    alternates: {
+      canonical,
+      languages: {
+        es: canonical,
+        en: canonicalEn,
       },
+    },
+    keywords: [
+      "gestión de redes sociales",
+      "community management",
+      "marketing en redes sociales",
+      "contenido para redes sociales",
+      "estrategia de redes sociales",
+      "publicidad en redes",
+      "North Blue Agency",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-redes-sociales.png`],
-  },
-  publisher: "North Blue Agency",
+    openGraph: {
+      title: `${serviceData.title}${
+        location ? ` - ${location}` : ""
+      } - North Blue Agency`,
+      description: serviceData.description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/images/og/servicios-redes-sociales.png`,
+          alt: `${serviceData.title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title} - North Blue Agency`,
+      description: serviceData.description,
+      images: [`${BASE_URL}/images/og/servicios-redes-sociales.png`],
+    },
+    publisher: "North Blue Agency",
+  };
+}
+
+type RedesSocialesPageProps = {
+  Location?: string;
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export default function RedesSocialesPage() {
+export default function RedesSocialesPage({
+  Location,
+  searchParams,
+}: RedesSocialesPageProps) {
+  const raw = searchParams?.Location;
+  const locationRaw = Array.isArray(raw) ? raw[0] : raw;
+  const effectiveLocation = Location ?? locationRaw;
+  const locationText = normalizeLocation(effectiveLocation);
   return (
     <>
       <div className="min-h-screen">
@@ -138,6 +181,7 @@ export default function RedesSocialesPage() {
 
                   <h1 className="text-5xl md:text-6xl font-bold mb-6">
                     {serviceData.title}
+                    {locationText ? ` - ${locationText}` : ""}
                   </h1>
                   <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                     {serviceData.subtitle}

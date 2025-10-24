@@ -9,6 +9,16 @@ import { BASE_URL } from "@/lib/jsonld";
 // Migrado a Metadata API
 import type { Metadata } from "next";
 
+function normalizeLocation(value?: string) {
+  if (!value) return undefined;
+  const spaced = value.replace(/-/g, " ");
+  return spaced
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 const serviceData = {
   title: "Campañas, Ads y Publicidad digital",
   subtitle: "Estrategias que generan resultados medibles",
@@ -67,47 +77,72 @@ const faqs = [
       "Medimos KPIs específicos según tus objetivos: ROAS, CPA, CTR, conversiones, leads generados, ventas, y proporcionamos reportes detallados con recomendaciones de optimización.",
   },
 ];
-export const metadata: Metadata = {
-  title: {
-    default: `${serviceData.title}`,
-    template: "%s | North Blue Agency",
-  },
-  description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/campanas-ads` },
-  keywords: [
-    "campañas",
-    "ads",
-    "publicidad digital",
-    "google ads",
-    "meta ads",
-    "tiktok ads",
-    "linkedin ads",
-    "remarketing",
-    "optimización de conversiones",
-    "North Blue Agency",
-  ],
-  openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    url: `${BASE_URL}/servicios/campanas-ads`,
-    type: "website",
-    images: [
-      {
-        url: `${BASE_URL}/images/og/servicios-campanas-ads.png`,
-        alt: `${serviceData.title} - North Blue Agency`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-campanas-ads.png`],
-  },
-  publisher: "North Blue Agency",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const location = normalizeLocation(slug);
+  const slugPart = slug ? `-${slug}` : "";
+  const canonical = `${BASE_URL}/servicios/campanas-ads${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/campanas-ads${slugPart}`;
 
-export default function CampanasAdsPage() {
+  return {
+    title: {
+      default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
+      template: "%s | North Blue Agency",
+    },
+    description: serviceData.description,
+    alternates: {
+      canonical,
+      languages: { es: canonical, en: canonicalEn },
+    },
+    keywords: [
+      "campañas",
+      "ads",
+      "publicidad digital",
+      "google ads",
+      "meta ads",
+      "tiktok ads",
+      "linkedin ads",
+      "remarketing",
+      "optimización de conversiones",
+      "North Blue Agency",
+    ],
+    openGraph: {
+      title: `${serviceData.title}${
+        location ? ` - ${location}` : ""
+      } - North Blue Agency`,
+      description: serviceData.description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/images/og/servicios-campanas-ads.png`,
+          alt: `${serviceData.title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title} - North Blue Agency`,
+      description: serviceData.description,
+      images: [`${BASE_URL}/images/og/servicios-campanas-ads.png`],
+    },
+    publisher: "North Blue Agency",
+  };
+}
+
+export default function CampanasAdsPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const locationText = normalizeLocation(slug);
   return (
     <>
       <div className="min-h-screen">
@@ -133,6 +168,7 @@ export default function CampanasAdsPage() {
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
+                {locationText ? ` - ${locationText}` : ""}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                 {serviceData.subtitle}

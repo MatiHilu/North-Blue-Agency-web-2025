@@ -9,6 +9,16 @@ import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 // SEOHead eliminado: migraremos a Metadata API
 
+function normalizeLocation(value?: string) {
+  if (!value) return undefined;
+  const spaced = value.replace(/-/g, " ");
+  return spaced
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 const serviceData = {
   title: "Desarrollo Web",
   subtitle: "Sitios web que convierten visitantes en clientes",
@@ -93,47 +103,72 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: {
-    default: `${serviceData.title}`,
-    template: "%s | North Blue Agency",
-  },
-  description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/desarrollo-web` },
-  keywords: [
-    "desarrollo web",
-    "sitios web",
-    "diseño web",
-    "desarrollo frontend",
-    "e‑commerce",
-    "next.js",
-    "wordpress",
-    "seo técnico",
-    "agencia digital",
-    "North Blue Agency",
-  ],
-  openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    url: `${BASE_URL}/servicios/desarrollo-web`,
-    type: "website",
-    images: [
-      {
-        url: `${BASE_URL}/images/og/servicios-desarrollo-web.png`,
-        alt: `${serviceData.title} - North Blue Agency`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-desarrollo-web.png`],
-  },
-  publisher: "North Blue Agency",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const location = normalizeLocation(slug);
+  const slugPart = slug ? `-${slug}` : "";
+  const canonical = `${BASE_URL}/servicios/desarrollo-web${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/desarrollo-web${slugPart}`;
 
-export default function DesarrolloWebPage() {
+  return {
+    title: {
+      default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
+      template: "%s | North Blue Agency",
+    },
+    description: serviceData.description,
+    alternates: {
+      canonical,
+      languages: { es: canonical, en: canonicalEn },
+    },
+    keywords: [
+      "desarrollo web",
+      "sitios web",
+      "diseño web",
+      "desarrollo frontend",
+      "e‑commerce",
+      "next.js",
+      "wordpress",
+      "seo técnico",
+      "agencia digital",
+      "North Blue Agency",
+    ],
+    openGraph: {
+      title: `${serviceData.title}${
+        location ? ` - ${location}` : ""
+      } - North Blue Agency`,
+      description: serviceData.description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/images/og/servicios-desarrollo-web.png`,
+          alt: `${serviceData.title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title} - North Blue Agency`,
+      description: serviceData.description,
+      images: [`${BASE_URL}/images/og/servicios-desarrollo-web.png`],
+    },
+    publisher: "North Blue Agency",
+  };
+}
+
+export default function DesarrolloWebPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const locationText = normalizeLocation(slug);
   return (
     <>
       <div className="min-h-screen">
@@ -159,6 +194,7 @@ export default function DesarrolloWebPage() {
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
+                {locationText ? ` - ${locationText}` : ""}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                 {serviceData.subtitle}

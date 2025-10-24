@@ -9,6 +9,16 @@ import { BASE_URL } from "@/lib/jsonld";
 // Migrado a Metadata API
 import type { Metadata } from "next";
 
+function normalizeLocation(value?: string) {
+  if (!value) return undefined;
+  const spaced = value.replace(/-/g, " ");
+  return spaced
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 const serviceData = {
   title: "Creación de Contenido",
   subtitle: "Contenido creativo para redes sociales",
@@ -67,44 +77,69 @@ const faqs = [
       "No programamos las publicaciones directamente en tus plataformas. Eso lo ofrecemos en el servicio de gestión de redes sociales.",
   },
 ];
-export const metadata: Metadata = {
-  title: {
-    default: `${serviceData.title}`,
-    template: "%s | North Blue Agency",
-  },
-  description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/creacion-contenido` },
-  keywords: [
-    "creación de contenido",
-    "contenido para redes",
-    "reels",
-    "tiktoks",
-    "carruseles",
-    "diseño gráfico",
-    "North Blue Agency",
-  ],
-  openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    url: `${BASE_URL}/servicios/creacion-contenido`,
-    type: "website",
-    images: [
-      {
-        url: `${BASE_URL}/images/og/servicios-creacion-contenido.png`,
-        alt: `${serviceData.title} - North Blue Agency`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
-    description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-creacion-contenido.png`],
-  },
-  publisher: "North Blue Agency",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const location = normalizeLocation(slug);
+  const slugPart = slug ? `-${slug}` : "";
+  const canonical = `${BASE_URL}/servicios/creacion-contenido${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/creacion-contenido${slugPart}`;
 
-export default function CreacionContenidoPage() {
+  return {
+    title: {
+      default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
+      template: "%s | North Blue Agency",
+    },
+    description: serviceData.description,
+    alternates: {
+      canonical,
+      languages: { es: canonical, en: canonicalEn },
+    },
+    keywords: [
+      "creación de contenido",
+      "contenido para redes",
+      "reels",
+      "tiktoks",
+      "carruseles",
+      "diseño gráfico",
+      "North Blue Agency",
+    ],
+    openGraph: {
+      title: `${serviceData.title}${
+        location ? ` - ${location}` : ""
+      } - North Blue Agency`,
+      description: serviceData.description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/images/og/servicios-creacion-contenido.png`,
+          alt: `${serviceData.title} - North Blue Agency`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title} - North Blue Agency`,
+      description: serviceData.description,
+      images: [`${BASE_URL}/images/og/servicios-creacion-contenido.png`],
+    },
+    publisher: "North Blue Agency",
+  };
+}
+
+export default function CreacionContenidoPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const raw = searchParams?.Location;
+  const slug = Array.isArray(raw) ? raw[0] : raw;
+  const locationText = normalizeLocation(slug);
   return (
     <>
       <div className="min-h-screen">
@@ -128,6 +163,7 @@ export default function CreacionContenidoPage() {
               </Link>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
+                {locationText ? ` - ${locationText}` : ""}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                 {serviceData.subtitle}
