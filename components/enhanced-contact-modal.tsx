@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X, Send, Sparkles } from "lucide-react";
+import SimpleCaptcha from "./simple-captcha";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -21,11 +22,16 @@ export default function EnhancedContactModal({
     name: "",
     email: "",
     message: "",
+    // Honeypot fields (must be empty)
+    website: "",
+    phone_number: "",
+    url_field: "",
   });
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -51,7 +57,13 @@ export default function EnhancedContactModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    e.preventDefault();
+
+    // Check if CAPTCHA is valid
+    if (!isCaptchaValid) {
+      alert("Por favor completa la verificación de seguridad");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const res = await fetch("/api/contact", {
@@ -63,7 +75,14 @@ export default function EnhancedContactModal({
       setShowSuccess(true);
       setTimeout(() => {
         onClose();
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          website: "",
+          phone_number: "",
+          url_field: "",
+        });
       }, 2000);
     } catch (err) {
       console.error(err);
@@ -232,6 +251,59 @@ export default function EnhancedContactModal({
                   </div>
                 </div>
 
+                {/* Honeypot fields - hidden from users but visible to bots */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <label htmlFor="website">Website (do not fill)</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) =>
+                      setFormData({ ...formData, website: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <label htmlFor="phone_number">Phone (do not fill)</label>
+                  <input
+                    type="text"
+                    id="phone_number"
+                    name="phone_number"
+                    value={formData.phone_number}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone_number: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <label htmlFor="url_field">URL (do not fill)</label>
+                  <input
+                    type="url"
+                    id="url_field"
+                    name="url_field"
+                    value={formData.url_field}
+                    onChange={(e) =>
+                      setFormData({ ...formData, url_field: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div
+                  className={`transform transition-all duration-300 delay-450 ${
+                    isAnimating
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-0"
+                  }`}
+                >
+                  <SimpleCaptcha
+                    onValidChange={setIsCaptchaValid}
+                    disabled={isSubmitting}
+                  />
+                </div>
+
                 <div
                   className={`transform transition-all duration-300 delay-500 ${
                     isAnimating
@@ -241,7 +313,7 @@ export default function EnhancedContactModal({
                 >
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isCaptchaValid}
                     className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200 py-3 rounded-lg font-semibold disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isSubmitting ? (

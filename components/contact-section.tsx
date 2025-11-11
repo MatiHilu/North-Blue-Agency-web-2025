@@ -17,6 +17,10 @@ export default function ContactSection() {
     name: "",
     email: "",
     message: "",
+    // Honeypot fields
+    website: "",
+    phone_number: "",
+    url_field: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,7 +39,14 @@ export default function ContactSection() {
         description:
           "Gracias por contactarnos. Te responderemos en las próximas 24 horas.",
       });
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        website: "",
+        phone_number: "",
+        url_field: "",
+      });
     } catch (error) {
       console.error("Error enviando mensaje:", error);
       toast({
@@ -84,6 +95,7 @@ export default function ContactSection() {
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
                       disabled={isSubmitting}
+                      required
                     />
                     <Input
                       type="email"
@@ -94,6 +106,7 @@ export default function ContactSection() {
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
                       disabled={isSubmitting}
+                      required
                     />
                     <Textarea
                       placeholder="Cuéntanos sobre tu proyecto"
@@ -104,7 +117,49 @@ export default function ContactSection() {
                       }
                       className="border-gray-300 focus:border-[#ff4081]"
                       disabled={isSubmitting}
+                      required
                     />
+
+                    {/* Honeypot fields */}
+                    <div style={{ display: "none" }} aria-hidden="true">
+                      <input
+                        type="text"
+                        name="website"
+                        value={formData.website}
+                        onChange={(e) =>
+                          setFormData({ ...formData, website: e.target.value })
+                        }
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <input
+                        type="text"
+                        name="phone_number"
+                        value={formData.phone_number}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            phone_number: e.target.value,
+                          })
+                        }
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <input
+                        type="url"
+                        name="url_field"
+                        value={formData.url_field}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            url_field: e.target.value,
+                          })
+                        }
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     <Button
                       type="submit"
                       disabled={isSubmitting}

@@ -18,6 +18,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     name: "",
     email: "",
     message: "",
+    // Honeypot fields
+    website: "",
+    phone_number: "",
+    url_field: "",
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -47,7 +51,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       // Opcional: mostrar notificación de éxito
       console.log("Mensaje enviado:", formData);
       onClose();
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        website: "",
+        phone_number: "",
+        url_field: "",
+      });
     } catch (err) {
       console.error(err);
       alert("Error al enviar mensaje");
@@ -161,6 +172,40 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 }
                 className="border-gray-300 focus:border-[#ff4081] focus:ring-2 focus:ring-[#ff4081]/20 transition-all duration-200 resize-none"
                 required
+              />
+            </div>
+
+            {/* Honeypot fields */}
+            <div style={{ display: "none" }} aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={(e) =>
+                  setFormData({ ...formData, website: e.target.value })
+                }
+                tabIndex={-1}
+                autoComplete="off"
+              />
+              <input
+                type="text"
+                name="phone_number"
+                value={formData.phone_number}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone_number: e.target.value })
+                }
+                tabIndex={-1}
+                autoComplete="off"
+              />
+              <input
+                type="url"
+                name="url_field"
+                value={formData.url_field}
+                onChange={(e) =>
+                  setFormData({ ...formData, url_field: e.target.value })
+                }
+                tabIndex={-1}
+                autoComplete="off"
               />
             </div>
 

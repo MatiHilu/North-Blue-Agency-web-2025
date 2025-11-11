@@ -51,6 +51,10 @@ export default function ContactPage() {
     service: "",
     budget: "",
     message: "",
+    // Honeypot fields
+    website: "",
+    phone_number: "",
+    url_field: "",
   });
 
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -76,6 +80,9 @@ export default function ContactPage() {
         service: "",
         budget: "",
         message: "",
+        website: "",
+        phone_number: "",
+        url_field: "",
       });
     } catch (err: any) {
       console.error("Error en handleSubmit:", err);
@@ -334,6 +341,42 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="border-gray-300 focus:border-[#ff4081]"
+                        />
+                      </div>
+
+                      {/* Honeypot fields - hidden from users but visible to bots */}
+                      <div style={{ display: "none" }} aria-hidden="true">
+                        <label htmlFor="website">Website (do not fill)</label>
+                        <input
+                          type="text"
+                          id="website"
+                          name="website"
+                          value={formData.website}
+                          onChange={handleChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                        <label htmlFor="phone_number">
+                          Phone (do not fill)
+                        </label>
+                        <input
+                          type="text"
+                          id="phone_number"
+                          name="phone_number"
+                          value={formData.phone_number}
+                          onChange={handleChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                        <label htmlFor="url_field">URL (do not fill)</label>
+                        <input
+                          type="url"
+                          id="url_field"
+                          name="url_field"
+                          value={formData.url_field}
+                          onChange={handleChange}
+                          tabIndex={-1}
+                          autoComplete="off"
                         />
                       </div>
 

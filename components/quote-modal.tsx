@@ -29,6 +29,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     budget: "",
     timeline: "",
     description: "",
+    // Honeypot fields
+    website: "",
+    phone_number: "",
+    url_field: "",
   });
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -77,6 +81,9 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           budget: "",
           timeline: "",
           description: "",
+          website: "",
+          phone_number: "",
+          url_field: "",
         });
       }, 2000);
     } catch (err) {
@@ -373,6 +380,40 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     className="border-gray-300 focus:border-[#ff4081] focus:ring-2 focus:ring-[#ff4081]/20 resize-none"
                     required
                     disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Honeypot fields */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) =>
+                      setFormData({ ...formData, website: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <input
+                    type="text"
+                    name="phone_number"
+                    value={formData.phone_number}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone_number: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <input
+                    type="url"
+                    name="url_field"
+                    value={formData.url_field}
+                    onChange={(e) =>
+                      setFormData({ ...formData, url_field: e.target.value })
+                    }
+                    tabIndex={-1}
+                    autoComplete="off"
                   />
                 </div>
 

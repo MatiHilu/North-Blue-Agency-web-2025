@@ -1,6 +1,75 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Rate limiting store (in production, use Redis or similar)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+// Spam detection keywords
+const SPAM_KEYWORDS = [
+  "cheap",
+  "free",
+  "offer",
+  "promotion",
+  "casino",
+  "crypto",
+  "bitcoin",
+  "viagra",
+  "sex",
+  "loan",
+  "credit",
+  "debt",
+  "refinance",
+  "mortgage",
+  "insurance",
+  "investment",
+  "profit",
+  "make money",
+  "work from home",
+  "click here",
+  "urgent",
+  "limited time",
+  "act now",
+  "congratulations",
+  "winner",
+  "prize",
+  "lottery",
+  "guaranteed",
+  "no risk",
+  "spam",
+];
+
+// Patterns that indicate gibberish/random text
+const GIBBERISH_PATTERNS = {
+  // Excessive consonants in a row (more than 4)
+  excessiveConsonants: /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{5,}/,
+  // Mixed case randomly (more than normal)
+  randomMixedCase: /^[a-z]*[A-Z][a-z]*[A-Z][a-z]*[A-Z]/,
+  // Alternating caps in weird patterns
+  alternatingCaps: /^[a-zA-Z]*[a-z][A-Z][a-z][A-Z][a-z][A-Z]/,
+  // No vowels or too few vowels for length
+  fewVowels: (text: string) => {
+    const vowels = text.match(/[aeiouAEIOU]/g);
+    const vowelCount = vowels ? vowels.length : 0;
+    return text.length > 8 && vowelCount / text.length < 0.15;
+  },
+  // Repeated character patterns
+  repeatedChars: /(.)\1{3,}/,
+};
+
+// Common real name patterns (to avoid false positives)
+const REAL_NAME_PATTERNS = [
+  /^[A-Z][a-z]+ [A-Z][a-z]+$/, // John Smith
+  /^[A-Z][a-z]+$/, // John
+  /^[A-Z][a-z]+ [A-Z]\.$/, // John D.
+  /^[A-Z][a-z]+ [A-Z][a-z]+ [A-Z][a-z]+$/, // John Michael Smith
+];
+
+// Common company name patterns
+const COMPANY_PATTERNS = [
+  /\b(LLC|Inc|Corp|Ltd|Co|Company|Agency|Group|Solutions|Services)\b/i,
+  /^[A-Z][a-z]+ [A-Z][a-z]+( [A-Z][a-z]+)?$/, // Real Company Name
+];
+
 // Configure transporter with SMTP settings (Hostinger)
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || "smtp.hostinger.com",
@@ -11,6 +80,204 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS!,
   },
 });
+
+// Helper functions for spam detection and rate limiting
+function getClientIP(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const real = request.headers.get("x-real-ip");
+
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+
+  if (real) {
+    return real.trim();
+  }
+
+  return "unknown";
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + 60000 }); // 1 minute window
+    return false;
+  }
+
+  if (now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + 60000 });
+    return false;
+  }
+
+  if (record.count >= 5) {
+    // Max 5 submissions per minute
+    return true;
+  }
+
+  record.count++;
+  return false;
+}
+
+function containsSpam(text: string): boolean {
+  if (!text) return false;
+
+  const lowerText = text.toLowerCase();
+  return SPAM_KEYWORDS.some((keyword) => lowerText.includes(keyword));
+}
+
+function isGibberish(
+  text: string,
+  fieldType: "name" | "company" | "message" = "message"
+): boolean {
+  if (!text || text.length < 3) return false;
+
+  const trimmedText = text.trim();
+
+  // Check for patterns that indicate random text
+  if (GIBBERISH_PATTERNS.excessiveConsonants.test(trimmedText)) {
+    return true;
+  }
+
+  if (GIBBERISH_PATTERNS.repeatedChars.test(trimmedText)) {
+    return true;
+  }
+
+  if (GIBBERISH_PATTERNS.fewVowels(trimmedText)) {
+    return true;
+  }
+
+  // For names and companies, be more strict
+  if (fieldType === "name") {
+    // Check if it looks like a real name
+    const looksLikeRealName = REAL_NAME_PATTERNS.some((pattern) =>
+      pattern.test(trimmedText)
+    );
+    if (!looksLikeRealName && trimmedText.length > 15) {
+      return true;
+    }
+
+    // Check for random mixed case (like SnoRtITtNYdEbnILVdAlmbgc)
+    if (
+      GIBBERISH_PATTERNS.randomMixedCase.test(trimmedText) ||
+      GIBBERISH_PATTERNS.alternatingCaps.test(trimmedText)
+    ) {
+      return true;
+    }
+  }
+
+  if (fieldType === "company") {
+    const looksLikeRealCompany = COMPANY_PATTERNS.some((pattern) =>
+      pattern.test(trimmedText)
+    );
+    if (!looksLikeRealCompany && trimmedText.length > 12) {
+      return true;
+    }
+  }
+
+  // Additional gibberish detection for all fields
+  // Check for sequences without vowels that are too long
+  const consonantSequences = trimmedText.match(
+    /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{4,}/g
+  );
+  if (consonantSequences && consonantSequences.length > 1) {
+    return true;
+  }
+
+  return false;
+}
+
+function validateFormData(data: any): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  // Check honeypot field
+  if (data.website || data.phone_number || data.url_field) {
+    errors.push("Bot detected");
+    return { isValid: false, errors }; // Early return for bot detection
+  }
+
+  // Check required fields - more robust validation
+  if (
+    !data.name ||
+    typeof data.name !== "string" ||
+    data.name.trim().length < 2
+  ) {
+    errors.push("Name is required and must be at least 2 characters");
+  }
+
+  if (
+    !data.email ||
+    typeof data.email !== "string" ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())
+  ) {
+    errors.push("Valid email is required");
+  }
+
+  if (
+    !data.message ||
+    typeof data.message !== "string" ||
+    data.message.trim().length < 10
+  ) {
+    errors.push("Message is required and must be at least 10 characters");
+  }
+
+  // Additional empty field checks
+  if (data.name === "" || data.email === "" || data.message === "") {
+    errors.push("All required fields must be filled");
+  }
+
+  // Check for spam content (only if fields are not empty)
+  const fieldsToCheck = [
+    data.name,
+    data.email,
+    data.message,
+    data.company,
+  ].filter(
+    (field) => field && typeof field === "string" && field.trim().length > 0
+  );
+
+  if (fieldsToCheck.some((field) => containsSpam(field))) {
+    errors.push("Spam content detected");
+  }
+
+  // Check for gibberish/random text
+  if (data.name && isGibberish(data.name, "name")) {
+    errors.push("Name appears to be random text");
+  }
+
+  if (data.company && isGibberish(data.company, "company")) {
+    errors.push("Company name appears to be random text");
+  }
+
+  if (data.message && isGibberish(data.message, "message")) {
+    errors.push("Message appears to be random text");
+  }
+
+  // Check for suspicious patterns
+  if (
+    data.message &&
+    typeof data.message === "string" &&
+    data.message.includes("http://")
+  ) {
+    errors.push("Suspicious content detected");
+  }
+
+  // Check for only whitespace in required fields
+  if (data.name && data.name.trim() === "") {
+    errors.push("Name cannot be only whitespace");
+  }
+
+  if (data.message && data.message.trim() === "") {
+    errors.push("Message cannot be only whitespace");
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
+}
+
 // Verify SMTP connection
 transporter
   .verify()
@@ -22,32 +289,69 @@ transporter
   });
 
 export async function POST(request: Request) {
-  const data = await request.json();
-  console.log("Contact data received:", data);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const sender = process.env.SENDER_EMAIL;
-  if (!user || !pass) {
-    console.error("Missing SMTP credentials:", { user, pass });
-    return NextResponse.json(
-      { ok: false, error: "Missing SMTP credentials" },
-      { status: 500 }
-    );
-  }
-  if (!sender) {
-    console.error("Missing verified sender email: SENDER_EMAIL");
-    return NextResponse.json(
-      { ok: false, error: "Missing verified sender email" },
-      { status: 500 }
-    );
-  }
   try {
+    // Get client IP for rate limiting
+    const clientIP = getClientIP(request);
+
+    // Check rate limiting
+    if (isRateLimited(clientIP)) {
+      console.log("Rate limited:", clientIP);
+      return NextResponse.json(
+        { ok: false, error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
+    const data = await request.json();
+    console.log("Contact data received:", {
+      ...data,
+      email: data.email ? "[HIDDEN]" : "missing",
+    });
+
+    // Validate form data
+    const validation = validateFormData(data);
+    if (!validation.isValid) {
+      console.log("Validation failed:", validation.errors);
+      return NextResponse.json(
+        { ok: false, error: "Invalid form data", details: validation.errors },
+        { status: 400 }
+      );
+    }
+
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const sender = process.env.SENDER_EMAIL;
+
+    if (!user || !pass) {
+      console.error("Missing SMTP credentials:", { user, pass });
+      return NextResponse.json(
+        { ok: false, error: "Missing SMTP credentials" },
+        { status: 500 }
+      );
+    }
+
+    if (!sender) {
+      console.error("Missing verified sender email: SENDER_EMAIL");
+      return NextResponse.json(
+        { ok: false, error: "Missing verified sender email" },
+        { status: 500 }
+      );
+    }
     const { name, email } = data;
-    // Build email content from all fields
-    const htmlContent = Object.entries(data)
+
+    // Filter out honeypot fields and prepare clean data for email
+    const cleanData = { ...data };
+    delete cleanData.website;
+    delete cleanData.phone_number;
+    delete cleanData.url_field;
+
+    // Build email content from filtered fields
+    const htmlContent = Object.entries(cleanData)
+      .filter(([key, value]) => value && key !== "honeypot")
       .map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`)
       .join("");
-    const textContent = Object.entries(data)
+    const textContent = Object.entries(cleanData)
+      .filter(([key, value]) => value && key !== "honeypot")
       .map(([key, value]) => `${key}: ${value}`)
       .join("\n");
 
