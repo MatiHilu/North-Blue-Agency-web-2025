@@ -81,7 +81,7 @@ export default function NotFound() {
               >
                 <AlertTriangle className="text-[#ff4081] mr-3" size={32} />
                 <h2 className="text-2xl md:text-4xl font-bold">
-                  Página no encontrada
+                  Página no encontrada.
                 </h2>
               </div>
             </div>
