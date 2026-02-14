@@ -12,73 +12,73 @@ import { BASE_URL } from "@/lib/jsonld";
 const serviceData = {
   title: "AIO (Artificial Intelligence Optimization)",
   subtitle:
-    "Escala tu posicionamiento con inteligencia artificial aplicada a la investigación, producción y optimización SEO",
+    "Scale your ranking with artificial intelligence applied to SEO research, production, and optimization",
   description:
-    "Potenciamos tu estrategia SEO tradicional con flujos inteligentes que priorizan oportunidades, automatizan análisis repetitivos y aceleran la creación de contenidos estratégicos. AIO combina modelos, automatizaciones y validación humana para ejecutar a mayor velocidad sin comprometer calidad ni factualidad.",
+    "Scale your SEO with Artificial Intelligence. AIO accelerates analysis and content through intelligent automation, prioritizing quality and fast results.",
   gradient: "from-[#22d3ee] to-[#ec4899]",
-  price: "Desde $900/mes",
-  duration: "3-6 meses",
+  price: "From $900/month",
+  duration: "3-6 months",
   features: [
-    "Auditoría de automatización y datos",
-    "Modelos personalizados para clustering de keywords",
-    "Briefs inteligentes y guidelines por intención",
-    "Detección temprana de tendencias y gaps",
-    "Sistemas de scoring de oportunidades",
-    "Automatización de reportes y alertas",
-    "QA y validación editorial humana",
-    "Integración con herramientas SEO existentes",
+    "Automation and data audit",
+    "Custom models for keyword clustering",
+    "Smart briefs and guidelines by intent",
+    "Early detection of trends and gaps",
+    "Opportunity scoring systems",
+    "Reporting and alert automation",
+    "QA and human editorial validation",
+    "Integration with existing SEO tools",
   ],
   process: [
     {
-      title: "Mapeo de procesos",
+      title: "Process Mapping",
       description:
-        "Identificamos tareas repetitivas y cuellos de botella para priorizar automatizaciones con impacto real.",
+        "We identify repetitive tasks and bottlenecks to prioritize automations with real impact.",
     },
     {
-      title: "Diseño de modelos",
+      title: "Model Design",
       description:
-        "Seleccionamos modelos y templates, definimos prompts críticos y criterios de evaluación.",
+        "We select models and templates, defining critical prompts and evaluation criteria.",
     },
     {
-      title: "Implementación asistida",
+      title: "Assisted Implementation",
       description:
-        "Integramos flujos de IA en tu stack SEO y coordinamos con tu equipo para la adopción.",
+        "We integrate AI workflows into your SEO stack and coordinate with your team for adoption.",
     },
     {
-      title: "Escalado & QA",
+      title: "Scaling & QA",
       description:
-        "Monitoreamos outputs, realizamos QA manual y optimizamos continuamente según resultados.",
+        "We monitor outputs, perform manual QA, and continuously optimize based on results.",
     },
   ],
   benefits: [
-    "Procesos SEO más rápidos y consistentes",
-    "Insights basados en datos en menos tiempo",
-    "Capacidad de producción de contenido escalable",
-    "Priorización inteligente de acciones",
-    "Validación humana para mantener calidad",
+    "Faster and more consistent SEO processes",
+    "Data-driven insights in less time",
+    "Scalable content production capacity",
+    "Intelligent prioritization of actions",
+    "Human validation to maintain quality",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué herramientas o modelos utilizan para AIO?",
+    question: "What tools or models do you use for AIO?",
     answer:
-      "Trabajamos con modelos líderes (OpenAI, Anthropic, modelos open-source) combinados con data propia y herramientas SEO existentes para generar insights accionables.",
+      "We work with leading models (OpenAI, Anthropic, open-source models) combined with proprietary data and existing SEO tools to generate actionable insights.",
   },
   {
-    question: "¿Necesito un equipo interno para implementar AIO?",
+    question: "Do I need an in-house team to implement AIO?",
     answer:
-      "Podemos operar de forma autónoma o colaborar con tus equipos de marketing, contenido y tecnología para integrar flujos inteligentes.",
+      "We can operate autonomously or collaborate with your marketing, content, and technology teams to integrate intelligent workflows.",
   },
   {
-    question: "¿Cómo aseguran la calidad de los outputs asistidos?",
+    question: "How do you ensure the quality of assisted outputs?",
     answer:
-      "Diseñamos checklists de QA, validamos factualidad, tone of voice y alineación estratégica antes de publicar o implementar.",
+      "We design QA checklists, validate factuality, tone of voice, and strategic alignment before publishing or implementing.",
   },
   {
-    question: "¿Pueden adaptar AIO a diferentes industrias?",
+    question: "Can you adapt AIO to different industries?",
     answer:
-      "Sí, entrenamos prompts y colecciones de datos específicas para tu vertical, asegurando relevancia y precisión contextual.",
+      "Yes, we train prompts and specific data collections for your vertical, ensuring relevance and contextual precision.",
   },
 ];
 
@@ -88,23 +88,23 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/seo/aio` },
+  alternates: { canonical: `${BASE_URL}/services/seo/aio` },
   keywords: [
     "AIO",
     "Artificial Intelligence Optimization",
-    "SEO con IA",
-    "Automatización SEO",
-    "Modelos de IA para SEO",
+    "AI SEO",
+    "SEO Automation",
+    "AI Models for SEO",
     "North Blue Agency",
   ],
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/seo/aio`,
+    url: `${BASE_URL}/services/seo/aio`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-aio.png`,
+        url: `${BASE_URL}/images/og/services-aio.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-aio.png`],
+    images: [`${BASE_URL}/images/og/services-aio.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -132,11 +132,11 @@ export default function AIOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <Link
-              href="/servicios/seo"
+              href="/services/seo"
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft size={20} className="mr-2" />
-              Volver a SEO 360°
+              Back to SEO 360°
             </Link>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               {serviceData.title}
@@ -167,7 +167,7 @@ export default function AIOPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <AnimatedSection animation="fadeInLeft">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                IA + SEO: la dupla que acelera resultados
+                AI + SEO: the duo that accelerates results
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {serviceData.description}
@@ -184,9 +184,9 @@ export default function AIOPage() {
               </div>
               <div className="mt-10">
                 <InlineCTA
-                  title="Diagnostica tu madurez AIO"
-                  description="Identifica procesos listos para automatizar y potencia la producción de contenidos SEO"
-                  primaryLabel="Evaluar mi estrategia"
+                  title="Diagnose your AIO maturity"
+                  description="Identify processes ready for automation and boost SEO content production"
+                  primaryLabel="Evaluate my strategy"
                   type="quote"
                   accentColor="pink"
                 />
@@ -197,7 +197,7 @@ export default function AIOPage() {
               <Card className="border-0 shadow-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">
-                    Capacidades habilitadas por AIO
+                    Capabilities enabled by AIO
                   </h3>
                   <div className="space-y-4">
                     {serviceData.features.map((feature, index) => (
@@ -213,10 +213,10 @@ export default function AIOPage() {
               </Card>
               <div className="bg-gradient-to-r from-pink-50 to-cyan-50 border border-pink-200/50 rounded-xl p-6 my-10 shadow-sm">
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  <strong>Automatización responsable</strong>. Cada entrega pasa
-                  por QA humano. Documentamos prompts críticos, criterios de
-                  evaluación y flujos para garantizar consistencia y
-                  transparencia.
+                  <strong>Responsible automation</strong>. Every delivery passes
+                  through human QA. We document critical prompts, evaluation
+                  criteria, and workflows to ensure consistency and
+                  transparency.
                 </p>
               </div>
             </AnimatedSection>
@@ -232,11 +232,11 @@ export default function AIOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Cómo integramos IA en tu stack SEO
+              How we integrate AI into your SEO stack
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Gobernamos el ciclo completo: estrategia, prompts, QA y mejora
-              continua. Estos son los pilares de nuestro enfoque AIO.
+              We govern the full cycle: strategy, prompts, QA, and continuous
+              improvement. These are the pillars of our AIO approach.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -265,12 +265,12 @@ export default function AIOPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#ec4899] to-[#22d3ee] bg-clip-text text-transparent">
-              Métricas accionables en tiempo casi real
+              Actionable metrics in near real-time
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Integramos dashboards de desempeño que combinan señales de
-              búsqueda, producción asistida y resultados de conversión para que
-              tomes decisiones con contexto completo.
+              We integrate performance dashboards that combine search signals,
+              assisted production, and conversion results so you can make
+              decisions with full context.
             </p>
           </AnimatedSection>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -278,12 +278,11 @@ export default function AIOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Oportunidades priorizadas
+                    Prioritized opportunities
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Matrices de impacto/esfuerzo con scoring dinámico para
-                    escoger las acciones que generan mejores resultados a corto
-                    plazo.
+                    Impact/effort matrices with dynamic scoring to choose
+                    actions that generate better short-term results.
                   </p>
                 </CardContent>
               </Card>
@@ -292,11 +291,11 @@ export default function AIOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Producción asistida auditada
+                    Audited assisted production
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Control de versiones, checklist editorial y métricas de
-                    performance para cada pieza generada o optimizada con IA.
+                    Version control, editorial checklist, and performance
+                    metrics for each piece generated or optimized with AI.
                   </p>
                 </CardContent>
               </Card>
@@ -305,11 +304,11 @@ export default function AIOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Automatizaciones monitoreadas
+                    Monitored automations
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Alertas tempranas de caídas en rankings, cambios de
-                    intención y rendimiento de URLs priorizadas.
+                    Early warnings of ranking drops, intent changes, and
+                    performance of prioritized URLs.
                   </p>
                 </CardContent>
               </Card>
@@ -317,9 +316,9 @@ export default function AIOPage() {
           </div>
           <div className="mt-14">
             <InlineCTA
-              title="Quiero activar AIO en mi equipo"
-              description="Agenda una sesión estratégica y recibe un plan de implementación personalizado"
-              primaryLabel="Diseñar flujo IA"
+              title="I want to activate AIO in my team"
+              description="Schedule a strategic session and receive a personalized implementation plan"
+              primaryLabel="Design AI flow"
               type="contact"
               accentColor="blue"
               centered
@@ -328,12 +327,12 @@ export default function AIOPage() {
         </div>
       </section>
 
-      <FAQSection title="Preguntas sobre AIO" faqs={faqs} />
+      <FAQSection title="Questions about AIO" faqs={faqs} />
 
       <QuoteSection
-        title="Activa la inteligencia en tu SEO"
-        subtitle="Construimos flujos AIO que combinan automatización, datos y supervisión humana"
-        buttonText="Solicitar cotización"
+        title="Activate intelligence in your SEO"
+        subtitle="We build AIO flows that combine automation, data, and human supervision"
+        buttonText="Request a quote"
       />
 
       <ContactSection />

@@ -20,64 +20,64 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Branding e Identidad Visual",
-  subtitle: "Crea una identidad única que conecte con tu audiencia",
+  title: "Branding & Visual Identity",
+  subtitle: "Create a unique identity that connects with your audience",
   description:
-    "Desarrollamos identidades visuales completas que reflejan la esencia de tu marca y la diferencian en el mercado. Desde el concepto inicial hasta la aplicación en todos los puntos de contacto.",
+    "Create a unique visual identity that reflects your brand essence. We develop logos and guidelines to differentiate your business across all touchpoints.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $600",
-  duration: "2-3 semanas",
+  price: "From $600",
+  duration: "2-3 weeks",
   features: [
-    "Investigación de mercado y competencia",
-    "Definición de personalidad de marca",
-    "Diseño de logotipo y variaciones",
-    "Paleta de colores estratégica",
-    "Tipografías corporativas",
-    "Manual de identidad visual",
-    "Aplicaciones en papelería",
-    "Adaptaciones digitales",
+    "Market & competitor research",
+    "Brand personality definition",
+    "Logo design & variations",
+    "Strategic color palette",
+    "Corporate typography",
+    "Visual identity guidelines",
+    "Stationery applications",
+    "Digital adaptations",
   ],
   process: [
     {
-      title: "Descubrimiento",
-      description: "Entendemos tu negocio, valores y objetivos",
+      title: "Discovery",
+      description: "We understand your business, values, and goals",
     },
     {
-      title: "Conceptualización",
-      description: "Desarrollamos conceptos creativos únicos",
+      title: "Conceptualization",
+      description: "We develop unique creative concepts",
     },
     {
-      title: "Diseño",
-      description: "Creamos la identidad visual completa",
+      title: "Design",
+      description: "We create the complete visual identity",
     },
     {
-      title: "Implementación",
-      description: "Aplicamos la marca en todos los materiales",
+      title: "Implementation",
+      description: "We apply the brand across all materials",
     },
   ],
   benefits: [
-    "Mayor reconocimiento de marca",
-    "Diferenciación competitiva",
-    "Coherencia en comunicaciones",
-    "Aumento en valor percibido",
+    "Increased brand recognition",
+    "Competitive differentiation",
+    "Consistency in communications",
+    "Increase in perceived value",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Incluye el registro de marca?",
+    question: "Does this include brand registration?",
     answer:
-      "No incluimos el registro legal de marca, pero sí verificamos disponibilidad.",
+      "We do not include legal brand registration, but we do check availability.",
   },
   {
-    question: "¿Qué pasa si no me gusta el diseño inicial?",
+    question: "What if I don't like the initial design?",
     answer:
-      "Incluimos hasta 3 rondas de revisiones sin costo adicional. Trabajamos contigo hasta que estés completamente satisfecho con el resultado final.",
+      "We include up to 3 rounds of revisions at no extra cost. We work with you until you are completely satisfied with the final result.",
   },
   {
-    question: "¿Entregan archivos en diferentes formatos?",
+    question: "Do you deliver files in different formats?",
     answer:
-      "Sí, entregamos todos los archivos en formatos vectoriales (AI), rasterizados (PNG, JPG) y PDF, optimizados para uso digital.",
+      "Yes, we deliver all files in vector (AI), raster (PNG, JPG), and PDF formats, optimized for digital use.",
   },
 ];
 
@@ -90,7 +90,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/branding${slugPart}`;
+  const canonical = `${BASE_URL}/services/branding${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/branding${slugPart}`;
 
   return {
@@ -108,11 +108,11 @@ export async function generateMetadata({
     },
     keywords: [
       "branding",
-      "identidad visual",
-      "diseño de marca",
-      "manual de identidad",
-      "logotipo",
-      "paleta de colores",
+      "visual identity",
+      "brand design",
+      "brand guidelines",
+      "logo",
+      "color palette",
       "North Blue Agency",
     ],
     openGraph: {
@@ -124,7 +124,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-branding.png`,
+          url: `${BASE_URL}/images/og/services-branding.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -133,7 +133,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-branding.png`],
+      images: [`${BASE_URL}/images/og/services-branding.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -152,27 +152,27 @@ export default function BrandingPage({
     "@type": "Service",
     name: serviceData.title,
     description: serviceData.description,
-    keywords: "branding, identidad visual, diseño de marca",
+    keywords: "branding, visual identity, brand design",
     areaServed: "ES",
     provider: { "@type": "Organization", name: "North Blue Agency" },
     serviceType: "Branding",
-    url: `${BASE_URL}/servicios/branding`,
+    url: `${BASE_URL}/services/branding`,
     offers: { "@type": "Offer", priceCurrency: "USD" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Servicios",
-          item: `${BASE_URL}/servicios`,
+          name: "Services",
+          item: `${BASE_URL}/services`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: serviceData.title,
-          item: `${BASE_URL}/servicios/branding`,
+          item: `${BASE_URL}/services/branding`,
         },
       ],
     },
@@ -194,11 +194,11 @@ export default function BrandingPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -235,7 +235,7 @@ export default function BrandingPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -259,7 +259,7 @@ export default function BrandingPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -288,11 +288,10 @@ export default function BrandingPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 

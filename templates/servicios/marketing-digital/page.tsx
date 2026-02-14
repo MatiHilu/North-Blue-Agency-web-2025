@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/marketing-digital` },
+  alternates: { canonical: `${BASE_URL}/services/marketing-digital` },
   keywords: [
     "marketing digital",
     "estrategia multicanal",
@@ -94,11 +94,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/marketing-digital`,
+    url: `${BASE_URL}/services/marketing-digital`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
+        url: `${BASE_URL}/images/og/services-marketing-digital.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
+    images: [`${BASE_URL}/images/og/services-marketing-digital.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -128,7 +128,7 @@ export default function MarketingDigitalPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />

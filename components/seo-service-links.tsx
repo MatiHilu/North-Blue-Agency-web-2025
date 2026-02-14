@@ -9,40 +9,40 @@ const seoSuiteLinks = [
   {
     title: "SEO + AIO + AEO + GEO",
     description:
-      "Descubre nuestra solución integral que combina SEO tradicional con optimización para motores asistidos y generativos.",
-    href: "/servicios/seo",
+      "Discover our comprehensive solution combining traditional SEO with optimization for assisted and generative engines.",
+    href: "/services/seo",
     accentFrom: "from-[#ff4081]",
     accentTo: "to-[#00b2ff]",
   },
   {
-    title: "SEO Tradicional 360°",
+    title: "Traditional SEO",
     description:
-      "Auditorías completas, optimización técnica y contenidos que refuerzan tu posicionamiento orgánico sostenible.",
-    href: "/servicios/seo/seo-tradicional",
+      "Complete audits, technical optimization, and content that reinforce your sustainable organic positioning.",
+    href: "/services/seo/seo-tradicional",
     accentFrom: "from-[#6366f1]",
     accentTo: "to-[#ec4899]",
   },
   {
     title: "AIO (Artificial Intelligence Optimization)",
     description:
-      "Aplicamos IA para detectar oportunidades, automatizar insights de keywords y acelerar la ejecución estratégica.",
-    href: "/servicios/seo/aio",
+      "We apply AI to detect opportunities, automate keyword insights, and accelerate strategic execution.",
+    href: "/services/seo/aio",
     accentFrom: "from-[#22d3ee]",
     accentTo: "to-[#ec4899]",
   },
   {
     title: "AEO (Answer Engine Optimization)",
     description:
-      "Prepara tu marca para motores de respuesta, snippets enriquecidos y experiencias conversacionales.",
-    href: "/servicios/seo/aeo",
+      "Prepare your brand for answer engines, rich snippets, and conversational experiences.",
+    href: "/services/seo/aeo",
     accentFrom: "from-[#2213e5]",
     accentTo: "to-[#ff4081]",
   },
   {
     title: "GEO (Generative Engine Optimization)",
     description:
-      "Gana visibilidad en experiencias generativas con contenido semántico, datos estructurados y prompts curados.",
-    href: "/servicios/seo/geo",
+      "Gain visibility in generative experiences with semantic content, structured data, and curated prompts.",
+    href: "/services/seo/geo",
     accentFrom: "from-[#a855f7]",
     accentTo: "to-[#f97316]",
   },
@@ -58,12 +58,12 @@ export default function SEOSuiteLinks() {
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center max-w-3xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Explora nuestro ecosistema SEO + IA
+            Explore our SEO + AI Ecosystem
           </h2>
           <p className="text-base md:text-lg text-white/70 leading-relaxed">
-            Cada servicio aborda una dimensión clave del posicionamiento
-            moderno. Conecta estrategias tradicionales, inteligencia artificial
-            y optimización para motores de respuesta y experiencias generativas.
+            Each service addresses a key dimension of modern positioning.
+            Connect traditional strategies, artificial intelligence, and
+            optimization for answer engines and generative experiences.
           </p>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -88,7 +88,7 @@ export default function SEOSuiteLinks() {
                     href={service.href}
                     className="mt-6 inline-flex items-center text-sm font-semibold text-white hover:text-white/80 transition-colors"
                   >
-                    Ver servicio
+                    View service
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
                 </CardContent>

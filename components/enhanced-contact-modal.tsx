@@ -60,7 +60,7 @@ export default function EnhancedContactModal({
 
     // Check if CAPTCHA is valid
     if (!isCaptchaValid) {
-      alert("Por favor completa la verificación de seguridad");
+      alert("Please complete the security verification");
       return;
     }
 
@@ -71,7 +71,7 @@ export default function EnhancedContactModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, url: window.location.href }),
       });
-      if (!res.ok) throw new Error("Error enviando mensaje");
+      if (!res.ok) throw new Error("Error sending message");
       setShowSuccess(true);
       setTimeout(() => {
         onClose();
@@ -86,7 +86,7 @@ export default function EnhancedContactModal({
       }, 2000);
     } catch (err) {
       console.error(err);
-      alert("Error al enviar mensaje");
+      alert("Error sending message");
     } finally {
       setIsSubmitting(false);
     }
@@ -137,7 +137,7 @@ export default function EnhancedContactModal({
             onClick={handleClose}
             disabled={isSubmitting}
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed z-10"
-            aria-label="Cerrar"
+            aria-label="Close"
           >
             <X size={16} color="#000" />
           </button>
@@ -156,10 +156,10 @@ export default function EnhancedContactModal({
                   <Sparkles className="text-white" size={24} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#ff4081] to-[#00b2ff] bg-clip-text text-transparent">
-                  Hablemos sobre tu proyecto
+                  Let's talk about your project
                 </h2>
                 <p className="text-gray-600 mt-2">
-                  Estamos aquí para hacer realidad tus ideas
+                  We are here to bring your ideas to life
                 </p>
               </div>
 
@@ -176,12 +176,12 @@ export default function EnhancedContactModal({
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Nombre *
+                    Name *
                   </label>
                   <div className="modal-input-focus">
                     <Input
                       id="name"
-                      placeholder="¿Cómo te llamas?"
+                      placeholder="What is your name?"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -210,7 +210,7 @@ export default function EnhancedContactModal({
                     <Input
                       id="email"
                       type="email"
-                      placeholder="tu@email.com"
+                      placeholder="your@email.com"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -233,12 +233,12 @@ export default function EnhancedContactModal({
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Mensaje *
+                    Message *
                   </label>
                   <div className="modal-input-focus">
                     <Textarea
                       id="message"
-                      placeholder="Cuéntanos sobre tu proyecto, objetivos y cómo podemos ayudarte..."
+                      placeholder="Tell us about your project, goals, and how we can help you..."
                       rows={4}
                       value={formData.message}
                       onChange={(e) =>
@@ -319,12 +319,12 @@ export default function EnhancedContactModal({
                     {isSubmitting ? (
                       <div className="flex items-center justify-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Enviando...</span>
+                        <span>Sending...</span>
                       </div>
                     ) : (
                       <div className="flex items-center justify-center space-x-2">
                         <Send size={18} />
-                        <span>Enviar mensaje</span>
+                        <span>Send message</span>
                       </div>
                     )}
                   </Button>
@@ -352,11 +352,10 @@ export default function EnhancedContactModal({
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                ¡Mensaje enviado!
+                Message sent!
               </h3>
               <p className="text-gray-600 mb-4">
-                Gracias por contactarnos. Te responderemos en las próximas 24
-                horas.
+                Thank you for contacting us. We will reply within 24 hours.
               </p>
               <div className="flex justify-center">
                 <div className="w-8 h-1 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full"></div>

@@ -20,86 +20,86 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Desarrollo Web",
-  subtitle: "Sitios web que convierten visitantes en clientes",
+  title: "Web Development",
+  subtitle: "Websites that convert visitors into customers",
   description:
-    "Creamos sitios modernos, rápidos y orientados a la conversión. Aplicamos mejores prácticas de UX/UI y SEO técnico para maximizar resultados.",
+    "We create modern, fast, and conversion-oriented sites. We apply UX/UI best practices and technical SEO to maximize results.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde: USD 1500",
-  duration: "6–12 semanas",
+  price: "From: USD 1500",
+  duration: "6–12 weeks",
   features: [
-    "Diseño responsivo (mobile-first)",
-    "Optimización de velocidad (Core Web Vitals)",
-    "SEO técnico implementado (schema, sitemaps, metas, indexación)",
-    "Integración con Analytics/Tag Manager",
-    "Formularios de contacto avanzados",
-    "CMS fácil de usar (editor visual + guía rápida)",
+    "Responsive design (mobile-first)",
+    "Speed optimization (Core Web Vitals)",
+    "Technical SEO implemented (schema, sitemaps, metas, indexing)",
+    "Analytics/Tag Manager integration",
+    "Advanced contact forms",
+    "Easy-to-use CMS (visual editor + quick guide)",
   ],
   process: [
-    { title: "Planificación", description: "Arquitectura, alcance y KPIs" },
+    { title: "Planning", description: "Architecture, scope, and KPIs" },
     {
-      title: "Diseño UX/UI",
-      description: "Wireframes y diseño visual orientado a conversión",
+      title: "UX/UI Design",
+      description: "Wireframes and conversion-oriented visual design",
     },
     {
-      title: "Desarrollo",
-      description: "Código limpio y componentes reutilizables",
+      title: "Development",
+      description: "Clean code and reusable components",
     },
     {
-      title: "Lanzamiento",
-      description: "QA, puesta en producción y optimización inicial",
+      title: "Launch",
+      description: "QA, production deployment, and initial optimization",
     },
   ],
   benefits: [
-    "Aumento de conversiones",
-    "Mejor posicionamiento en Google",
-    "Experiencia de usuario superior",
-    "Reducción de la tasa de rebote",
-    "Incremento de ventas y ticket promedio",
-    "Checkout optimizado para e‑commerce",
+    "Increased conversions",
+    "Better Google ranking",
+    "Superior user experience",
+    "Reduced bounce rate",
+    "Increased sales and average ticket",
+    "Optimized checkout for e-commerce",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué plataforma de e‑commerce recomiendan?",
+    question: "What e-commerce platform do you recommend?",
     answer:
-      "Depende del contexto: Shopify para salir rápido y con ecosistema sólido; WooCommerce si querés integrarlo a tu WordPress y tener más flexibilidad. Para alto rendimiento o integraciones complejas, podemos plantear arquitectura headless con Next.js.",
+      "It depends on the context: Shopify to launch quickly with a solid ecosystem; WooCommerce if you want to integrate it into your WordPress and have more flexibility. For high performance or complex integrations, we can propose headless architecture with Next.js.",
   },
   {
-    question: "¿Qué medios de pago integran?",
+    question: "What payment methods do you integrate?",
     answer:
-      "Integramos pasarelas como Mercado Pago, Stripe y PayPal, además de métodos locales según tu país.",
+      "We integrate gateways like Mercado Pago, Stripe, and PayPal, as well as local methods depending on your country.",
   },
   {
-    question: "¿Qué tecnologías utilizan para el desarrollo?",
+    question: "What technologies do you use for development?",
     answer:
-      "Trabajamos con tecnologías modernas: Next.js, React, TypeScript y Tailwind en frontend; WordPress por defecto para CMS; o Node.js en backend si el proyecto lo requiere.",
+      "We work with modern technologies: Next.js, React, TypeScript, and Tailwind on the frontend; WordPress by default for CMS; or Node.js on the backend if the project requires it.",
   },
   {
-    question: "¿El sitio será responsivo?",
+    question: "Will the site be responsive?",
     answer:
-      "Sí. Desarrollamos con enfoque mobile-first y probamos en múltiples dispositivos.",
+      "Yes. We develop with a mobile-first approach and test on multiple devices.",
   },
   {
-    question: "¿Incluye hosting y dominio?",
+    question: "Does it include hosting and domain?",
     answer:
-      "Incluimos hosting el primer año y te asistimos con el dominio. Luego podés continuar con nosotros o con tu proveedor.",
+      "We include hosting for the first year and assist you with the domain. Then you can continue with us or your own provider.",
   },
   {
-    question: "¿Pueden tomar mi sitio actual aunque no esté en WordPress?",
+    question: "Can you take over my current site even if it's not on WordPress?",
     answer:
-      "Sí. Tomamos sitios heredados en Shopify, Wix, Webflow, etc o código a medida. Podemos mantenerlos, optimizarlos o migrarlos.",
+      "Yes. We take on legacy sites in Shopify, Wix, Webflow, etc., or custom code. We can maintain, optimize, or migrate them.",
   },
   {
-    question: "¿Por qué WordPress por defecto?",
+    question: "Why WordPress by default?",
     answer:
-      "Porque ofrece rapidez de desarrollo, facilidad de edición para tu equipo, ecosistema maduro y excelente base SEO. Si tu proyecto requiere otra arquitectura, te proponemos la mejor opción y un presupuesto a medida.",
+      "Because it offers development speed, ease of editing for your team, a mature ecosystem, and an excellent SEO base. If your project requires another architecture, we propose the best option and a custom quote.",
   },
   {
-    question: "¿Qué plazos manejan y cómo se define el precio final?",
+    question: "What are the timelines and how is the final price defined?",
     answer:
-      "El plazo típico es 6–12 semanas. El costo final depende de alcance, integraciones y entregables. Partimos desde USD 1200 y ajustamos según tu proyecto.",
+      "Typical timeline is 6–12 weeks. The final cost depends on scope, integrations, and deliverables. We start from USD 1500 and adjust according to your project.",
   },
 ];
 
@@ -112,7 +112,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/desarrollo-web${slugPart}`;
+  const canonical = `${BASE_URL}/services/desarrollo-web${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/desarrollo-web${slugPart}`;
 
   return {
@@ -126,15 +126,15 @@ export async function generateMetadata({
       languages: { es: canonical, en: canonicalEn },
     },
     keywords: [
-      "desarrollo web",
-      "sitios web",
-      "diseño web",
-      "desarrollo frontend",
-      "e‑commerce",
+      "web development",
+      "websites",
+      "web design",
+      "frontend development",
+      "e-commerce",
       "next.js",
       "wordpress",
-      "seo técnico",
-      "agencia digital",
+      "technical seo",
+      "digital agency",
       "North Blue Agency",
     ],
     openGraph: {
@@ -146,7 +146,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-desarrollo-web.png`,
+          url: `${BASE_URL}/images/og/services-desarrollo-web.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -155,7 +155,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-desarrollo-web.png`],
+      images: [`${BASE_URL}/images/og/services-desarrollo-web.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -185,11 +185,11 @@ export default function DesarrolloWebPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -220,13 +220,13 @@ export default function DesarrolloWebPage({
           </div>
         </section>
 
-        {/* Descripción y beneficios (más limpio, sin cards) */}
+        {/* Description and benefits (cleaner, no cards) */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-6">
                   {serviceData.description}
@@ -248,7 +248,7 @@ export default function DesarrolloWebPage({
 
               <AnimatedSection animation="fadeInRight" delay={200}>
                 <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white ring-1 ring-gray-200/70 shadow-lg">
-                  <h3 className="text-2xl font-bold mb-6">Características</h3>
+                  <h3 className="text-2xl font-bold mb-6">Features</h3>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {serviceData.features.map(
                       (feature: string, index: number) => (
@@ -267,16 +267,16 @@ export default function DesarrolloWebPage({
           </div>
         </section>
 
-        {/* Soluciones (consolidado, menos cards) */}
+        {/* Solutions (consolidated, fewer cards) */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <AnimatedSection className="mb-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Soluciones a tu medida
+                Tailored Solutions
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Elegí el camino que mejor se adapte a tu proyecto. Nosotros nos
-                encargamos del resto.
+                Choose the path that best suits your project. We take care of the
+                rest.
               </p>
             </AnimatedSection>
 
@@ -284,13 +284,13 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div className="h-full p-8 rounded-2xl bg-white ring-1 ring-gray-200/70 shadow-md hover:shadow-lg transition-shadow">
                   <h3 className="text-2xl font-bold mb-3">
-                    Proyectos desde cero
+                    Projects from Scratch
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Para sitios corporativos, landings, blogs y catálogos
-                    trabajamos por defecto con
-                    <strong> WordPress</strong> por su flexibilidad y facilidad
-                    de uso.
+                    For corporate sites, landings, blogs, and catalogs, we work by
+                    default with
+                    <strong> WordPress</strong> for its flexibility and ease of
+                    use.
                   </p>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
@@ -298,7 +298,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span className="text-gray-700">
-                        CMS fácil de usar y editor visual
+                        Easy-to-use CMS and visual editor
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
@@ -306,13 +306,12 @@ export default function DesarrolloWebPage({
                         <Check className="text-gray-700" size={12} />
                       </div>
                       <span className="text-gray-700">
-                        Guía rápida y capacitación incluida
+                        Quick guide and training included
                       </span>
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 mt-4">
-                    Para soluciones avanzadas (headless, apps, e‑commerce a gran
-                    escala) evaluamos otras tecnologías: Next.js, Shopify, etc.
+                    For advanced solutions (headless, apps, large-scale e-commerce), we evaluate other technologies: Next.js, Shopify, etc.
                   </p>
                 </div>
               </AnimatedSection>
@@ -320,12 +319,10 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div className="h-full p-8 rounded-2xl bg-white ring-1 ring-gray-200/70 shadow-md hover:shadow-lg transition-shadow">
                   <h3 className="text-2xl font-bold mb-3">
-                    Sitios heredados y migraciones
+                    Legacy Sites & Migrations
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Tomamos proyectos en WordPress, Shopify, (otros) o código a
-                    medida. Mantenemos, optimizamos o migramos conservando SEO y
-                    analíticas.
+                    We take on projects in WordPress, Shopify, (others) or custom code. We maintain, optimize, or migrate while preserving SEO and analytics.
                   </p>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
@@ -333,7 +330,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span className="text-gray-700">
-                        Migración sin pérdida de tráfico ni datos
+                        Migration without traffic or data loss
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
@@ -341,7 +338,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-gray-700" size={12} />
                       </div>
                       <span className="text-gray-700">
-                        Optimización y mantenimiento sobre tu stack actual
+                        Optimization and maintenance on your current stack
                       </span>
                     </div>
                   </div>
@@ -356,11 +353,10 @@ export default function DesarrolloWebPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="mb-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                E‑commerce que vende
+                E-commerce that Sells
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Tiendas online rápidas, seguras y listas para escalar. Diseñadas
-                para convertir y pensadas para operaciones reales.
+                Fast, secure, and ready-to-scale online stores. Designed to convert and built for real operations.
               </p>
             </AnimatedSection>
 
@@ -368,7 +364,7 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div className="h-full p-8 rounded-2xl bg-white ring-1 ring-gray-200/70 shadow-md">
                   <h3 className="text-2xl font-bold mb-4">
-                    Características clave
+                    Key Features
                   </h3>
                   <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start gap-3">
@@ -376,7 +372,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Catálogo con variantes, stock, SKUs y atributos
+                        Catalog with variants, stock, SKUs, and attributes
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -384,8 +380,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Checkout optimizado y medios de pago (Mercado Pago,
-                        Stripe, PayPal)
+                        Optimized checkout and payment methods (Mercado Pago, Stripe, PayPal)
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -393,7 +388,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Integraciones de envío y cálculo de tarifas por zonas
+                        Shipping integrations and rate calculation by zones
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -401,21 +396,21 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Emails transaccionales y recuperación de carrito
+                        Transactional emails and cart recovery
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Búsqueda con filtros, orden y wishlist</span>
+                      <span>Search with filters, sorting, and wishlist</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        SEO para productos (rich snippets, schema, sitemap)
+                        Product SEO (rich snippets, schema, sitemap)
                       </span>
                     </li>
                   </ul>
@@ -425,7 +420,7 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div className="h-full p-8 rounded-2xl bg-white ring-1 ring-gray-200/70 shadow-md">
                   <h3 className="text-2xl font-bold mb-4">
-                    Plataformas y stack
+                    Platforms & Stack
                   </h3>
                   <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start gap-3">
@@ -433,7 +428,7 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        WooCommerce: flexibilidad total sobre WordPress
+                        WooCommerce: total flexibility on WordPress
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -441,35 +436,9 @@ export default function DesarrolloWebPage({
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Shopify: time‑to‑market rápido y ecosistema de apps
+                        Shopify: fast time-to-market and app ecosystem
                       </span>
                     </li>
-
-                    {/* <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-[#00b2ff] rounded-full flex items-center justify-center">
-                        <Check className="text-white" size={12} />
-                      </div>
-                      <span>
-                        Headless con Next.js para performance y control avanzado
-                      </span>
-                    </li> */}
-                    {/* <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-[#00b2ff] rounded-full flex items-center justify-center">
-                        <Check className="text-white" size={12} />
-                      </div>
-                      <span>
-                        Integraciones: CRM/ERP, Meta & Google Ads, Analytics 4,
-                        Tag Manager
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-[#00b2ff] rounded-full flex items-center justify-center">
-                        <Check className="text-white" size={12} />
-                      </div>
-                      <span>
-                        Reporting: dashboards de ventas, embudos y cohortes
-                      </span>
-                    </li> */}
                   </ul>
 
                   <div className="mt-6">
@@ -478,7 +447,7 @@ export default function DesarrolloWebPage({
                         size="lg"
                         className="btn-white-hover bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:opacity-90"
                       >
-                        Quiero vender online
+                        I want to sell online
                       </Button>
                     </a>
                   </div>
@@ -493,11 +462,10 @@ export default function DesarrolloWebPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="mb-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Servicios complementarios
+                Complementary Services
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Te acompañamos después del lanzamiento para que tu web se
-                mantenga segura, rápida y al día.
+                We support you after launch to keep your website secure, fast, and up to date.
               </p>
             </AnimatedSection>
 
@@ -505,29 +473,29 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div>
                   <h3 className="text-xl font-bold mb-2">
-                    Mantenimiento & Soporte
+                    Maintenance & Support
                   </h3>
                   <p className="text-gray-700 mb-3">
-                    Planes para mantener tu sitio seguro y actualizado.
+                    Plans to keep your site secure and updated.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Actualizaciones seguras y backups</span>
+                      <span>Secure updates and backups</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Monitoreo 24/7 y parches de seguridad</span>
+                      <span>24/7 monitoring and security patches</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Soporte por tickets/WhatsApp y SLA</span>
+                      <span>Ticket/WhatsApp support and SLA</span>
                     </li>
                   </ul>
                 </div>
@@ -536,29 +504,29 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div>
                   <h3 className="text-xl font-bold mb-2">
-                    Actualizaciones & Mejoras
+                    Updates & Improvements
                   </h3>
                   <p className="text-gray-700 mb-3">
-                    Rediseños, landings y nuevas integraciones.
+                    Redesigns, landing pages, and new integrations.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Rediseños y landings de campaña</span>
+                      <span>Redesigns and campaign landing pages</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Integraciones (CRM, pagos, chat)</span>
+                      <span>Integrations (CRM, payments, chat)</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Accesibilidad, multilenguaje y optimizaciones</span>
+                      <span>Accessibility, multi-language, and optimizations</span>
                     </li>
                   </ul>
                 </div>
@@ -567,30 +535,30 @@ export default function DesarrolloWebPage({
               <AnimatedSection>
                 <div>
                   <h3 className="text-xl font-bold mb-2">
-                    Hosting & Puesta en marcha
+                    Hosting & Launch
                   </h3>
                   <p className="text-gray-700 mb-3">
-                    Primer año incluido. También trabajamos con tu proveedor.
+                    First year included. We also work with your provider.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>SSL, backups automáticos y seguridad</span>
+                      <span>SSL, automatic backups, and security</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
-                      <span>Optimización de caché / CDN</span>
+                      <span>Cache optimization / CDN</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                         <Check className="text-white" size={12} />
                       </div>
                       <span>
-                        Opcional: staging, servidores dedicados y CI/CD
+                        Optional: staging, dedicated servers, and CI/CD
                       </span>
                     </li>
                   </ul>
@@ -608,7 +576,7 @@ export default function DesarrolloWebPage({
                 <AnimatedSection>
                   <div>
                     <h3 className="text-2xl font-bold mb-4">
-                      Tecnologías de proyectos más complejos
+                      Technologies for More Complex Projects
                     </h3>
                     <div className="grid gap-3">
                       <div className="flex items-start gap-3">
@@ -632,7 +600,7 @@ export default function DesarrolloWebPage({
                           <Check className="text-white" size={12} />
                         </div>
                         <span className="text-gray-700">
-                          E‑commerce: WooCommerce o Shopify
+                          E-commerce: WooCommerce or Shopify
                         </span>
                       </div>
                     </div>
@@ -641,20 +609,20 @@ export default function DesarrolloWebPage({
 
                 <AnimatedSection>
                   <div>
-                    <h3 className="text-2xl font-bold mb-4">Entregables</h3>
+                    <h3 className="text-2xl font-bold mb-4">Deliverables</h3>
                     <ul className="space-y-2 text-gray-700">
                       <li className="flex items-start gap-3">
                         <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                           <Check className="text-white" size={12} />
                         </div>
-                        <span>Sitio listo para producción + accesos</span>
+                        <span>Production-ready site + access</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                           <Check className="text-white" size={12} />
                         </div>
                         <span>
-                          Manual rápido del CMS + sesión de capacitación
+                          Quick CMS guide + training session
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
@@ -662,14 +630,14 @@ export default function DesarrolloWebPage({
                           <Check className="text-white" size={12} />
                         </div>
                         <span>
-                          Matriz de métricas (Analytics/Tag Manager configurado)
+                          Metrics matrix (Analytics/Tag Manager configured)
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="w-5 h-5 bg-[#ff4081] rounded-full flex items-center justify-center">
                           <Check className="text-white" size={12} />
                         </div>
-                        <span>Plan de mantenimiento recomendado</span>
+                        <span>Recommended maintenance plan</span>
                       </li>
                     </ul>
                   </div>
@@ -684,10 +652,10 @@ export default function DesarrolloWebPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Metodología clara y enfocada en resultados.
+                Clear methodology focused on results.
               </p>
             </AnimatedSection>
 
@@ -717,15 +685,14 @@ export default function DesarrolloWebPage({
 
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para comenzar?"
-          subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital"
-          buttonText="Solicitar cotización"
+          title="Ready to get started?"
+          subtitle="Contact us today and discover how we can transform your digital presence"
+          buttonText="Request Quote"
         />
 
         {/* Contact Section */}

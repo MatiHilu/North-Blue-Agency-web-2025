@@ -13,7 +13,7 @@ function isLocalHost(host: string | null): boolean {
   );
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const currentHostHeader = request.headers.get("host");
 
   if (!currentHostHeader || isLocalHost(currentHostHeader)) {

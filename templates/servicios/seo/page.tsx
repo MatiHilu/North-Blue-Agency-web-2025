@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/seo` },
+  alternates: { canonical: `${BASE_URL}/services/seo` },
   keywords: [
     "SEO",
     "posicionamiento web",
@@ -91,11 +91,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/seo`,
+    url: `${BASE_URL}/services/seo`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-seo.png`,
+        url: `${BASE_URL}/images/og/services-seo.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -104,7 +104,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-seo.png`],
+    images: [`${BASE_URL}/images/og/services-seo.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -126,7 +126,7 @@ export default function SEOPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />

@@ -19,14 +19,13 @@ import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
 // Dynamic metadata for blog post pages
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const params = await props.params;
   const post = await wordpress.getPostBySlug(params.slug);
   if (!post) {
-    return { title: "Artículo no encontrado", description: "" };
+    return { title: "Article not found", description: "" };
   }
   const title = post.title;
   const description = post.excerpt;
@@ -234,11 +233,10 @@ function ensureParagraphs(html: string): string {
   return out.join("");
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
+export default async function BlogPostPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
+  const params = await props.params;
   const slug = params.slug;
   const post = await wordpress.getPostBySlug(slug);
 
@@ -247,10 +245,10 @@ export default async function BlogPostPage({
       <div className="min-h-[95vh] pt-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4 text-white">
-            Artículo no encontrado
+            Article not found
           </h1>
           <Link href="/blog">
-            <Button variant="secondary">Volver al blog</Button>
+            <Button variant="secondary">Back to blog</Button>
           </Link>
         </div>
       </div>
@@ -288,7 +286,7 @@ export default async function BlogPostPage({
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
         {
           "@type": "ListItem",
           position: 2,
@@ -356,7 +354,7 @@ export default async function BlogPostPage({
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver al blog
+                Back to blog
               </Link>
 
               <div className="max-w-4xl mx-auto text-center">
@@ -366,7 +364,7 @@ export default async function BlogPostPage({
                   </span>
                   <div className="flex items-center text-white/80 text-sm">
                     <Calendar size={16} className="mr-1" />
-                    {new Date(post.date).toLocaleDateString("es-ES")}
+                    {new Date(post.date).toLocaleDateString("en-US")}
                   </div>
                   <div className="flex items-center text-white/80 text-sm">
                     <Clock size={16} className="mr-1" />
@@ -385,16 +383,16 @@ export default async function BlogPostPage({
                 <div className="flex items-center justify-center space-x-4">
                   <div className="flex items-center text-white/80">
                     <User size={16} className="mr-2" />
-                    Por {post.author}
+                    Writer {post.author}
                   </div>
                   <div className="flex items-center space-x-2">
                     <Share2 size={16} className="text-white/80" />
-                    <span className="text-white/80 text-sm">Compartir:</span>
+                    <span className="text-white/80 text-sm">Share:</span>
                     <a
                       href={facebookShare}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Compartir en Facebook"
+                      aria-label="Share on Facebook"
                       className="text-white/80 hover:text-white transition-colors"
                     >
                       <Facebook size={16} />
@@ -403,7 +401,7 @@ export default async function BlogPostPage({
                       href={twitterShare}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Compartir en X (Twitter)"
+                      aria-label="Share on X (Twitter)"
                       className="text-white/80 hover:text-white transition-colors"
                     >
                       <svg
@@ -421,7 +419,7 @@ export default async function BlogPostPage({
                       href={linkedinShare}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Compartir en LinkedIn"
+                      aria-label="Share on LinkedIn"
                       className="text-white/80 hover:text-white transition-colors"
                     >
                       <Linkedin size={16} />
@@ -477,23 +475,20 @@ export default async function BlogPostPage({
                     <Card className="border-0 shadow-lg sticky top-24">
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold mb-4">
-                          Sobre el Autor
+                          About the Author
                         </h3>
                         {isAbrilLespade ? (
                           <>
                             <div className="mb-4">
                               <p className="font-semibold">Abril Lespade</p>
                               <p className="text-sm text-gray-600">
-                                Gerenta de Marketing
+                                Marketing Manager
                               </p>
                             </div>
                             <p className="text-[10px] text-gray-600 mb-4">
-                              Lidera la estrategia de redes sociales:
-                              contenidos, tono, comunidad y crecimiento. Su
-                              enfoque se centra en construir relaciones
-                              auténticas y duraderas con la audiencia. Al
-                              comprender las necesidades y las formas de las
-                              redes logra resultados significativos.
+                              Leading the social media strategy: content, tone, community, and growth. 
+                              Her focus is on building authentic and lasting relationships with the audience. 
+                              By understanding the needs and dynamics of social networks, she achieves significant results.
                             </p>
                           </>
                         ) : (
@@ -501,19 +496,14 @@ export default async function BlogPostPage({
                             <div className="mb-4">
                               <p className="font-semibold">Matías Hilú</p>
                               <p className="text-sm text-gray-600">
-                                CEO &amp; Gerente de Desarrollo Web
+                                CEO &amp; Web Development Manager
                               </p>
                             </div>
                             <p className="text-[10px] text-gray-600 mb-4">
-                              Encargado del desarrollo web: performance, SEO
-                              técnico y optimización de conversión. Su enfoque
-                              está en crear sitios web rápidos, seguros y
-                              optimizados que no solo atraen tráfico, sino que
-                              también convierten visitantes en clientes. Con su
-                              experiencia técnica, garantiza que cada proyecto
-                              no solo cumpla con los estándares de la industria,
-                              sino que también ofrezca una experiencia de
-                              usuario excepcional.
+                              In charge of web development: performance, technical SEO, and conversion optimization. 
+                              His focus is on creating fast, secure, and optimized websites that not only attract traffic 
+                              but also convert visitors into customers. With his technical expertise, he ensures that every 
+                              project not only meets industry standards but also offers an exceptional user experience.
                             </p>
                           </>
                         )}

@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   description:
     "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento.",
-  alternates: { canonical: `${BASE_URL}/servicios/redes-sociales` },
+  alternates: { canonical: `${BASE_URL}/services/redes-sociales` },
   keywords: [
     "gestión de redes sociales",
     "community management",
@@ -92,11 +92,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/redes-sociales`,
+    url: `${BASE_URL}/services/redes-sociales`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-redes-sociales.png`,
+        url: `${BASE_URL}/images/og/services-redes-sociales.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-redes-sociales.png`],
+    images: [`${BASE_URL}/images/og/services-redes-sociales.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -129,7 +129,7 @@ export default function RedesSocialesPage() {
               <AnimatedSection>
                 <div>
                   <Link
-                    href="/servicios"
+                    href="/services"
                     className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
                   >
                     <ArrowLeft size={20} className="mr-2" />

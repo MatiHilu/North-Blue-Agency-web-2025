@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { generateMetadata as baseGenerateMetadata } from "../../servicios/seo/page";
+import { generateMetadata as baseGenerateMetadata } from "../../services/seo/page";
 
 export async function generateMetadata({
   searchParams,
@@ -11,7 +11,7 @@ export async function generateMetadata({
   const raw = searchParams?.Location;
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const canonical = `${BASE_URL}/services/seo${slug ? `-${slug}` : ""}`;
-  const canonicalEs = `${BASE_URL}/servicios/seo${slug ? `-${slug}` : ""}`;
+  const canonicalEs = `${BASE_URL}/services/seo${slug ? `-${slug}` : ""}`;
 
   return {
     ...base,
@@ -26,4 +26,4 @@ export async function generateMetadata({
   };
 }
 
-export { default } from "../../servicios/seo/page";
+export { default } from "../../services/seo/page";

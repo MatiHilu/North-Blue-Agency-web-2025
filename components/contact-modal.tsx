@@ -47,9 +47,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      if (!res.ok) throw new Error("Error enviando mensaje");
-      // Opcional: mostrar notificación de éxito
-      console.log("Mensaje enviado:", formData);
+      if (!res.ok) throw new Error("Error sending message");
+      // Optional: show success notification
+      console.log("Message sent:", formData);
       onClose();
       setFormData({
         name: "",
@@ -61,7 +61,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       });
     } catch (err) {
       console.error(err);
-      alert("Error al enviar mensaje");
+      alert("Error sending message");
     }
   };
 
@@ -88,13 +88,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <button
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-600 transition-all duration-200 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-            aria-label="Cerrar"
+            aria-label="Close"
           >
             <X size={18} />
           </button>
 
           <h2 className="text-2xl font-bold mb-6">
-            Hablemos sobre tu proyecto
+            Let's talk about your project
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -109,11 +109,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Nombre
+                Name
               </label>
               <Input
                 id="name"
-                placeholder="Tu nombre"
+                placeholder="Your name"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -139,7 +139,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <Input
                 id="email"
                 type="email"
-                placeholder="Tu email"
+                placeholder="Your email"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -160,11 +160,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Mensaje
+                Message
               </label>
               <Textarea
                 id="message"
-                placeholder="Cuéntanos sobre tu proyecto"
+                placeholder="Tell us about your project"
                 rows={5}
                 value={formData.message}
                 onChange={(e) =>
@@ -220,7 +220,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200"
               >
-                Enviar mensaje
+                Send
               </Button>
             </div>
           </form>

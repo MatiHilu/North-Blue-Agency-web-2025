@@ -20,61 +20,61 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Creación de Contenido",
-  subtitle: "Contenido creativo para redes sociales",
+  title: "Content Creation",
+  subtitle: "Creative content for social media",
   description:
-    "Generamos publicaciones visuales y multimedia atractivas que amplifican tu presencia en redes sociales. Desde imágenes, videos cortos hasta carruseles, adaptados a cada plataforma para maximizar el engagement.",
+    "Amplify your social media presence with attractive visual content. We create images, videos, and carousels adapted to each platform to maximize engagement.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $20/publicación",
-  duration: "1-3 días por pieza",
+  price: "From $20/post",
+  duration: "1-3 days per piece",
   features: [
-    "Publicaciones estáticas atractivas",
-    "Historias animadas",
-    "Videos cortos (Reels, TikToks)",
-    "Carruseles informativos",
-    "Edición profesional de imágenes y videos",
+    "Attractive static posts",
+    "Animated stories",
+    "Short videos (Reels, TikToks)",
+    "Informative carousels",
+    "Professional image and video editing",
   ],
   process: [
     {
-      title: "Brief inicial",
-      description: "Recogemos tus objetivos y estilo de marca",
+      title: "Initial Brief",
+      description: "We gather your goals and brand style",
     },
     {
-      title: "Planificación",
-      description: "Diseñamos el calendario y tipo de contenido",
+      title: "Planning",
+      description: "We design the calendar and content type",
     },
     {
-      title: "Creación",
-      description: "Desarrollamos las piezas visuales y multimedia",
+      title: "Creation",
+      description: "We develop visual and multimedia pieces",
     },
     {
-      title: "Entrega",
-      description: "Programamos y entregamos el contenido listo para publicar",
+      title: "Delivery",
+      description: "We schedule and delivery content ready to publish",
     },
   ],
   benefits: [
-    "Mayor engagement en tus publicaciones",
-    "Contenido optimizado para cada plataforma",
-    "Consistencia y coherencia de marca",
-    "Imágenes y videos de alta calidad",
+    "Higher engagement on your posts",
+    "Content optimized for each platform",
+    "Brand consistency and coherence",
+    "High-quality images and videos",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué tipo de contenido ofrecen?",
+    question: "What type of content do you offer?",
     answer:
-      "Ofrecemos desde publicaciones estáticas, historias animadas, videos cortos hasta carruseles informativos, adaptados a tu estrategia y plataforma.",
+      "We offer everything from static posts and animated stories to short videos and informative carousels, adapted to your strategy and platform.",
   },
   {
-    question: "¿Cuántas revisiones incluyen?",
+    question: "How many revisions are included?",
     answer:
-      "Incluimos hasta 2 rondas de revisiones por pieza para asegurar que estás satisfecho con el resultado final.",
+      "We include up to 2 rounds of revisions per piece to ensure you are satisfied with the final result.",
   },
   {
-    question: "¿Programan las publicaciones por nosotros?",
+    question: "Do you schedule the posts for us?",
     answer:
-      "No programamos las publicaciones directamente en tus plataformas. Eso lo ofrecemos en el servicio de gestión de redes sociales.",
+      "We don't schedule posts directly on your platforms. We offer that service in our social media management package.",
   },
 ];
 export async function generateMetadata({
@@ -86,7 +86,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/creacion-contenido${slugPart}`;
+  const canonical = `${BASE_URL}/services/creacion-contenido${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/creacion-contenido${slugPart}`;
 
   return {
@@ -100,12 +100,12 @@ export async function generateMetadata({
       languages: { es: canonical, en: canonicalEn },
     },
     keywords: [
-      "creación de contenido",
-      "contenido para redes",
+      "content creation",
+      "social media content",
       "reels",
       "tiktoks",
-      "carruseles",
-      "diseño gráfico",
+      "carousels",
+      "graphic design",
       "North Blue Agency",
     ],
     openGraph: {
@@ -117,7 +117,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-creacion-contenido.png`,
+          url: `${BASE_URL}/images/og/services-creacion-contenido.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -126,7 +126,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-creacion-contenido.png`],
+      images: [`${BASE_URL}/images/og/services-creacion-contenido.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -155,11 +155,11 @@ export default function CreacionContenidoPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {serviceData.title}
@@ -193,7 +193,7 @@ export default function CreacionContenidoPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -213,7 +213,7 @@ export default function CreacionContenidoPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map((feature, i) => (
@@ -236,10 +236,10 @@ export default function CreacionContenidoPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología clara para ofrecer contenido efectivo
+                We follow a clear methodology to offer effective content
               </p>
             </AnimatedSection>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -263,16 +263,15 @@ export default function CreacionContenidoPage({
         </section>
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para potenciar tus redes sociales?"
-          subtitle="Contáctanos y comienza a generar contenido que cautiva a tu
-                audiencia"
-          buttonText="Solicitar cotización"
+          title="Ready to boost your social media?"
+          subtitle="Contact us and start generating content that captivates your audience"
+          buttonText="Request a Quote"
         />
 
         {/* Contact Section */}

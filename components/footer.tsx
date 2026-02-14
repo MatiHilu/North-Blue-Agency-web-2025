@@ -25,8 +25,7 @@ export default function Footer() {
               className="h-12 w-auto "
             />
             <p className="text-gray-400">
-              Transformamos tu presencia digital con estrategias innovadoras y
-              resultados medibles.
+              We transform your digital presence with innovative strategies and measurable results.
             </p>
             <div className="flex space-x-4">
               <a
@@ -82,85 +81,93 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="md:pl-20">
-            <h3 className="text-lg font-semibold mb-4">Servicios</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2">
+          <div className="md:pl-10">
+            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-2">
               <li>
                 <Link
-                  href="/servicios/redes-sociales"
+                  href="/services/redes-sociales"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Redes Sociales
+                  - Social Media
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/branding"
+                  href="/services/branding"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Branding
+                  - Branding
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/desarrollo-web"
+                  href="/services/desarrollo-web"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Desarrollo Web
+                  - Web Development
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/marketing-digital"
+                  href="/services/marketing-digital"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Marketing Digital
+                  - Digital Marketing
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/redes-sociales"
+                  href="/services/seo"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  SEO
+                  - SEO
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/branding"
+                  href="/services/analytics"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Analytics
+                  - Analytics
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/desarrollo-web"
+                  href="/services/campanas-ads"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Campañas y Ads
+                  - Campaigns & Ads
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/marketing-digital"
+                  href="/services/chatgpt-ads"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Contenido
+                  - ChatGPT Ads
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/creacion-contenido"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  - Content Creation
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="md:pl-20">
-            <h3 className="text-lg font-semibold mb-4">Empresa</h3>
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="">
               <li>
                 <Link
-                  href="/nosotros"
+                  href="/about"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Nosotros
+                  About Us
                 </Link>
               </li>
               <li>
@@ -181,17 +188,17 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contacto"
+                  href="/contact"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Contacto
+                  Contact
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-[#ff4081]" />
@@ -221,7 +228,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-[#ff4081]" />
                 <span className="text-gray-400">
-                  Ciudad de Buenos Aires, Argentina
+                  CABA, Argentina
                 </span>
               </div>
             </div>
@@ -230,14 +237,14 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p className="mb-2">
-            &copy; 2025 North Blue Agency. Todos los derechos reservados.
+            &copy; 2026 North Blue Agency. All rights reserved.
           </p>
           <p className="text-sm">
             <Link
-              href="/politica-privacidad"
+              href="/privacy-policy"
               className="hover:text-white underline underline-offset-4"
             >
-              Política de Privacidad
+              Privacy Policy
             </Link>
           </p>
         </div>

@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   // Base URL para que Next construya canónicos absolutos y OpenGraph URLs
   metadataBase: new URL("https://northblueagency.com"),
   title: {
-    default: "North Blue Agency - Marketing Digital Profesional",
+    default: "North Blue Agency - Professional Digital Marketing",
     template: "%s | North Blue Agency",
   },
   description:
-    "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+    "Digital marketing agency specialized in social media, branding, and web development. We transform your digital presence.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <head>
         <link
           rel="apple-touch-icon"

@@ -33,11 +33,11 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, url: window.location.href }),
       });
-      if (!res.ok) throw new Error("Error enviando mensaje");
+      if (!res.ok) throw new Error("Error sending message");
       toast({
-        title: "¡Mensaje enviado!",
+        title: "Message sent!",
         description:
-          "Gracias por contactarnos. Te responderemos en las próximas 24 horas.",
+          "Thank you for contacting us. We will reply within 24 hours.",
       });
       setFormData({
         name: "",
@@ -48,10 +48,10 @@ export default function ContactSection() {
         url_field: "",
       });
     } catch (error) {
-      console.error("Error enviando mensaje:", error);
+      console.error("Error sending message:", error);
       toast({
         title: "Error",
-        description: "Hubo un problema enviando tu mensaje. Intenta más tarde.",
+        description: "There was a problem sending your message. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -67,15 +67,14 @@ export default function ContactSection() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-              ¿Listo para{" "}
+              Ready to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-xy">
-                transformar
+                transform
               </span>{" "}
-              tu negocio?
+              your business?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Contáctanos hoy y descubre cómo podemos llevar tu marca al
-              siguiente nivel
+              Contact us today and discover how we can take your brand to the next level
             </p>
           </AnimatedSection>
 
@@ -84,11 +83,11 @@ export default function ContactSection() {
               <Card className="h-full border-0 shadow-xl">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">
-                    Envíanos un mensaje
+                    Send us a message
                   </h3>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <Input
-                      placeholder="Tu nombre"
+                      placeholder="Your name"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -99,7 +98,7 @@ export default function ContactSection() {
                     />
                     <Input
                       type="email"
-                      placeholder="Tu email"
+                      placeholder="Your email"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -109,7 +108,7 @@ export default function ContactSection() {
                       required
                     />
                     <Textarea
-                      placeholder="Cuéntanos sobre tu proyecto"
+                      placeholder="Tell us about your project"
                       rows={5}
                       value={formData.message}
                       onChange={(e) =>
@@ -166,10 +165,10 @@ export default function ContactSection() {
                       className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
-                        "Enviando..."
+                        "Sending..."
                       ) : (
                         <>
-                          Enviar mensaje
+                          Send Message
                           <Send size={16} className="ml-2" />
                         </>
                       )}
@@ -183,7 +182,7 @@ export default function ContactSection() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold mb-6">
-                    Información de contacto
+                    Contact Information
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
@@ -203,12 +202,12 @@ export default function ContactSection() {
                         <Phone className="text-white" size={20} />
                       </div>
                       <div>
-                        <p className="font-semibold">Teléfono</p>
+                        <p className="font-semibold">Phone</p>
                         <p className="text-gray-600">
                           <a
                             href="tel:+541153248376"
                             className="hover:underline"
-                            aria-label="Llamar a +54 11 5324 8376"
+                            aria-label="Call +54 11 5324 8376"
                           >
                             +54 11 5324 8376
                           </a>
@@ -216,7 +215,7 @@ export default function ContactSection() {
                           <a
                             href="tel:+541130545828"
                             className="hover:underline"
-                            aria-label="Llamar a +54 11 3054 5828"
+                            aria-label="Call +54 11 3054 5828"
                           >
                             +54 11 3054 5828
                           </a>
@@ -229,9 +228,9 @@ export default function ContactSection() {
                         <Clock className="text-white" size={20} />
                       </div>
                       <div>
-                        <p className="font-semibold">Horario</p>
+                        <p className="font-semibold">Hours</p>
                         <p className="text-gray-600">
-                          Lun - Vie: 9:00 - 18:00 (GTM -3)
+                          Mon - Fri: 9:00 - 18:00 (GTM -3)
                         </p>
                         {/* <p className="text-gray-600">Sáb: 10:00 - 14:00</p> */}
                       </div>
@@ -250,11 +249,11 @@ export default function ContactSection() {
                 </div>
 
                 <div className="bg-gradient-to-br from-[#ff4081]/10 to-[#00b2ff]/10 p-6 rounded-lg">
-                  <h4 className="font-bold mb-2">¿Por qué elegirnos?</h4>
+                  <h4 className="font-bold mb-2">Why Choose Us?</h4>
                   <ul className="space-y-2 text-gray-600">
-                    <li>✓ Estrategias personalizadas</li>
-                    <li>✓ Resultados medibles</li>
-                    <li>✓ Equipo experto</li>
+                    <li>✓ Personalized strategies</li>
+                    <li>✓ Measurable results</li>
+                    <li>✓ Expert team</li>
                     {/* <li>✓ Soporte 24/7</li> */}
                   </ul>
                 </div>

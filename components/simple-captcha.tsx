@@ -60,7 +60,7 @@ export default function SimpleCaptcha({
   return (
     <div className="space-y-2">
       <label className="block text-sm font-medium text-gray-700">
-        Verificación de seguridad *
+        Security Verification *
       </label>
       <div className="flex items-center space-x-3">
         <span className="text-lg font-mono bg-gray-100 px-3 py-2 rounded border">
@@ -68,7 +68,7 @@ export default function SimpleCaptcha({
         </span>
         <Input
           type="number"
-          placeholder="Respuesta"
+          placeholder="Answer"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
           className={`w-32 ${
@@ -91,10 +91,10 @@ export default function SimpleCaptcha({
         </button>
       </div>
       {userAnswer && !isValid && (
-        <p className="text-sm text-red-600">Respuesta incorrecta</p>
+        <p className="text-sm text-red-600">Incorrect answer</p>
       )}
       {isValid && (
-        <p className="text-sm text-green-600">✓ Verificación correcta</p>
+        <p className="text-sm text-green-600">✓ Verification successful</p>
       )}
     </div>
   );

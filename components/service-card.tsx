@@ -43,7 +43,7 @@ export default function ServiceCard({
               variant="outline"
               className="group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
             >
-              Ver más
+              Know more
               <ArrowRight
                 size={16}
                 className="ml-2 group-hover/btn:translate-x-1 transition-transform"

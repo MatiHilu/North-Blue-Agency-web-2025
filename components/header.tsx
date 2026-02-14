@@ -15,8 +15,11 @@ import {
   BarChart3,
   Target,
   Keyboard,
+  Bot,
   Facebook,
   Instagram,
+  Sparkles,
+  MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnhancedContactModal from "@/components/enhanced-contact-modal";
@@ -32,6 +35,7 @@ export default function Header() {
   const [isMounted, setIsMounted] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [isServicesClosing, setIsServicesClosing] = useState(false);
+  const [isSeoOpen, setIsSeoOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   const supportedLocales = ["arg", "es", "uk", "us"];
@@ -52,52 +56,85 @@ export default function Header() {
 
   const services = [
     {
-      title: "Redes Sociales",
-      href: "/servicios/redes-sociales",
+      title: "Social Media",
+      href: "/services/redes-sociales",
       icon: <Smartphone size={20} />,
-      description: "Gestión completa de redes sociales",
+      description: "Complete social media management",
     },
     {
       title: "Branding",
-      href: "/servicios/branding",
+      href: "/services/branding",
       icon: <Palette size={20} />,
-      description: "Identidades visuales únicas",
+      description: "Unique visual identities",
     },
     {
-      title: "Desarrollo Web",
-      href: "/servicios/desarrollo-web",
+      title: "Web Development",
+      href: "/services/desarrollo-web",
       icon: <Globe size={20} />,
-      description: "Sitios web modernos y responsivos",
+      description: "Modern and responsive websites",
     },
     {
-      title: "Marketing Digital",
-      href: "/servicios/marketing-digital",
+      title: "Digital Marketing",
+      href: "/services/marketing-digital",
       icon: <Megaphone size={20} />,
-      description: "Estrategias integrales de marketing",
+      description: "Comprehensive marketing strategies",
     },
     {
       title: "SEO",
-      href: "/servicios/seo",
+      href: "/services/seo",
       icon: <Search size={20} />,
-      description: "Posicionamiento en buscadores",
+      description: "Search Engine Optimization",
     },
     {
       title: "Analytics",
-      href: "/servicios/analytics",
+      href: "/services/analytics",
       icon: <BarChart3 size={20} />,
-      description: "Análisis y reportes detallados",
+      description: "Detailed analysis and reports",
     },
     {
-      title: "Campañas y Ads",
-      href: "/servicios/campanas-ads",
+      title: "Campaigns & Ads",
+      href: "/services/campanas-ads",
       icon: <Target size={20} />,
-      description: "Publicidad digital estratégica",
+      description: "Strategic digital advertising",
     },
     {
-      title: "Contenido",
-      href: "/servicios/creacion-contenido",
+      title: "ChatGPT Ads",
+      href: "/services/chatgpt-ads",
+      icon: <Bot size={20} />,
+      description: "AI-powered Ads",
+    },
+    {
+      title: "Content Creation",
+      href: "/services/creacion-contenido",
       icon: <Keyboard size={20} />,
-      description: "Para redes sociales",
+      description: "For social media",
+    },
+  ];
+
+  const seoServices = [
+    {
+      title: "Traditional SEO",
+      href: "/services/seo/seo-tradicional",
+      icon: <Search size={20} />,
+      description: "Standard organic positioning",
+    },
+    {
+      title: "AEO",
+      href: "/services/seo/aeo",
+      icon: <MessageSquare size={20} />,
+      description: "Answer Engine Optimization",
+    },
+    {
+      title: "AIO",
+      href: "/services/seo/aio",
+      icon: <Bot size={20} />,
+      description: "AI Optimization",
+    },
+    {
+      title: "GEO",
+      href: "/services/seo/geo",
+      icon: <Sparkles size={20} />,
+      description: "Generative Engine Optimization",
     },
   ];
 
@@ -261,7 +298,7 @@ export default function Header() {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <Link href="/servicios">
+                <Link href="/services">
                   <button
                     className={`flex items-center transition-colors font-medium ${
                       isScrolled
@@ -269,7 +306,7 @@ export default function Header() {
                         : "text-[#ff4081] hover:text-[#ff4081]/80"
                     }`}
                   >
-                    Servicios
+                    Services
                     <ChevronDown size={16} className="ml-1" />
                   </button>
                 </Link>
@@ -309,10 +346,10 @@ export default function Header() {
                     </div>
                     <div className="mt-6 pt-6 border-t border-gray-100 text-center">
                       <Link
-                        href="/servicios"
+                        href="/services"
                         className="inline-flex items-center text-[#ff4081] hover:text-[#ff4081]/80 font-medium"
                       >
-                        Ver todos los servicios
+                        View all services
                         <ChevronDown
                           size={16}
                           className="ml-1 rotate-[-90deg]"
@@ -323,8 +360,66 @@ export default function Header() {
                 </div>
               </div>
 
+              {/* SEO Dropdown */}
+              <div
+                className="relative h-full flex items-center"
+                onMouseEnter={() => setIsSeoOpen(true)}
+                onMouseLeave={() => setIsSeoOpen(false)}
+              >
+                <Link href="/services/seo">
+                  <button
+                    className={`flex items-center transition-colors font-medium ${
+                      isScrolled
+                        ? "text-gray-700 hover:text-[#ff4081]"
+                        : "text-[#ff4081] hover:text-[#ff4081]/80"
+                    }`}
+                  >
+                    SEO
+                    <ChevronDown size={16} className="ml-1" />
+                  </button>
+                </Link>
+
+                {/* Invisible bridge to prevent closing when moving to dropdown */}
+                <div className="absolute top-full left-0 w-full h-8 bg-transparent" />
+
+                {/* Desktop Dropdown - Full Width Horizontal Bar */}
+                <div
+                  className={`fixed left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-100 transition-all duration-300 ease-out z-40 ${
+                    isSeoOpen
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-2 pointer-events-none"
+                  }`}
+                  style={{ top: "80px" }}
+                >
+                  <div className="container mx-auto px-4 py-8">
+                    <div className="grid grid-cols-4 gap-6">
+                      {seoServices.map((service, index) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="group p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#ff4081]/5 hover:to-[#00b2ff]/5 transition-all duration-200 flex items-center space-x-4 border border-transparent hover:border-gray-100"
+                          style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-md">
+                            {service.icon}
+                          </div>
+                          <div>
+                            <p className="font-bold text-lg text-gray-900 group-hover:text-[#ff4081] transition-colors">
+                              {service.title}
+                            </p>
+                            <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors mt-1">
+                              {service.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <Link
-                href="/nosotros"
+                href="/about"
                 className={`transition-colors font-medium ${
                   isScrolled
                     ? "text-gray-700 hover:text-[#ff4081]"
@@ -334,7 +429,7 @@ export default function Header() {
                   closeMenu();
                 }}
               >
-                Nosotros
+                About Us
               </Link>
 
               <Link
@@ -363,14 +458,14 @@ export default function Header() {
               >
                 Blog
               </Link>
-              <Link href="/contacto">
+              <Link href="/contact">
                 <Button
                   className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
                   onClick={() => {
                     closeMenu();
                   }}
                 >
-                  Contactar
+                  Contact
                 </Button>
               </Link>
             </nav>
@@ -443,7 +538,7 @@ export default function Header() {
                       className="text-3xl font-bold hover:scale-110 transition-transform duration-300 flex items-center justify-center w-full ml-2"
                       onClick={toggleMobileServices}
                     >
-                      Servicios
+                      Services
                       <ChevronDown
                         size={24}
                         className={`ml-2 transition-transform duration-300 ${
@@ -488,11 +583,11 @@ export default function Header() {
                         </div>
                         <div className="mt-4 pt-4 border-t border-white/20 text-center">
                           <Link
-                            href="/servicios"
+                            href="/services"
                             className="text-white/80 hover:text-white text-sm font-medium transition-colors"
                             onClick={closeMenu}
                           >
-                            Ver todos los servicios →
+                            View all services →
                           </Link>
                         </div>
                       </div>
@@ -500,7 +595,7 @@ export default function Header() {
                   </div>
 
                   <Link
-                    href="/nosotros"
+                    href="/about"
                     className={`text-3xl font-bold hover:scale-110 transition-transform duration-300 ${
                       isMenuClosing
                         ? "mobile-menu-item-exit"
@@ -509,7 +604,7 @@ export default function Header() {
                     style={{ animationDelay: isMenuClosing ? "0.2s" : "0.3s" }}
                     onClick={closeMenu}
                   >
-                    Nosotros
+                    About Us
                   </Link>
 
                   <Link
@@ -536,7 +631,7 @@ export default function Header() {
                   >
                     Blog
                   </Link>
-                  <Link href="/contacto">
+                  <Link href="/contact">
                     <Button
                       className={`btn-white-hover bg-white text-[#ff4081] hover:text-white text-xl px-8 py-4 mt-2 ${
                         isMenuClosing
@@ -550,7 +645,7 @@ export default function Header() {
                         closeMenu();
                       }}
                     >
-                      Contactar
+                      Contact
                     </Button>
                   </Link>
                   {/* Language Selector Mobile */}

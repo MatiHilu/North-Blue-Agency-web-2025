@@ -94,7 +94,7 @@ export function getPageConfig(path: string) {
   }
 
   // Páginas de servicios individuales
-  if (path.startsWith("/servicios/")) {
+  if (path.startsWith("/services/")) {
     return defaults.servicePages;
   }
 

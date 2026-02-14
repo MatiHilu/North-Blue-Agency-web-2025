@@ -22,83 +22,83 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "SEO y Ranking (con AIO, AEO y GEO)",
+  title: "SEO & Ranking (with AIO, AEO & GEO)",
   subtitle:
-    "Domina los primeros lugares de Google con SEO potenciado por AIO, AEO y GEO (Artificial, Answer & Generative Engine Optimization)",
+    "Dominate top Google spots with SEO powered by AIO, AEO & GEO (Artificial, Answer & Generative Engine Optimization)",
   description:
-    "Nuestro servicio integra SEO tradicional + AIO (Artificial Intelligence Optimization) + AEO (Answer Engine Optimization) y GEO (Generative Engine Optimization). No solo optimizamos tu sitio para los motores de búsqueda tradicionales: también preparamos tus activos para motores de respuesta y experiencias generativas, utilizando modelos y automatizaciones inteligentes para acelerar la investigación, detectar oportunidades emergentes, priorizar acciones con impacto y generar contenidos estratégicos con supervisión humana. El resultado: más tráfico orgánico sostenible, presencia destacada en experiencias AI-first y decisiones basadas en datos predictivos.",
+    "Boost rankings with our advanced SEO (AIO, AEO, GEO). We optimize for search engines and AI to drive sustainable traffic and future-proof results.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $1200/mes",
-  duration: "3-12 meses",
+  price: "From $1200/month",
+  duration: "3-12 months",
   features: [
-    "Auditoría SEO completa",
-    "Investigación de palabras clave",
-    "Optimización on-page",
-    "Optimización técnica",
-    "Creación de contenido SEO",
-    "Link building estratégico",
-    "SEO local y Google My Business",
-    "Reportes mensuales detallados",
-    "Optimización para Answer Engines (AEO)",
-    "Generative Engine Optimization (GEO) y SGE",
+    "Complete SEO audit",
+    "Keyword research",
+    "On-page optimization",
+    "Technical optimization",
+    "SEO content creation",
+    "Strategic link building",
+    "Local SEO and Google My Business",
+    "Detailed monthly reports",
+    "Optimization for Answer Engines (AEO)",
+    "Generative Engine Optimization (GEO) & SGE",
   ],
   process: [
     {
-      title: "Auditoría inicial",
-      description: "Análisis completo de tu sitio web y competencia",
+      title: "Initial Audit",
+      description: "Complete analysis of your website and competition",
     },
     {
-      title: "Estrategia",
-      description: "Definimos keywords y plan de optimización",
+      title: "Strategy",
+      description: "We define keywords and optimization plan",
     },
     {
-      title: "Optimización",
-      description: "Implementamos mejoras técnicas y de contenido",
+      title: "Optimization",
+      description: "We implement technical and content improvements",
     },
     {
-      title: "Monitoreo",
-      description: "Seguimiento de rankings y ajustes continuos",
+      title: "Monitoring",
+      description: "Rankings tracking and continuous adjustments",
     },
   ],
   benefits: [
-    "Aumento del tráfico orgánico",
-    "Mejora en rankings de keywords objetivo",
-    "Mayor autoridad de dominio",
-    "Visibilidad en motores de respuesta y experiencias generativas",
-    "ROI superior al marketing SEM",
+    "Increase in organic traffic",
+    "Improvement in target keyword rankings",
+    "Higher domain authority",
+    "Visibility in answer engines and generative experiences",
+    "Superior ROI compared to SEM marketing",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma ver resultados con SEO + AIO + AEO + GEO?",
+    question: "How long to see results with SEO + AIO + AEO + GEO?",
     answer:
-      "Detectamos quick wins en los primeros 30-60 días gracias al análisis asistido por IA, mientras que el crecimiento sostenido llega entre 3-6 meses según la competencia. La combinación de SEO tradicional con AIO, AEO y GEO acelera la priorización y amplía tu visibilidad en múltiples superficies.",
+      "We detect quick wins in the first 30-60 days thanks to AI-assisted analysis, while sustainable growth arrives between 3-6 months depending on competition. The combination of traditional SEO with AIO, AEO, and GEO accelerates prioritization and expands your visibility on multiple surfaces.",
   },
   {
-    question: "¿Garantizan el primer lugar en Google o en SGE?",
+    question: "Do you guarantee first place in Google or SGE?",
     answer:
-      "No podemos prometer posiciones específicas porque los algoritmos de Google, SGE y otros motores generativos cambian constantemente. Sí comprometemos mejoras medibles en visibilidad, tráfico orgánico y presencia en respuestas asistidas, respaldadas por experimentación continua y reporting transparente.",
+      "We cannot promise specific positions because algorithms of Google, SGE, and other generative engines change constantly. We do commit to measurable improvements in visibility, organic traffic, and presence in assisted responses, backed by continuous experimentation and transparent reporting.",
   },
   {
-    question: "¿Qué incluye la auditoría integral SEO + AIO + AEO + GEO?",
+    question: "What does the comprehensive SEO + AIO + AEO + GEO audit include?",
     answer:
-      "Auditamos técnica, contenido, interlinking, Core Web Vitals y perfil de enlaces, pero también evaluamos entidades, datos estructurados, prompts críticos y readiness para motores de respuesta. Entregamos un roadmap priorizado con quick wins, backlog trimestral y recomendaciones para equipos internos.",
+      "We audit technical, content, interlinking, Core Web Vitals, and backlink profile, but also evaluate entities, structured data, critical prompts, and readiness for answer engines. We deliver a prioritized roadmap with quick wins, quarterly backlog, and recommendations for internal teams.",
   },
   {
-    question: "¿Cómo integran AIO, AEO y GEO dentro de la estrategia?",
+    question: "How do you integrate AIO, AEO, and GEO into the strategy?",
     answer:
-      "Usamos modelos y automatizaciones para descubrir oportunidades, clasificar intenciones, generar briefs y optimizar fragmentos clave. Luego validamos todo manualmente y diseñamos contenidos pensando en featured snippets, respuestas directas, chatbots y experiencias generativas, sin perder coherencia de marca.",
+      "We use models and automations to discover opportunities, classify intent, generate briefs, and optimize key snippets. Then we manually validate everything and design content with featured snippets, direct answers, chatbots, and generative experiences in mind, without losing brand coherence.",
   },
   {
-    question: "¿Quién produce y valida el contenido asistido por IA?",
+    question: "Who produces and validates AI-assisted content?",
     answer:
-      "Nuestro equipo lidera la investigación, redacta piezas estratégicas y utiliza IA como copiloto para acelerar tareas repetitivas. Cada entrega pasa por revisión humana, controles de factualidad, tone of voice y cumplimiento E-E-A-T antes de publicarse.",
+      "Our team leads the research, writes strategic pieces, and uses AI as a copilot to accelerate repetitive tasks. Every delivery undergoes human review, factual checks, tone of voice alignment, and E-E-A-T compliance before publishing.",
   },
   {
-    question: "¿Cómo miden y reportan los resultados?",
+    question: "How do you measure and report results?",
     answer:
-      "Configuramos dashboards personalizados con Search Console, GA4, herramientas de tracking de rankings, visibilidad en SGE/AI Overviews y share of voice en respuestas generativas. Compartimos reportes mensuales con KPIs, aprendizajes y próximos experimentos prioritarios.",
+      "We configure custom dashboards with Search Console, GA4, ranking tracking tools, visibility in SGE/AI Overviews, and share of voice in generative responses. We share monthly reports with KPIs, learnings, and next priority experiments.",
   },
 ];
 export async function generateMetadata({
@@ -110,7 +110,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/seo${slugPart}`;
+  const canonical = `${BASE_URL}/services/seo${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/seo${slugPart}`;
 
   return {
@@ -127,7 +127,7 @@ export async function generateMetadata({
       "SEO",
       "AIO",
       "Artificial Intelligence Optimization",
-      "SEO con IA",
+      "AI SEO",
       "AEO",
       "Answer Engine Optimization",
       "GEO",
@@ -135,15 +135,15 @@ export async function generateMetadata({
       "E-E-A-T",
       "EEAT",
       "Google E-E-A-T",
-      "experiencia SEO",
-      "autoridad SEO",
-      "confianza SEO",
-      "posicionamiento web",
-      "optimización en buscadores",
-      "auditoría SEO",
+      "SEO experience",
+      "SEO authority",
+      "SEO trust",
+      "web positioning",
+      "search engine optimization",
+      "SEO audit",
       "link building",
-      "SEO local",
-      "investigación de palabras clave",
+      "local SEO",
+      "keyword research",
       "North Blue Agency",
     ],
     openGraph: {
@@ -155,7 +155,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-seo.png`,
+          url: `${BASE_URL}/images/og/services-seo.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -164,7 +164,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-seo.png`],
+      images: [`${BASE_URL}/images/og/services-seo.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -194,11 +194,11 @@ export default function SEOPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -235,7 +235,7 @@ export default function SEOPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio (SEO + AIO + AEO + GEO)?
+                  What does this service include (SEO + AIO + AEO + GEO)?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -255,9 +255,9 @@ export default function SEOPage({
                 </div>
                 <div className="mt-10">
                   <InlineCTA
-                    title="Solicita tu auditoría SEO + AIO + AEO + GEO"
-                    description="Análisis completo de tu sitio + quick wins implementables"
-                    primaryLabel="Obtener auditoría"
+                    title="Request your SEO + AIO + AEO + GEO audit"
+                    description="Complete site analysis + implementable quick wins"
+                    primaryLabel="Get Audit"
                     type="quote"
                     accentColor="pink"
                   />
@@ -268,7 +268,7 @@ export default function SEOPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -289,15 +289,14 @@ export default function SEOPage({
                 </Card>
                 <div className="bg-gradient-to-r from-pink-50 to-cyan-50 border border-pink-200/50 rounded-xl p-6 my-10 shadow-sm">
                   <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                    <strong>¿Qué es AIO, AEO y GEO?</strong> Artificial
-                    Intelligence Optimization combina automatizaciones y modelos
-                    para detectar gaps de contenido, agrupar keywords por
-                    intención, anticipar tendencias, generar briefs inteligentes
-                    y monitorear la salud técnica en tiempo (casi) real. AEO nos
-                    permite optimizar tus experiencias para motores de respuesta
-                    (como SGE y chatbots), mientras que GEO asegura presencia en
-                    resultados generativos. <strong>Siempre</strong> con
-                    revisión humana y alineado a tus objetivos de negocio.
+                    <strong>What is AIO, AEO & GEO?</strong> Artificial
+                    Intelligence Optimization combines automations and models
+                    to detect content gaps, group keywords by intent, anticipate trends,
+                    generate intelligent briefs, and monitor technical health in (almost) real-time. AEO
+                    allows us to optimize your experiences for answer engines
+                    (like SGE and chatbots), while GEO ensures presence in
+                    generative results. <strong>Always</strong> with
+                    human supervision and aligned with your business goals.
                   </p>
                 </div>
               </AnimatedSection>
@@ -314,28 +313,28 @@ export default function SEOPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                De SEO tradicional al SEO + AIO + AEO + GEO
+                From Traditional SEO to SEO + AIO + AEO + GEO
               </h2>
               <p className="text-lg text-white/80 leading-relaxed">
-                No abandonamos las bases del SEO: las potenciamos. Sumamos capas
-                de inteligencia artificial aplicada, optimización para motores
-                de respuesta y señales generativas que nos permiten descubrir
-                oportunidades antes que la competencia y ejecutar más rápido sin
-                sacrificar calidad. Estas son algunas diferencias clave.
+                We don’t abandon SEO basics: we empower them. We add layers of
+                applied artificial intelligence, optimization for answer engines,
+                and generative signals that allow us to discover opportunities before
+                the competition and execute faster without sacrificing quality.
+                Here are some key differences.
               </p>
             </AnimatedSection>
             <SEOAIOComparison />
             <div className="mt-14 text-center max-w-2xl mx-auto text-sm text-white/60">
-              * AIO, AEO y GEO no reemplazan la estrategia humana ni la
-              validación editorial. Complementan y amplifican nuestro proceso
-              para ofrecerte crecimiento orgánico acelerado y sostenible en
-              buscadores, motores de respuesta y experiencias generativas.
+              * AIO, AEO, and GEO do not replace human strategy or editorial validation.
+              They complement and amplify our process to offer you accelerated and
+              sustainable organic growth in search engines, answer engines, and
+              generative experiences.
             </div>
             <div className="mt-16">
               <InlineCTA
-                title="Implementa AIO, AEO y GEO en tu estrategia"
-                description="Integra automatización inteligente y presencia en motores de respuesta sin perder control"
-                primaryLabel="Comenzar ahora"
+                title="Implement AIO, AEO & GEO in your strategy"
+                description="Integrate intelligent automation and presence in answer engines without losing control"
+                primaryLabel="Start Now"
                 type="contact"
                 accentColor="blue"
                 centered
@@ -349,11 +348,10 @@ export default function SEOPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 
@@ -384,17 +382,17 @@ export default function SEOPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="max-w-3xl mb-14">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] bg-clip-text text-transparent">
-                Cumplimos con Google E-E-A-T
+                We Comply with Google E-E-A-T
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                La calidad y credibilidad del contenido es clave para un SEO
-                sostenible. Nuestro enfoque integra{" "}
+                Quality and credibility of content are key for sustainable SEO.
+                Our approach integrates{" "}
                 <strong>
                   E-E-A-T (Experience, Expertise, Authoritativeness,
                   Trustworthiness)
                 </strong>{" "}
-                en cada fase: desde la auditoría inicial hasta la creación y
-                optimización continua de contenido.
+                in every phase: from initial audit to specific content creation
+                and optimization.
               </p>
             </AnimatedSection>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -403,9 +401,8 @@ export default function SEOPage({
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-xl mb-3">Experience</h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Reflejamos experiencia real del negocio: casos, procesos,
-                      ejemplos de implementaciones y resultados tangibles
-                      respaldados por datos internos.
+                      We reflect real business experience: cases, processes,
+                      implementation examples, and tangible results backed by internal data.
                     </p>
                   </CardContent>
                 </Card>
@@ -415,9 +412,8 @@ export default function SEOPage({
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-xl mb-3">Expertise</h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Investigación profunda de keywords, análisis semántico
-                      avanzado y validación editorial humana sobre cualquier
-                      output asistido por IA.
+                      Deep keyword research, advanced semantic analysis, and human
+                      editorial validation on any AI-assisted output.
                     </p>
                   </CardContent>
                 </Card>
@@ -429,9 +425,8 @@ export default function SEOPage({
                       Authoritativeness
                     </h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Construimos autoridad combinando contenido profundo,
-                      interlinking estratégico, menciones relevantes y
-                      adquisición ética de enlaces.
+                      We build authority combining deep content, strategic
+                      interlinking, relevant mentions, and ethical link acquisition.
                     </p>
                   </CardContent>
                 </Card>
@@ -443,9 +438,8 @@ export default function SEOPage({
                       Trustworthiness
                     </h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Transparencia en métricas, políticas claras, seguridad
-                      técnica (Core Web Vitals, HTTPS) y revisión factual para
-                      mantener confianza.
+                      Transparency in metrics, clear policies, technical security
+                      (Core Web Vitals, HTTPS), and factual review to maintain trust.
                     </p>
                   </CardContent>
                 </Card>
@@ -455,33 +449,33 @@ export default function SEOPage({
               <AnimatedSection delay={400}>
                 <div className="p-5 rounded-lg bg-gradient-to-r from-pink-50 to-white border border-pink-100">
                   <p className="text-sm text-gray-700">
-                    Incorporamos <strong>autores verificables</strong> y
-                    enriquecemos entidades para reforzar relevancia temática.
+                    We incorporate <strong>verifiable authors</strong> and
+                    enrich entities to reinforce thematic relevance.
                   </p>
                 </div>
               </AnimatedSection>
               <AnimatedSection delay={450}>
                 <div className="p-5 rounded-lg bg-gradient-to-r from-cyan-50 to-white border border-cyan-100">
                   <p className="text-sm text-gray-700">
-                    Aplicamos <strong>auditorías periódicas</strong> de
-                    precisión y actualización de contenido (freshness control).
+                    We apply <strong>periodic audits</strong> of
+                    accuracy and content updates (freshness control).
                   </p>
                 </div>
               </AnimatedSection>
               <AnimatedSection delay={500}>
                 <div className="p-5 rounded-lg bg-gradient-to-r from-violet-50 to-white border border-violet-100">
                   <p className="text-sm text-gray-700">
-                    Usamos <strong>datos estructurados</strong> y validación
-                    técnica para mejorar elegibilidad en rich results.
+                    We use <strong>structured data</strong> and technical validation
+                    to improve eligibility in rich results.
                   </p>
                 </div>
               </AnimatedSection>
             </div>
             <div className="mt-14">
               <InlineCTA
-                title="Optimiza tu contenido con E-E-A-T"
-                description="Construye autoridad y confianza en tu nicho"
-                primaryLabel="Mejorar ahora"
+                title="Optimize your content with E-E-A-T"
+                description="Build authority and trust in your niche"
+                primaryLabel="Improve Now"
                 type="quote"
                 accentColor="purple"
                 centered
@@ -492,16 +486,15 @@ export default function SEOPage({
 
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para dominar Google?"
-          subtitle="Contáctanos hoy y descubre cómo podemos posicionar tu sitio web
-                en los primeros lugares"
-          buttonText="Solicitar cotización"
+          title="Ready to dominate Google?"
+          subtitle="Contact us today and discover how we can position your website in the top spots"
+          buttonText="Request Quote"
         />
 
         {/* Contact Section */}

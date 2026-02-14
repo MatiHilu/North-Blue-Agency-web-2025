@@ -20,61 +20,61 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Campañas, Ads y Publicidad digital",
-  subtitle: "Estrategias que generan resultados medibles",
+  title: "Campaigns, Ads & Digital Advertising",
+  subtitle: "Strategies that generate measurable results",
   description:
-    "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Meta Ads y otras plataformas. Nuestro enfoque data-driven garantiza el máximo retorno de inversión y el crecimiento sostenible de tu negocio.",
+    "Maximize ROI with data-driven ad campaigns on Google, Meta, and LinkedIn. We design and execute strategies for sustainable business growth.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $800/mes + presupuesto publicitario",
-  duration: "Configuración: 2-3 semanas",
+  price: "From $800/month + ad budget",
+  duration: "Setup: 2-3 weeks",
   features: [
     "Google Ads (Search, Display, Shopping)",
-    "Meta Ads y TikTok Ads",
-    "LinkedIn Ads para B2B",
-    "Remarketing y retargeting",
-    "Optimización de conversiones",
-    "A/B testing de creatividades",
-    "Reportes detallados de ROI",
+    "Meta Ads & TikTok Ads",
+    "LinkedIn Ads for B2B",
+    "Remarketing and retargeting",
+    "Conversion optimization",
+    "Creative A/B testing",
+    "Detailed ROI reports",
   ],
   process: [
     {
-      title: "Análisis y estrategia",
-      description: "Definimos objetivos, audiencias y presupuestos",
+      title: "Analysis & Strategy",
+      description: "We define goals, audiences, and budgets",
     },
     {
-      title: "Configuración",
-      description: "Creamos campañas optimizadas en cada plataforma",
+      title: "Setup",
+      description: "We create optimized campaigns on each platform",
     },
     {
-      title: "Lanzamiento",
-      description: "Activamos campañas con seguimiento en tiempo real",
+      title: "Launch",
+      description: "We activate campaigns with real-time tracking",
     },
     {
-      title: "Optimización",
-      description: "Ajustamos basándonos en datos y performance",
+      title: "Optimization",
+      description: "We adjust based on data and performance",
     },
   ],
   benefits: [
-    "Aumento de leads cualificados",
-    "Escalabilidad comprobada de resultados",
+    "Increase in qualified leads",
+    "Proven scalability of results",
   ],
 };
 
 const faqs = [
   {
-    question: "¿En qué plataformas publicitarias trabajan?",
+    question: "What advertising platforms do you work with?",
     answer:
-      "Gestionamos campañas en Google Ads, Meta Ads, LinkedIn, TikTok Ads y otras plataformas según tu audiencia objetivo y industria específica.",
+      "We manage campaigns on Google Ads, Meta Ads, LinkedIn, TikTok Ads, and other platforms depending on your target audience and specific industry.",
   },
   {
-    question: "¿Cuál es el presupuesto mínimo recomendado?",
+    question: "What is the recommended minimum budget?",
     answer:
-      "Recomendamos un presupuesto publicitario mínimo de $500/mes por plataforma para obtener datos significativos y resultados óptimos, aunque trabajamos con presupuestos diversos.",
+      "We recommend a minimum advertising budget of $500/month per platform to obtain significant data and optimal results, although we work with diverse budgets.",
   },
   {
-    question: "¿Cómo miden el éxito de las campañas?",
+    question: "How do you measure campaign success?",
     answer:
-      "Medimos KPIs específicos según tus objetivos: ROAS, CPA, CTR, conversiones, leads generados, ventas, y proporcionamos reportes detallados con recomendaciones de optimización.",
+      "We measure specific KPIs based on your goals: ROAS, CPA, CTR, conversions, leads generated, sales, and provide detailed reports with optimization recommendations.",
   },
 ];
 export async function generateMetadata({
@@ -86,7 +86,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/campanas-ads${slugPart}`;
+  const canonical = `${BASE_URL}/services/campanas-ads${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/campanas-ads${slugPart}`;
 
   return {
@@ -100,15 +100,15 @@ export async function generateMetadata({
       languages: { es: canonical, en: canonicalEn },
     },
     keywords: [
-      "campañas",
+      "campaigns",
       "ads",
-      "publicidad digital",
+      "digital advertising",
       "google ads",
       "meta ads",
       "tiktok ads",
       "linkedin ads",
       "remarketing",
-      "optimización de conversiones",
+      "conversion optimization",
       "North Blue Agency",
     ],
     openGraph: {
@@ -120,7 +120,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-campanas-ads.png`,
+          url: `${BASE_URL}/images/og/services-campanas-ads.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -129,7 +129,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-campanas-ads.png`],
+      images: [`${BASE_URL}/images/og/services-campanas-ads.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -159,11 +159,11 @@ export default function CampanasAdsPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -200,7 +200,7 @@ export default function CampanasAdsPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -224,7 +224,7 @@ export default function CampanasAdsPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -253,11 +253,10 @@ export default function CampanasAdsPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 
@@ -285,16 +284,15 @@ export default function CampanasAdsPage({
 
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para maximizar tu ROI?"
-          subtitle="Contáctanos hoy y descubre cómo nuestras campañas publicitarias
-                pueden transformar tu negocio"
-          buttonText="Solicitar cotización"
+          title="Ready to maximize your ROI?"
+          subtitle="Contact us today and discover how our advertising campaigns can transform your business"
+          buttonText="Request a Quote"
         />
 
         {/* Contact Section */}

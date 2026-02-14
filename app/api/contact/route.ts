@@ -360,7 +360,7 @@ export async function POST(request: Request) {
       from: `"North Blue Agency" <${sender}>`,
       replyTo: name && email ? `"${name}" <${email}>` : undefined,
       to: process.env.CONTACT_TO_EMAIL || "info@northblueagency.com",
-      subject: data.subject || `Nuevo mensaje de ${name || "contacto"}`,
+      subject: data.subject || `New message from ${name || "contact"}`,
       text: textContent,
       html: htmlContent,
     });
@@ -370,15 +370,15 @@ export async function POST(request: Request) {
       await transporter.sendMail({
         from: `"North Blue Agency" <${sender}>`,
         to: email,
-        subject: "Gracias por contactarnos",
-        text: `Hola ${
+        subject: "Thank you for contacting us",
+        text: `Hi ${
           name || ""
-        },\n\n¡Gracias por contactarte con nosotros! Hemos recibido tu mensaje y nuestro equipo lo revisará para responderte lo antes posible.\n\nSaludos,\nNorth Blue Agency`,
+        },\n\nThank you for contacting us! We have received your message and our team will review it to respond as soon as possible.\n\nBest regards,\nNorth Blue Agency`,
         html: `<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Gracias por contactarnos</title>
+  <title>Thank you for contacting us</title>
 </head>
 <body
     style="margin:0;padding:60px;background:#1f2937;font-family:Arial, Helvetica, sans-serif; background-repeat: no-repeat;">
@@ -388,18 +388,20 @@ export async function POST(request: Request) {
                 style="display:block;margin:0 auto;" />
         </div>
         <div style="padding:20px;background-color:#ffffff;line-height:1.5;min-height: 230px; padding-top: 40px;">
-            <h2 style="margin:0 0 10px;font-size:22px;color:#111827;">Hola Matías,</h2>
-            <p style="font-size:15px;color:#333333;margin:0 0 15px;">¡Gracias por contactarte con nosotros! Hemos
-                recibido tu mensaje y nuestro equipo lo revisará para responderte lo antes posible.</p>
-            <p style="font-size:15px;color:#333333;margin:0 0 25px;">Mientras tanto, te invitamos a conocer nuestro
+            <h2 style="margin:0 0 10px;font-size:22px;color:#111827;">Hi ${
+              name || "there"
+            },</h2>
+            <p style="font-size:15px;color:#333333;margin:0 0 15px;">Thank you for contacting us! We have
+                received your message and our team will review it to respond as soon as possible.</p>
+            <p style="font-size:15px;color:#333333;margin:0 0 25px;">In the meantime, we invite you to check out our
                 <strong>Blog</strong>.
             </p>
             <a href="https://northblueagency.com/blog" target="_blank"
-                style="display:inline-block;padding:10px 20px;background:#00b2ff;color:#ffffff;text-decoration:none;border-radius:4px;">Ver
-                posteos</a>
+                style="display:inline-block;padding:10px 20px;background:#00b2ff;color:#ffffff;text-decoration:none;border-radius:4px;">View
+                posts</a>
         </div>
         <div style="background-color:#ff4081;padding:10px;text-align:center;">
-            <p style="font-size:12px;color:#fff;margin:0;">© 2025 North Blue Agency. Todos los derechos reservados.
+            <p style="font-size:12px;color:#fff;margin:0;">© 2025 North Blue Agency. All rights reserved.
             </p>
         </div>
     </div>
@@ -411,7 +413,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.error("Error sending email:", error);
     return NextResponse.json(
-      { ok: false, error: error.message || "Error al enviar el mensaje" },
+      { ok: false, error: error.message || "Error sending message" },
       { status: 500 }
     );
   }

@@ -21,64 +21,64 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Gestión de Redes Sociales",
-  subtitle: "Construye una comunidad sólida y aumenta tu engagement",
+  title: "Social Media Management",
+  subtitle: "Build a strong community and increase your engagement",
   description:
-    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento. Creamos estrategias personalizadas que conectan con tu audiencia y generan resultados medibles.",
+    "Transform your digital presence with our social media management. We create personalized strategies to build community, increase engagement, and drive growth.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $800/mes",
-  duration: "3-6 meses",
+  price: "From $800/mo",
+  duration: "3-6 months",
   features: [
-    "Estrategia de contenido personalizada",
-    "Creación de contenido visual y copywriting",
-    "Programación y publicación automatizada",
-    "Community management profesional",
-    "Gestión de comentarios y mensajes",
-    "Campañas publicitarias segmentadas",
-    "Análisis de métricas y KPIs",
-    "Reportes mensuales detallados",
+    "Personalized content strategy",
+    "Visual content creation and copywriting",
+    "Automated scheduling and publishing",
+    "Professional community management",
+    "Comment and message management",
+    "Segmented ad campaigns",
+    "Metrics and KPI analysis",
+    "Detailed monthly reports",
   ],
   process: [
     {
-      title: "Análisis inicial",
-      description: "Evaluamos tu presencia actual y definimos objetivos",
+      title: "Initial analysis",
+      description: "We evaluate your current presence and define goals",
     },
     {
-      title: "Estrategia",
-      description: "Creamos un plan de contenido personalizado",
+      title: "Strategy",
+      description: "We create a personalized content plan",
     },
     {
-      title: "Implementación",
-      description: "Ejecutamos la estrategia con contenido de calidad",
+      title: "Implementation",
+      description: "We execute the strategy with quality content",
     },
     {
-      title: "Optimización",
-      description: "Ajustamos basándonos en métricas y resultados",
+      title: "Optimization",
+      description: "We adjust based on metrics and results",
     },
   ],
   benefits: [
-    "Aumento del 300% en engagement promedio",
-    "Crecimiento orgánico de seguidores",
-    "Mayor reconocimiento de marca",
-    "Generación de leads cualificados",
+    "300% increase in average engagement",
+    "Organic follower growth",
+    "Higher brand recognition",
+    "Qualified lead generation",
   ],
 };
 
 const faqs = [
   {
-    question: "¿En qué redes sociales se enfocan?",
+    question: "Which social networks do you focus on?",
     answer:
-      "Trabajamos principalmente en Instagram, Facebook, LinkedIn y TikTok. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
+      "We work mainly on Instagram, Facebook, LinkedIn, and TikTok. We select the most relevant platforms according to your target audience and business type.",
   },
   {
-    question: "¿Crean todo el contenido visual?",
+    question: "Do you create all visual content?",
     answer:
-      "Sí, nuestro equipo creativo desarrolla todo el contenido visual incluyendo posts, stories, videos cortos y carruseles, manteniendo la coherencia con tu identidad de marca.",
+      "Yes, our creative team develops all visual content including posts, stories, short videos, and carousels, maintaining consistency with your brand identity.",
   },
   {
-    question: "¿Responden a comentarios y mensajes?",
+    question: "Do you reply to comments and messages?",
     answer:
-      "Absolutamente. Nuestro community management incluye respuesta a comentarios, mensajes directos y gestión de la comunidad en horarios establecidos.",
+      "Absolutely. Our community management includes responding to comments, direct messages, and community management during established hours.",
   },
 ];
 
@@ -91,7 +91,7 @@ export async function generateMetadata({
   const locationRaw = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(locationRaw);
   const slugPart = locationRaw ? `-${locationRaw}` : "";
-  const canonical = `${BASE_URL}/servicios/redes-sociales${slugPart}`;
+  const canonical = `${BASE_URL}/services/redes-sociales${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/redes-sociales${slugPart}`;
 
   return {
@@ -100,7 +100,7 @@ export async function generateMetadata({
       template: "%s | North Blue Agency",
     },
     description:
-      "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento.",
+      "Our social media management service is designed to transform your digital presence into a powerful growth tool.",
     alternates: {
       canonical,
       languages: {
@@ -109,12 +109,12 @@ export async function generateMetadata({
       },
     },
     keywords: [
-      "gestión de redes sociales",
+      "social media management",
       "community management",
-      "marketing en redes sociales",
-      "contenido para redes sociales",
-      "estrategia de redes sociales",
-      "publicidad en redes",
+      "social media marketing",
+      "social media content",
+      "social media strategy",
+      "ads strategies",
       "North Blue Agency",
     ],
     openGraph: {
@@ -126,7 +126,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-redes-sociales.png`,
+          url: `${BASE_URL}/images/og/services-redes-sociales.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -135,7 +135,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-redes-sociales.png`],
+      images: [`${BASE_URL}/images/og/services-redes-sociales.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -172,11 +172,11 @@ export default function RedesSocialesPage({
               <AnimatedSection>
                 <div>
                   <Link
-                    href="/servicios"
+                    href="/services"
                     className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
                   >
                     <ArrowLeft size={20} className="mr-2" />
-                    Volver a servicios
+                    Back to services
                   </Link>
 
                   <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -227,7 +227,7 @@ export default function RedesSocialesPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -251,7 +251,7 @@ export default function RedesSocialesPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -280,11 +280,10 @@ export default function RedesSocialesPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our work process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 
@@ -312,16 +311,15 @@ export default function RedesSocialesPage({
 
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para comenzar?"
-          subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                digital"
-          buttonText="Solicitar cotización"
+          title="Ready to get started?"
+          subtitle="Contact us today and discover how we can transform your digital presence"
+          buttonText="Request quote"
         />
 
         {/* Contact Section */}

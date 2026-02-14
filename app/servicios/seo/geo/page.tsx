@@ -12,73 +12,73 @@ import { BASE_URL } from "@/lib/jsonld";
 const serviceData = {
   title: "GEO (Generative Engine Optimization)",
   subtitle:
-    "Asegura visibilidad en experiencias generativas con contenido semántico, estructuras ricas y prompts curados",
+    "Ensure visibility in generative experiences with semantic content, rich structures, and curated prompts",
   description:
-    "GEO prepara a tu marca para destacar en resultados generativos como Google AI Overviews, Bing Copilot y asistentes multimodales. Diseñamos contenidos, entidades y assets que alimentan modelos, construimos prompts curatoriales y optimizamos tus datos para facilitar respuestas generativas precisas.",
+    "Master generative search with GEO. We optimize your content for Google AI Overviews and multimodal assistants, ensuring visibility in the new AI era.",
   gradient: "from-[#a855f7] to-[#f97316]",
-  price: "Desde $950/mes",
-  duration: "4-8 meses",
+  price: "From $950/mo",
+  duration: "4-8 months",
   features: [
-    "Auditoría GEO de contenido y datos",
-    "Guías de prompts curatoriales",
-    "Optimización de entidades y knowledge graphs",
-    "Contenido estructurado multimodal",
-    "Playbooks para AI Overviews",
-    "Monitoreo de cobertura generativa",
-    "Modelos de scoring de assets",
-    "Planes de actualización continua",
+    "GEO content and data audit",
+    "Curatorial prompt guides",
+    "Entity and knowledge graph optimization",
+    "Multimodal structured content",
+    "Playbooks for AI Overviews",
+    "Generative coverage monitoring",
+    "Asset scoring models",
+    "Continuous update plans",
   ],
   process: [
     {
-      title: "Discovery semántico",
+      title: "Semantic Discovery",
       description:
-        "Analizamos cómo generative engines interpretan tu marca, entidades relacionadas y formatos disponibles.",
+        "We analyze how generative engines interpret your brand, related entities, and available formats.",
     },
     {
-      title: "Arquitectura GEO",
+      title: "GEO Architecture",
       description:
-        "Definimos estructuras de contenido, prompts curatoriales y assets prioritarios por intención.",
+        "We define content structures, curatorial prompts, and priority assets by intent.",
     },
     {
-      title: "Producción generativa",
+      title: "Generative Production",
       description:
-        "Creamos contenidos optimizados, datasets enriquecidos y recursos visuales sonoros alineados a tus objetivos.",
+        "We create optimized content, enriched datasets, and visual/audio resources aligned with your goals.",
     },
     {
-      title: "Optimización continua",
+      title: "Continuous Optimization",
       description:
-        "Monitorizamos la presencia en experiencias generativas y ajustamos assets según feedback y performance.",
+        "We monitor presence in generative experiences and adjust assets based on feedback and performance.",
     },
   ],
   benefits: [
-    "Visibilidad en experiencias generativas emergentes",
-    "Contenidos preparados para AI Overviews",
-    "Mayor control editorial sobre respuestas IA",
-    "Assets listos para contextos multimodales",
-    "Knowledge graph robusto y actualizado",
+    "Visibility in emerging generative experiences",
+    "Content ready for AI Overviews",
+    "Greater editorial control over AI responses",
+    "Assets ready for multimodal contexts",
+    "Robust and updated knowledge graph",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué plataformas cubren con GEO?",
+    question: "What platforms do you cover with GEO?",
     answer:
-      "Nos enfocamos en Google AI Overviews, Bing Copilot, Perplexity, motores en marketplaces y asistentes multimodales.",
+      "We focus on Google AI Overviews, Bing Copilot, Perplexity, marketplace engines, and multimodal assistants.",
   },
   {
-    question: "¿Cómo adaptan el contenido existente?",
+    question: "How do you adapt existing content?",
     answer:
-      "Auditamos tus piezas y las reestructuramos con capas semánticas, datos estructurados y prompts curatoriales para que sean legibles por modelos generativos.",
+      "We audit your pieces and restructure them with semantic layers, structured data, and curatorial prompts to be readable by generative models.",
   },
   {
-    question: "¿Qué rol tiene la creación de nuevos assets?",
+    question: "What role does new asset creation play?",
     answer:
-      "Desarrollamos plantillas, datasets y recursos visuales que alimentan respuestas generativas y refuerzan tu narrativa de marca.",
+      "We develop templates, datasets, and visual resources that feed generative responses and reinforce your brand narrative.",
   },
   {
-    question: "¿Cómo monitorean el rendimiento GEO?",
+    question: "How do you monitor GEO performance?",
     answer:
-      "Combinamos scraping, APIs y pruebas manuales para evaluar aparición en resúmenes generativos, calidad de respuesta y consistencia editorial.",
+      "We combine scraping, APIs, and manual testing to evaluate appearance in generative summaries, response quality, and editorial consistency.",
   },
 ];
 
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/seo/geo` },
+  alternates: { canonical: `${BASE_URL}/services/seo/geo` },
   keywords: [
     "GEO",
     "Generative Engine Optimization",
@@ -100,11 +100,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/seo/geo`,
+    url: `${BASE_URL}/services/seo/geo`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-geo.png`,
+        url: `${BASE_URL}/images/og/services-geo.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-geo.png`],
+    images: [`${BASE_URL}/images/og/services-geo.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -132,11 +132,11 @@ export default function GEOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <Link
-              href="/servicios/seo"
+              href="/services/seo"
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft size={20} className="mr-2" />
-              Volver a SEO 360°
+              Back to SEO 360°
             </Link>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               {serviceData.title}
@@ -167,7 +167,7 @@ export default function GEOPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <AnimatedSection animation="fadeInLeft">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Lidera en resultados generativos emergentes
+                Lead in emerging generative results
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {serviceData.description}
@@ -184,9 +184,9 @@ export default function GEOPage() {
               </div>
               <div className="mt-10">
                 <InlineCTA
-                  title="Diagnostica tu potencial GEO"
-                  description="Identifica qué assets necesita tu marca para destacar en AI Overviews y motores generativos"
-                  primaryLabel="Evaluar cobertura"
+                  title="Diagnose your GEO potential"
+                  description="Identify what assets your brand needs to stand out in AI Overviews and generative engines"
+                  primaryLabel="Evaluate coverage"
                   type="quote"
                   accentColor="purple"
                 />
@@ -197,7 +197,7 @@ export default function GEOPage() {
               <Card className="border-0 shadow-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">
-                    Capacidades GEO esenciales
+                    Essential GEO capabilities
                   </h3>
                   <div className="space-y-4">
                     {serviceData.features.map((feature, index) => (
@@ -213,10 +213,8 @@ export default function GEOPage() {
               </Card>
               <div className="bg-gradient-to-r from-violet-50 to-orange-50 border border-violet-200/50 rounded-xl p-6 my-10 shadow-sm">
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  <strong>Control editorial en la era generativa</strong>.
-                  Documentamos prompts curatoriales, fuentes de datos y pautas
-                  para que tus equipos internos puedan sostener la estrategia a
-                  largo plazo.
+                  <strong>Editorial control in the generative era</strong>.
+                  We document curatorial prompts, data sources, and guidelines so your internal teams can sustain the strategy long-term.
                 </p>
               </div>
             </AnimatedSection>
@@ -232,12 +230,10 @@ export default function GEOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Metodología GEO centrada en datos y creatividad
+              GEO methodology centered on data and creativity
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Integramos investigación semántica, ingeniería de prompts y
-              producción multimodal para garantizar presencia y consistencia en
-              experiencias generativas.
+              We integrate semantic research, prompt engineering, and multimodal production to guarantee presence and consistency in generative experiences.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -266,12 +262,10 @@ export default function GEOPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#a855f7] to-[#f97316] bg-clip-text text-transparent">
-              Visualiza y mide tu huella generativa
+              Visualize and measure your generative footprint
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Construimos indicadores y dashboards que combinan visibilidad
-              generativa, engagement y señales de credibilidad para medir el
-              impacto real de la estrategia GEO.
+              We build indicators and dashboards combining generative visibility, engagement, and credibility signals to measure the real impact of the GEO strategy.
             </p>
           </AnimatedSection>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -279,11 +273,10 @@ export default function GEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Cobertura en AI Overviews
+                    Coverage in AI Overviews
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Seguimos la frecuencia y calidad con la que tu marca aparece
-                    en resúmenes generativos clave.
+                    We track the frequency and quality with which your brand appears in key generative summaries.
                   </p>
                 </CardContent>
               </Card>
@@ -292,11 +285,10 @@ export default function GEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Consistencia multimodal
+                    Multimodal consistency
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Evaluamos coherencia entre textos, visuales y datos
-                    estructurados utilizados por los modelos.
+                    We evaluate coherence between texts, visuals, and structured data used by models.
                   </p>
                 </CardContent>
               </Card>
@@ -305,11 +297,10 @@ export default function GEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Impacto en demanda
+                    Impact on demand
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Medimos crecimiento en búsquedas de marca, menciones y
-                    tráfico originado desde experiencias generativas.
+                    We measure growth in brand searches, mentions, and traffic originated from generative experiences.
                   </p>
                 </CardContent>
               </Card>
@@ -317,9 +308,9 @@ export default function GEOPage() {
           </div>
           <div className="mt-14">
             <InlineCTA
-              title="Quiero dominar los motores generativos"
-              description="Agenda una sesión estratégica y recibe un plan GEO adaptado a tus objetivos"
-              primaryLabel="Diseñar plan GEO"
+              title="I want to dominate generative engines"
+              description="Schedule a strategic session and receive a GEO plan adapted to your goals"
+              primaryLabel="Design GEO plan"
               type="contact"
               accentColor="purple"
               centered
@@ -328,12 +319,12 @@ export default function GEOPage() {
         </div>
       </section>
 
-      <FAQSection title="Preguntas sobre GEO" faqs={faqs} />
+      <FAQSection title="GEO FAQs" faqs={faqs} />
 
       <QuoteSection
-        title="Convierte la IA generativa en tu aliado"
-        subtitle="Te ayudamos a construir una presencia robusta en experiencias generativas y AI Overviews"
-        buttonText="Solicitar cotización"
+        title="Turn generative AI into your ally"
+        subtitle="We help you build a robust presence in generative experiences and AI Overviews"
+        buttonText="Request a quote"
       />
 
       <ContactSection />

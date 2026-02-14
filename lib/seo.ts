@@ -20,14 +20,14 @@ export function serviceMetadata({
   keywords = [],
   type = "website",
 }: ServiceSEOArgs): Metadata {
-  const url = `${BASE_URL}/servicios/${slug}`;
+  const url = `${BASE_URL}/services/${slug}`;
   const imageAbs = imagePath.startsWith("http")
     ? imagePath
     : `${BASE_URL}${imagePath}`;
   return {
     title,
     description: subtitle,
-    alternates: { canonical: `/servicios/${slug}` },
+    alternates: { canonical: `/services/${slug}` },
     keywords,
     openGraph: {
       title: `${title} | North Blue Agency`,

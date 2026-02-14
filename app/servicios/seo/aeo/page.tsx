@@ -12,73 +12,73 @@ import { BASE_URL } from "@/lib/jsonld";
 const serviceData = {
   title: "AEO (Answer Engine Optimization)",
   subtitle:
-    "Optimiza tu marca para ser la respuesta preferida en motores conversacionales y experiencias asistidas",
+    "Optimize your brand to be the preferred answer in conversational engines and assisted experiences",
   description:
-    "AEO adapta tu estrategia SEO para contextos donde las respuestas llegan directo a la voz o a la pantalla sin pasar por los tradicionales resultados orgánicos. Diseñamos contenidos, entidades y datos estructurados que conectan con motores como SGE, Bing Copilot y asistentes conversacionales.",
+    "Become the preferred answer for voice assistants and chatbots. Our AEO strategy optimizes your brand for Siri, Alexa, and Bing Copilot.",
   gradient: "from-[#2213e5] to-[#ff4081]",
-  price: "Desde $850/mes",
-  duration: "3-6 meses",
+  price: "From $850/month",
+  duration: "3-6 months",
   features: [
-    "Auditoría de intención conversacional",
-    "Optimización de entidades y datos estructurados",
-    "Guiones para voice search y chatbots",
-    "Diseño de respuestas concisas y ricas",
-    "Experimentación con prompts y formatos",
-    "Monitor de visibilidad en motores de respuesta",
-    "Integración con knowledge graphs",
-    "QA para consistencia multicanal",
+    "Conversational intent audit",
+    "Entity and structured data optimization",
+    "Scripts for voice search and chatbots",
+    "Design of concise and rich answers",
+    "Experimentation with prompts and formats",
+    "Visibility monitor in answer engines",
+    "Integration with knowledge graphs",
+    "QA for multichannel consistency",
   ],
   process: [
     {
-      title: "Research conversacional",
+      title: "Conversational Research",
       description:
-        "Investigamos preguntas frecuentes, patrones de voz y necesidades del usuario en contextos asistidos.",
+        "We investigate frequent questions, voice patterns, and user needs in assisted contexts.",
     },
     {
-      title: "Arquitectura semántica",
+      title: "Semantic Architecture",
       description:
-        "Definimos entidades clave, schema y formatos que maximizan la elegibilidad en respuestas.",
+        "We define key entities, schema, and formats that maximize eligibility in answers.",
     },
     {
-      title: "Producción & tests",
+      title: "Production & Tests",
       description:
-        "Creamos contenidos persuasivos, snippets enriquecidos y guías para asistentes.",
+        "We create persuasive content, rich snippets, and guides for assistants.",
     },
     {
-      title: "Monitoreo & optimización",
+      title: "Monitoring & Optimization",
       description:
-        "Medimos posicionamiento en motores de respuesta y ajustamos prompts, entidades y formatos.",
+        "We measure positioning in answer engines and adjust prompts, entities, and formats.",
     },
   ],
   benefits: [
-    "Mayor presencia en experiencias conversacionales",
-    "Respuesta consistente en voice search y asistentes",
-    "Contenidos listos para motores IA-first",
-    "Mayor autoridad temática en entidades clave",
-    "Datos estructurados robustos y actualizados",
+    "Greater presence in conversational experiences",
+    "Consistent response in voice search and assistants",
+    "Content ready for AI-first engines",
+    "Greater thematic authority in key entities",
+    "Robust and updated structured data",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Qué motores cubren con AEO?",
+    question: "Which engines do you cover with AEO?",
     answer:
-      "Trabajamos con Google SGE, Bing Copilot, asistentes de voz (Alexa, Siri), Gemini y motores conversacionales emergentes.",
+      "We work with Google SGE, Bing Copilot, voice assistants (Alexa, Siri), Gemini, and emerging conversational engines.",
   },
   {
-    question: "¿Cómo se mide el éxito en AEO?",
+    question: "How is success measured in AEO?",
     answer:
-      "Analizamos presencia en paneles de respuesta, snippets, voice search y share of voice en búsquedas conversacionales.",
+      "We analyze presence in answer panels, snippets, voice search, and share of voice in conversational searches.",
   },
   {
-    question: "¿AEO reemplaza al SEO tradicional?",
+    question: "Does AEO replace traditional SEO?",
     answer:
-      "No. Lo complementa. El SEO sólido es la base para que AEO pueda amplificar tus resultados en motores de respuesta.",
+      "No. It complements it. Solid SEO is the foundation for AEO to amplify your results in answer engines.",
   },
   {
-    question: "¿Qué rol tiene la producción de contenido?",
+    question: "What role does content production play?",
     answer:
-      "Diseñamos respuestas sintetizadas, fichas temáticas y estructuras Q&A que se adaptan a diferentes asistentes.",
+      "We design synthesized answers, thematic sheets, and Q&A structures that adapt to different assistants.",
   },
 ];
 
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/seo/aeo` },
+  alternates: { canonical: `${BASE_URL}/services/seo/aeo` },
   keywords: [
     "AEO",
     "Answer Engine Optimization",
@@ -100,11 +100,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/seo/aeo`,
+    url: `${BASE_URL}/services/seo/aeo`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-aeo.png`,
+        url: `${BASE_URL}/images/og/services-aeo.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-aeo.png`],
+    images: [`${BASE_URL}/images/og/services-aeo.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -132,11 +132,11 @@ export default function AEOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <Link
-              href="/servicios/seo"
+              href="/services/seo"
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft size={20} className="mr-2" />
-              Volver a SEO 360°
+              Back to SEO 360°
             </Link>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               {serviceData.title}
@@ -167,7 +167,7 @@ export default function AEOPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <AnimatedSection animation="fadeInLeft">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Sé la respuesta inmediata y confiable
+                Be the Immediate and Reliable Answer
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {serviceData.description}
@@ -184,9 +184,9 @@ export default function AEOPage() {
               </div>
               <div className="mt-10">
                 <InlineCTA
-                  title="Evalúa tu presencia en motores de respuesta"
-                  description="Detecta oportunidades para ganar respuestas destacadas y optimiza tu cobertura conversacional"
-                  primaryLabel="Quiero diagnosticar"
+                  title="Evaluate your presence in answer engines"
+                  description="Detect opportunities to win featured answers and optimize your conversational coverage"
+                  primaryLabel="I want to diagnose"
                   type="quote"
                   accentColor="blue"
                 />
@@ -197,7 +197,7 @@ export default function AEOPage() {
               <Card className="border-0 shadow-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">
-                    Capacidades AEO clave
+                    Key AEO Capabilities
                   </h3>
                   <div className="space-y-4">
                     {serviceData.features.map((feature, index) => (
@@ -213,10 +213,7 @@ export default function AEOPage() {
               </Card>
               <div className="bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200/50 rounded-xl p-6 my-10 shadow-sm">
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  <strong>Experiencias consistentes</strong>. Creemos en
-                  respuestas coordinadas entre motores, chatbots y tus propios
-                  canales. Por eso documentamos mensajes clave, entidades y
-                  fuentes verificadas.
+                  <strong>Consistent Experiences</strong>. We believe in coordinated responses between engines, chatbots, and your own channels. That's why we document key messages, entities, and verified sources.
                 </p>
               </div>
             </AnimatedSection>
@@ -232,12 +229,10 @@ export default function AEOPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Metodología para dominar respuestas asistidas
+              Methodology to Master Assisted Answers
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Nuestra metodología AEO combina estrategia semántica, ingeniería
-              de prompts y pruebas multicanal para asegurar presencia
-              consistente.
+              Our AEO methodology combines semantic strategy, prompt engineering, and multichannel testing to ensure consistent presence.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -266,12 +261,10 @@ export default function AEOPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#2213e5] to-[#ff4081] bg-clip-text text-transparent">
-              Métricas y monitoreo conversacional
+              Metrics and Conversational Monitoring
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Configuramos paneles que combinan datos de visibilidad en motores,
-              rendimiento de snippets y feedback de usuarios para seguir
-              optimizando cada iteración.
+              We configure dashboards that combine visibility data in engines, snippet performance, and user feedback to keep optimizing every iteration.
             </p>
           </AnimatedSection>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -279,11 +272,10 @@ export default function AEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Share of Voice conversacional
+                    Conversational Share of Voice
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Identificamos cuánto aparece tu marca como respuesta frente
-                    a la competencia en consultas estratégicas.
+                    We identify how much your brand appears as an answer compared to the competition in strategic queries.
                   </p>
                 </CardContent>
               </Card>
@@ -292,11 +284,10 @@ export default function AEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Calidad de respuesta
+                    Response Quality
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Evaluamos claridad, factualidad y tono en cada respuesta
-                    monitoreada.
+                    We evaluate clarity, factuality, and tone in each monitored response.
                   </p>
                 </CardContent>
               </Card>
@@ -305,11 +296,10 @@ export default function AEOPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Integridad semántica
+                    Semantic Integrity
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Supervisamos entidades, relaciones y consistencia con tu
-                    knowledge base.
+                    We monitor entities, relationships, and consistency with your knowledge base.
                   </p>
                 </CardContent>
               </Card>
@@ -317,9 +307,9 @@ export default function AEOPage() {
           </div>
           <div className="mt-14">
             <InlineCTA
-              title="Quiero dominar las respuestas conversacionales"
-              description="Agenda una sesión y recibe un roadmap AEO personalizado"
-              primaryLabel="Optimizar para AEO"
+              title="I want to master conversational responses"
+              description="Schedule a session and receive a personalized AEO roadmap"
+              primaryLabel="Optimize for AEO"
               type="contact"
               accentColor="blue"
               centered
@@ -328,12 +318,12 @@ export default function AEOPage() {
         </div>
       </section>
 
-      <FAQSection title="Preguntas sobre AEO" faqs={faqs} />
+      <FAQSection title="AEO Questions" faqs={faqs} />
 
       <QuoteSection
-        title="Sé la respuesta destacada"
-        subtitle="Acompañamos a tu marca para liderar en SGE, voice search y chatbots"
-        buttonText="Solicitar cotización"
+        title="Be the Featured Answer"
+        subtitle="We accompany your brand to lead in SGE, voice search, and chatbots"
+        buttonText="Request Quote"
       />
 
       <ContactSection />

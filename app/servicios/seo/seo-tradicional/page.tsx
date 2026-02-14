@@ -10,76 +10,76 @@ import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
 
 const serviceData = {
-  title: "SEO Tradicional 360°",
+  title: "Traditional SEO 360°",
   subtitle:
-    "Fortalece tu posicionamiento orgánico con una estrategia integral de SEO técnico, on-page y de contenido",
+    "Strengthen your organic visibility with an end-to-end SEO strategy across technical, on-page, and content pillars",
   description:
-    "Nuestro servicio de SEO Tradicional 360° aborda cada elemento fundamental del posicionamiento orgánico: arquitectura web, señales técnicas, relevancia semántica y autoridad. Auditamos tu sitio de punta a punta, priorizamos oportunidades con impacto y ejecutamos acciones continuas para sostener tu crecimiento en las SERPs.",
+    "Strengthen your organic position with our 360° SEO strategy. We optimize technical health, content, and authority to guarantee sustained growth in search.",
   gradient: "from-[#6366f1] to-[#ec4899]",
-  price: "Desde $750/mes",
-  duration: "3-9 meses",
+  price: "From $750/mo",
+  duration: "3-9 months",
   features: [
-    "Auditoría integral SEO",
-    "Investigación y clústeres de keywords",
-    "Optimización on-page (titles, meta, contenidos)",
-    "Mejoras de arquitectura e interlinking",
-    "Planes editoriales SEO",
-    "Link building ético",
-    "Dashboards personalizados",
-    "Alineación con Core Web Vitals",
+    "Comprehensive SEO audit",
+    "Keyword research and clustering",
+    "On-page optimization (titles, meta, content)",
+    "Architecture and interlinking improvements",
+    "SEO editorial roadmaps",
+    "Ethical link building",
+    "Custom dashboards",
+    "Aligned with Core Web Vitals",
   ],
   process: [
     {
-      title: "Descubrimiento & Auditoría",
+      title: "Discovery & Audit",
       description:
-        "Mapeamos tu ecosistema digital, analizamos competencia y priorizamos quick wins técnicos y semánticos.",
+        "We map your digital ecosystem, analyze competitors, and prioritize technical and semantic quick wins.",
     },
     {
-      title: "Blueprint SEO",
+      title: "SEO Blueprint",
       description:
-        "Diseñamos líneas editoriales, taxonomías, mejoras técnicas y plan incremental de autoridad.",
+        "We design editorial lines, taxonomies, technical upgrades, and an incremental authority plan.",
     },
     {
-      title: "Implementación",
+      title: "Implementation",
       description:
-        "Ejecutamos optimizaciones on-page, mejoras de performance y automatizamos reporting.",
+        "We execute on-page optimizations, performance improvements, and automate reporting.",
     },
     {
-      title: "Iteración",
+      title: "Iteration",
       description:
-        "Monitoreamos rankings, medimos impacto en conversiones y ajustamos backlog trimestral.",
+        "We monitor rankings, measure conversion impact, and adjust the quarterly backlog.",
     },
   ],
   benefits: [
-    "Estructura SEO sólida y escalable",
-    "Incremento progresivo de tráfico orgánico",
-    "Mejor posicionamiento en keywords estratégicas",
-    "Mayor relevancia temática y autoridad",
-    "Sitio preparado para integraciones SEO avanzadas",
+    "Solid, scalable SEO structure",
+    "Progressive organic traffic growth",
+    "Better positioning for strategic keywords",
+    "Greater topical relevance and authority",
+    "Site ready for advanced SEO integrations",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Cada cuánto revisan la estrategia SEO?",
+    question: "How often do you review the SEO strategy?",
     answer:
-      "Realizamos chequeos técnicos mensuales, ajustes editoriales continuos y revisiones estratégicas trimestrales para asegurar que el roadmap siga alineado a tus objetivos.",
+      "We run monthly technical checks, continuous editorial adjustments, and quarterly strategic reviews to keep the roadmap aligned with your goals.",
   },
   {
-    question: "¿Qué herramientas utilizan para la investigación y monitoreo?",
+    question: "What tools do you use for research and monitoring?",
     answer:
-      "Trabajamos con Search Console, GA4, herramientas de crawling y suites como Semrush/Ahrefs. Complementamos con dashboards propios para reportes accionables.",
+      "We work with Search Console, GA4, crawling tools, and suites like Semrush/Ahrefs. We complement them with proprietary dashboards for actionable reporting.",
   },
   {
     question:
-      "¿Pueden trabajar con equipos internos de contenido o desarrollo?",
+      "Can you collaborate with internal content or development teams?",
     answer:
-      "Sí. Coordinamos con tus equipos para alinear entregables, proveer guías de implementación y priorizar tareas según su complejidad e impacto.",
+      "Yes. We coordinate with your teams to align deliverables, provide implementation guides, and prioritize tasks by complexity and impact.",
   },
   {
-    question: "¿Incluyen soporte para migraciones o rediseños?",
+    question: "Do you include support for migrations or redesigns?",
     answer:
-      "Acompañamos procesos de migración con auditorías pre y post lanzamiento, redirecciones, ajustes de arquitectura y monitoreo intensivo.",
+      "We guide migration processes with pre- and post-launch audits, redirects, architecture adjustments, and intensive monitoring.",
   },
 ];
 
@@ -89,24 +89,24 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/seo/seo-tradicional` },
+  alternates: { canonical: `${BASE_URL}/services/seo/seo-tradicional` },
   keywords: [
     "SEO",
-    "SEO técnico",
-    "Optimización on-page",
+    "Technical SEO",
+    "On-page optimization",
     "Link building",
-    "Investigación de palabras clave",
+    "Keyword research",
     "Core Web Vitals",
     "North Blue Agency",
   ],
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/seo/seo-tradicional`,
+    url: `${BASE_URL}/services/seo/seo-tradicional`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-seo-tradicional.png`,
+        url: `${BASE_URL}/images/og/services-seo-tradicional.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -115,7 +115,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-seo-tradicional.png`],
+    images: [`${BASE_URL}/images/og/services-seo-tradicional.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -134,11 +134,11 @@ export default function SEOTradicionalPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <Link
-              href="/servicios/seo"
+              href="/services/seo"
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft size={20} className="mr-2" />
-              Volver a SEO 360°
+              Back to SEO 360°
             </Link>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               {serviceData.title}
@@ -169,7 +169,7 @@ export default function SEOTradicionalPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <AnimatedSection animation="fadeInLeft">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Funda tu crecimiento orgánico en bases sólidas
+                Ground your organic growth on solid fundamentals
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {serviceData.description}
@@ -186,9 +186,9 @@ export default function SEOTradicionalPage() {
               </div>
               <div className="mt-10">
                 <InlineCTA
-                  title="Solicita tu auditoría SEO técnica"
-                  description="Detecta oportunidades prioritarias y construye un roadmap accionable"
-                  primaryLabel="Auditar mi sitio"
+                  title="Request your technical SEO audit"
+                  description="Surface priority opportunities and build an actionable roadmap"
+                  primaryLabel="Audit my site"
                   type="quote"
                   accentColor="purple"
                 />
@@ -199,7 +199,7 @@ export default function SEOTradicionalPage() {
               <Card className="border-0 shadow-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">
-                    Características principales
+                    Core capabilities
                   </h3>
                   <div className="space-y-4">
                     {serviceData.features.map((feature, index) => (
@@ -215,11 +215,10 @@ export default function SEOTradicionalPage() {
               </Card>
               <div className="bg-gradient-to-r from-indigo-50 to-pink-50 border border-indigo-200/50 rounded-xl p-6 my-10 shadow-sm">
                 <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  <strong>¿Por qué SEO Tradicional 360°?</strong> Porque es la
-                  base que sostiene cada iniciativa avanzada de posicionamiento.
-                  Sin una infraestructura técnica y contenidos alineados a
-                  intención de búsqueda, cualquier estrategia basada en IA o
-                  automatización se queda corta.
+                  <strong>Why Traditional SEO 360°?</strong> Because it is the
+                  foundation that supports every advanced positioning initiative.
+                  Without technical infrastructure and content aligned to search
+                  intent, any AI- or automation-led strategy falls short.
                 </p>
               </div>
             </AnimatedSection>
@@ -235,12 +234,11 @@ export default function SEOTradicionalPage() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Del diagnóstico a la ejecución sostenida
+              From diagnosis to sustained execution
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Conectamos datos, insights competitivos y experiencia editorial
-              para acelerar tu posicionamiento. Así es nuestra metodología
-              completa.
+              We connect data, competitive insights, and editorial expertise to
+              accelerate your positioning. This is our full methodology.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -269,12 +267,12 @@ export default function SEOTradicionalPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#6366f1] to-[#ec4899] bg-clip-text text-transparent">
-              Resultados confiables, reportes accionables
+              Reliable results, actionable reporting
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Medimos y comunicamos el impacto de cada iteración. Te entregamos
-              dashboards claros para evaluar rendimiento según tus KPI críticos
-              y ajustar decisiones sin perder momentum.
+              We measure and communicate the impact of every iteration. You get
+              clear dashboards to assess performance against your critical KPIs
+              and adjust decisions without losing momentum.
             </p>
           </AnimatedSection>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -282,12 +280,11 @@ export default function SEOTradicionalPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Visibilidad & Rankings
+                    Visibility & Rankings
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Seguimiento continuo de posiciones, share of voice y
-                    búsquedas de marca para validar el impacto en la percepción
-                    del mercado.
+                    Ongoing tracking of positions, share of voice, and branded
+                    searches to validate impact on market perception.
                   </p>
                 </CardContent>
               </Card>
@@ -296,11 +293,11 @@ export default function SEOTradicionalPage() {
               <Card className="h-full shadow-lg border-0">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">
-                    Tráfico & Conversión
+                    Traffic & Conversion
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Configuramos objetivos, conversiones y funnels en GA4 para
-                    medir el valor real del tráfico orgánico.
+                    We configure goals, conversions, and funnels in GA4 to
+                    measure the real value of organic traffic.
                   </p>
                 </CardContent>
               </Card>
@@ -310,8 +307,8 @@ export default function SEOTradicionalPage() {
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-xl mb-3">Salud Técnica</h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Monitorizamos Core Web Vitals, crawling, indexación y
-                    errores críticos para mantener tu sitio optimizado.
+                    We monitor Core Web Vitals, crawling, indexation, and
+                    critical errors to keep your site optimized.
                   </p>
                 </CardContent>
               </Card>
@@ -319,9 +316,9 @@ export default function SEOTradicionalPage() {
           </div>
           <div className="mt-14">
             <InlineCTA
-              title="Quiero reforzar mi SEO tradicional"
-              description="Agenda una sesión estratégica y recibe un roadmap de mejoras prioritarias"
-              primaryLabel="Agendar consultoría"
+              title="I want to strengthen my traditional SEO"
+              description="Schedule a strategic session and receive a roadmap of priority improvements"
+              primaryLabel="Schedule consult"
               type="contact"
               accentColor="purple"
               centered
@@ -330,12 +327,12 @@ export default function SEOTradicionalPage() {
         </div>
       </section>
 
-      <FAQSection title="Preguntas sobre SEO Tradicional" faqs={faqs} />
+      <FAQSection title="Questions about Traditional SEO" faqs={faqs} />
 
       <QuoteSection
-        title="Escala tu posicionamiento orgánico"
-        subtitle="Deja que nuestro equipo te acompañe con una estrategia SEO integral y accionable"
-        buttonText="Solicitar cotización"
+        title="Scale your organic visibility"
+        subtitle="Let our team support you with a comprehensive, actionable SEO strategy"
+        buttonText="Request quote"
       />
 
       <ContactSection />

@@ -9,28 +9,28 @@ import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Insights, trends and practical guides",
   description:
-    "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
+    "Articles and guides on digital marketing, SEO, social media, and web development",
   alternates: { canonical: "/blog" },
   publisher: "North Blue Agency",
   keywords: [
     "blog",
-    "marketing digital",
+    "digital marketing",
     "SEO",
-    "redes sociales",
-    "desarrollo web",
+    "social media",
+    "web development",
   ],
   openGraph: {
     title: "Blog | North Blue Agency",
     description:
-      "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
+      "Articles and guides on digital marketing, SEO, social media, and web development",
     url: "https://northblueagency.com/blog",
     type: "website",
   },
 };
 
-// Cargar posts desde WordPress en servidor y mapear al shape que usa la UI
+// Load posts from WordPress on server and map to the shape used by the UI
 type UIArticle = {
   id: string;
   title: string;
@@ -117,10 +117,10 @@ export default async function BlogPage({
     "@type": "Blog",
     name: "Blog - North Blue Agency",
     description:
-      "Artículos y guías sobre marketing digital, SEO, redes sociales y desarrollo web",
+      "Articles and guides on digital marketing, SEO, social media, and web development",
     url: `${BASE_URL}/blog`,
     keywords:
-      "blog, marketing digital, SEO, redes sociales, desarrollo web, tips",
+      "blog, digital marketing, SEO, social media, web development, tips",
     publisher: {
       "@type": "Organization",
       name: "North Blue Agency",
@@ -151,7 +151,7 @@ export default async function BlogPage({
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Inicio", item: BASE_URL },
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
         {
           "@type": "ListItem",
           position: 2,
@@ -181,14 +181,14 @@ export default async function BlogPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center">
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Nuestro{" "}
+                Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
                   Blog
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Insights, tendencias y guías prácticas sobre marketing digital,
-                Posicionamiento en buscadores, desarrollo web y redes sociales.
+                Insights, trends, and practical guides on digital marketing,
+                Search Engine Optimization, web development, and social media.
               </p>
             </AnimatedSection>
           </div>
@@ -199,13 +199,13 @@ export default async function BlogPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Artículos{" "}
+                Featured{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
-                  Destacados
+                  Articles
                 </span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Los contenidos más populares y actuales de nuestro blog
+                The most popular and current content from our blog
               </p>
             </AnimatedSection>
 
@@ -235,7 +235,7 @@ export default async function BlogPage({
                             {post.author}
                             <span className="mx-2">•</span>
                             <Calendar size={14} className="mr-1" />
-                            {new Date(post.date).toLocaleDateString("es-ES")}
+                            {new Date(post.date).toLocaleDateString("en-US")}
                             <span className="mx-2">•</span>
                             <Clock size={14} className="mr-1" />
                             {post.readTime}
@@ -264,7 +264,7 @@ export default async function BlogPage({
                               variant="outline"
                               className="w-full group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
                             >
-                              Leer artículo completo
+                              Read full article
                               <ArrowRight
                                 size={16}
                                 className="ml-2 group-hover/btn:translate-x-1 transition-transform"
@@ -285,9 +285,9 @@ export default async function BlogPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Todos los{" "}
+                All{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
-                  Artículos
+                  Articles
                 </span>
               </h2>
             </AnimatedSection>
@@ -298,12 +298,12 @@ export default async function BlogPage({
                 <input
                   name="q"
                   defaultValue={q}
-                  placeholder="Buscar en artículos..."
+                  placeholder="Search articles..."
                   className="flex-1 px-4 py-3 rounded-lg border border-gray-200"
                 />
                 <input type="hidden" name="page" value="1" />
                 <Button type="submit" className="whitespace-nowrap">
-                  Buscar
+                  Search
                 </Button>
               </form>
             </div>
@@ -329,7 +329,7 @@ export default async function BlogPage({
                       <div className="p-4">
                         <div className="flex items-center text-xs text-gray-500 mb-2">
                           <Calendar size={12} className="mr-1" />
-                          {new Date(post.date).toLocaleDateString("es-ES")}
+                          {new Date(post.date).toLocaleDateString("en-US")}
                           <span className="mx-2">•</span>
                           <Clock size={12} className="mr-1" />
                           {post.readTime}
@@ -348,7 +348,7 @@ export default async function BlogPage({
                             size="sm"
                             className="text-[#ff4081] hover:text-[#ff4081] hover:bg-[#ff4081]/10 p-0"
                           >
-                            Leer más
+                            Read more
                             <ArrowRight size={14} className="ml-1" />
                           </Button>
                         </Link>
@@ -378,7 +378,7 @@ export default async function BlogPage({
                           {post.author}
                           <span className="mx-2">•</span>
                           <Calendar size={14} className="mr-1" />
-                          {new Date(post.date).toLocaleDateString("es-ES")}
+                          {new Date(post.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
                           <span className="mx-2">•</span>
                           <Clock size={14} className="mr-1" />
                           {post.readTime}
@@ -409,7 +409,7 @@ export default async function BlogPage({
                             variant="outline"
                             className="w-full group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
                           >
-                            Leer artículo completo
+                            Read full article
                             <ArrowRight
                               size={16}
                               className="ml-2 group-hover/btn:translate-x-1 transition-transform"
@@ -432,11 +432,11 @@ export default async function BlogPage({
                   }`}
                   className="px-3 py-2 bg-white border rounded"
                 >
-                  Anterior
+                  Previous
                 </Link>
               ) : (
                 <span className="px-3 py-2 bg-gray-100 border rounded text-gray-400">
-                  Anterior
+                  Previous
                 </span>
               )}
 
@@ -467,11 +467,11 @@ export default async function BlogPage({
                   }`}
                   className="px-3 py-2 bg-white border rounded"
                 >
-                  Siguiente
+                  Next
                 </Link>
               ) : (
                 <span className="px-3 py-2 bg-gray-100 border rounded text-gray-400">
-                  Siguiente
+                  Next
                 </span>
               )}
             </div>
@@ -483,20 +483,19 @@ export default async function BlogPage({
           <div className="container mx-auto px-4 text-center">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                ¿No te quieres perder nada?
+                Don't want to miss anything?
               </h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Suscríbete a nuestro newsletter y recibe los mejores contenidos
-                sobre marketing digital
+                Subscribe to our newsletter and receive the best content on digital marketing
               </p>
               <div className="max-w-md mx-auto flex gap-4">
                 <input
                   type="email"
-                  placeholder="Tu email"
+                  placeholder="Your email"
                   className="flex-1 px-4 py-3 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-white/50"
                 />
                 <Button className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 px-6">
-                  Suscribirse
+                  Subscribe
                 </Button>
               </div>
             </AnimatedSection>

@@ -12,22 +12,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/nosotros",
     "/blog",
-    "/contacto",
+    "/contact",
     "/portfolio",
-    "/servicios",
+    "/services",
     "/politica-privacidad",
   ];
 
   // Rutas de servicios
   const serviceRoutes = [
-    "/servicios/redes-sociales",
-    "/servicios/branding",
-    "/servicios/desarrollo-web",
-    "/servicios/marketing-digital",
-    "/servicios/seo",
-    "/servicios/analytics",
-    "/servicios/campanas-ads",
-    "/servicios/creacion-contenido",
+    "/services/redes-sociales",
+    "/services/branding",
+    "/services/desarrollo-web",
+    "/services/marketing-digital",
+    "/services/seo",
+    "/services/analytics",
+    "/services/campanas-ads",
+    "/services/chatgpt-ads",
+    "/services/creacion-contenido",
   ];
 
   // Obtener datos dinámicos
@@ -234,15 +235,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "seo",
     "analytics",
     "campanas-ads",
+    "chatgpt-ads",
     "creacion-contenido",
   ];
 
   const locationEntries: MetadataRoute.Sitemap = serviceSlugs.flatMap(
     (service) => {
-      const cfg = getPageConfig(`/servicios/${service}`);
+      const cfg = getPageConfig(`/services/${service}`);
       return locationSlugs.flatMap((slug) => [
         {
-          url: `${baseUrl}/servicios/${service}-${slug}`,
+          url: `${baseUrl}/services/${service}-${slug}`,
           lastModified: new Date(),
           changeFrequency: cfg.changeFrequency as any,
           priority: cfg.priority,

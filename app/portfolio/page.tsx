@@ -14,21 +14,21 @@ import QuoteSection from "@/components/quote-section";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
+    "Discover our successful digital marketing, branding, and web development projects",
   alternates: { canonical: "/portfolio" },
   publisher: "North Blue Agency",
   keywords: [
     "portfolio",
-    "casos de estudio",
-    "proyectos",
-    "marketing digital",
+    "case studies",
+    "projects",
+    "digital marketing",
     "branding",
-    "desarrollo web",
+    "web development",
   ],
   openGraph: {
     title: "Portfolio | North Blue Agency",
     description:
-      "Descubre nuestros proyectos exitosos de marketing digital, branding y desarrollo web",
+      "Discover our successful digital marketing, branding, and web development projects",
     url: "https://northblueagency.com/portfolio",
     type: "website",
   },
@@ -37,114 +37,114 @@ export const metadata: Metadata = {
 const projects = [
   {
     id: "ecommerce-fashion",
-    title: "Tienda Online de Moda",
+    title: "Fashion E-commerce Store",
     category: "E-commerce",
     client: "Fashion Forward",
     year: "2024",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Desarrollo completo de tienda online con integración de pagos y gestión de inventario.",
+      "Complete development of online store with payment integration and inventory management.",
     results: [
-      "300% aumento en ventas online",
-      "50% reducción en tasa de rebote",
-      "95% satisfacción del cliente",
+      "300% increase in online sales",
+      "50% reduction in bounce rate",
+      "95% customer satisfaction",
     ],
-    services: ["Desarrollo Web", "E-commerce", "SEO"],
+    services: ["Web Development", "E-commerce", "SEO"],
     featured: true,
   },
   {
     id: "restaurant-branding",
-    title: "Rebranding Restaurante Gourmet",
+    title: "Gourmet Restaurant Rebranding",
     category: "Branding",
     client: "Sabores del Mar",
     year: "2024",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Renovación completa de identidad visual y estrategia de marketing digital.",
+      "Complete visual identity renewal and digital marketing strategy.",
     results: [
-      "200% aumento en reservas",
-      "85% mejora en reconocimiento de marca",
-      "150% crecimiento en redes sociales",
+      "200% increase in reservations",
+      "85% improvement in brand recognition",
+      "150% growth in social media",
     ],
-    services: ["Branding", "Redes Sociales", "Campañas y Ads"],
+    services: ["Branding", "Social Media", "Ads Campaigns"],
     featured: true,
   },
   {
     id: "tech-startup",
-    title: "Lanzamiento Startup Tecnológica",
-    category: "Marketing Digital",
+    title: "Tech Startup Launch",
+    category: "Digital Marketing",
     client: "InnovateTech",
     year: "2023",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Estrategia integral de lanzamiento y posicionamiento en el mercado.",
+      "Comprehensive market launch and positioning strategy.",
     results: [
-      "500+ leads en primer mes",
-      "40% tasa de conversión",
-      "1M+ impresiones en redes",
+      "500+ leads in first month",
+      "40% conversion rate",
+      "1M+ impressions on social media",
     ],
-    services: ["Marketing Digital", "Desarrollo Web", "Branding"],
+    services: ["Digital Marketing", "Web Development", "Branding"],
     featured: true,
   },
   {
     id: "fitness-app",
-    title: "App de Fitness y Bienestar",
-    category: "Desarrollo Web",
+    title: "Fitness and Wellness App",
+    category: "Web Development",
     client: "FitLife Pro",
     year: "2023",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Desarrollo de aplicación web progresiva para seguimiento de ejercicios.",
+      "Progressive web app development for exercise tracking.",
     results: [
-      "10,000+ usuarios activos",
-      "4.8/5 rating en stores",
-      "60% retención mensual",
+      "10,000+ active users",
+      "4.8/5 store rating",
+      "60% monthly retention",
     ],
-    services: ["Desarrollo Web", "UX/UI", "Marketing Digital"],
+    services: ["Web Development", "UX/UI", "Digital Marketing"],
     featured: false,
   },
   {
     id: "real-estate",
-    title: "Portal Inmobiliario",
-    category: "Desarrollo Web",
+    title: "Real Estate Portal",
+    category: "Web Development",
     client: "PropiedadesPro",
     year: "2023",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Plataforma completa para búsqueda y gestión de propiedades inmobiliarias.",
+      "Complete platform for real estate property search and management.",
     results: [
-      "2,000+ propiedades listadas",
-      "80% aumento en consultas",
-      "45% mejora en tiempo de venta",
+      "2,000+ properties listed",
+      "80% increase in inquiries",
+      "45% improvement in sale time",
     ],
-    services: ["Desarrollo Web", "SEO", "Marketing Digital"],
+    services: ["Web Development", "SEO", "Digital Marketing"],
     featured: false,
   },
   {
     id: "beauty-salon",
-    title: "Salón de Belleza Premium",
+    title: "Premium Beauty Salon",
     category: "Branding",
     client: "Bella Vita Spa",
     year: "2022",
     image: "/placeholder.svg?height=400&width=600",
     description:
-      "Identidad visual completa y estrategia de marketing para salón de belleza.",
+      "Complete visual identity and marketing strategy for beauty salon.",
     results: [
-      "180% aumento en citas",
-      "70% mejora en retención de clientes",
-      "250% crecimiento en Instagram",
+      "180% increase in appointments",
+      "70% improvement in client retention",
+      "250% growth on Instagram",
     ],
-    services: ["Branding", "Redes Sociales", "Campañas y Ads"],
+    services: ["Branding", "Social Media", "Ads Campaigns"],
     featured: false,
   },
 ];
 
 const categories = [
-  "Todos",
+  "All",
   "E-commerce",
   "Branding",
-  "Marketing Digital",
-  "Desarrollo Web",
+  "Digital Marketing",
+  "Web Development",
 ];
 
 export default function PortfolioPage() {
@@ -161,14 +161,13 @@ export default function PortfolioPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center">
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Nuestro{" "}
+                Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
                   Portfolio
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Descubre los proyectos que han transformado la presencia digital
-                de nuestros clientes
+                Discover the projects that have transformed our clients' digital presence
               </p>
             </AnimatedSection>
           </div>

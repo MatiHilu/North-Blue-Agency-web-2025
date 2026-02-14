@@ -22,7 +22,7 @@ Se ha implementado un sistema completo de sitemap dinámico que incluye:
 
 ### URLs Incluidas Automáticamente
 
-- ✅ **Páginas principales**: /, /nosotros, /contacto, etc.
+- ✅ **Páginas principales**: /, /nosotros, /contact, etc.
 - ✅ **Servicios**: Todas las 8 páginas de servicios
 - ✅ **Blog posts**: Posts dinámicos desde `lib/data.ts`
 - ✅ **Portfolio**: Proyectos dinámicos desde `lib/data.ts`

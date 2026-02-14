@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     template: "%s | North Blue Agency",
   },
   description: serviceData.description,
-  alternates: { canonical: `${BASE_URL}/servicios/analytics` },
+  alternates: { canonical: `${BASE_URL}/services/analytics` },
   keywords: [
     "analytics",
     "reportes web",
@@ -92,11 +92,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    url: `${BASE_URL}/servicios/analytics`,
+    url: `${BASE_URL}/services/analytics`,
     type: "website",
     images: [
       {
-        url: `${BASE_URL}/images/og/servicios-analytics.png`,
+        url: `${BASE_URL}/images/og/services-analytics.png`,
         alt: `${serviceData.title} - North Blue Agency`,
       },
     ],
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${serviceData.title} - North Blue Agency`,
     description: serviceData.description,
-    images: [`${BASE_URL}/images/og/servicios-analytics.png`],
+    images: [`${BASE_URL}/images/og/services-analytics.png`],
   },
   publisher: "North Blue Agency",
 };
@@ -127,7 +127,7 @@ export default function AnalyticsPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />

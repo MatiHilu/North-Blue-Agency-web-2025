@@ -39,64 +39,64 @@ import type { Metadata } from "next";
 }; */
 
 const serviceData = {
-  title: "Gestión de Redes Sociales",
-  subtitle: "Construye una comunidad sólida y aumenta tu engagement",
+  title: "Social Media Management",
+  subtitle: "Build a strong community and increase your engagement",
   description:
-    "Nuestro servicio de gestión de redes sociales está diseñado para transformar tu presencia digital en una herramienta poderosa de crecimiento. Creamos estrategias personalizadas que conectan con tu audiencia y generan resultados medibles.",
+    "Our social media management service is designed to transform your digital presence into a powerful growth tool. We create personalized strategies that connect with your audience and generate measurable results.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $800.000/mes",
-  duration: "3-6 meses",
+  price: "From $800/month",
+  duration: "3-6 months",
   features: [
-    "Estrategia de contenido personalizada",
-    "Creación de contenido visual y copywriting",
-    "Programación y publicación automatizada",
-    "Community management profesional",
-    "Gestión de comentarios y mensajes",
-    "Campañas publicitarias segmentadas",
-    "Análisis de métricas y KPIs",
-    "Reportes mensuales detallados",
+    "Personalized content strategy",
+    "Visual content creation and copywriting",
+    "Automated scheduling and publishing",
+    "Professional community management",
+    "Comment and message management",
+    "Segmented ad campaigns",
+    "Metrics and KPI analysis",
+    "Detailed monthly reports",
   ],
   process: [
     {
-      title: "Análisis inicial",
-      description: "Evaluamos tu presencia actual y definimos objetivos",
+      title: "Initial Analysis",
+      description: "We evaluate your current presence and define goals",
     },
     {
-      title: "Estrategia",
-      description: "Creamos un plan de contenido personalizado",
+      title: "Strategy",
+      description: "We create a personalized content plan",
     },
     {
-      title: "Implementación",
-      description: "Ejecutamos la estrategia con contenido de calidad",
+      title: "Implementation",
+      description: "We execute the strategy with quality content",
     },
     {
-      title: "Optimización",
-      description: "Ajustamos basándonos en métricas y resultados",
+      title: "Optimization",
+      description: "We adjust based on metrics and results",
     },
   ],
   benefits: [
-    "Aumento del 300% en engagement promedio",
-    "Crecimiento orgánico de seguidores",
-    "Mayor reconocimiento de marca",
-    "Generación de leads cualificados",
+    "300% increase in average engagement",
+    "Organic follower growth",
+    "Higher brand recognition",
+    "Qualified lead generation",
   ],
 };
 
 const faqs = [
   {
-    question: "¿En qué redes sociales se enfocan?",
+    question: "Which social networks do you focus on?",
     answer:
-      "Trabajamos principalmente en Instagram, Facebook, LinkedIn y TikTok. Seleccionamos las plataformas más relevantes según tu audiencia objetivo y tipo de negocio.",
+      "We work mainly on Instagram, Facebook, LinkedIn, and TikTok. We select the most relevant platforms according to your target audience and business type.",
   },
   {
-    question: "¿Crean todo el contenido visual?",
+    question: "Do you create all visual content?",
     answer:
-      "Sí, nuestro equipo creativo desarrolla todo el contenido visual incluyendo posts, stories, videos cortos y carruseles, manteniendo la coherencia con tu identidad de marca.",
+      "Yes, our creative team develops all visual content including posts, stories, short videos, and carousels, maintaining consistency with your brand identity.",
   },
   {
-    question: "¿Responden a comentarios y mensajes?",
+    question: "Do you reply to comments and messages?",
     answer:
-      "Absolutamente. Nuestro community management incluye respuesta a comentarios, mensajes directos y gestión de la comunidad en horarios establecidos.",
+      "Absolutely. Our community management includes responding to comments, direct messages, and community management during established hours.",
   },
 ];
 
@@ -123,11 +123,11 @@ export default function RedesSocialesPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, url: window.location.href }),
       });
-      if (!res.ok) throw new Error("Error enviando mensaje");
+      if (!res.ok) throw new Error("Error sending message");
       toast({
-        title: "¡Mensaje enviado!",
+        title: "Message sent!",
         description:
-          "Gracias por contactarnos. Te responderemos en las próximas 24 horas.",
+          "Thank you for contacting us. We will reply within 24 hours.",
       });
       setFormData({
         name: "",
@@ -138,10 +138,10 @@ export default function RedesSocialesPage() {
         url_field: "",
       });
     } catch (error) {
-      console.error("Error enviando mensaje:", error);
+      console.error("Error sending message:", error);
       toast({
         title: "Error",
-        description: "Hubo un problema enviando tu mensaje. Intenta más tarde.",
+        description: "There was a problem sending your message. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -161,10 +161,10 @@ export default function RedesSocialesPage() {
             name: serviceData.title,
             description: serviceData.description,
             keywords:
-              "gestión de redes sociales, social media, community management, estrategia de contenido, instagram, tiktok",
-            areaServed: "ES",
+              "social media management, social media, community management, content strategy, instagram, tiktok",
+            areaServed: "US",
             provider: { "@type": "Organization", name: "North Blue Agency" },
-            serviceType: "Redes Sociales",
+            serviceType: "Social Media",
             url: `${BASE_URL}/mejora-tu-presencia-en-redes`,
             offers: { "@type": "Offer", priceCurrency: "USD" },
             breadcrumb: {
@@ -173,13 +173,13 @@ export default function RedesSocialesPage() {
                 {
                   "@type": "ListItem",
                   position: 1,
-                  name: "Inicio",
+                  name: "Home",
                   item: BASE_URL,
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
-                  name: "Redes Sociales",
+                  name: "Social Media",
                   item: `${BASE_URL}/mejora-tu-presencia-en-redes`,
                 },
               ],

@@ -1,5 +1,5 @@
-// Datos de ejemplo para blog posts
-// En una aplicación real, estos datos vendrían de una API, CMS o base de datos
+// Sample data for blog posts
+// In a real application, this data would come from an API, CMS, or database
 
 export interface BlogPost {
   slug: string;
@@ -16,32 +16,32 @@ export interface PortfolioProject {
   updatedAt?: string;
 }
 
-// Datos de ejemplo - reemplaza con tu fuente de datos real
+// Sample data - replace with your real data source
 export const blogPosts: BlogPost[] = [
   {
-    slug: "como-mejorar-presencia-digital-2025",
-    title: "Cómo Mejorar tu Presencia Digital en 2025",
+    slug: "how-to-improve-digital-presence-2025",
+    title: "How to Improve Your Digital Presence in 2025",
     publishedAt: "2025-01-15",
     updatedAt: "2025-01-20",
   },
   {
-    slug: "tendencias-marketing-digital-2025",
-    title: "Tendencias de Marketing Digital para 2025",
+    slug: "digital-marketing-trends-2025",
+    title: "Digital Marketing Trends for 2025",
     publishedAt: "2025-01-10",
   },
   {
-    slug: "seo-local-para-pymes",
-    title: "SEO Local: Guía Completa para PYMEs",
+    slug: "local-seo-guide-smbs",
+    title: "Local SEO: Complete Guide for SMBs",
     publishedAt: "2025-01-05",
   },
   {
-    slug: "diseno-web-responsive-importancia",
-    title: "La Importancia del Diseño Web Responsive",
+    slug: "importance-responsive-web-design",
+    title: "The Importance of Responsive Web Design",
     publishedAt: "2024-12-20",
   },
   {
-    slug: "estrategias-redes-sociales-2025",
-    title: "Estrategias de Redes Sociales que Funcionan",
+    slug: "social-media-strategies-that-work",
+    title: "Social Media Strategies That Work",
     publishedAt: "2024-12-15",
   },
 ];
@@ -49,52 +49,44 @@ export const blogPosts: BlogPost[] = [
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "ecommerce-fashion-store",
-    title: "E-commerce para Tienda de Moda",
+    title: "E-commerce for Fashion Store",
     category: "desarrollo-web",
     publishedAt: "2024-12-01",
   },
   {
-    slug: "app-delivery-restaurante",
-    title: "App de Delivery para Restaurante",
+    slug: "restaurant-delivery-app",
+    title: "Delivery App for Restaurant",
     category: "desarrollo-web",
     publishedAt: "2024-11-15",
   },
   {
-    slug: "campana-digital-tech-startup",
-    title: "Campaña Digital para Tech Startup",
+    slug: "tech-startup-digital-campaign",
+    title: "Digital Campaign for Tech Startup",
     category: "marketing-digital",
     publishedAt: "2024-11-01",
   },
   {
-    slug: "branding-empresa-consultoria",
-    title: "Branding Completo para Consultoría",
+    slug: "consultancy-branding",
+    title: "Complete Branding for Consultancy",
     category: "branding",
     publishedAt: "2024-10-20",
   },
   {
-    slug: "rediseno-web-clinica-dental",
-    title: "Rediseño Web para Clínica Dental",
+    slug: "dental-clinic-web-redesign",
+    title: "Web Redesign for Dental Clinic",
     category: "desarrollo-web",
     publishedAt: "2024-10-10",
   },
 ];
 
-// Función para obtener todos los posts de blog
+// Function to get all blog posts
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  // En una aplicación real, harías fetch a tu API o CMS
-  // Ejemplo:
-  // const response = await fetch('https://tu-api.com/blog-posts')
-  // return response.json()
-
+  // In a real application, you would fetch from your API or CMS
   return blogPosts;
 }
 
-// Función para obtener todos los proyectos de portfolio
+// Function to get all portfolio projects
 export async function getAllPortfolioProjects(): Promise<PortfolioProject[]> {
-  // En una aplicación real, harías fetch a tu API o CMS
-  // Ejemplo:
-  // const response = await fetch('https://tu-api.com/portfolio-projects')
-  // return response.json()
-
+  // In a real application, you would fetch from your API or CMS
   return portfolioProjects;
 }

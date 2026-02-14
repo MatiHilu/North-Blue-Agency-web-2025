@@ -20,67 +20,67 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Analytics - Reportes Web y Redes Sociales",
+  title: "Analytics - Web & Social Media Reports",
   subtitle:
-    "Toma decisiones inteligentes basadas en datos reales de tu sitio y redes sociales",
+    "Make smart decisions based on real data from your site and social networks",
   description:
-    "Implementamos sistemas de medición avanzados para web y redes sociales que te permiten entender el comportamiento de tus usuarios y el rendimiento de todas tus campañas. Convertimos datos complejos en insights accionables para optimizar tu estrategia digital en cada canal.",
+    "Transform data into growth with our advanced web and social analytics. We implement tracking systems to optimize your strategy based on actionable insights.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $400/mes",
-  duration: "Implementación: 1-2 semanas",
+  price: "From $400/month",
+  duration: "Implementation: 1-2 weeks",
   features: [
-    "Configuración de Google Analytics 4",
-    "Google Tag Manager avanzado",
-    "Seguimiento de conversiones",
-    "Análisis de embudos de venta",
-    "Analítica de redes sociales (Facebook, Instagram, TikTok, LinkedIn)",
-    "Seguimiento de engagement y crecimiento de seguidores",
-    "Reportes mensuales",
-    "KPIs estratégicos por industria",
-    "Recomendaciones de optimización",
+    "Google Analytics 4 Configuration",
+    "Advanced Google Tag Manager",
+    "Conversion Tracking",
+    "Sales Funnel Analysis",
+    "Social Media Analytics (Facebook, Instagram, TikTok, LinkedIn)",
+    "Engagement & Follower Growth Tracking",
+    "Monthly Reports",
+    "Strategic KPIs by Industry",
+    "Optimization Recommendations",
   ],
   process: [
     {
-      title: "Análisis inicial",
-      description: "Evaluamos tus objetivos y sistemas actuales",
+      title: "Initial Analysis",
+      description: "We evaluate your goals and current systems",
     },
     {
-      title: "Configuración",
-      description: "Implementamos tracking avanzado y herramientas",
+      title: "Configuration",
+      description: "We implement advanced tracking and tools",
     },
     {
       title: "Reporting",
-      description: "Creamos reportes visuales personalizados",
+      description: "We create personalized visual reports",
     },
     {
-      title: "Optimización",
-      description: "Analizamos datos y proporcionamos insights",
+      title: "Optimization",
+      description: "We analyze data and provide insights",
     },
   ],
   benefits: [
-    "Visibilidad completa del customer journey en web y redes sociales",
-    "Medición de engagement y alcance en redes sociales",
-    "ROI claro de todas las campañas",
-    "Identificación de oportunidades de mejora",
-    "Decisiones basadas en datos reales",
+    "Complete visibility of the customer journey on web and social media",
+    "Measurement of engagement and reach on social media",
+    "Clear ROI of all campaigns",
+    "Identification of improvement opportunities",
+    "Decisions based on real data",
   ],
 };
 
 const faqs = [
   /*   {
-    question: "¿Qué herramientas de analytics utilizan?",
+    question: "What analytics tools do you use?",
     answer:
-      "Trabajamos principalmente con Google Analytics 4, Google Tag Manager, Looker Studio, y herramientas especializadas según la industria como Hotjar, Mixpanel o herramientas de ecommerce.",
+      "We primarily work with Google Analytics 4, Google Tag Manager, Looker Studio, and specialized tools depending on the industry such as Hotjar, Mixpanel, or ecommerce tools.",
   }, */
   {
-    question: "¿Con qué frecuencia recibo reportes?",
+    question: "How often do I receive reports?",
     answer:
-      "Proporcionamos reportes mensuales personalizados según tus necesidades específicas. También ofrecemos sesiones de revisión trimesal.",
+      "We provide personalized monthly reports based on your specific needs. We also offer quarterly review sessions.",
   },
   {
-    question: "¿Pueden integrar datos de diferentes plataformas?",
+    question: "Can you integrate data from different platforms?",
     answer:
-      "Sí, integramos datos de múltiples fuentes como redes sociales, email marketing, CRM, plataformas de ecommerce y herramientas de publicidad para una vista unificada.",
+      "Yes, we integrate data from multiple sources such as social media, email marketing, CRM, ecommerce platforms, and advertising tools for a unified view.",
   },
 ];
 export async function generateMetadata({
@@ -92,7 +92,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/analytics${slugPart}`;
+  const canonical = `${BASE_URL}/services/analytics${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/analytics${slugPart}`;
 
   return {
@@ -107,11 +107,11 @@ export async function generateMetadata({
     },
     keywords: [
       "analytics",
-      "reportes web",
-      "analítica de redes sociales",
+      "web reports",
+      "social media analytics",
       "google analytics 4",
       "google tag manager",
-      "reportes mensuales",
+      "monthly reports",
       "north blue agency",
     ],
     openGraph: {
@@ -123,7 +123,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-analytics.png`,
+          url: `${BASE_URL}/images/og/services-analytics.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -132,7 +132,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-analytics.png`],
+      images: [`${BASE_URL}/images/og/services-analytics.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -162,11 +162,11 @@ export default function AnalyticsPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -203,7 +203,7 @@ export default function AnalyticsPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -227,7 +227,7 @@ export default function AnalyticsPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -256,11 +256,10 @@ export default function AnalyticsPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 
@@ -288,16 +287,15 @@ export default function AnalyticsPage({
 
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para tomar decisiones inteligentes?"
-          subtitle="Contáctanos hoy y descubre cómo los datos pueden transformar tu
-                estrategia digital"
-          buttonText="Solicitar cotización"
+          title="Ready to make intelligent decisions?"
+          subtitle="Contact us today and discover how data can transform your digital strategy"
+          buttonText="Request a Quote"
         />
 
         {/* Contact Section */}

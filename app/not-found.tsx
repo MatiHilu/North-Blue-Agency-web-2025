@@ -24,28 +24,28 @@ export default function NotFound() {
 
   const quickLinks = [
     {
-      title: "Inicio",
+      title: "Home",
       href: "/",
       icon: <Home size={20} />,
-      description: "Volver a la página principal",
+      description: "Return to home page",
     },
     {
-      title: "Servicios",
-      href: "/servicios",
+      title: "Services",
+      href: "/services",
       icon: <Compass size={20} />,
-      description: "Explora nuestros servicios",
+      description: "Explore our services",
     },
     {
       title: "Portfolio",
       href: "/portfolio",
       icon: <Search size={20} />,
-      description: "Ve nuestros trabajos",
+      description: "See our work",
     },
     {
-      title: "Contacto",
-      href: "/contacto",
+      title: "Contact",
+      href: "/contact",
       icon: <RefreshCw size={20} />,
-      description: "Ponte en contacto con nosotros",
+      description: "Get in touch with us",
     },
   ];
 
@@ -81,7 +81,7 @@ export default function NotFound() {
               >
                 <AlertTriangle className="text-[#ff4081] mr-3" size={32} />
                 <h2 className="text-2xl md:text-4xl font-bold">
-                  Página no encontrada.
+                  Page Not Found.
                 </h2>
               </div>
             </div>
@@ -95,8 +95,7 @@ export default function NotFound() {
               }`}
             >
               <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
-                Oops! Parece que la página que buscas no existe o ha sido
-                movida.
+                Oops! It seems the page you are looking for doesn't exist or has been moved.
                 {/* <br />
                 Pero no te preocupes, podemos ayudarte a encontrar lo que
                 necesitas. */}
@@ -133,15 +132,15 @@ export default function NotFound() {
               <Link href="/">
                 <Button className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-3 text-lg">
                   <ArrowLeft size={20} className="mr-2" />
-                  Volver al Inicio
+                  Back to Home
                 </Button>
               </Link>
-              {/* <Link href="/contacto">
+              {/* <Link href="/contact">
                 <Button
                   variant="outline"
                   className="border-2 border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white transition-all duration-300 px-8 py-3 text-lg"
                 >
-                  Contactar Soporte
+                  Contact Support
                 </Button>
               </Link> */}
             </div>
@@ -155,7 +154,7 @@ export default function NotFound() {
               }`}
             >
               <h3 className="text-xl font-semibold mb-8 text-gray-200">
-                O explora estas secciones:
+                Or explore these sections:
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 {quickLinks.map((link, index) => (
@@ -196,14 +195,14 @@ export default function NotFound() {
               }`}
             >
               <p className="text-gray-400 text-sm">
-                ¿Necesitas ayuda específica?{" "}
+                Need specific help?{" "}
                 <Link
-                  href="/contacto"
+                  href="/contact"
                   className="text-[#ff4081] hover:text-[#ff4081]/80 underline transition-colors"
                 >
-                  Contáctanos
+                  Contact us
                 </Link>{" "}
-                y te ayudaremos a encontrar lo que buscas.
+                and we will help you find what you are looking for.
               </p>
             </div>
           </AnimatedSection>

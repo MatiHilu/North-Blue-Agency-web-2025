@@ -19,7 +19,7 @@ export default function InlineCTA({
   description,
   primaryLabel = "Comenzar",
   className = "",
-  href = "/contacto",
+  href = "/contact",
   accentColor = "pink",
   centered = false,
 }: InlineCTAProps) {

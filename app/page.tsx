@@ -23,29 +23,29 @@ import ServiceCard from "@/components/service-card";
 
 export const metadata: Metadata = {
   title: {
-    default: "North Blue Agency - Marketing Digital Profesional",
+    default: "North Blue Agency | Professional Digital Marketing",
     template: "%s | North Blue Agency",
   },
   description:
-    "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+    "Digital marketing agency specialized in social media, branding, and web development. We transform your digital presence.",
   alternates: { canonical: "/" },
   keywords: [
-    "agencia de marketing digital",
-    "marketing digital",
+    "digital marketing agency",
+    "digital marketing",
     "North Blue Agency",
   ],
   openGraph: {
-    title: "North Blue Agency - Marketing Digital Profesional",
+    title: "North Blue Agency | Professional Digital Marketing",
     description:
-      "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+      "Digital marketing agency specialized in social media, branding, and web development. We transform your digital presence.",
     url: BASE_URL,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "North Blue Agency - Marketing Digital Profesional",
+    title: "North Blue Agency | Professional Digital Marketing",
     description:
-      "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web. Transformamos tu presencia digital.",
+      "Digital marketing agency specialized in social media, branding, and web development. We transform your digital presence.",
   },
   publisher: "North Blue Agency",
 };
@@ -67,15 +67,13 @@ export default function HomePage() {
               className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
               style={{ lineHeight: "1.2" }}
             >
-              Transformamos tu
+              We transform your
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
-                presencia digital
+                digital presence
               </span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Somos North Blue Agency, especialistas en marketing digital que
-              impulsan marcas hacia el éxito con estrategias innovadoras y
-              resultados medibles.
+              We are North Blue Agency, digital marketing specialists boosting brands towards success with innovative strategies and measurable results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <HeroButtonModal />
@@ -85,7 +83,7 @@ export default function HomePage() {
                   variant="outline"
                   className="btn-white-hover border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-4 md:w-[246px]"
                 >
-                  Ver portfolio
+                  View portfolio
                 </Button>
               </Link>
             </div>
@@ -100,24 +98,23 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Nuestros{" "}
+              Our{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-xy">
-                servicios
+                services
               </span>
             </h2>
             <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-              Ofrecemos soluciones integrales de marketing digital para hacer
-              crecer tu negocio
+              We offer comprehensive digital marketing solutions to grow your business
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <AnimatedSection delay={100}>
               <ServiceCard
-                title="Redes Sociales"
-                description="Gestión completa de redes sociales con contenido estratégico que conecta con tu audiencia."
+                title="Social Media"
+                description="Complete social media management with strategic content that connects with your audience."
                 icon={<Smartphone className="w-full h-full text-white" />}
-                href="/servicios/redes-sociales"
+                href="/services/redes-sociales"
                 gradient="pink"
               />
             </AnimatedSection>
@@ -125,42 +122,42 @@ export default function HomePage() {
             <AnimatedSection delay={200}>
               <ServiceCard
                 title="Branding"
-                description="Creamos identidades visuales únicas que reflejan la esencia de tu marca."
+                description="We create unique visual identities that reflect the essence of your brand."
                 icon={<Palette className="w-full h-full text-white" />}
-                href="/servicios/branding"
+                href="/services/branding"
                 gradient="blue"
               />
             </AnimatedSection>
 
             <AnimatedSection delay={300}>
               <ServiceCard
-                title="Desarrollo Web"
-                description="Sitios web modernos, responsivos y optimizados para conversión."
+                title="Web Development"
+                description="Modern, responsive websites optimized for conversion."
                 icon={<Globe className="w-full h-full text-white" />}
-                href="/servicios/desarrollo-web"
+                href="/services/desarrollo-web"
                 gradient="pink"
               />
             </AnimatedSection>
 
             <AnimatedSection delay={400}>
               <ServiceCard
-                title="Marketing Digital Integral"
-                description="Estrategias integrales de marketing digital para maximizar tu ROI."
+                title="Comprehensive Digital Marketing"
+                description="Comprehensive digital marketing strategies to maximize your ROI."
                 icon={<Megaphone className="w-full h-full text-white" />}
-                href="/servicios/marketing-digital"
+                href="/services/marketing-digital"
                 gradient="blue"
               />
             </AnimatedSection>
           </div>
 
           <AnimatedSection className="text-center mt-12" delay={500}>
-            <Link href="/servicios">
+            <Link href="/services">
               <Button
                 size="lg"
                 variant="outline"
                 className="border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white"
               >
-                Ver todos los servicios
+                View all services
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
@@ -182,21 +179,21 @@ export default function HomePage() {
             <AnimatedSection delay={100}>
               <div className="space-y-2">
                 <div className="text-4xl md:text-5xl font-bold">100%</div>
-                <div className="text-lg opacity-90">Clientes satisfechos</div>
+                <div className="text-lg opacity-90">Satisfied Clients</div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={200}>
               <div className="space-y-2">
                 <div className="text-4xl md:text-5xl font-bold">5+</div>
-                <div className="text-lg opacity-90">Años de experiencia</div>
+                <div className="text-lg opacity-90">Years of Experience</div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={300}>
               <div className="space-y-2">
                 <div className="text-4xl md:text-5xl font-bold">24/7</div>
-                <div className="text-lg opacity-90">Soporte disponible</div>
+                <div className="text-lg opacity-90">Support Available</div>
               </div>
             </AnimatedSection>
           </div>
@@ -209,15 +206,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animation="fadeInLeft">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                ¿Por qué elegir{" "}
+                Why Choose{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
                   North Blue?
                 </span>
               </h2>
               <p className="text-xl text-gray-600 mb-8">
-                Combinamos creatividad, estrategia y tecnología para entregar
-                resultados excepcionales que impulsan el crecimiento de tu
-                negocio.
+                We combine creativity, strategy, and technology to deliver exceptional results that drive your business growth.
               </p>
 
               <div className="space-y-6">
@@ -227,11 +222,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">
-                      Estrategias personalizadas
+                      Personalized strategies
                     </h3>
                     <p className="text-gray-600">
-                      Cada proyecto es único. Desarrollamos estrategias
-                      específicas para tus objetivos.
+                      Each project is unique. We develop specific strategies for your goals.
                     </p>
                   </div>
                 </div>
@@ -242,11 +236,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">
-                      Resultados medibles
+                      Measurable results
                     </h3>
                     <p className="text-gray-600">
-                      Utilizamos métricas claras y reportes detallados para
-                      medir el éxito.
+                      We use clear metrics and detailed reports to measure success.
                     </p>
                   </div>
                 </div>
@@ -256,10 +249,9 @@ export default function HomePage() {
                     <Users className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Equipo experto</h3>
+                    <h3 className="font-bold text-lg mb-2">Expert Team</h3>
                     <p className="text-gray-600">
-                      Profesionales especializados en cada área del marketing
-                      digital.
+                      Professionals specialized in every digital marketing area.
                     </p>
                   </div>
                 </div>
@@ -278,48 +270,48 @@ export default function HomePage() {
                         </div>
                       </div> */}
                       <h3 className="text-2xl font-bold mb-3">
-                        Nuestro proceso de trabajo
+                        Our Work Process
                       </h3>
                       <p className="text-gray-600 mb-8">
-                        Colaboramos en etapas claras para avanzar rápido, con
-                        foco en objetivos.
+                        We collaborate in clear stages to move fast, focusing on
+                        objectives.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                         <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
                           <div className="w-10 h-10 rounded-lg bg-[#ff4081]/10 text-[#ff4081] flex items-center justify-center mb-3">
                             <Lightbulb className="w-5 h-5" />
                           </div>
-                          <div className="font-semibold">Descubrimiento</div>
+                          <div className="font-semibold">Discovery</div>
                           <div className="text-sm text-gray-500">
-                            Brief y objetivos
+                            Brief & Objectives
                           </div>
                         </div>
                         <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
                           <div className="w-10 h-10 rounded-lg bg-[#6f8cff]/10 text-[#6f8cff] flex items-center justify-center mb-3">
                             <Target className="w-5 h-5" />
                           </div>
-                          <div className="font-semibold">Estrategia</div>
+                          <div className="font-semibold">Strategy</div>
                           <div className="text-sm text-gray-500">
-                            Plan y roadmap
+                            Plan & Roadmap
                           </div>
                         </div>
                         <div className="group p-4 rounded-xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg transition-all flex flex-col items-center justify-center">
                           <div className="w-10 h-10 rounded-lg bg-[#00b2ff]/10 text-[#00b2ff] flex items-center justify-center mb-3">
                             <Rocket className="w-5 h-5" />
                           </div>
-                          <div className="font-semibold">Ejecución</div>
+                          <div className="font-semibold">Execution</div>
                           <div className="text-sm text-gray-500">
-                            Producción y optimización
+                            Production & Optimization
                           </div>
                         </div>
                       </div>
                       <div className="flex justify-center">
-                        <Link href="/servicios">
+                        <Link href="/services">
                           <Button
                             variant="outline"
                             className="border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white"
                           >
-                            Conocer el proceso
+                            Learn about our process
                             <ArrowRight className="ml-2" size={18} />
                           </Button>
                         </Link>
@@ -339,20 +331,20 @@ export default function HomePage() {
           <div className="text-center text-white max-w-4xl mx-auto">
             <AnimatedSection>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                ¿Listo para transformar tu negocio?
+                Ready to transform your business?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Contáctanos hoy y descubre cómo podemos llevar tu marca al
-                siguiente nivel.
+                Contact us today and discover how we can take your brand to the
+                next level.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contacto">
+                <Link href="/contact">
                   <Button
                     size="lg"
                     variant="outline"
                     className="bg-white text-black hover:bg-gray-100 hover:text-[#00b2ff] border-white text-lg px-8 py-4"
                   >
-                    Contactar ahora
+                    Contact Now
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
                 </Link>
@@ -362,7 +354,7 @@ export default function HomePage() {
                   className="border-white text-black hover:bg-white hover:text-[#ff4081] text-lg px-8 py-4"
                   onClick={() => setIsContactModalOpen(true)}
                 >
-                  Solicitar llamada
+                  Request a Call
                 </Button> */}
               </div>
             </AnimatedSection>

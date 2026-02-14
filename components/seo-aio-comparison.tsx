@@ -10,49 +10,49 @@ interface ComparisonItem {
 
 const comparison: ComparisonItem[] = [
   {
-    aspect: "Enfoque",
-    seo: "Optimización manual basada en experiencia y mejores prácticas",
-    aio: "Optimización continua asistida por IA con análisis de patrones, oportunidades emergentes y señales para motores de respuesta (AEO) y experiencias generativas (GEO)",
+    aspect: "Focus",
+    seo: "Manual optimization based on experience and best practices",
+    aio: "Continuous AI-assisted optimization with pattern analysis, emerging opportunities, and signals for answer engines (AEO) and generative experiences (GEO)",
   },
   {
-    aspect: "Velocidad de implementación",
-    seo: "Iteraciones mensuales/semanales",
-    aio: "Iteraciones casi en tiempo real gracias a automatizaciones y modelos predictivos",
+    aspect: "Implementation Speed",
+    seo: "Monthly/weekly iterations",
+    aio: "Near real-time iterations thanks to automations and predictive models",
   },
   {
-    aspect: "Investigación de Keywords",
-    seo: "Listas priorizadas y revisión periódica",
-    aio: "Descubrimiento dinámico + clustering semántico inteligente, entidades enriquecidas y prompts optimizados para SGE y chatbots",
+    aspect: "Keyword Research",
+    seo: "Prioritized lists and periodic review",
+    aio: "Dynamic discovery + intelligent semantic clustering, rich entities, and optimized prompts for SGE and chatbots",
   },
   {
-    aspect: "Contenido",
-    seo: "Redacción optimizada manualmente",
-    aio: "Briefs inteligentes, gap analysis y sugerencias generativas optimizadas para respuestas directas (siempre con revisión humana)",
+    aspect: "Content",
+    seo: "Manually optimized writing",
+    aio: "Smart briefs, gap analysis, and generative suggestions optimized for direct answers (always with human review)",
   },
   {
-    aspect: "Predicción de Tendencias",
-    seo: "Reactivo: se actúa cuando cambia la demanda",
-    aio: "Proactivo: modelos detectan tendencias antes de que escalen y anticipan cambios en motores generativos",
+    aspect: "Trend Prediction",
+    seo: "Reactive: acts when demand changes",
+    aio: "Proactive: models detect trends before they scale and anticipate changes in generative engines",
   },
   {
-    aspect: "Automatización Técnica",
-    seo: "Auditorías puntuales",
-    aio: "Monitoreo continuo + alertas inteligentes de problemas críticos",
+    aspect: "Technical Automation",
+    seo: "Spot audits",
+    aio: "Continuous monitoring + intelligent alerts for critical issues",
   },
   {
-    aspect: "Toma de Decisiones",
-    seo: "Basada en reportes históricos",
-    aio: "Basada en datos predictivos y priorización algorítmica",
+    aspect: "Decision Making",
+    seo: "Based on historical reports",
+    aio: "Based on predictive data and algorithmic prioritization",
   },
   {
-    aspect: "Personalización de UX",
-    seo: "Pruebas A/B limitadas y ajustes manuales",
-    aio: "Recomendaciones dinámicas basadas en intención y segmentación comportamental",
+    aspect: "UX Personalization",
+    seo: "Limited A/B testing and manual adjustments",
+    aio: "Dynamic recommendations based on intent and behavioral segmentation",
   },
   {
-    aspect: "Escalabilidad",
-    seo: "Dependiente del tiempo del equipo",
-    aio: "Procesos y análisis escalan con automatización y modelos entrenados",
+    aspect: "Scalability",
+    seo: "Dependent on team time",
+    aio: "Processes and analysis scale with automation and trained models",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function SEOAIOComparison() {
               <div className="grid grid-cols-1 divide-y divide-white/10 text-sm text-white/80">
                 <div className="py-2">
                   <span className="block text-xs uppercase tracking-wide text-pink-300 font-medium mb-1">
-                    SEO Tradicional
+                    Traditional SEO
                   </span>
                   <p className="leading-relaxed">{item.seo}</p>
                 </div>

@@ -48,7 +48,7 @@ Se han implementado múltiples capas de seguridad para prevenir el spam en los f
 ### Formularios Actualizados
 
 - `components/enhanced-contact-modal.tsx` - Modal principal + CAPTCHA
-- `app/contacto/page.tsx` - Página de contacto principal
+- `app/contact/page.tsx` - Página de contacto principal
 - `components/contact-section.tsx` - Sección de contacto
 - `components/contact-modal.tsx` - Modal básico de contacto
 - `components/quote-modal.tsx` - Modal de cotizaciones

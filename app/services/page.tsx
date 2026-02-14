@@ -1,7 +1,7 @@
 import ServicesPage, {
   createServicesMetadata,
   createServicesSchema,
-} from "../servicios/page";
+} from "../services/page";
 
 export const metadata = createServicesMetadata("/services");
 export const servicesSchema = createServicesSchema("/services");

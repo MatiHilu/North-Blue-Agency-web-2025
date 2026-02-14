@@ -10,6 +10,7 @@ import {
   BarChart3,
   Target,
   Keyboard,
+  Bot,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
@@ -23,172 +24,186 @@ import QuoteSection from "@/components/quote-section";
 
 const services = [
   {
-    id: "redes-sociales",
-    title: "Gestión de Redes Sociales",
+    id: "social-media-management",
+    title: "Social Media Management",
     description:
-      "Creamos y gestionamos contenido estratégico para todas tus plataformas sociales, aumentando el engagement y construyendo una comunidad sólida alrededor de tu marca.",
+      "We create and manage strategic content for all your social platforms, increasing engagement and building a strong community around your brand.",
     icon: <Smartphone className="w-full h-full" />,
     features: [
-      "Estrategia de contenido",
-      "Community management",
-      "Publicidad en redes",
-      "Análisis y reportes",
+      "Content Strategy",
+      "Community Management",
+      "Social Ads",
+      "Analysis & Reports",
     ],
     gradient: "from-[#ff4081] to-[#00b2ff]",
-    price: "Desde $800/mes",
+    price: "From $800/month",
   },
   {
     id: "branding",
-    title: "Branding e Identidad Visual",
+    title: "Branding & Visual Identity",
     description:
-      "Desarrollamos identidades visuales únicas que reflejan la esencia de tu marca, desde el logo hasta la aplicación completa en todos los puntos de contacto.",
+      "We develop unique visual identities that reflect your brand essence, from logo design to full application across all touchpoints.",
     icon: <Palette className="w-full h-full" />,
     features: [
-      "Diseño de logo",
-      "Manual de marca",
-      "Papelería corporativa",
-      "Aplicaciones digitales",
+      "Logo Design",
+      "Brand Guidelines",
+      "Corporate Stationery",
+      "Digital Applications",
     ],
     gradient: "from-[#00b2ff] to-[#ff4081]",
-    price: "Desde $1,500",
+    price: "From $1,500",
   },
   {
-    id: "desarrollo-web",
-    title: "Desarrollo Web",
+    id: "web-development",
+    title: "Web Development",
     description:
-      "Creamos sitios web modernos, responsivos y optimizados para conversión, utilizando las últimas tecnologías y mejores prácticas de UX/UI.",
+      "We create modern, responsive, conversion-optimized websites using the latest technologies and UX/UI best practices.",
     icon: <Globe className="w-full h-full" />,
     features: [
-      "Diseño responsivo",
-      "Optimización SEO",
+      "Responsive Design",
+      "SEO Optimization",
       "E-commerce",
-      "Mantenimiento",
+      "Maintenance",
     ],
     gradient: "from-[#ff4081] to-[#00b2ff]",
-    price: "Desde $2,000",
+    price: "From $2,000",
   },
   {
-    id: "marketing-digital",
-    title: "Marketing Digital Integral",
+    id: "digital-marketing",
+    title: "Comprehensive Digital Marketing",
     description:
-      "Estrategias completas de marketing digital que incluyen SEO, SEM, email marketing y automatización para maximizar tu retorno de inversión.",
+      "Complete digital marketing strategies including SEO, SEM, email marketing, and automation to maximize your return on investment.",
     icon: <Megaphone className="w-full h-full" />,
     features: [
       "SEO/SEM",
-      "Email marketing",
-      "Marketing automation",
+      "Email Marketing",
+      "Marketing Automation",
       "Analytics",
     ],
     gradient: "from-[#00b2ff] to-[#ff4081]",
-    price: "Desde $1,200/mes",
+    price: "From $1,200/month",
   },
   {
     id: "seo",
-    title: "SEO y Posicionamiento",
+    title: "SEO & Positioning",
     description:
-      "Optimizamos tu sitio web para aparecer en los primeros resultados de búsqueda, aumentando la visibilidad orgánica y el tráfico cualificado.",
+      "We optimize your website to appear in top search results, increasing organic visibility and qualified traffic.",
     icon: <Search className="w-full h-full" />,
     features: [
-      "Auditoría SEO",
-      "Optimización on-page",
-      "Link building",
-      "Reportes mensuales",
+      "SEO Audit",
+      "On-page Optimization",
+      "Link Building",
+      "Monthly Reports",
     ],
     gradient: "from-[#ff4081] to-[#00b2ff]",
-    price: "Desde $600/mes",
+    price: "From $600/month",
   },
   {
     id: "analytics",
-    title: "Analytics y Reportes",
+    title: "Analytics & Reporting",
     description:
-      "Implementamos sistemas de medición avanzados para trackear el rendimiento de todas tus campañas y tomar decisiones basadas en datos.",
+      "We implement advanced measurement systems to track performance across all your campaigns and make data-driven decisions.",
     icon: <BarChart3 className="w-full h-full" />,
     features: [
       "Google Analytics",
-      "Dashboards personalizados",
-      "Reportes automáticos",
-      "KPIs estratégicos",
+      "Custom Dashboards",
+      "Automated Reporting",
+      "Strategic KPIs",
     ],
     gradient: "from-[#00b2ff] to-[#ff4081]",
-    price: "Desde $400/mes",
+    price: "From $400/month",
   },
   {
-    id: "campanas-ads",
-    title: "Campañas y Ads",
+    id: "ads-campaigns",
+    title: "Campaigns & Ads",
     description:
-      "Diseñamos y ejecutamos campañas publicitarias digitales altamente efectivas en Google Ads, Facebook Ads, Instagram y otras plataformas para maximizar tu ROI.",
+      "We design and execute highly effective digital advertising campaigns on Google Ads, Facebook Ads, Instagram, and other platforms to maximize your ROI.",
     icon: <Target className="w-full h-full" />,
     features: [
       "Google Ads",
-      "Facebook e Instagram Ads",
-      "Campañas de remarketing",
-      "Optimización de ROI",
+      "Facebook & Instagram Ads",
+      "Remarketing Campaigns",
+      "ROI Optimization",
     ],
     gradient: "from-[#ff4081] to-[#00b2ff]",
-    price: "Desde $800/mes + presupuesto publicitario",
+    price: "From $800/month + ad budget",
   },
   {
-    id: "creacion-contenido",
-    title: "Creación de Contenido",
-    description: "Contenido creativo para redes sociales",
+    id: "chatgpt-ads",
+    title: "ChatGPT Advertising",
+    description: "Advertise directly in ChatGPT responses. Position your brand in the new era of conversational search.",
+    icon: <Bot className="w-full h-full" />,
+    features: [
+      "ChatGPT Ads",
+      "Sponsored Responses",
+      "High Intent Traffic",
+      "Early Adopter Advantage",
+    ],
+    gradient: "from-[#10a37f] to-[#007aff]",
+    price: "From $1500/month + budget",
+  },
+  {
+    id: "content-creation",
+    title: "Content Creation",
+    description: "Creative content for social media",
     icon: <Keyboard className="w-full h-full" />,
     features: [
-      "Publicaciones estáticas atractivas",
-      "Historias animadas",
-      "Videos cortos (Reels, TikToks)",
-      "Carruseles informativos",
-      "Edición profesional de imágenes y videos",
+      "Engaging Static Posts",
+      "Animated Stories",
+      "Short Videos (Reels, TikToks)",
+      "Informational Carousels",
+      "Professional Image & Video Editing",
     ],
     gradient: "from-[#00b2ff] to-[#ff4081]",
-    price: "Desde $150/publicación",
+    price: "From $150/post",
   },
 ];
 
 export const createServicesMetadata = (
-  canonicalPath: string = "/servicios"
+  canonicalPath: string = "/services"
 ): Metadata => {
   const normalizedCanonical = normalizeCanonicalPath(canonicalPath);
   const canonicalUrl = createCanonicalUrl(normalizedCanonical);
 
   return {
     title: {
-      default: "Nuestros Servicios - Soluciones de marketing digital",
+      default: "Our Services - Digital Marketing Solutions",
       template: "%s | North Blue Agency",
     },
     description:
-      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+      "North Blue Agency Services: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
     alternates: { canonical: normalizedCanonical },
     keywords: [
-      "servicios marketing digital",
-      "gestión redes sociales",
+      "digital marketing services",
+      "social media management",
       "branding",
-      "desarrollo web",
+      "web development",
       "SEO",
       "analytics",
       "North Blue Agency",
     ],
     openGraph: {
-      title: "Servicios - North Blue Agency",
+      title: "Services - North Blue Agency",
       description:
-        "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+        "North Blue Agency Services: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
       url: canonicalUrl,
       siteName: "North Blue Agency",
       type: "website",
-      locale: "es_ES",
+      locale: "en_US",
       images: [
         {
-          url: `${BASE_URL}/og-images/servicios.jpg`,
+          url: `${BASE_URL}/og-images/services.jpg`,
           width: 1200,
           height: 630,
-          alt: "Servicios de North Blue Agency",
+          alt: "North Blue Agency Services",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Servicios - North Blue Agency",
+      title: "Services - North Blue Agency",
       description:
-        "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+        "North Blue Agency Services: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
     },
     publisher: "North Blue Agency",
     authors: [{ name: "North Blue Agency", url: BASE_URL }],
@@ -198,10 +213,10 @@ export const createServicesMetadata = (
 export const metadata = createServicesMetadata();
 
 /**
- * JSON-LD structured data matching this "Servicios" page.
+ * JSON-LD structured data matching this "Services" page.
  * Exported so it can be injected into the page (<script type="application/ld+json">) if needed.
  */
-export const createServicesSchema = (canonicalPath: string = "/servicios") => {
+export const createServicesSchema = (canonicalPath: string = "/services") => {
   const normalizedCanonical = normalizeCanonicalPath(canonicalPath);
   const pageUrl = createCanonicalUrl(normalizedCanonical);
 
@@ -214,15 +229,15 @@ export const createServicesSchema = (canonicalPath: string = "/servicios") => {
         url: BASE_URL,
         sameAs: [BASE_URL],
         description:
-          "Agencia de marketing digital especializada en redes sociales, branding y desarrollo web.",
+          "Digital marketing agency specialized in social media, branding, and web development.",
       },
       {
         "@type": "WebPage",
-        name: "Servicios - North Blue Agency",
+        name: "Services - North Blue Agency",
         url: pageUrl,
         description:
-          "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-        inLanguage: "es",
+          "North Blue Agency Services list: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
+        inLanguage: "en",
         isPartOf: {
           "@type": "WebSite",
           url: BASE_URL,
@@ -274,14 +289,13 @@ export default function ServicesPage() {
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center">
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Nuestros{" "}
+                Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
-                  Servicios
+                  Services
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Soluciones integrales de marketing digital diseñadas para hacer
-                crecer tu negocio y maximizar tu presencia online
+                Comprehensive digital marketing solutions designed to grow your business and maximize your online presence
               </p>
             </AnimatedSection>
           </div>
@@ -314,7 +328,7 @@ export default function ServicesPage() {
 
                         <div className="mb-6">
                           <h4 className="font-semibold mb-3 text-gray-800">
-                            Incluye:
+                            Includes:
                           </h4>
                           <ul className="space-y-1">
                             {service.features.map((feature, idx) => (
@@ -330,14 +344,14 @@ export default function ServicesPage() {
                         </div>
 
                         <Link
-                          href={`/servicios/${service.id}`}
+                          href={`/services/${service.id}`}
                           className="mt-auto"
                         >
                           <Button
                             variant="outline"
                             className="w-full group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
                           >
-                            Ver detalles
+                            View detail
                             <ArrowRight
                               size={16}
                               className="ml-2 group-hover/btn:translate-x-1 transition-transform"
@@ -358,40 +372,39 @@ export default function ServicesPage() {
           faqs={[
             {
               question:
-                "¿Cuánto tiempo toma ver resultados en marketing digital?",
+                "How long does it take to see results in digital marketing?",
               answer:
-                "Los resultados varían según el servicio. En redes sociales puedes ver engagement en 2-4 semanas, SEO toma 3-6 meses, mientras que la publicidad pagada puede generar resultados inmediatos.",
+                "Results vary by service. In social media, you can see engagement in 2-4 weeks, SEO takes 3-6 months, while paid advertising can generate immediate results.",
             },
             {
               question:
-                "¿Ofrecen contratos a largo plazo o trabajo por proyecto?",
+                "Do you offer long-term contracts or project-based work?",
               answer:
-                "Ofrecemos ambas opciones. Tenemos contratos mensuales flexibles para servicios continuos como redes sociales y SEO, así como proyectos únicos para branding y desarrollo web.",
+                "We offer both. We have flexible monthly contracts for ongoing services like social media and SEO, as well as one-time projects for branding and web development.",
             },
             {
-              question: "¿Qué incluyen sus reportes de resultados?",
+              question: "What do your result reports include?",
               answer:
-                "Nuestros reportes incluyen métricas clave como tráfico web, engagement en redes sociales, conversiones, ROI y recomendaciones de optimización. Los enviamos mensualmente con reuniones de revisión.",
+                "Our reports include key metrics such as web traffic, social media engagement, conversions, ROI, and optimization recommendations. We send them monthly with review meetings.",
             },
             {
-              question: "¿Trabajan con empresas de todos los tamaños?",
+              question: "Do you work with businesses of all sizes?",
               answer:
-                "Sí, trabajamos desde startups y pequeñas empresas hasta corporaciones grandes. Adaptamos nuestras estrategias y presupuestos a las necesidades específicas de cada cliente.",
+                "Yes, we work with everyone from startups and small businesses to large corporations. We adapt our strategies and budgets to the specific needs of each client.",
             },
             {
-              question: "¿Qué pasa si no estoy satisfecho con los resultados?",
+              question: "What happens if I am not satisfied with the results?",
               answer:
-                "Ofrecemos garantía de satisfacción. Si no estás conforme en los primeros 30 días, trabajamos juntos para ajustar la estrategia o te devolvemos tu inversión.",
+                "We offer a satisfaction guarantee. If you are not satisfied within the first 30 days, we work together to adjust the strategy or refund your investment.",
             },
           ]}
         />
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿No encuentras lo que buscas?"
-          subtitle="Creamos soluciones personalizadas para cada cliente. Contáctanos
-                y hablanos sobre tu proyecto."
-          buttonText="Solicitar cotización personalizada"
+          title="Can't find what you're looking for?"
+          subtitle="We create personalized solutions for each client. Contact us and tell us about your project."
+          buttonText="Request custom quote"
         />
         {/* Contact Section */}
         <ContactSection />

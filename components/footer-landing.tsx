@@ -24,8 +24,7 @@ export default function Footer() {
               className="h-12 w-auto "
             />
             <p className="text-gray-400">
-              Transformamos tu presencia digital con estrategias innovadoras y
-              resultados medibles.
+              We transform your digital presence with innovative strategies and measurable results.
             </p>
             <div className="flex space-x-4">
               <a
@@ -86,7 +85,7 @@ export default function Footer() {
           <div className="pl-20"></div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-[#ff4081]" />
@@ -116,7 +115,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-[#ff4081]" />
                 <span className="text-gray-400">
-                  Ciudad de Buenos Aires, Argentina
+                  CABA, Argentina
                 </span>
               </div>
             </div>
@@ -125,14 +124,14 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p className="mb-2">
-            &copy; 2025 North Blue Agency. Todos los derechos reservados.
+            &copy; 2026 North Blue Agency. Todos los derechos reservados.
           </p>
           <p className="text-sm">
             <Link
               href="/politica-privacidad"
               className="hover:text-white underline underline-offset-4"
             >
-              Política de Privacidad
+              Privacy Policy
             </Link>
           </p>
         </div>

@@ -20,67 +20,67 @@ function normalizeLocation(value?: string) {
 }
 
 const serviceData = {
-  title: "Marketing Digital Integral",
-  subtitle: "Estrategias completas para maximizar tu ROI",
+  title: "Holistic Digital Marketing",
+  subtitle: "Complete strategies to maximize your ROI",
   description:
-    "Implementamos estrategias integrales de marketing digital que combinan múltiples canales para generar leads cualificados y aumentar las ventas de tu negocio.",
+    "Drive sales with our comprehensive digital marketing strategies. We combine SEO, SEM, and social channels to generate qualified leads and maximize ROI.",
   gradient: "from-[#ff4081] to-[#00b2ff]",
-  price: "Desde $2000/mes",
-  duration: "6-12 meses",
+  price: "From $2000/month",
+  duration: "6-12 months",
   features: [
-    "Estrategia multicanal personalizada",
-    "Analisis de competencia",
-    "Revisión y mejora de sitio web",
-    "Mantenimiento y soporte",
-    "Gestión de redes sociales",
-    "SEO y posicionamiento orgánico",
-    "Campañas SEM en Google Ads",
+    "Personalized multi-channel strategy",
+    "Competitor analysis",
+    "Website review and improvement",
+    "Maintenance and support",
+    "Social media management",
+    "SEO and organic positioning",
+    "SEM campaigns on Google Ads",
     "Email marketing",
-    "Marketing de contenidos",
-    "Retargeting y remarketing",
-    "Analytics y seguimiento avanzado",
-    "Optimización continua",
+    "Content marketing",
+    "Retargeting and remarketing",
+    "Analytics and advanced tracking",
+    "Continuous optimization",
   ],
   process: [
     {
-      title: "Auditoría",
-      description: "Analizamos tu situación digital actual",
+      title: "Audit",
+      description: "We analyze your current digital situation",
     },
     {
-      title: "Estrategia",
-      description: "Diseñamos un plan integral personalizado",
+      title: "Strategy",
+      description: "We design a personalized comprehensive plan",
     },
     {
-      title: "Ejecución",
-      description: "Implementamos todas las tácticas planificadas",
+      title: "Execution",
+      description: "We implement all planned tactics",
     },
     {
-      title: "Optimización",
-      description: "Mejoramos continuamente los resultados",
+      title: "Optimization",
+      description: "We continuously improve results",
     },
   ],
   benefits: [
-    "Aumento en leads cualificados",
-    "Mayor visibilidad online",
-    "Crecimiento sostenible",
+    "Increase in qualified leads",
+    "Greater online visibility",
+    "Sustainable growth",
   ],
 };
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma ver resultados?",
+    question: "How long does it take to see results?",
     answer:
-      "Los primeros resultados suelen verse entre 30-60 días, pero el marketing digital es un proceso continuo. Los mejores resultados se obtienen con estrategias a largo plazo de 6-12 meses.",
+      "Initial results are usually seen between 30-60 days, but digital marketing is a continuous process. The best results are obtained with long-term strategies of 6-12 months.",
   },
   {
-    question: "¿Trabajan con presupuestos publicitarios específicos?",
+    question: "Do you work with specific advertising budgets?",
     answer:
-      "Sí, adaptamos las estrategias a tu presupuesto disponible. Recomendamos un mínimo de $500 mensuales para publicidad, pero podemos trabajar con presupuestos mayores para mejores resultados.",
+      "Yes, we adapt strategies to your available budget. We recommend a minimum of $500 monthly for advertising, but we can work with larger budgets for better results.",
   },
   {
-    question: "¿Qué incluye el seguimiento y analytics?",
+    question: "What does tracking and analytics include?",
     answer:
-      "Instalamos herramientas como Google Analytics y Facebook Pixel. Recibirás reportes mensuales detallados con métricas clave y recomendaciones.",
+      "We install tools like Google Analytics and Facebook Pixel. You will receive detailed monthly reports with key metrics and recommendations.",
   },
 ];
 export async function generateMetadata({
@@ -92,7 +92,7 @@ export async function generateMetadata({
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
-  const canonical = `${BASE_URL}/servicios/marketing-digital${slugPart}`;
+  const canonical = `${BASE_URL}/services/marketing-digital${slugPart}`;
   const canonicalEn = `${BASE_URL}/services/marketing-digital${slugPart}`;
 
   return {
@@ -106,11 +106,11 @@ export async function generateMetadata({
       languages: { es: canonical, en: canonicalEn },
     },
     keywords: [
-      "marketing digital",
-      "estrategia multicanal",
+      "digital marketing",
+      "multi-channel strategy",
       "SEM",
       "SEO",
-      "publicidad digital",
+      "digital advertising",
       "email marketing",
       "retargeting",
       "analytics",
@@ -125,7 +125,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og/servicios-marketing-digital.png`,
+          url: `${BASE_URL}/images/og/services-marketing-digital.png`,
           alt: `${serviceData.title} - North Blue Agency`,
         },
       ],
@@ -134,7 +134,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${serviceData.title} - North Blue Agency`,
       description: serviceData.description,
-      images: [`${BASE_URL}/images/og/servicios-marketing-digital.png`],
+      images: [`${BASE_URL}/images/og/services-marketing-digital.png`],
     },
     publisher: "North Blue Agency",
   };
@@ -163,11 +163,11 @@ export default function MarketingDigitalPage({
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection>
               <Link
-                href="/servicios"
+                href="/services"
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Back to services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -203,7 +203,7 @@ export default function MarketingDigitalPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fadeInLeft">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Qué incluye este servicio?
+                  What does this service include?
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {serviceData.description}
@@ -227,7 +227,7 @@ export default function MarketingDigitalPage({
                 <Card className="border-0 shadow-2xl">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-6">
-                      Características incluidas
+                      Included Features
                     </h3>
                     <div className="space-y-4">
                       {serviceData.features.map(
@@ -255,11 +255,10 @@ export default function MarketingDigitalPage({
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nuestro proceso de trabajo
+                Our Work Process
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Seguimos una metodología probada para garantizar resultados
-                excepcionales
+                We follow a proven methodology to ensure exceptional results
               </p>
             </AnimatedSection>
 
@@ -286,15 +285,14 @@ export default function MarketingDigitalPage({
         </section>
         {/* FAQ Section */}
         <FAQSection
-          title={`Preguntas sobre ${serviceData.title}`}
+          title={`Questions about ${serviceData.title}`}
           faqs={faqs}
         />
-        E{/* CTA Section */}
+        {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para comenzar?"
-          subtitle="Contáctanos hoy y descubre cómo podemos transformar tu presencia
-                        digital"
-          buttonText="Solicitar cotización"
+          title="Ready to get started?"
+          subtitle="Contact us today and discover how we can transform your digital presence"
+          buttonText="Request Quote"
         />
         {/* Contact Section */}
         <ContactSection />

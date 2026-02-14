@@ -59,7 +59,7 @@ if (data.name === "" || data.email === "" || data.message === "") {
 
 ### 📋 **Formularios Protegidos:**
 
-- ✅ `/contacto` - Formulario principal
+- ✅ `/contact` - Formulario principal
 - ✅ Enhanced Contact Modal
 - ✅ Contact Section (landing pages)
 - ✅ Contact Modal básico

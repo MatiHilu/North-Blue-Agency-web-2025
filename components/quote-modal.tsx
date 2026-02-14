@@ -69,7 +69,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, url: window.location.href }),
       });
-      if (!res.ok) throw new Error("Error enviando cotización");
+      if (!res.ok) throw new Error("Error sending quote request");
       setShowSuccess(true);
       setTimeout(() => {
         onClose();
@@ -88,7 +88,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       }, 2000);
     } catch (err) {
       console.error(err);
-      alert("Error al solicitar cotización");
+      alert("Error requesting quote");
     } finally {
       setIsSubmitting(false);
     }
@@ -134,7 +134,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             onClick={handleClose}
             disabled={isSubmitting}
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed z-10"
-            aria-label="Cerrar"
+            aria-label="Close"
           >
             <X size={16} />
           </button>
@@ -152,11 +152,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   <Calculator className="text-white" size={24} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#ff4081] to-[#00b2ff] bg-clip-text text-transparent">
-                  Solicitar Cotización
+                  Request a Quote
                 </h2>
                 <p className="text-gray-600 mt-2">
-                  Cuéntanos sobre tu proyecto y te enviaremos una propuesta
-                  personalizada
+                  Tell us about your project and we will send you a custom proposal
                 </p>
               </div>
 
@@ -173,11 +172,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Nombre *
+                      Name *
                     </label>
                     <Input
                       id="name"
-                      placeholder="Tu nombre completo"
+                      placeholder="Your full name"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -204,7 +203,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="tu@email.com"
+                      placeholder="your@email.com"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -227,11 +226,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="company"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Empresa
+                    Company
                   </label>
                   <Input
                     id="company"
-                    placeholder="Nombre de tu empresa"
+                    placeholder="Your company name"
                     value={formData.company}
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
@@ -253,7 +252,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       htmlFor="service"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Servicio de interés *
+                      Service of interest *
                     </label>
                     <Select
                       value={formData.service}
@@ -262,22 +261,22 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       }
                     >
                       <SelectTrigger className="border-gray-300 focus:border-[#ff4081]">
-                        <SelectValue placeholder="Selecciona un servicio" />
+                        <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="redes-sociales">
-                          Redes Sociales
+                          Social Media
                         </SelectItem>
                         <SelectItem value="branding">Branding</SelectItem>
                         <SelectItem value="desarrollo-web">
-                          Desarrollo Web
+                          Web Development
                         </SelectItem>
                         <SelectItem value="marketing-digital">
-                          Marketing Digital
+                          Digital Marketing
                         </SelectItem>
                         <SelectItem value="seo">SEO</SelectItem>
                         <SelectItem value="multiple">
-                          Múltiples servicios
+                          Multiple Services
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -294,7 +293,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       htmlFor="budget"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Presupuesto aproximado
+                      Estimated Budget
                     </label>
                     <Select
                       value={formData.budget}
@@ -303,7 +302,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       }
                     >
                       <SelectTrigger className="border-gray-300 focus:border-[#ff4081]">
-                        <SelectValue placeholder="Rango de presupuesto" />
+                        <SelectValue placeholder="Budget range" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="500-1000">$500 - $1,000</SelectItem>
@@ -333,7 +332,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="timeline"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Timeline del proyecto
+                    Project Timeline
                   </label>
                   <Select
                     value={formData.timeline}
@@ -342,15 +341,15 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     }
                   >
                     <SelectTrigger className="border-gray-300 focus:border-[#ff4081]">
-                      <SelectValue placeholder="¿Cuándo necesitas comenzar?" />
+                      <SelectValue placeholder="When do you need to start?" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="inmediato">Inmediatamente</SelectItem>
+                      <SelectItem value="inmediato">Immediately</SelectItem>
                       <SelectItem value="1-2-semanas">
-                        En 1-2 semanas
+                        In 1-2 weeks
                       </SelectItem>
-                      <SelectItem value="1-mes">En 1 mes</SelectItem>
-                      <SelectItem value="2-3-meses">En 2-3 meses</SelectItem>
+                      <SelectItem value="1-mes">In 1 month</SelectItem>
+                      <SelectItem value="2-3-meses">In 2-3 months</SelectItem>
                       <SelectItem value="flexible">Flexible</SelectItem>
                     </SelectContent>
                   </Select>
@@ -367,11 +366,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="description"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Descripción del proyecto *
+                    Project Description *
                   </label>
                   <Textarea
                     id="description"
-                    placeholder="Describe tu proyecto, objetivos, audiencia objetivo y cualquier detalle relevante..."
+                    placeholder="Describe your project, goals, target audience, and any relevant details..."
                     rows={4}
                     value={formData.description}
                     onChange={(e) =>
@@ -432,12 +431,12 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     {isSubmitting ? (
                       <div className="flex items-center justify-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Enviando cotización...</span>
+                        <span>Sending quote request...</span>
                       </div>
                     ) : (
                       <div className="flex items-center justify-center space-x-2">
                         <Calculator size={18} />
-                        <span>Solicitar cotización</span>
+                        <span>Request Quote</span>
                       </div>
                     )}
                   </Button>
@@ -464,11 +463,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                ¡Cotización enviada!
+                Quote Request Sent!
               </h3>
               <p className="text-gray-600 mb-4">
-                Hemos recibido tu solicitud. Te enviaremos una propuesta
-                personalizada en las próximas 24 horas.
+                We have received your request. We will send you a custom proposal within the next 24 hours.
               </p>
               <div className="flex justify-center">
                 <div className="w-8 h-1 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full"></div>

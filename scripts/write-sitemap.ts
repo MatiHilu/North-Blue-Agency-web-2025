@@ -76,6 +76,27 @@ function toXml(entries: SitemapEntry[]): string {
   ].join("\n");
 }
 
+function toLlms(entries: SitemapEntry[]): string {
+  const seen = new Set<string>();
+  const urls = entries
+    .map((e) => e.url)
+    .filter((url) => {
+      if (!url) return false;
+      if (seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    });
+
+  return [
+    "# Auto-generated list of canonical URLs for LLM ingestion.",
+    "# Source: app/sitemap.ts",
+    `# Generated: ${new Date().toISOString()}`,
+    "",
+    ...urls,
+    "",
+  ].join("\n");
+}
+
 function parseExistingSitemap(xml: string): SitemapEntry[] {
   const entries: SitemapEntry[] = [];
   const urlBlockRegex = /<url>([\s\S]*?)<\/url>/g;
@@ -162,6 +183,13 @@ async function main() {
   const outFile = path.join(outDir, `new-sitemap-${stamp}.xml`);
   fs.writeFileSync(outFile, xml, "utf8");
 
+  // Also generate llms.txt (plain-text URL list for LLM crawlers)
+  const llms = toLlms(merged);
+  const llmsFile = path.join(outDir, "llms.txt");
+  fs.writeFileSync(llmsFile, llms, "utf8");
+
+  const uniqueUrls = new Set(merged.map((e) => e.url)).size;
+
   console.log(
     `✅ Wrote ${merged.length} URLs to ${path.relative(root, outFile)}`
   );
@@ -170,6 +198,7 @@ async function main() {
   } else {
     console.log("ℹ️  No new URLs to add compared to existing sitemap.xml");
   }
+  console.log(`✅ Wrote ${uniqueUrls} URLs to ${path.relative(root, llmsFile)}`);
 }
 
 main().catch((err) => {

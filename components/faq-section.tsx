@@ -15,7 +15,7 @@ interface FAQSectionProps {
   title?: string
 }
 
-export default function FAQSection({ faqs, title = "Preguntas Frecuentes" }: FAQSectionProps) {
+export default function FAQSection({ faqs, title = "Frequently Asked Questions" }: FAQSectionProps) {
   const [openItems, setOpenItems] = useState<number[]>([])
 
   const toggleItem = (index: number) => {
@@ -32,7 +32,7 @@ export default function FAQSection({ faqs, title = "Preguntas Frecuentes" }: FAQ
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Resolvemos las dudas más comunes sobre nuestros servicios
+            We answer the most common questions about our services
           </p>
         </AnimatedSection>
 

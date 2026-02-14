@@ -10,6 +10,7 @@ import {
   BarChart3,
   Target,
   Keyboard,
+  Bot,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
@@ -127,6 +128,20 @@ const services = [
     price: "Desde $800/mes + presupuesto publicitario",
   },
   {
+    id: "chatgpt-ads",
+    title: "ChatGPT Ads & IA",
+    description: "Multiplica el rendimiento de tus campañas utilizando Inteligencia Artificial para generar copys persuasivos, segmentación predictiva y optimización automática.",
+    icon: <Bot className="w-full h-full" />,
+    features: [
+      "Generación de copys con IA",
+      "Segmentación predictiva",
+      "Optimización 24/7",
+      "A/B Testing masivo",
+    ],
+    gradient: "from-[#10a37f] to-[#007aff]",
+    price: "Desde $1200/mes + presupuesto publicitario",
+  },
+  {
     id: "creacion-contenido",
     title: "Creación de Contenido",
     description: "Contenido creativo para redes sociales",
@@ -150,7 +165,7 @@ export const metadata: Metadata = {
   },
   description:
     "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-  alternates: { canonical: "/servicios" },
+  alternates: { canonical: "/services" },
   keywords: [
     "servicios marketing digital",
     "gestión redes sociales",
@@ -164,13 +179,13 @@ export const metadata: Metadata = {
     title: "Servicios - North Blue Agency",
     description:
       "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
-    url: `${BASE_URL}/servicios`,
+    url: `${BASE_URL}/services`,
     siteName: "North Blue Agency",
     type: "website",
     locale: "es_ES",
     images: [
       {
-        url: `${BASE_URL}/og-images/servicios.jpg`,
+        url: `${BASE_URL}/og-images/services.jpg`,
         width: 1200,
         height: 630,
         alt: "Servicios de North Blue Agency",
@@ -205,7 +220,7 @@ export const servicesSchema = {
     {
       "@type": "WebPage",
       name: "Servicios - North Blue Agency",
-      url: `${BASE_URL}/servicios`,
+      url: `${BASE_URL}/services`,
       description:
         "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
       inLanguage: "es",
@@ -221,7 +236,7 @@ export const servicesSchema = {
       name: s.title,
       serviceType: s.title,
       description: s.description,
-      url: `${BASE_URL}/servicios/${s.id}`,
+      url: `${BASE_URL}/services/${s.id}`,
       provider: {
         "@type": "Organization",
         name: "North Blue Agency",
@@ -232,7 +247,7 @@ export const servicesSchema = {
             "@type": "Offer",
             price: s.price,
             priceCurrency: "USD",
-            url: `${BASE_URL}/servicios/${s.id}`,
+            url: `${BASE_URL}/services/${s.id}`,
           }
         : undefined,
     })),
@@ -309,7 +324,7 @@ export default function ServicesPage() {
                         </div>
 
                         <Link
-                          href={`/servicios/${service.id}`}
+                          href={`/services/${service.id}`}
                           className="mt-auto"
                         >
                           <Button
