@@ -23,7 +23,7 @@ Se ha implementado un sistema completo de sitemap dinámico que incluye:
 ### URLs Incluidas Automáticamente
 
 - ✅ **Páginas principales**: /, /nosotros, /contact, etc.
-- ✅ **Servicios**: Todas las 8 páginas de servicios
+- ✅ **Services**: Todas las 8 páginas de services
 - ✅ **Blog posts**: Posts dinámicos desde `lib/data.ts`
 - ✅ **Portfolio**: Proyectos dinámicos desde `lib/data.ts`
 
@@ -92,8 +92,8 @@ Después del build, tu sitemap estará disponible en:
 | Página                 | Prioridad | Frecuencia |
 | ---------------------- | --------- | ---------- |
 | Inicio                 | 1.0       | Semanal    |
-| Servicios principales  | 0.9       | Semanal    |
-| Servicios individuales | 0.8       | Mensual    |
+| Services principales  | 0.9       | Semanal    |
+| Services individuales | 0.8       | Mensual    |
 | Blog/Portfolio         | 0.7       | Mensual    |
 
 ## 🚀 Próximos Pasos

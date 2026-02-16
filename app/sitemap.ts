@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/politica-privacidad",
   ];
 
-  // Rutas de servicios
+  // Rutas de services
   const serviceRoutes = [
     "/services/redes-sociales",
     "/services/branding",
@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const activeLocales =
     Array.isArray(locales) && locales.length > 0 ? locales : [""];
 
-  // Crear entradas del sitemap para rutas estáticas y de servicios en cada idioma (o sin prefijo)
+  // Crear entradas del sitemap para rutas estáticas y de services en cada idioma (o sin prefijo)
   const staticRoutesAll = [...staticRoutes, ...serviceRoutes];
   const existingRoutes = staticRoutesAll.filter(routeExists);
   const localizedStaticEntries = activeLocales.flatMap((locale) =>

@@ -154,7 +154,7 @@ export default function DesarrolloWebPage() {
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Volver a services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -452,12 +452,12 @@ export default function DesarrolloWebPage() {
           </div>
         </section>
 
-        {/* Servicios complementarios (unificado, sin cards) */}
+        {/* Services complementarios (unificado, sin cards) */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <AnimatedSection className="mb-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Servicios complementarios
+                Services complementarios
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Te acompañamos después del lanzamiento para que tu web se

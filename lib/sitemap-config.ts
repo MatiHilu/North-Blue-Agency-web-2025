@@ -30,7 +30,7 @@ export const sitemapConfig = {
       priority: 1.0,
     },
 
-    // Páginas de servicios
+    // Páginas de services
     servicePages: {
       changeFrequency: "monthly",
       priority: 0.8,
@@ -84,7 +84,7 @@ export function getPageConfig(path: string) {
     [
       "nosotros",
       "contacto",
-      "servicios",
+      "services",
       "blog",
       "portfolio",
       "politica-privacidad",
@@ -93,7 +93,7 @@ export function getPageConfig(path: string) {
     return defaults.mainPages;
   }
 
-  // Páginas de servicios individuales
+  // Páginas de services individuales
   if (path.startsWith("/services/")) {
     return defaults.servicePages;
   }

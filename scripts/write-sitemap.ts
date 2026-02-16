@@ -97,41 +97,6 @@ function toLlms(entries: SitemapEntry[]): string {
   ].join("\n");
 }
 
-function parseExistingSitemap(xml: string): SitemapEntry[] {
-  const entries: SitemapEntry[] = [];
-  const urlBlockRegex = /<url>([\s\S]*?)<\/url>/g;
-  let match: RegExpExecArray | null;
-  while ((match = urlBlockRegex.exec(xml)) !== null) {
-    const block = match[1];
-    const get = (tag: string) => {
-      const m = new RegExp(`<${tag}>([\s\S]*?)<\/${tag}>`).exec(block);
-      return m ? m[1].trim() : undefined;
-    };
-    const url = get("loc");
-    if (!url) continue;
-    const lastmod = get("lastmod");
-    const changefreq = get("changefreq") as SitemapEntry["changeFrequency"];
-    const priorityStr = get("priority");
-    const entry: SitemapEntry = { url };
-    if (lastmod) entry.lastModified = lastmod;
-    if (changefreq) entry.changeFrequency = changefreq;
-    if (priorityStr && !isNaN(Number(priorityStr)))
-      entry.priority = Number(priorityStr);
-    entries.push(entry);
-  }
-  return entries;
-}
-
-function formatDateForFilename(d: Date): string {
-  const pad = (n: number) => String(n).padStart(2, "0");
-  const yyyy = d.getFullYear();
-  const mm = pad(d.getMonth() + 1);
-  const dd = pad(d.getDate());
-  const hh = pad(d.getHours());
-  const min = pad(d.getMinutes());
-  return `${yyyy}${mm}${dd}-${hh}${min}`;
-}
-
 async function main() {
   console.log("🚀 Building sitemap from app/sitemap.ts...");
 
@@ -149,55 +114,29 @@ async function main() {
   const outDir = path.join(root, "public");
   fs.mkdirSync(outDir, { recursive: true });
 
-  // Try to load existing sitemap.xml to preserve current URLs
-  const originalFile = path.join(outDir, "sitemap.xml");
-  let previous: SitemapEntry[] = [];
-  if (fs.existsSync(originalFile)) {
-    try {
-      const existingXml = fs.readFileSync(originalFile, "utf8");
-      previous = parseExistingSitemap(existingXml);
-      console.log(
-        `ℹ️  Loaded ${previous.length} existing URLs from public/sitemap.xml`
-      );
-    } catch (e) {
-      console.warn(
-        "⚠️  Could not read/parse existing sitemap.xml, continuing with fresh entries."
-      );
-    }
-  }
+  // Deduplicate incoming entries by URL to avoid duplicates in output
+  const seen = new Set<string>();
+  const deduped = entries.filter((e) => {
+    if (!e.url || seen.has(e.url)) return false;
+    seen.add(e.url);
+    return true;
+  });
 
-  // Merge: keep previous entries as-is; add only new URLs
-  const seen = new Set<string>(previous.map((e) => e.url));
-  const additions: SitemapEntry[] = [];
-  for (const e of entries) {
-    if (!seen.has(e.url)) {
-      additions.push(e);
-      seen.add(e.url);
-    }
-  }
-  const merged: SitemapEntry[] = [...previous, ...additions];
+  // Serialize directly to sitemap.xml, replacing any previous file
+  const xml = toXml(deduped);
+  const sitemapFile = path.join(outDir, "sitemap.xml");
+  fs.writeFileSync(sitemapFile, xml, "utf8");
 
-  // Serialize merged to a new timestamped file
-  const xml = toXml(merged);
-  const stamp = formatDateForFilename(new Date());
-  const outFile = path.join(outDir, `new-sitemap-${stamp}.xml`);
-  fs.writeFileSync(outFile, xml, "utf8");
-
-  // Also generate llms.txt (plain-text URL list for LLM crawlers)
-  const llms = toLlms(merged);
+  // Generate llms.txt (plain-text URL list for LLM crawlers) and replace existing
+  const llms = toLlms(deduped);
   const llmsFile = path.join(outDir, "llms.txt");
   fs.writeFileSync(llmsFile, llms, "utf8");
 
-  const uniqueUrls = new Set(merged.map((e) => e.url)).size;
+  const uniqueUrls = deduped.length;
 
   console.log(
-    `✅ Wrote ${merged.length} URLs to ${path.relative(root, outFile)}`
+    `✅ Wrote ${uniqueUrls} URLs to ${path.relative(root, sitemapFile)}`
   );
-  if (additions.length > 0) {
-    console.log(`➕ Added ${additions.length} new URLs (existing preserved)`);
-  } else {
-    console.log("ℹ️  No new URLs to add compared to existing sitemap.xml");
-  }
   console.log(`✅ Wrote ${uniqueUrls} URLs to ${path.relative(root, llmsFile)}`);
 }
 

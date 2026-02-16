@@ -132,7 +132,7 @@ export default function MarketingDigitalPage() {
                 className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
               >
                 <ArrowLeft size={20} className="mr-2" />
-                Volver a servicios
+                Volver a services
               </Link>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">

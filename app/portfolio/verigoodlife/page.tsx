@@ -256,7 +256,7 @@ const projectData: Record<string, CaseStudy> = {
     },
     stack: [
       "CMS: WordPress",
-      "Comercio: WooCommerce (descargables + servicios)",
+      "Comercio: WooCommerce (descargables + services)",
       "Infra: Hosting administrado (SSL + backups + hardening básico)",
       "Automatización: correos transaccionales y entrega inmediata de materiales",
     ],

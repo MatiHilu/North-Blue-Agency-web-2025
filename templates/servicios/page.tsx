@@ -160,14 +160,14 @@ const services = [
 
 export const metadata: Metadata = {
   title: {
-    default: "Nuestros Servicios - Soluciones de marketing digital",
+    default: "Nuestros Services - Soluciones de marketing digital",
     template: "%s | North Blue Agency",
   },
   description:
-    "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+    "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
   alternates: { canonical: "/services" },
   keywords: [
-    "servicios marketing digital",
+    "services marketing digital",
     "gestión redes sociales",
     "branding",
     "desarrollo web",
@@ -176,9 +176,9 @@ export const metadata: Metadata = {
     "North Blue Agency",
   ],
   openGraph: {
-    title: "Servicios - North Blue Agency",
+    title: "Services - North Blue Agency",
     description:
-      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+      "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
     url: `${BASE_URL}/services`,
     siteName: "North Blue Agency",
     type: "website",
@@ -188,22 +188,22 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/og-images/services.jpg`,
         width: 1200,
         height: 630,
-        alt: "Servicios de North Blue Agency",
+        alt: "Services de North Blue Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Servicios - North Blue Agency",
+    title: "Services - North Blue Agency",
     description:
-      "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+      "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
   },
   publisher: "North Blue Agency",
   authors: [{ name: "North Blue Agency", url: BASE_URL }],
 };
 
 /**
- * JSON-LD structured data matching this "Servicios" page.
+ * JSON-LD structured data matching this "Services" page.
  * Exported so it can be injected into the page (<script type="application/ld+json">) if needed.
  */
 export const servicesSchema = {
@@ -219,10 +219,10 @@ export const servicesSchema = {
     },
     {
       "@type": "WebPage",
-      name: "Servicios - North Blue Agency",
+      name: "Services - North Blue Agency",
       url: `${BASE_URL}/services`,
       description:
-        "Listado de servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+        "Listado de services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
       inLanguage: "es",
       isPartOf: {
         "@type": "WebSite",
@@ -270,7 +270,7 @@ export default function ServicesPage() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 Nuestros{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
-                  Servicios
+                  Services
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
@@ -360,7 +360,7 @@ export default function ServicesPage() {
               question:
                 "¿Ofrecen contratos a largo plazo o trabajo por proyecto?",
               answer:
-                "Ofrecemos ambas opciones. Tenemos contratos mensuales flexibles para servicios continuos como redes sociales y SEO, así como proyectos únicos para branding y desarrollo web.",
+                "Ofrecemos ambas opciones. Tenemos contratos mensuales flexibles para services continuos como redes sociales y SEO, así como proyectos únicos para branding y desarrollo web.",
             },
             {
               question: "¿Qué incluyen sus reportes de resultados?",

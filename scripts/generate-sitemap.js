@@ -25,7 +25,7 @@ async function generateSitemap() {
       "/services",
     ];
 
-    // Rutas de servicios
+    // Rutas de services
     const serviceRoutes = [
       "/services/redes-sociales",
       "/services/branding",
@@ -120,7 +120,7 @@ async function generateSitemap() {
 }
 
 function getChangeFrequency(route) {
-  // Página principal y servicios cambian más frecuentemente
+  // Página principal y services cambian más frecuentemente
   if (route === "" || route === "/services") {
     return "weekly";
   }
@@ -135,7 +135,7 @@ function getChangeFrequency(route) {
     return "monthly";
   }
 
-  // Páginas de servicios individuales
+  // Páginas de services individuales
   if (route.startsWith("/services/")) {
     return "monthly";
   }
@@ -159,7 +159,7 @@ function getPriority(route) {
     return 0.9;
   }
 
-  // Páginas de servicios individuales
+  // Páginas de services individuales
   if (route.startsWith("/services/")) {
     return 0.8;
   }

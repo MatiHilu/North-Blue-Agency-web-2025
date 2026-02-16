@@ -176,7 +176,7 @@ export default function Header() {
       if (scrollY) {
         window.scrollTo(0, Number.parseInt(scrollY || "0") * -1);
       }
-      // Resetear el estado de servicios móviles cuando se cierra el menú
+      // Resetear el estado de services móviles cuando se cierra el menú
       setIsMobileServicesOpen(false);
       setIsServicesClosing(false);
     }
@@ -202,7 +202,7 @@ export default function Header() {
     }, 500); // Duración de la animación de salida
   };
 
-  // Función para cerrar servicios con animación
+  // Función para cerrar services con animación
   const closeMobileServices = () => {
     setIsServicesClosing(true);
     setTimeout(() => {
@@ -211,7 +211,7 @@ export default function Header() {
     }, 300); // Duración de la animación de salida
   };
 
-  // Función para toggle de servicios móviles
+  // Función para toggle de services móviles
   const toggleMobileServices = () => {
     if (isMobileServicesOpen) {
       closeMobileServices();

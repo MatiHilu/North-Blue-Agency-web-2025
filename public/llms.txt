@@ -1,23 +1,13 @@
 # Auto-generated list of canonical URLs for LLM ingestion.
 # Source: app/sitemap.ts
-# Generated: 2026-02-16T19:43:44.771Z
+# Generated: 2026-02-16T22:08:28.102Z
 
 https://northblueagency.com
 https://northblueagency.com/nosotros
 https://northblueagency.com/blog
 https://northblueagency.com/contact
 https://northblueagency.com/portfolio
-https://northblueagency.com/services
 https://northblueagency.com/politica-privacidad
-https://northblueagency.com/services/redes-sociales
-https://northblueagency.com/services/branding
-https://northblueagency.com/services/desarrollo-web
-https://northblueagency.com/services/marketing-digital
-https://northblueagency.com/services/seo
-https://northblueagency.com/services/analytics
-https://northblueagency.com/services/campanas-ads
-https://northblueagency.com/services/chatgpt-ads
-https://northblueagency.com/services/creacion-contenido
 https://northblueagency.com/blog/how-to-improve-digital-presence-2025
 https://northblueagency.com/blog/digital-marketing-trends-2025
 https://northblueagency.com/blog/local-seo-guide-smbs

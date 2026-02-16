@@ -187,7 +187,7 @@ const values = [
   },
 ];
 
-// Proceso general basado en las páginas de servicios (SEO, Desarrollo Web, etc.)
+// Proceso general basado en las páginas de services (SEO, Desarrollo Web, etc.)
 const processSteps = [
   {
     title: "Discovery and Diagnosis",
