@@ -8,6 +8,9 @@ import wordpress from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
+// Evita que Next intente prerenderizar con datos remotos en build
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Insights, trends and practical guides",
   description:

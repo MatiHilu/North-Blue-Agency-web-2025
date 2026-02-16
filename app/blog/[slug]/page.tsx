@@ -18,6 +18,9 @@ import wordpress from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
+// Evita que Next intente prerenderizar esta ruta dinámica en build
+export const dynamic = "force-dynamic";
+
 // Dynamic metadata for blog post pages
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
