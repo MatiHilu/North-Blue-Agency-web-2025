@@ -127,7 +127,7 @@ const project: DetailedCaseStudy = {
       decimals: 0,
     },
   ],
-  images: ["/novotour/NOVOTOUR.png"],
+  images: ["/novotour/Novotour.png"],
   aboutClient: {
     logo: "/novotour/NOVOTOUR-logo.png",
     description:

@@ -131,7 +131,7 @@ const project: DetailedCaseStudy = {
     "Hosting: Managed cloud infrastructure",
     "SEO: On-page, technical, structured data",
   ],
-  images: ["/zipnova/zipnova.png"],
+  images: ["/zipnova/Zipnova.png"],
   aboutClient: {
     logo: "/zipnova/zipnova-logo.svg",
     description:
