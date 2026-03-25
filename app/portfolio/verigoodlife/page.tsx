@@ -1,32 +1,31 @@
 import type { ComponentType } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle, TrendingUp, Zap, Award } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import QuoteSection from "@/components/quote-section";
 import ContactSection from "@/components/contact-section";
-import { BASE_URL } from "@/lib/jsonld";
+import { BASE_URL, caseStudySchema, breadcrumbSchema } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
 // =======================
-// Metadata (igual que Analytics)
+// Metadata
 // =======================
 const pageData = {
-  title: "Caso de Estudio — VeriGoodLife",
-  subtitle: "Branding, E-commerce y Soporte Técnico Continuo",
+  title: "VeriGoodLife Case Study",
+  subtitle: "Branding, E-commerce & Ongoing Technical Support",
   description:
-    "Branding, E-commerce y Soporte Técnico Continuo para la plataforma de bienestar VeriGoodLife. Diseño de identidad, WordPress + WooCommerce, hosting administrado y soporte permanente orientados a conversión y performance.",
-  ogImage: `${BASE_URL}/images/og/portfolio-verigoodlife.png`, // ajusta el path si usás otro
+    "Branding, E-commerce & Ongoing Technical Support for the VeriGoodLife wellness platform. Identity design, WordPress + WooCommerce, managed hosting, and permanent support focused on conversion and performance.",
+  ogImage: `${BASE_URL}/images/og/portfolio-verigoodlife.png`,
   canonical: `${BASE_URL}/portfolio/verigoodlife`,
   keywords: [
-    "caso de estudio",
+    "case study",
     "branding",
     "woocommerce",
     "wordpress",
     "ecommerce",
-    "desarrollo web",
-    "soporte técnico",
+    "web development",
+    "technical support",
     "north blue agency",
     "VeriGoodLife",
   ],
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 // =======================
-// Tipados locales
+// Local types
 // =======================
 type HeroMetric = {
   icon: ComponentType<{ size?: number }>;
@@ -162,21 +161,21 @@ const isDetailedCaseStudy = (
   );
 
 // =======================
-// Data (igual que tu versión)
+// Data
 // =======================
 const projectData: Record<string, CaseStudy> = {
   verigoodlife: {
-    title: "Caso de Estudio — VeriGoodLife",
+    title: "VeriGoodLife Case Study",
     client: "VeriGoodLife",
     summary:
-      "VeriGoodLife es la plataforma de bienestar de Veri Bianco. Desde North Blue abordamos branding (logo y paleta), sitio web + e-commerce, hosting y dominio, y brindamos soporte técnico continuo.",
+      "VeriGoodLife is Veri Bianco's wellness platform. At North Blue we handled branding (logo and color palette), website + e-commerce, hosting and domain, and provide ongoing technical support.",
     heroMetrics: [
       {
         icon: TrendingUp,
         value: 800,
         suffix: "%",
         prefix: "+",
-        label: "Aumento de ventas mensuales",
+        label: "Increase in monthly sales",
         decimals: 0,
       },
       {
@@ -184,7 +183,7 @@ const projectData: Record<string, CaseStudy> = {
         value: 1.2,
         suffix: "s",
         prefix: "~",
-        label: "Performance móvil",
+        label: "Mobile performance",
         decimals: 1,
       },
       {
@@ -204,80 +203,80 @@ const projectData: Record<string, CaseStudy> = {
     aboutClient: {
       logo: "/verigood/VeryGoodLife-logo-final.svg",
       description:
-        "VeriGoodLife es la plataforma de bienestar creada por Veri Bianco, enfocada en ofrecer programas de alimentación saludable, recetarios y sesiones personalizadas. Se dedican a mejorar la calidad de vida de sus clientes a través de contenido accesible y profesional.",
-      industry: "Bienestar y Salud",
+        "VeriGoodLife is the wellness platform created by Veri Bianco, focused on offering healthy eating programs, recipe books, and personalized sessions. They are dedicated to improving their clients' quality of life through accessible and professional content.",
+      industry: "Wellness & Health",
     },
     challenge: {
       description:
-        "El principal desafío era profesionalizar la marca personal de Veri Bianco, que hasta el momento operaba de manera informal. Necesitaban una identidad visual coherente, una plataforma de e-commerce robusta para vender sus productos digitales y una operación técnica simplificada que no dependiera de procesos manuales.",
+        "The main challenge was to professionalize Veri Bianco's personal brand, which until then had been operating informally. They needed a coherent visual identity, a robust e-commerce platform to sell their digital products, and a simplified technical operation that didn't depend on manual processes.",
       metrics: [
-        "Falta de un canal de ventas automatizado.",
-        "Identidad visual inconsistente y poco profesional.",
-        "Baja performance y experiencia de usuario en su sitio anterior.",
-        "Procesos manuales para la entrega de productos y gestión de clientes.",
+        "No automated sales channel in place.",
+        "Inconsistent and unprofessional visual identity.",
+        "Poor performance and user experience on the previous site.",
+        "Manual processes for product delivery and client management.",
       ],
     },
     proposal: {
       description:
-        "Propusimos una solución integral para construir una presencia digital sólida y autónoma. Nuestro enfoque se centró en tres pilares:",
+        "We proposed a comprehensive solution to build a solid and autonomous digital presence. Our approach centered on three pillars:",
       points: [
         {
-          title: "Identidad & Sistema Visual",
+          title: "Identity & Visual System",
           content:
-            "Crear un logo, paleta cromática y criterios tipográficos que reflejaran profesionalismo y calidez.",
+            "Creating a logo, color palette, and typographic guidelines that reflected professionalism and warmth.",
         },
         {
-          title: "Plataforma E-commerce",
+          title: "E-commerce Platform",
           content:
-            "Desarrollar un sitio en WordPress + WooCommerce enfocado en la conversión, con flujos de compra y entrega de productos 100% automatizados.",
+            "Developing a WordPress + WooCommerce site focused on conversion, with 100% automated purchase flows and product delivery.",
         },
         {
-          title: "Infraestructura y Soporte",
+          title: "Infrastructure & Support",
           content:
-            "Gestionar el hosting, dominio, seguridad (SSL, backups) y ofrecer soporte técnico continuo para garantizar la estabilidad y evolución de la plataforma.",
+            "Managing hosting, domain, security (SSL, backups), and providing ongoing technical support to ensure platform stability and growth.",
         },
       ],
     },
     objectives: [
-      "Profesionalizar la marca con identidad coherente y legible en mobile.",
-      "Vender online programas, recetarios y sesiones 1:1.",
-      "Simplificar la operación (pagos, entregas, mantenimiento).",
-      "Optimizar performance: carga rápida y disponibilidad alta.",
+      "Professionalize the brand with a coherent, mobile-friendly identity.",
+      "Sell programs, recipe books, and 1:1 sessions online.",
+      "Simplify operations (payments, deliveries, maintenance).",
+      "Optimize performance: fast load times and high availability.",
     ],
     whatWeDid: {
-      "Identidad & Sistema Visual":
-        "Logo y paleta cromática; criterios de uso tipográfico.",
-      "Sitio Web + E-commerce (WordPress + WooCommerce)":
-        "Arquitectura enfocada en conversión (home → catálogo → checkout). Productos descargables y sesiones/planes. Flujos de confirmación y entrega automática.",
-      "Hosting, Dominio y Seguridad":
-        "Gestión de dominio/DNS, SSL y backups. Mantenimiento y actualizaciones continuas.",
-      "Soporte Técnico":
-        "Altas de productos, ajustes menores de UX/SEO técnico y compatibilidades.",
+      "Identity & Visual System":
+        "Logo and color palette; typographic usage guidelines.",
+      "Website + E-commerce (WordPress + WooCommerce)":
+        "Conversion-focused architecture (home → catalog → checkout). Downloadable products and sessions/plans. Automated confirmation and instant delivery flows.",
+      "Hosting, Domain & Security":
+        "Domain/DNS management, SSL and backups. Ongoing maintenance and updates.",
+      "Technical Support":
+        "Product uploads, minor UX/technical SEO adjustments, and compatibility fixes.",
     },
     stack: [
       "CMS: WordPress",
-      "Comercio: WooCommerce (descargables + services)",
-      "Infra: Hosting administrado (SSL + backups + hardening básico)",
-      "Automatización: correos transaccionales y entrega inmediata de materiales",
+      "Commerce: WooCommerce (downloadables + services)",
+      "Infra: Managed hosting (SSL + backups + basic hardening)",
+      "Automation: transactional emails and immediate material delivery",
     ],
     achievements: {
       description:
-        "La implementación de la nueva plataforma y estrategia de marca generó resultados excepcionales en un corto período, validando el enfoque y la inversión.",
+        "The implementation of the new platform and brand strategy generated exceptional results in a short period, validating the approach and investment.",
       metrics: [
-        "Aumento de ventas mensuales superior al +800%.",
-        "Tiempo de carga en móviles de ~1.2 segundos.",
-        "100% de uptime del hosting desde el lanzamiento.",
+        "Monthly sales increase of over +800%.",
+        "Mobile load time of ~1.2 seconds.",
+        "100% hosting uptime since launch.",
       ],
     },
     conclusion: {
-      text: "El caso de VeriGoodLife demuestra cómo una estrategia digital integral puede transformar una marca personal en un negocio online rentable y escalable. La combinación de un branding sólido, una plataforma tecnológica eficiente y un soporte confiable fue clave para superar los objetivos.",
+      text: "The VeriGoodLife case demonstrates how a comprehensive digital strategy can transform a personal brand into a profitable and scalable online business. The combination of solid branding, an efficient technology platform, and reliable support was key to exceeding the objectives.",
       ongoing: true,
     },
-    category: "Branding, E-commerce y Soporte Técnico Continuo",
+    category: "Branding & E-commerce",
     year: "2025",
-    services: ["Branding", "E-commerce", "Desarrollo Web", "Soporte Técnico"],
+    services: ["Branding", "E-commerce", "Web Development", "Tech Support"],
     description:
-      "Branding, E-commerce y Soporte Técnico Continuo para la plataforma de bienestar VeriGoodLife.",
+      "Branding, E-commerce & Ongoing Technical Support for the VeriGoodLife wellness platform.",
   },
 };
 
@@ -293,10 +292,10 @@ export default function ProjectDetailPage() {
       <div className="min-h-[95vh] pt-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4 text-white">
-            Proyecto no encontrado
+            Project not found
           </h1>
           <Link href="/portfolio">
-            <Button variant="secondary">Volver al portfolio</Button>
+            <Button variant="secondary">Back to portfolio</Button>
           </Link>
         </div>
       </div>
@@ -314,9 +313,29 @@ export default function ProjectDetailPage() {
       conclusion,
     } = project;
 
-    // Diseño V2 (sin <Script> de schema; Metadata API como en Analytics)
+    const schemaArticle = caseStudySchema({
+      name: pageData.title,
+      description: pageData.description,
+      url: "/portfolio/verigoodlife",
+      client: "VeriGoodLife",
+      datePublished: "2023-01-01",
+    });
+    const schemaBreadcrumb = breadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Portfolio", url: "/portfolio" },
+      { name: "VeriGoodLife", url: "/portfolio/verigoodlife" },
+    ]);
+
     return (
       <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaArticle) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+        />
         <main className="bg-gray-900 text-white">
           {/* Hero */}
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28">
@@ -330,13 +349,13 @@ export default function ProjectDetailPage() {
                   className="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors"
                 >
                   <ArrowLeft size={18} className="mr-2" />
-                  Volver al portfolio
+                  Back to portfolio
                 </Link>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
                   {project.client}
                 </h1>
                 <p className="mb-2">
-                  Branding, E-commerce y Soporte Técnico Continuo
+                  Branding, E-commerce & Ongoing Technical Support
                 </p>
                 <p className="max-w-3xl mx-auto text-lg sm:text-xl text-white/70 mb-12">
                   {summary}
@@ -345,7 +364,7 @@ export default function ProjectDetailPage() {
 
               <AnimatedSection delay={200}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                  {heroMetrics.map((metric, index) => {
+                  {heroMetrics.map((metric) => {
                     const Icon = metric.icon;
                     return (
                       <div
@@ -373,7 +392,7 @@ export default function ProjectDetailPage() {
 
           <div className="bg-white text-gray-800">
             <div className="container mx-auto px-4 space-y-24 pb-24">
-              {/* Quién es el cliente */}
+              {/* About the client */}
               <section className="py-16 sm:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
                 <AnimatedSection className="md:col-span-1 flex flex-col items-center text-center">
                   {aboutClient.logo && (
@@ -387,27 +406,25 @@ export default function ProjectDetailPage() {
                   <p className="text-gray-600">{aboutClient.industry}</p>
                 </AnimatedSection>
                 <AnimatedSection className="md:col-span-2">
-                  <h2 className="text-3xl font-bold mb-4">
-                    Quién es el cliente
-                  </h2>
+                  <h2 className="text-3xl font-bold mb-4">About the Client</h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
                     {aboutClient.description}
                   </p>
                 </AnimatedSection>
               </section>
 
-              {/* Cuál es el desafío */}
+              {/* The Challenge */}
               <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900 text-white px-8 sm:px-12 py-16">
                 <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
                 <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-blue-500/20 blur-2xl" />
                 <div className="relative grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
                   <AnimatedSection className="space-y-8">
                     <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
-                      Diagnóstico inicial
+                      Initial Diagnosis
                     </div>
                     <div>
                       <h2 className="text-3xl sm:text-4xl font-bold leading-snug">
-                        Cuál es el desafío
+                        The Challenge
                       </h2>
                       <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">
                         {challenge.description}
@@ -434,8 +451,8 @@ export default function ProjectDetailPage() {
                     <div className="relative overflow-hidden rounded-3xl border border-white/20 shadow-[0_35px_60px_-15px_rgba(15,55,122,0.6)]">
                       <img
                         src={project.images[0]}
-                        title="Visual del desafío del proyecto"
-                        alt="Visual del desafío del proyecto"
+                        title="Project challenge visual"
+                        alt="Project challenge visual"
                         className="w-full object-cover"
                       />
                     </div>
@@ -443,23 +460,23 @@ export default function ProjectDetailPage() {
                 </div>
               </section>
 
-              {/* Qué propusimos */}
+              {/* Our Proposal */}
               <section className="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-sky-50 px-8 sm:px-12 py-16">
                 <div className="absolute right-10 top-10 hidden h-32 w-32 rounded-full bg-sky-200/40 blur-2xl lg:block" />
                 <div className="absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-cyan-100/60 blur-3xl" />
                 <AnimatedSection className="relative text-center max-w-3xl mx-auto space-y-5">
                   <div className="inline-flex items-center rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
-                    Ruta estratégica
+                    Strategic Route
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-                    Qué propusimos
+                    Our Proposal
                   </h2>
                   <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-                    {project.proposal!.description}
+                    {proposal.description}
                   </p>
                 </AnimatedSection>
                 <div className="relative mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-                  {project.proposal!.points.map((point, index) => (
+                  {proposal.points.map((point, index) => (
                     <AnimatedSection key={point.title} delay={index * 120}>
                       <div className="group relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_20px_50px_-20px_rgba(15,64,128,0.25)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_30px_70px_-20px_rgba(12,74,110,0.35)]">
                         <div className="absolute inset-0 bg-gradient-to-br from-sky-100/0 via-white/0 to-sky-100/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -480,7 +497,7 @@ export default function ProjectDetailPage() {
                 </div>
               </section>
 
-              {/* Qué se logró */}
+              {/* Results */}
               <section className="relative overflow-hidden rounded-3xl bg-slate-900 px-8 sm:px-12 py-16 text-white">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.35),_transparent_55%)]" />
                 <div className="relative grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
@@ -488,26 +505,26 @@ export default function ProjectDetailPage() {
                     <div className="overflow-hidden rounded-3xl border border-white/10">
                       <img
                         src={project.images[1]}
-                        title="Resultados del proyecto"
-                        alt="Resultados del proyecto"
+                        title="Project results"
+                        alt="Project results"
                         className="w-full object-cover"
                       />
                     </div>
                   </AnimatedSection>
                   <AnimatedSection className="space-y-8">
                     <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
-                      Impacto en números
+                      Impact in Numbers
                     </div>
                     <div>
                       <h2 className="text-3xl sm:text-4xl font-bold">
-                        Qué se logró
+                        Results
                       </h2>
                       <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">
-                        {project.achievements!.description}
+                        {achievements.description}
                       </p>
                     </div>
                     <ul className="grid gap-4 sm:grid-cols-2">
-                      {project.achievements!.metrics.map((metric, index) => (
+                      {achievements.metrics.map((metric, index) => (
                         <li
                           key={index}
                           className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-200/60"
@@ -526,22 +543,22 @@ export default function ProjectDetailPage() {
                 </div>
               </section>
 
-              {/* Conclusiones */}
+              {/* Conclusion */}
               <section className="relative overflow-hidden rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 px-8 sm:px-12 py-16 text-white">
                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.65),_transparent_55%)]" />
                 <div className="relative grid grid-cols-1 gap-14 lg:grid-cols-[0.6fr_0.4fr] lg:items-center">
                   <AnimatedSection className="relative max-w-4xl lg:max-w-3xl mx-auto lg:mx-0 space-y-6 text-center lg:text-left">
                     <h2 className="text-3xl sm:text-4xl font-bold">
-                      Conclusiones
+                      Conclusion
                     </h2>
                     <p className="text-base sm:text-lg leading-relaxed text-white/90">
-                      {project.conclusion!.text}
+                      {conclusion.text}
                     </p>
-                    {project.conclusion!.ongoing && (
+                    {conclusion.ongoing && (
                       <div className="mx-auto lg:mx-0 inline-flex items-center gap-3 rounded-md lg:rounded-full border border-white/30 bg-white/20 px-2 lg:px-6 py-3 text-base sm:text-lg font-semibold text-white shadow-lg backdrop-blur">
                         <span className="inline-flex h-3 w-3 rounded-full bg-emerald-300 animate-pulse" />
-                        Hasta hoy, siguen confiando en nosotros para el soporte
-                        y la evolución de su plataforma.
+                        To this day, they continue to trust us for support and
+                        platform evolution.
                       </div>
                     )}
                   </AnimatedSection>
@@ -551,19 +568,19 @@ export default function ProjectDetailPage() {
                       <div className="relative overflow-hidden rounded-[30px] border border-white/30 bg-white/10 shadow-[0_35px_80px_-25px_rgba(26,15,112,0.65)] backdrop-blur">
                         <img
                           src={project.images[2]}
-                          title="Material adicional del proyecto"
-                          alt="Material adicional del proyecto"
+                          title="Additional project material"
+                          alt="Additional project material"
                           className="h-full w-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-purple-500/30 mix-blend-screen" />
                       </div>
                       <div className="absolute bottom-4 left-1/2 flex w-[85%] -translate-x-1/2 items-center justify-between rounded-full border border-white/40 bg-white/15 px-5 py-3 text-xs sm:text-sm font-semibold text-white/90 shadow-xl backdrop-blur">
                         <span className="flex items-center gap-2 text-black">
-                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300 animate-pulse " />
-                          En evolución constante
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300 animate-pulse" />
+                          Constantly evolving
                         </span>
                         <span className="hidden sm:inline-flex text-black">
-                          Soporte continuo
+                          Ongoing support
                         </span>
                       </div>
                     </AnimatedSection>
@@ -575,9 +592,9 @@ export default function ProjectDetailPage() {
 
           {/* CTA Section */}
           <QuoteSection
-            title="¿Te gustó este proyecto?"
-            subtitle="Trabajemos juntos para transformar tu presencia digital y alcanzar resultados extraordinarios"
-            buttonText="Comenzar mi proyecto"
+            title="Like what you see?"
+            subtitle="Let's work together to transform your digital presence and achieve extraordinary results"
+            buttonText="Start my project"
           />
 
           {/* Contact Section */}
@@ -587,13 +604,13 @@ export default function ProjectDetailPage() {
     );
   }
 
-  // Fallback por si no es DetailedCaseStudy (no debería ocurrir)
+  // Fallback
   return (
     <div className="min-h-[95vh] pt-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <div className="text-center">
-        <h1 className="text-2xl font-bold mb-4 text-white">Proyecto</h1>
+        <h1 className="text-2xl font-bold mb-4 text-white">Project</h1>
         <Link href="/portfolio">
-          <Button variant="secondary">Volver al portfolio</Button>
+          <Button variant="secondary">Back to portfolio</Button>
         </Link>
       </div>
     </div>

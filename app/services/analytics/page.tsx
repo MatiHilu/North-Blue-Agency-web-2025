@@ -5,7 +5,7 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import QuoteSection from "@/components/quote-section";
-import { BASE_URL } from "@/lib/jsonld";
+import { BASE_URL, serviceSchema, breadcrumbSchema } from "@/lib/jsonld";
 // SEOHead removido, usamos Metadata API
 import type { Metadata } from "next";
 
@@ -146,8 +146,20 @@ export default function AnalyticsPage({
   const raw = searchParams?.Location;
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const locationText = normalizeLocation(slug);
+  const schemaService = serviceSchema({
+    name: serviceData.title,
+    description: serviceData.description,
+    url: "/services/analytics",
+  });
+  const schemaBreadcrumb = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: serviceData.title, url: "/services/analytics" },
+  ]);
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>

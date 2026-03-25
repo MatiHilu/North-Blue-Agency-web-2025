@@ -98,20 +98,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locationEntries: MetadataRoute.Sitemap = serviceSlugs.flatMap(
     (service) => {
       const cfg = getPageConfig(`/services/${service}`);
-      return locationSlugs.flatMap((slug) => [
-        {
-          url: `${baseUrl}/services/${service}-${slug}`,
-          lastModified: new Date(),
-          changeFrequency: cfg.changeFrequency as any,
-          priority: cfg.priority,
-        },
-        {
-          url: `${baseUrl}/services/${service}-${slug}`,
-          lastModified: new Date(),
-          changeFrequency: cfg.changeFrequency as any,
-          priority: cfg.priority,
-        },
-      ]);
+      return locationSlugs.map((slug) => ({
+        url: `${baseUrl}/services/${service}-${slug}`,
+        lastModified: new Date(),
+        changeFrequency: cfg.changeFrequency as any,
+        priority: cfg.priority,
+      }));
     }
   );
 

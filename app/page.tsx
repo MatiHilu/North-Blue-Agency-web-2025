@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/lib/jsonld";
+import { BASE_URL, organizationSchema, websiteSchema, webPageSchema } from "@/lib/jsonld";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -51,10 +51,34 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const orgSchema = organizationSchema();
+  const siteSchema = websiteSchema();
+  const pageSchema = webPageSchema({
+    name: "North Blue Agency | Professional Digital Marketing",
+    description:
+      "Digital marketing agency specialized in social media, branding, and web development. We transform your digital presence.",
+    url: BASE_URL,
+  });
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <section
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+        aria-label="Hero"
+      >
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4081]/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00b2ff]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -94,10 +118,10 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-36 bg-white">
+      <section id="services" className="py-36 bg-white" aria-labelledby="services-heading">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 id="services-heading" className="text-4xl md:text-5xl font-bold mb-6">
               Our{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-xy">
                 services
@@ -166,7 +190,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
+      <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]" aria-label="Key statistics">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
             {/* <AnimatedSection>
@@ -201,11 +225,11 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50" aria-labelledby="why-us-heading">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animation="fadeInLeft">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 id="why-us-heading" className="text-4xl md:text-5xl font-bold mb-6">
                 Why Choose{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
                   North Blue?
@@ -326,7 +350,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">
+      <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]" aria-label="Call to action">
         <div className="container mx-auto px-4">
           <div className="text-center text-white max-w-4xl mx-auto">
             <AnimatedSection>

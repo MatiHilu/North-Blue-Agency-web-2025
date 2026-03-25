@@ -27,7 +27,9 @@ export default function LayoutShell({ children }: Props) {
         <ScrollToTop />
         <HeaderLanding />
         <Toaster />
-        <main className="overflow-hidden">{children}</main>
+        <main id="main-content" className="overflow-hidden" tabIndex={-1}>
+          {children}
+        </main>
         <FooterLanding />
       </>
     );
@@ -38,7 +40,9 @@ export default function LayoutShell({ children }: Props) {
       <ScrollToTop />
       <Header />
       <Toaster />
-      <main className="overflow-hidden">{children}</main>
+      <main id="main-content" className="overflow-hidden" tabIndex={-1}>
+        {children}
+      </main>
       <Footer />
     </>
   );

@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,6 +32,37 @@ export default function EnhancedContactModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Focus trap: keep focus inside the modal
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleClose();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isSubmitting]
+  );
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -40,8 +71,13 @@ export default function EnhancedContactModal({
     if (isOpen) {
       document.body.style.overflow = "hidden";
       setIsVisible(true);
-      setTimeout(() => setIsAnimating(true), 10);
+      setTimeout(() => {
+        setIsAnimating(true);
+        closeButtonRef.current?.focus();
+      }, 10);
+      document.addEventListener("keydown", handleKeyDown);
     } else {
+      document.removeEventListener("keydown", handleKeyDown);
       setIsAnimating(false);
       setTimeout(() => {
         setIsVisible(false);
@@ -52,8 +88,9 @@ export default function EnhancedContactModal({
 
     return () => {
       document.body.style.overflow = "unset";
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, handleKeyDown]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,6 +145,7 @@ export default function EnhancedContactModal({
           : "bg-black/0 backdrop-blur-none"
       }`}
       onClick={handleClose}
+      aria-hidden="true"
     >
       {/* Partículas flotantes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -119,6 +157,10 @@ export default function EnhancedContactModal({
       </div>
 
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
         className={`relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 ease-out ${
           isAnimating
             ? "scale-100 opacity-100 translate-y-0"
@@ -134,10 +176,11 @@ export default function EnhancedContactModal({
         <div className="relative p-6 md:p-8">
           {/* Close button - Tamaño corregido */}
           <button
+            ref={closeButtonRef}
             onClick={handleClose}
             disabled={isSubmitting}
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed z-10"
-            aria-label="Close"
+            aria-label="Close dialog"
           >
             <X size={16} color="#000" />
           </button>
@@ -155,7 +198,7 @@ export default function EnhancedContactModal({
                 <div className="w-16 h-16 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Sparkles className="text-white" size={24} />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#ff4081] to-[#00b2ff] bg-clip-text text-transparent">
+                <h2 id="modal-title" className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#ff4081] to-[#00b2ff] bg-clip-text text-transparent">
                   Let's talk about your project
                 </h2>
                 <p className="text-gray-600 mt-2">
@@ -314,16 +357,17 @@ export default function EnhancedContactModal({
                   <Button
                     type="submit"
                     disabled={isSubmitting || !isCaptchaValid}
+                    aria-label={isSubmitting ? "Sending your message…" : "Send message"}
                     className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200 py-3 rounded-lg font-semibold disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isSubmitting ? (
-                      <div className="flex items-center justify-center space-x-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Sending...</span>
+                      <div className="flex items-center justify-center space-x-2" aria-live="polite">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                        <span>Sending…</span>
                       </div>
                     ) : (
                       <div className="flex items-center justify-center space-x-2">
-                        <Send size={18} />
+                        <Send size={18} aria-hidden="true" />
                         <span>Send message</span>
                       </div>
                     )}

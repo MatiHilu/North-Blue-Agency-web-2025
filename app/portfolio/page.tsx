@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, ExternalLink, Calendar } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
@@ -36,115 +36,70 @@ export const metadata: Metadata = {
 
 const projects = [
   {
-    id: "ecommerce-fashion",
-    title: "Fashion E-commerce Store",
-    category: "E-commerce",
-    client: "Fashion Forward",
+    id: "verigoodlife",
+    title: "Verigoodlife: Health Coaching & Nutrition",
+    category: "Branding & E-commerce",
+    client: "Verigoodlife",
+    url: "https://verigoodlife.com/",
+    slug: "/portfolio/verigoodlife",
+    year: "2025",
+    image: "/verigood/Verigood Desktop.png",
+    description:
+      "Full branding, WordPress + WooCommerce e-commerce, managed hosting, and ongoing technical support for a certified health & wellness coach.",
+    results: [
+      "+800% increase in monthly sales",
+      "~1.2s mobile load time",
+      "100% hosting uptime since launch",
+    ],
+    services: ["Branding", "E-commerce", "Web Development", "Tech Support"],
+    featured: true,
+  },
+  {
+    id: "novotour",
+    title: "Novo Tour: Travel Agency",
+    category: "Web Development & Rebranding",
+    client: "Novo Tour",
+    url: "https://novotour.com.ar/",
+    slug: "/portfolio/novotour",
     year: "2024",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/novotour/Novotour.png",
     description:
-      "Complete development of online store with payment integration and inventory management.",
+      "Full website rebuild on WordPress + ACF, complete rebranding, SEO, and performance optimization for an Argentine travel agency. Conversions skyrocketed.",
     results: [
-      "300% increase in online sales",
-      "50% reduction in bounce rate",
-      "95% customer satisfaction",
+      "+3x conversion rate growth",
+      "90+ PageSpeed score",
+      "+200% organic traffic",
     ],
-    services: ["Web Development", "E-commerce", "SEO"],
+    services: ["Rebranding", "WordPress", "ACF", "SEO", "Performance"],
     featured: true,
   },
   {
-    id: "restaurant-branding",
-    title: "Gourmet Restaurant Rebranding",
-    category: "Branding",
-    client: "Sabores del Mar",
-    year: "2024",
-    image: "/placeholder.svg?height=400&width=600",
+    id: "zipnova",
+    title: "Zipnova: E-commerce Logistics",
+    category: "Web Development & Rebranding",
+    client: "Zipnova",
+    url: "https://www.zipnova.com/",
+    slug: "/portfolio/zipnova",
+    year: "2025",
+    image: "/zipnova/Zipnova.png",
     description:
-      "Complete visual identity renewal and digital marketing strategy.",
+      "Next.js frontend with headless WordPress + ACF backend, full rebranding, performance, and SEO for an integrated e-commerce logistics platform.",
     results: [
-      "200% increase in reservations",
-      "85% improvement in brand recognition",
-      "150% growth in social media",
+      "95+ PageSpeed score",
+      "+250% organic traffic growth",
+      "Core Web Vitals all green",
     ],
-    services: ["Branding", "Social Media", "Ads Campaigns"],
+    services: ["Rebranding", "Next.js", "Headless WordPress", "ACF", "SEO"],
     featured: true,
-  },
-  {
-    id: "tech-startup",
-    title: "Tech Startup Launch",
-    category: "Digital Marketing",
-    client: "InnovateTech",
-    year: "2023",
-    image: "/placeholder.svg?height=400&width=600",
-    description:
-      "Comprehensive market launch and positioning strategy.",
-    results: [
-      "500+ leads in first month",
-      "40% conversion rate",
-      "1M+ impressions on social media",
-    ],
-    services: ["Digital Marketing", "Web Development", "Branding"],
-    featured: true,
-  },
-  {
-    id: "fitness-app",
-    title: "Fitness and Wellness App",
-    category: "Web Development",
-    client: "FitLife Pro",
-    year: "2023",
-    image: "/placeholder.svg?height=400&width=600",
-    description:
-      "Progressive web app development for exercise tracking.",
-    results: [
-      "10,000+ active users",
-      "4.8/5 store rating",
-      "60% monthly retention",
-    ],
-    services: ["Web Development", "UX/UI", "Digital Marketing"],
-    featured: false,
-  },
-  {
-    id: "real-estate",
-    title: "Real Estate Portal",
-    category: "Web Development",
-    client: "PropiedadesPro",
-    year: "2023",
-    image: "/placeholder.svg?height=400&width=600",
-    description:
-      "Complete platform for real estate property search and management.",
-    results: [
-      "2,000+ properties listed",
-      "80% increase in inquiries",
-      "45% improvement in sale time",
-    ],
-    services: ["Web Development", "SEO", "Digital Marketing"],
-    featured: false,
-  },
-  {
-    id: "beauty-salon",
-    title: "Premium Beauty Salon",
-    category: "Branding",
-    client: "Bella Vita Spa",
-    year: "2022",
-    image: "/placeholder.svg?height=400&width=600",
-    description:
-      "Complete visual identity and marketing strategy for beauty salon.",
-    results: [
-      "180% increase in appointments",
-      "70% improvement in client retention",
-      "250% growth on Instagram",
-    ],
-    services: ["Branding", "Social Media", "Ads Campaigns"],
-    featured: false,
   },
 ];
 
 const categories = [
   "All",
-  "E-commerce",
+  "Web Development",
   "Branding",
   "Digital Marketing",
-  "Web Development",
+  "E-commerce",
 ];
 
 export default function PortfolioPage() {
@@ -178,14 +133,13 @@ export default function PortfolioPage() {
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Proyectos{" "}
+                Featured{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
-                  Destacados
+                  Projects
                 </span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Casos de éxito que demuestran nuestro compromiso con la
-                excelencia
+                Success stories that demonstrate our commitment to excellence
               </p>
             </AnimatedSection>
 
@@ -225,7 +179,7 @@ export default function PortfolioPage() {
                           </p>
 
                           <div className="mb-4">
-                            <h4 className="font-semibold mb-2">Resultados:</h4>
+                            <h4 className="font-semibold mb-2">Results:</h4>
                             <ul className="space-y-1">
                               {project.results
                                 .slice(0, 2)
@@ -252,15 +206,12 @@ export default function PortfolioPage() {
                             ))}
                           </div>
 
-                          <Link
-                            href={`/portfolio/${project.id}`}
-                            className="mt-auto"
-                          >
+                          <Link href={project.slug} className="mt-auto">
                             <Button
                               variant="outline"
                               className="w-full group/btn border-gray-300 hover:border-[#ff4081] hover:text-[#ff4081] transition-all"
                             >
-                              Ver caso completo
+                              View Case Study
                               <ArrowRight
                                 size={16}
                                 className="ml-2 group-hover/btn:translate-x-1 transition-transform"
@@ -281,7 +232,7 @@ export default function PortfolioPage() {
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Todos los Proyectos
+                All Projects
               </h2>
             </AnimatedSection>
 
@@ -314,14 +265,14 @@ export default function PortfolioPage() {
                           {project.description}
                         </p>
 
-                        <Link href={`/portfolio/${project.id}`}>
+                        <Link href={project.slug}>
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="text-[#ff4081] hover:text-[#ff4081] hover:bg-[#ff4081]/10 p-0"
+                            className="text-[#ff4081] hover:text-[#ff4081] hover:bg-[#ff4081]/10 p-2 -m-2"
                           >
-                            Ver más
-                            <ExternalLink size={14} className="ml-1" />
+                            View case study
+                            <ArrowRight size={14} className="ml-1" />
                           </Button>
                         </Link>
                       </div>
@@ -335,10 +286,9 @@ export default function PortfolioPage() {
 
         {/* CTA Section */}
         <QuoteSection
-          title="¿Listo para ser nuestro próximo caso de éxito?"
-          subtitle="Trabajemos juntos para transformar tu presencia digital y
-                alcanzar resultados extraordinarios"
-          buttonText="Comenzar mi proyecto"
+          title="Ready to be our next success story?"
+          subtitle="Let's work together to transform your digital presence and achieve extraordinary results"
+          buttonText="Start my project"
         />
 
         {/* Contact Section */}

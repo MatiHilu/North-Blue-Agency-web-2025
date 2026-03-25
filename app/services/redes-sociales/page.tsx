@@ -5,7 +5,7 @@ import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import { BASE_URL } from "@/lib/jsonld";
+import { BASE_URL, serviceSchema, breadcrumbSchema } from "@/lib/jsonld";
 import QuoteSection from "@/components/quote-section";
 // Migrado a Metadata API
 import type { Metadata } from "next";
@@ -154,8 +154,20 @@ export default function RedesSocialesPage({
   const locationRaw = Array.isArray(raw) ? raw[0] : raw;
   const effectiveLocation = Location ?? locationRaw;
   const locationText = normalizeLocation(effectiveLocation);
+  const schemaService = serviceSchema({
+    name: serviceData.title,
+    description: serviceData.description,
+    url: "/services/redes-sociales",
+  });
+  const schemaBreadcrumb = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: serviceData.title, url: "/services/redes-sociales" },
+  ]);
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>

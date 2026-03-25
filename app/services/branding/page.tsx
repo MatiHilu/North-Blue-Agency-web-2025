@@ -5,7 +5,7 @@ import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
 import { QuoteSection } from "@/components/quote-section";
-import { BASE_URL } from "@/lib/jsonld";
+import { BASE_URL, serviceSchema, breadcrumbSchema } from "@/lib/jsonld";
 // Migrado a Metadata API
 import type { Metadata } from "next";
 
@@ -147,39 +147,21 @@ export default function BrandingPage({
   const raw = searchParams?.Location;
   const slug = Array.isArray(raw) ? raw[0] : raw;
   const locationText = normalizeLocation(slug);
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
+  const schemaService = serviceSchema({
     name: serviceData.title,
     description: serviceData.description,
-    keywords: "branding, visual identity, brand design",
-    areaServed: "ES",
-    provider: { "@type": "Organization", name: "North Blue Agency" },
-    serviceType: "Branding",
-    url: `${BASE_URL}/services/branding`,
-    offers: { "@type": "Offer", priceCurrency: "USD" },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Services",
-          item: `${BASE_URL}/services`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: serviceData.title,
-          item: `${BASE_URL}/services/branding`,
-        },
-      ],
-    },
-  };
+    url: "/services/branding",
+  });
+  const schemaBreadcrumb = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: serviceData.title, url: "/services/branding" },
+  ]);
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>

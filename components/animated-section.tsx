@@ -18,14 +18,26 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   useEffect(() => {
     if (!isClient) return;
+
+    // Skip animation entirely when user prefers reduced motion
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,20 +48,17 @@ export default function AnimatedSection({
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [delay, isClient]);
+  }, [delay, isClient, prefersReducedMotion]);
 
   const getAnimationClass = () => {
-    const baseClass = "transition-all duration-1000 ease-out";
-
     // During SSR and before client hydration, show content without animation
-    if (!isClient) {
-      return `${baseClass} opacity-100 translate-y-0 translate-x-0 scale-100`;
+    if (!isClient || prefersReducedMotion) {
+      return "opacity-100 translate-y-0 translate-x-0 scale-100";
     }
+
+    const baseClass = "transition-all duration-1000 ease-out";
 
     if (!isVisible) {
       switch (animation) {

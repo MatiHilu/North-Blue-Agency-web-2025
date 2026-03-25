@@ -138,9 +138,22 @@ export default function Header() {
     },
   ];
 
+  // Close dropdowns on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsServicesOpen(false);
+        setIsSeoOpen(false);
+        setIsLangOpen(false);
+        if (isMenuOpen) closeMenu();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
   useEffect(() => {
     setIsMounted(true);
-    // Initialize scroll state after mounting
     if (typeof window !== "undefined") {
       setIsScrolled(window.scrollY > 50);
     }
@@ -291,7 +304,7 @@ export default function Header() {
             </div>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8" aria-label="Main navigation">
               {/* Services Dropdown */}
               <div
                 className="relative"
@@ -300,6 +313,9 @@ export default function Header() {
               >
                 <Link href="/services">
                   <button
+                    aria-expanded={isServicesOpen}
+                    aria-haspopup="true"
+                    aria-controls="services-dropdown"
                     className={`flex items-center transition-colors font-medium ${
                       isScrolled
                         ? "text-gray-700 hover:text-[#ff4081]"
@@ -307,12 +323,15 @@ export default function Header() {
                     }`}
                   >
                     Services
-                    <ChevronDown size={16} className="ml-1" />
+                    <ChevronDown size={16} className="ml-1" aria-hidden="true" />
                   </button>
                 </Link>
 
                 {/* Desktop Dropdown con animación */}
                 <div
+                  id="services-dropdown"
+                  role="region"
+                  aria-label="Services menu"
                   className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px]   py-2 z-50  transition-all duration-300 ease-out ${
                     isServicesOpen
                       ? "opacity-100 translate-y-0 scale-100"
@@ -368,6 +387,9 @@ export default function Header() {
               >
                 <Link href="/services/seo">
                   <button
+                    aria-expanded={isSeoOpen}
+                    aria-haspopup="true"
+                    aria-controls="seo-dropdown"
                     className={`flex items-center transition-colors font-medium ${
                       isScrolled
                         ? "text-gray-700 hover:text-[#ff4081]"
@@ -375,7 +397,7 @@ export default function Header() {
                     }`}
                   >
                     SEO
-                    <ChevronDown size={16} className="ml-1" />
+                    <ChevronDown size={16} className="ml-1" aria-hidden="true" />
                   </button>
                 </Link>
 
@@ -384,6 +406,9 @@ export default function Header() {
 
                 {/* Desktop Dropdown - Full Width Horizontal Bar */}
                 <div
+                  id="seo-dropdown"
+                  role="region"
+                  aria-label="SEO services menu"
                   className={`fixed left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-100 transition-all duration-300 ease-out z-40 ${
                     isSeoOpen
                       ? "opacity-100 translate-y-0"
@@ -481,7 +506,9 @@ export default function Header() {
                     setIsMenuOpen(true);
                   }
                 }}
-                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
               >
                 <div className="relative w-6 h-6">
                   <Menu
@@ -509,7 +536,7 @@ export default function Header() {
 
       {/* Full Screen Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div id="mobile-menu" className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation">
           <div
             className={`absolute inset-0 bg-gradient-to-br from-[#ff4081] via-purple-600 to-[#00b2ff] ${
               isMenuClosing ? "mobile-menu-exit" : "mobile-menu-enter"
@@ -683,22 +710,25 @@ export default function Header() {
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="North Blue Agency on Facebook (opens in new tab)"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.instagram.com/north.blue.agency/"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="North Blue Agency on Instagram (opens in new tab)"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/northblue-agency/"
                   className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="North Blue Agency on LinkedIn (opens in new tab)"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
