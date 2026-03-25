@@ -1,6 +1,12 @@
 import type { ComponentType } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle, TrendingUp, Globe, BarChart3 } from "lucide-react";
+import {
+  ArrowLeft,
+  CheckCircle,
+  TrendingUp,
+  Globe,
+  BarChart3,
+} from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import QuoteSection from "@/components/quote-section";
@@ -41,7 +47,9 @@ export const metadata: Metadata = {
     description: pageData.description,
     url: pageData.canonical,
     type: "website",
-    images: [{ url: pageData.ogImage, alt: `${pageData.title} - North Blue Agency` }],
+    images: [
+      { url: pageData.ogImage, alt: `${pageData.title} - North Blue Agency` },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -119,12 +127,9 @@ const project: DetailedCaseStudy = {
       decimals: 0,
     },
   ],
-  images: [
-    "/placeholder.svg?height=600&width=800",
-    "/placeholder.svg?height=600&width=800",
-    "/placeholder.svg?height=600&width=800",
-  ],
+  images: ["/novotour/NOVOTOUR.png"],
   aboutClient: {
+    logo: "/novotour/NOVOTOUR-logo.png",
     description:
       "Novo Tour is a travel agency based in Argentina, specializing in national and international travel packages, custom itineraries, and group tours. They operate in a highly competitive market where trust, design, and search visibility are critical to standing out.",
     industry: "Travel & Tourism",
@@ -224,9 +229,7 @@ export default function NovotourPage() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
                 {project.client}
               </h1>
-              <p className="mb-2 text-white/60 text-lg">
-                {project.category}
-              </p>
+              <p className="mb-2 text-white/60 text-lg">{project.category}</p>
               <p className="max-w-3xl mx-auto text-lg sm:text-xl text-white/70 mb-12">
                 {project.summary}
               </p>
@@ -265,10 +268,17 @@ export default function NovotourPage() {
             {/* About the client */}
             <section className="py-16 sm:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
               <AnimatedSection className="md:col-span-1 flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center mb-6">
-                  <Globe className="text-white" size={36} />
-                </div>
-                <p className="text-gray-600 font-semibold">{project.aboutClient.industry}</p>
+                {project.aboutClient.logo && (
+                  <img
+                    src={project.aboutClient.logo}
+                    title={`${project.client} logo`}
+                    alt={`${project.client} logo`}
+                  />
+                )}
+
+                <p className="text-gray-600 font-semibold">
+                  {project.aboutClient.industry}
+                </p>
               </AnimatedSection>
               <AnimatedSection className="md:col-span-2">
                 <h2 className="text-3xl font-bold mb-4">About the Client</h2>
@@ -282,7 +292,7 @@ export default function NovotourPage() {
             <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900 text-white px-8 sm:px-12 py-16">
               <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
               <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-blue-500/20 blur-2xl" />
-              <div className="relative space-y-8 max-w-4xl">
+              <div className="relative space-y-8 max-w-4xl m-auto">
                 <AnimatedSection>
                   <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
                     Initial Diagnosis
@@ -352,33 +362,48 @@ export default function NovotourPage() {
             {/* Results */}
             <section className="relative overflow-hidden rounded-3xl bg-slate-900 px-8 sm:px-12 py-16 text-white">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.35),_transparent_55%)]" />
-              <div className="relative space-y-8 max-w-4xl mx-auto">
+
+              <div className="relative grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
                 <AnimatedSection>
-                  <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
-                    Impact in Numbers
+                  <div className="overflow-hidden rounded-3xl border border-white/10">
+                    <img
+                      src={project.images[0]}
+                      title="Project results"
+                      alt="Project results"
+                      className="w-full object-cover"
+                    />
                   </div>
-                  <h2 className="mt-6 text-3xl sm:text-4xl font-bold">Results</h2>
-                  <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">
-                    {project.achievements.description}
-                  </p>
                 </AnimatedSection>
-                <AnimatedSection>
-                  <ul className="grid gap-4 sm:grid-cols-2">
-                    {project.achievements.metrics.map((metric, index) => (
-                      <li
-                        key={index}
-                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-200/60"
-                      >
-                        <div className="absolute inset-px rounded-[18px] bg-gradient-to-br from-emerald-500/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                        <div className="relative flex items-start gap-3">
-                          <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-emerald-300" />
-                          <span className="text-sm sm:text-base font-semibold text-white leading-relaxed">
-                            {metric}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                <AnimatedSection className="space-y-8">
+                  <AnimatedSection>
+                    <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
+                      Impact in Numbers
+                    </div>
+                    <h2 className="mt-6 text-3xl sm:text-4xl font-bold">
+                      Results
+                    </h2>
+                    <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">
+                      {project.achievements.description}
+                    </p>
+                  </AnimatedSection>
+                  <AnimatedSection>
+                    <ul className="grid gap-4 sm:grid-cols-2">
+                      {project.achievements.metrics.map((metric, index) => (
+                        <li
+                          key={index}
+                          className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-200/60"
+                        >
+                          <div className="absolute inset-px rounded-[18px] bg-gradient-to-br from-emerald-500/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="relative flex items-start gap-3">
+                            <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-emerald-300" />
+                            <span className="text-sm sm:text-base font-semibold text-white leading-relaxed">
+                              {metric}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </AnimatedSection>
                 </AnimatedSection>
               </div>
             </section>

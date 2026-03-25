@@ -160,11 +160,11 @@ const services = [
 
 export const metadata: Metadata = {
   title: {
-    default: "Nuestros Services - Soluciones de marketing digital",
+    default: "Nuestros Servicios - Soluciones de marketing digital",
     template: "%s | North Blue Agency",
   },
   description:
-    "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
+    "Servicios de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
   alternates: { canonical: "/services" },
   keywords: [
     "services marketing digital",
@@ -270,7 +270,7 @@ export default function ServicesPage() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 Nuestros{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
-                  Services
+                  Servicios
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">

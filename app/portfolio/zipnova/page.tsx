@@ -43,7 +43,9 @@ export const metadata: Metadata = {
     description: pageData.description,
     url: pageData.canonical,
     type: "website",
-    images: [{ url: pageData.ogImage, alt: `${pageData.title} - North Blue Agency` }],
+    images: [
+      { url: pageData.ogImage, alt: `${pageData.title} - North Blue Agency` },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -80,6 +82,7 @@ type DetailedCaseStudy = {
   services: string[];
   stack: string[];
   heroMetrics: HeroMetric[];
+  images: string[];
   aboutClient: { logo?: string; description: string; industry: string };
   challenge: ChallengeBlock;
   proposal: { description: string; points: ProposalPoint[] };
@@ -128,7 +131,9 @@ const project: DetailedCaseStudy = {
     "Hosting: Managed cloud infrastructure",
     "SEO: On-page, technical, structured data",
   ],
+  images: ["/zipnova/zipnova.png"],
   aboutClient: {
+    logo: "/zipnova/zipnova-logo.svg",
     description:
       "Zipnova is an integrated logistics platform designed for e-commerce businesses. It connects merchants with 40+ carriers, offering inventory control, route optimization, warehousing, and automated order processing, all from a single dashboard. Their mission is to simplify fulfillment at any scale.",
     industry: "Logistics & E-commerce",
@@ -180,7 +185,14 @@ const project: DetailedCaseStudy = {
   },
   category: "Web Development & Rebranding",
   year: "2025",
-  services: ["Rebranding", "Next.js", "Headless WordPress", "ACF", "SEO", "Performance"],
+  services: [
+    "Rebranding",
+    "Next.js",
+    "Headless WordPress",
+    "ACF",
+    "SEO",
+    "Performance",
+  ],
 };
 
 // =======================
@@ -267,10 +279,17 @@ export default function ZipnovaPage() {
             {/* About the client */}
             <section className="py-16 sm:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
               <AnimatedSection className="md:col-span-1 flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-6">
-                  <Code2 className="text-white" size={36} />
-                </div>
-                <p className="text-gray-600 font-semibold">{project.aboutClient.industry}</p>
+                {project.aboutClient.logo && (
+                  <img
+                    src={project.aboutClient.logo}
+                    title={`${project.client} logo`}
+                    alt={`${project.client} logo`}
+                    className="w-[300px] my-5"
+                  />
+                )}
+                <p className="text-gray-600 font-semibold">
+                  {project.aboutClient.industry}
+                </p>
               </AnimatedSection>
               <AnimatedSection className="md:col-span-2">
                 <h2 className="text-3xl font-bold mb-4">About the Client</h2>
@@ -287,9 +306,12 @@ export default function ZipnovaPage() {
                 <div className="inline-flex items-center rounded-full bg-cyan-500/20 border border-cyan-400/30 px-4 py-1.5 text-sm font-semibold text-cyan-300">
                   Tech Stack
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold">Built for Performance</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold">
+                  Built for Performance
+                </h2>
                 <p className="text-base sm:text-lg text-white/70 leading-relaxed">
-                  A modern headless architecture combining the best frontend and backend tools available.
+                  A modern headless architecture combining the best frontend and
+                  backend tools available.
                 </p>
               </AnimatedSection>
               <AnimatedSection delay={100}>
@@ -380,18 +402,29 @@ export default function ZipnovaPage() {
             {/* Results */}
             <section className="relative overflow-hidden rounded-3xl bg-slate-900 px-8 sm:px-12 py-16 text-white">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.35),_transparent_55%)]" />
-              <div className="relative space-y-8 max-w-4xl mx-auto">
+              <div className="relative grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
+                <AnimatedSection>
+                  <div className="overflow-hidden rounded-3xl border border-white/10">
+                    <img
+                      src={project.images[0]}
+                      title="Project results"
+                      alt="Project results"
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </AnimatedSection>
                 <AnimatedSection>
                   <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm uppercase tracking-[0.2em] text-white/80">
                     Impact in Numbers
                   </div>
-                  <h2 className="mt-6 text-3xl sm:text-4xl font-bold">Results</h2>
+                  <h2 className="mt-6 text-3xl sm:text-4xl font-bold">
+                    Results
+                  </h2>
                   <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">
                     {project.achievements.description}
                   </p>
-                </AnimatedSection>
-                <AnimatedSection>
-                  <ul className="grid gap-4 sm:grid-cols-2">
+                
+                  <ul className="grid gap-4 sm:grid-cols-2 mt-8">
                     {project.achievements.metrics.map((metric, index) => (
                       <li
                         key={index}

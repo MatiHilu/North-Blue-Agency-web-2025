@@ -387,7 +387,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Nuestros{" "}
+                
                 Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-x">
                   Co‑founders
@@ -453,9 +453,9 @@ export default function AboutPage() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-900 bg-gray-50 transition-colors"
                               >
-                                Conectar en LinkedIn
+                                Connect on LinkedIn
                                 <ArrowUpRight size={16} />
-                              </a>nect o
+                              </a>
                             </div>
                           </div>
                         </CardContent>
