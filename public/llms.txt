@@ -1,23 +1,39 @@
 # Auto-generated list of canonical URLs for LLM ingestion.
 # Source: app/sitemap.ts
-# Generated: 2026-02-16T22:08:28.102Z
+# Generated: 2026-03-24T00:00:00.000Z
 
 https://northblueagency.com
 https://northblueagency.com/nosotros
+https://northblueagency.com/about
 https://northblueagency.com/blog
 https://northblueagency.com/contact
+https://northblueagency.com/contacto
 https://northblueagency.com/portfolio
+https://northblueagency.com/services
 https://northblueagency.com/politica-privacidad
+https://northblueagency.com/privacy-policy
+https://northblueagency.com/mejora-tu-presencia-en-redes
+https://northblueagency.com/services/redes-sociales
+https://northblueagency.com/services/branding
+https://northblueagency.com/services/desarrollo-web
+https://northblueagency.com/services/marketing-digital
+https://northblueagency.com/services/seo
+https://northblueagency.com/services/seo/geo
+https://northblueagency.com/services/seo/aeo
+https://northblueagency.com/services/seo/aio
+https://northblueagency.com/services/seo/seo-tradicional
+https://northblueagency.com/services/analytics
+https://northblueagency.com/services/campanas-ads
+https://northblueagency.com/services/chatgpt-ads
+https://northblueagency.com/services/creacion-contenido
 https://northblueagency.com/blog/how-to-improve-digital-presence-2025
 https://northblueagency.com/blog/digital-marketing-trends-2025
 https://northblueagency.com/blog/local-seo-guide-smbs
 https://northblueagency.com/blog/importance-responsive-web-design
 https://northblueagency.com/blog/social-media-strategies-that-work
-https://northblueagency.com/portfolio/ecommerce-fashion-store
-https://northblueagency.com/portfolio/restaurant-delivery-app
-https://northblueagency.com/portfolio/tech-startup-digital-campaign
-https://northblueagency.com/portfolio/consultancy-branding
-https://northblueagency.com/portfolio/dental-clinic-web-redesign
+https://northblueagency.com/portfolio/verigoodlife
+https://northblueagency.com/portfolio/novotour
+https://northblueagency.com/portfolio/zipnova
 https://northblueagency.com/services/redes-sociales-Argentina
 https://northblueagency.com/services/redes-sociales-CABA
 https://northblueagency.com/services/redes-sociales-Buenos-Aires

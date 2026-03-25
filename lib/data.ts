@@ -48,34 +48,22 @@ export const blogPosts: BlogPost[] = [
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    slug: "ecommerce-fashion-store",
-    title: "E-commerce for Fashion Store",
-    category: "desarrollo-web",
+    slug: "verigoodlife",
+    title: "VeriGoodLife Case Study",
+    category: "branding",
     publishedAt: "2024-12-01",
   },
   {
-    slug: "restaurant-delivery-app",
-    title: "Delivery App for Restaurant",
+    slug: "novotour",
+    title: "Novo Tour Case Study",
     category: "desarrollo-web",
     publishedAt: "2024-11-15",
   },
   {
-    slug: "tech-startup-digital-campaign",
-    title: "Digital Campaign for Tech Startup",
-    category: "marketing-digital",
-    publishedAt: "2024-11-01",
-  },
-  {
-    slug: "consultancy-branding",
-    title: "Complete Branding for Consultancy",
-    category: "branding",
-    publishedAt: "2024-10-20",
-  },
-  {
-    slug: "dental-clinic-web-redesign",
-    title: "Web Redesign for Dental Clinic",
+    slug: "zipnova",
+    title: "Zipnova Case Study",
     category: "desarrollo-web",
-    publishedAt: "2024-10-10",
+    publishedAt: "2024-11-01",
   },
 ];
 

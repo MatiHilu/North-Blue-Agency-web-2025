@@ -38,6 +38,10 @@ const nextConfig = {
         destination: "/services/campanas-ads?Location=:location",
       },
       {
+        source: "/services/chatgpt-ads-:location",
+        destination: "/services/chatgpt-ads?Location=:location",
+      },
+      {
         source: "/services/creacion-contenido-:location",
         destination: "/services/creacion-contenido?Location=:location",
       },

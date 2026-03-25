@@ -11,11 +11,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     "",
     "/nosotros",
+    "/about",
     "/blog",
     "/contact",
+    "/contacto",
     "/portfolio",
     "/services",
     "/politica-privacidad",
+    "/privacy-policy",
+    "/mejora-tu-presencia-en-redes",
   ];
 
   // Rutas de services
@@ -25,6 +29,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/desarrollo-web",
     "/services/marketing-digital",
     "/services/seo",
+    "/services/seo/geo",
+    "/services/seo/aeo",
+    "/services/seo/aio",
+    "/services/seo/seo-tradicional",
     "/services/analytics",
     "/services/campanas-ads",
     "/services/chatgpt-ads",

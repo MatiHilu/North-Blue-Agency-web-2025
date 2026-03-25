@@ -83,11 +83,15 @@ export function getPageConfig(path: string) {
   if (
     [
       "nosotros",
+      "about",
+      "contact",
       "contacto",
       "services",
       "blog",
       "portfolio",
       "politica-privacidad",
+      "privacy-policy",
+      "mejora-tu-presencia-en-redes",
     ].some((page) => path === `/${page}`)
   ) {
     return defaults.mainPages;
