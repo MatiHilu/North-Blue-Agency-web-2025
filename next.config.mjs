@@ -1,5 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      // www → non-www (301 permanent)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.northblueagency.com" }],
+        destination: "https://northblueagency.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       // Spanish pretty URLs like /services/redes-sociales-buenos-aires
