@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -137,7 +138,7 @@ export default function EnhancedContactModal({
 
   if (!isVisible) return null;
 
-  return (
+  return createPortal(
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 pt-[20vw] md:pt-4 transition-all duration-300 ${
         isAnimating
@@ -408,6 +409,7 @@ export default function EnhancedContactModal({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
