@@ -14,19 +14,25 @@ import EnhancedContactModal from "@/components/enhanced-contact-modal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "Nosotros",
   description:
-    "Meet the North Blue Agency team and our mission: digital marketing, social media, and web development.",
+    "Conocé al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
   keywords: [
-    "digital marketing agency",
-    "about us",
-    "team",
+    "agencia de marketing digital",
+    "nosotros",
+    "equipo",
     "North Blue Agency",
     "marketing",
-    "web development",
-    "social media",
+    "desarrollo web",
+    "redes sociales",
   ],
-  alternates: { canonical: "https://northblueagency.com/about" },
+  alternates: {
+    canonical: "https://northblueagency.com/nosotros",
+    languages: {
+      "en": "https://northblueagency.com/about",
+      "es": "https://northblueagency.com/nosotros",
+    },
+  },
   authors: [
     { name: "Abril Lespade" },
     { name: "Matías Hilú" },
@@ -34,31 +40,31 @@ export const metadata: Metadata = {
   ],
   publisher: "North Blue Agency",
   openGraph: {
-    title: "About Us",
+    title: "Nosotros | North Blue Agency",
     description:
-      "Meet the North Blue Agency team and our mission: digital marketing, social media, and web development.",
-    url: "https://northblueagency.com/about",
+      "Conocé al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
+    url: "https://northblueagency.com/nosotros",
     siteName: "North Blue Agency",
     type: "website",
-    locale: "en_US",
+    locale: "es_AR",
     images: [
       {
         url: "https://northblueagency.com/North-Blue-Agency.png",
         width: 1200,
         height: 630,
-        alt: "North Blue Agency Team",
+        alt: "Equipo North Blue Agency",
       },
       {
         url: "https://northblueagency.com/North-Blue-Agency.svg",
-        alt: "North Blue Agency Logo",
+        alt: "Logo North Blue Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us",
+    title: "Nosotros | North Blue Agency",
     description:
-      "Meet the North Blue Agency team and our mission: digital marketing, social media, and web development.",
+      "Conocé al equipo de North Blue Agency y nuestra misión: marketing digital, redes sociales y desarrollo web.",
     images: ["https://northblueagency.com/North-Blue-Agency.png"],
   },
   robots: {

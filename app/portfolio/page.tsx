@@ -103,8 +103,52 @@ const categories = [
 ];
 
 export default function PortfolioPage() {
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Portfolio | North Blue Agency",
+    description:
+      "Discover our successful digital marketing, branding, and web development projects",
+    url: `${BASE_URL}/portfolio`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Portfolio",
+          item: `${BASE_URL}/portfolio`,
+        },
+      ],
+    },
+    hasPart: projects.map((project) => ({
+      "@type": "CreativeWork",
+      name: project.title,
+      description: project.description,
+      url: `${BASE_URL}${project.slug}`,
+      dateCreated: project.year,
+      creator: {
+        "@type": "Organization",
+        name: "North Blue Agency",
+        url: BASE_URL,
+      },
+      keywords: project.services.join(", "),
+      about: {
+        "@type": "Organization",
+        name: project.client,
+        url: project.url,
+      },
+    })),
+  };
+
   return (
     <>
+      <Script
+        id="schema-portfolio"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
+      />
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">

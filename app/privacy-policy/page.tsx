@@ -5,7 +5,13 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Data usage for Meta Ads, Google Ads, LinkedIn Ads, and Email Marketing. We do not share data with third parties outside these platforms.",
-  alternates: { canonical: "/politica-privacidad" },
+  alternates: {
+    canonical: "https://northblueagency.com/privacy-policy",
+    languages: {
+      "en": "https://northblueagency.com/privacy-policy",
+      "es": "https://northblueagency.com/politica-privacidad",
+    },
+  },
   keywords: [
     "privacy policy",
     "data protection",
@@ -20,7 +26,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | North Blue Agency",
     description:
       "Data usage for Meta Ads, Google Ads, LinkedIn Ads, and Email Marketing. We do not share data with third parties outside these platforms.",
-    url: "https://northblueagency.com/politica-privacidad",
+    url: "https://northblueagency.com/privacy-policy",
     type: "article",
   },
   twitter: {

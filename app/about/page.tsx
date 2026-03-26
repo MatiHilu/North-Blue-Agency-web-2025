@@ -26,7 +26,13 @@ export const metadata: Metadata = {
     "web development",
     "social media",
   ],
-  alternates: { canonical: "https://northblueagency.com/about" },
+  alternates: {
+    canonical: "https://northblueagency.com/about",
+    languages: {
+      "en": "https://northblueagency.com/about",
+      "es": "https://northblueagency.com/nosotros",
+    },
+  },
   authors: [
     { name: "Abril Lespade" },
     { name: "Matías Hilú" },
