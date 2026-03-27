@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
-import wordpress from "@/lib/wordpress";
+import wordpress, { type PostSummary } from "@/lib/wordpress";
 import { BASE_URL } from "@/lib/jsonld";
 import type { Metadata } from "next";
 
@@ -28,7 +28,11 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const post = await wordpress.getPostBySlug(params.slug);
   if (!post) {
-    return { title: "Article not found", description: "" };
+    return {
+      title: "Article not found",
+      description: "",
+      robots: { index: false, follow: false },
+    };
   }
   const title = post.title;
   const description = post.excerpt;
@@ -241,7 +245,10 @@ export default async function BlogPostPage(props: {
 }) {
   const params = await props.params;
   const slug = params.slug;
-  const post = await wordpress.getPostBySlug(slug);
+  const [post, allPosts] = await Promise.all([
+    wordpress.getPostBySlug(slug),
+    wordpress.getAllPosts(100),
+  ]);
 
   if (!post) {
     return (
@@ -305,6 +312,20 @@ export default async function BlogPostPage(props: {
       ],
     },
   };
+
+  // Related posts: same category/tag first, then most recent; exclude current
+  const relatedPosts = (() => {
+    const others = allPosts.filter((p) => p.slug !== slug);
+    const postCats = new Set(post.categories || []);
+    const postTags = new Set(post.tags || []);
+    const score = (p: PostSummary) => {
+      let s = 0;
+      for (const c of p.categories || []) if (postCats.has(c)) s += 2;
+      for (const t of p.tags || []) if (postTags.has(t)) s += 1;
+      return s;
+    };
+    return others.sort((a, b) => score(b) - score(a)).slice(0, 3);
+  })();
 
   // Calcular readTime a partir del contenido (palabras por minuto ~200)
   const plain = (post.content || "").replace(/<[^>]*>/g, "");
@@ -520,7 +541,52 @@ export default async function BlogPostPage(props: {
         </section>
 
         {/* Related Posts */}
-        {/* Related posts: requires WP-side relation or manual mapping; omitted for now */}
+        {relatedPosts.length > 0 && (
+          <section className="py-16 bg-gray-50">
+            <div className="container mx-auto px-4">
+              <AnimatedSection className="text-center mb-10">
+                <h2 className="text-2xl md:text-3xl font-bold">Related Articles</h2>
+              </AnimatedSection>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {relatedPosts.map((related) => (
+                  <AnimatedSection key={related.slug}>
+                    <Link href={`/blog/${related.slug}`} className="block group h-full">
+                      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow h-full">
+                        {related.featuredImage && (
+                          <img
+                            src={related.featuredImage}
+                            alt={related.title}
+                            className="w-full h-40 object-cover rounded-t-lg"
+                            loading="lazy"
+                          />
+                        )}
+                        <CardContent className="p-5">
+                          <div className="flex items-center gap-2 mb-2">
+                            {related.categories?.[0] && (
+                              <span className="text-xs font-semibold text-[#ff4081]">
+                                {related.categories[0]}
+                              </span>
+                            )}
+                            <span className="text-xs text-gray-400">
+                              {new Date(related.date).toLocaleDateString("en-US")}
+                            </span>
+                          </div>
+                          <h3 className="font-bold text-gray-900 group-hover:text-[#ff4081] transition-colors line-clamp-2 mb-2">
+                            {related.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 line-clamp-2">{related.excerpt}</p>
+                          <span className="inline-flex items-center text-[#ff4081] text-sm font-semibold mt-3 group-hover:gap-2 transition-all">
+                            Read more <ArrowRight size={14} className="ml-1" />
+                          </span>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Contact Section */}
         <ContactSection />

@@ -92,7 +92,7 @@ export async function generateMetadata({
   const location = normalizeLocation(locationRaw);
   const slugPart = locationRaw ? `-${locationRaw}` : "";
   const canonical = `${BASE_URL}/services/redes-sociales${slugPart}`;
-  const canonicalEn = `${BASE_URL}/services/redes-sociales${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/social-media-management`;
 
   return {
     title: {
@@ -104,6 +104,7 @@ export async function generateMetadata({
     alternates: {
       canonical,
       languages: {
+        "x-default": canonicalEn,
         es: canonical,
         en: canonicalEn,
       },

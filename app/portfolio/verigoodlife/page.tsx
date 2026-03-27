@@ -15,7 +15,7 @@ const pageData = {
   title: "VeriGoodLife Case Study",
   subtitle: "Branding, E-commerce & Ongoing Technical Support",
   description:
-    "Branding, E-commerce & Ongoing Technical Support for the VeriGoodLife wellness platform. Identity design, WordPress + WooCommerce, managed hosting, and permanent support focused on conversion and performance.",
+    "Branding, WooCommerce e-commerce, and ongoing tech support for VeriGoodLife wellness. Identity design, managed hosting, and conversion-focused development.",
   ogImage: `${BASE_URL}/images/og/portfolio-verigoodlife.png`,
   canonical: `${BASE_URL}/portfolio/verigoodlife`,
   keywords: [

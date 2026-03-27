@@ -113,7 +113,7 @@ export async function generateMetadata({
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
   const canonical = `${BASE_URL}/services/desarrollo-web${slugPart}`;
-  const canonicalEn = `${BASE_URL}/services/desarrollo-web${slugPart}`;
+  const canonicalEn = `${BASE_URL}/services/web-development`;
 
   return {
     title: {
@@ -123,7 +123,7 @@ export async function generateMetadata({
     description: serviceData.description,
     alternates: {
       canonical,
-      languages: { es: canonical, en: canonicalEn },
+      languages: { "x-default": canonicalEn, es: canonical, en: canonicalEn },
     },
     keywords: [
       "web development",

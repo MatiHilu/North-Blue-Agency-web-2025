@@ -12,7 +12,7 @@ const pageData = {
   title: "Zipnova Case Study",
   subtitle: "Next.js Frontend + Headless WordPress, Rebranding & SEO",
   description:
-    "Full website rebuild for Zipnova, an e-commerce logistics platform. Next.js frontend with headless WordPress + ACF as CMS, complete rebranding, performance optimization, and SEO strategy.",
+    "Next.js + headless WordPress rebuild for Zipnova logistics. Complete rebranding, performance optimization, and SEO strategy that drove measurable growth.",
   ogImage: `${BASE_URL}/images/og/portfolio-zipnova.png`,
   canonical: `${BASE_URL}/portfolio/zipnova`,
   keywords: [

@@ -91,8 +91,6 @@ export async function generateMetadata({
   const location = normalizeLocation(slug);
   const slugPart = slug ? `-${slug}` : "";
   const canonical = `${BASE_URL}/services/branding${slugPart}`;
-  const canonicalEn = `${BASE_URL}/services/branding${slugPart}`;
-
   return {
     title: {
       default: `${serviceData.title}${location ? ` - ${location}` : ""}`,
@@ -101,10 +99,6 @@ export async function generateMetadata({
     description: serviceData.description,
     alternates: {
       canonical,
-      languages: {
-        es: canonical,
-        en: canonicalEn,
-      },
     },
     keywords: [
       "branding",

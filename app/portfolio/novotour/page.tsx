@@ -18,7 +18,7 @@ const pageData = {
   title: "Novo Tour Case Study",
   subtitle: "Full Website Rebuild, Rebranding & SEO for a Travel Agency",
   description:
-    "Full website rebuild, rebranding, SEO, and performance optimization for Novo Tour, an Argentine travel agency. Built on WordPress with Advanced Custom Fields. Conversions skyrocketed.",
+    "Website rebuild and rebranding for Novo Tour travel agency. WordPress + ACF, SEO strategy, and performance optimization that skyrocketed conversions.",
   ogImage: `${BASE_URL}/images/og/portfolio-novotour.png`,
   canonical: `${BASE_URL}/portfolio/novotour`,
   keywords: [
