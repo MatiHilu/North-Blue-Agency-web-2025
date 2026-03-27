@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   alternates: { canonical: pageData.canonical },
   keywords: pageData.keywords,
   openGraph: {
-    title: `${pageData.title} - North Blue Agency`,
+    title: `${pageData.title} | North Blue Agency`,
     description: pageData.description,
     url: pageData.canonical,
     type: "website",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${pageData.title} - North Blue Agency`,
+    title: `${pageData.title} | North Blue Agency`,
     description: pageData.description,
     images: [pageData.ogImage],
   },

@@ -36,6 +36,7 @@ export default function Header() {
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [isServicesClosing, setIsServicesClosing] = useState(false);
   const [isSeoOpen, setIsSeoOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   const supportedLocales = ["arg", "es", "uk", "us"];
@@ -144,6 +145,7 @@ export default function Header() {
       if (e.key === "Escape") {
         setIsServicesOpen(false);
         setIsSeoOpen(false);
+        setIsAboutOpen(false);
         setIsLangOpen(false);
         if (isMenuOpen) closeMenu();
       }
@@ -443,19 +445,68 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link
-                href="/about"
-                className={`transition-colors font-medium ${
-                  isScrolled
-                    ? "text-gray-700 hover:text-[#ff4081]"
-                    : "text-[#00b2ff] hover:text-[#00b2ff]/80"
-                }`}
-                onClick={() => {
-                  closeMenu();
-                }}
+              {/* About Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsAboutOpen(true)}
+                onMouseLeave={() => setIsAboutOpen(false)}
               >
-                About Us
-              </Link>
+                <Link
+                  href="/about"
+                  aria-expanded={isAboutOpen}
+                  aria-haspopup="true"
+                  aria-controls="about-dropdown"
+                  className={`flex items-center transition-colors font-medium ${
+                    isScrolled
+                      ? "text-gray-700 hover:text-[#ff4081]"
+                      : "text-[#00b2ff] hover:text-[#00b2ff]/80"
+                  }`}
+                >
+                  About
+                  <ChevronDown size={16} className="ml-1" aria-hidden="true" />
+                </Link>
+                {/* Invisible bridge to prevent closing when moving to dropdown */}
+                <div className="absolute top-full left-0 w-full h-2 bg-transparent" />
+                <div
+                  id="about-dropdown"
+                  role="region"
+                  aria-label="About menu"
+                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-52 py-2 z-50 transition-all duration-300 ease-out ${
+                    isAboutOpen
+                      ? "opacity-100 translate-y-0 scale-100"
+                      : "opacity-0 translate-y-2 scale-95 pointer-events-none"
+                  }`}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl p-3 flex flex-col gap-1">
+                    <Link
+                      href="/about"
+                      onClick={() => setIsAboutOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gradient-to-br hover:from-[#ff4081]/5 hover:to-[#00b2ff]/5 group transition-all"
+                    >
+                      <div className="w-8 h-8 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors text-sm">About Us</p>
+                        <p className="text-xs text-gray-500">Who we are</p>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/locations"
+                      onClick={() => setIsAboutOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gradient-to-br hover:from-[#ff4081]/5 hover:to-[#00b2ff]/5 group transition-all"
+                    >
+                      <div className="w-8 h-8 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 group-hover:text-[#ff4081] transition-colors text-sm">Locations</p>
+                        
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
 
               <Link
                 href="/portfolio"
@@ -632,6 +683,19 @@ export default function Header() {
                     onClick={closeMenu}
                   >
                     About Us
+                  </Link>
+
+                  <Link
+                    href="/locations"
+                    className={`text-3xl font-bold hover:scale-110 transition-transform duration-300 ${
+                      isMenuClosing
+                        ? "mobile-menu-item-exit"
+                        : "mobile-menu-item"
+                    }`}
+                    style={{ animationDelay: isMenuClosing ? "0.25s" : "0.35s" }}
+                    onClick={closeMenu}
+                  >
+                    Locations
                   </Link>
 
                   <Link

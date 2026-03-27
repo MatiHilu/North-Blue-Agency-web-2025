@@ -82,39 +82,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // Location-specific service pages we want indexed (pretty URLs via rewrites)
-  // Add or load these from a CMS as needed
-  const locationSlugs = [
-    // CIUDAD AUTÓNOMA DE BUENOS AIRES (CABA) - 48 barrios principales
-    "Argentina",
-    "CABA",
-    "Buenos-Aires",
-    "Cordoba",
-  ];
-  const serviceSlugs = [
-    "redes-sociales",
-    "branding",
-    "desarrollo-web",
-    "marketing-digital",
-    "seo",
-    "analytics",
-    "campanas-ads",
-    "chatgpt-ads",
-    "creacion-contenido",
-  ];
-
-  const locationEntries: MetadataRoute.Sitemap = serviceSlugs.flatMap(
-    (service) => {
-      const cfg = getPageConfig(`/services/${service}`);
-      return locationSlugs.map((slug) => ({
-        url: `${baseUrl}/services/${service}-${slug}`,
-        lastModified: new Date(),
-        changeFrequency: cfg.changeFrequency as any,
-        priority: cfg.priority,
-      }));
-    }
-  );
-
   // Crear entradas del sitemap para blog posts en cada idioma
   const localizedBlogEntries = activeLocales.flatMap((locale) =>
     blogPosts.map((post) => {
@@ -146,6 +113,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...localizedStaticEntries,
     ...localizedBlogEntries,
     ...localizedPortfolioEntries,
-    ...locationEntries,
   ];
 }

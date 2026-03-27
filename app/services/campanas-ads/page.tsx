@@ -114,7 +114,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${serviceData.title}${
         location ? ` - ${location}` : ""
-      } - North Blue Agency`,
+      } | North Blue Agency`,
       description: serviceData.description,
       url: canonical,
       type: "website",
@@ -127,7 +127,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${serviceData.title} - North Blue Agency`,
+      title: `${serviceData.title} | North Blue Agency`,
       description: serviceData.description,
       images: [`${BASE_URL}/images/og/services-campanas-ads.png`],
     },

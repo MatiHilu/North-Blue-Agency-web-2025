@@ -56,7 +56,7 @@ export async function generateMetadata(props: {
     alternates: { canonical: url },
     keywords,
     openGraph: {
-      title: `${title} - North Blue Agency`,
+      title: `${title} | North Blue Agency`,
       description,
       url,
       type: "article",
@@ -70,7 +70,7 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} - North Blue Agency`,
+      title: `${title} | North Blue Agency`,
       description,
       images: [imageUrl],
     },

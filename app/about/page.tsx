@@ -251,36 +251,52 @@ export default function AboutPage() {
         {/* Story Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <AnimatedSection animation="fadeInLeft">
+                <span className="inline-block text-sm font-semibold uppercase tracking-widest text-[#ff4081] mb-4">Est. 2019</span>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   Our{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
                     Story
                   </span>
                 </h2>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed md:pe-16">
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   North Blue Agency was born in 2019 with a clear mission: democratize digital marketing and make the best strategies accessible to companies of all sizes.
                 </p>
-                {/* <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Comenzamos como un pequeño equipo de especialistas apasionados
-                  por el marketing digital. Hoy, somos una agencia reconocida
-                  que ha ayudado a más de 75 empresas a transformar su presencia
-                  online.
-                </p> */}
-                <p className="text-lg text-gray-600 leading-relaxed md:pe-20">
+                <p className="text-lg text-gray-600 leading-relaxed">
                   Our approach is based on the perfect combination of creativity, strategy, and technology, always aiming to generate measurable results for our clients.
                 </p>
+                <div className="flex gap-10 mt-10">
+                  <div>
+                    <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">5+</div>
+                    <div className="text-sm text-gray-500 mt-1">Years of experience</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] to-[#00b2ff]">100%</div>
+                    <div className="text-sm text-gray-500 mt-1">Client satisfaction</div>
+                  </div>
+                </div>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={200}>
-                <div className="relative flex justify-center">
-                  <div className="w-[350px] absolute translate-x-[80%] inset-0 bg-gradient-to-r from-[#ff4081]/20 to-[#00b2ff]/20 rounded-3xl transform rotate-6"></div>
-                  <img
-                    src="/NorthBlue-Agency.png?height=400&width=400"
-                    alt="Equipo North Blue Agency"
-                    className="relative rounded-3xl shadow-2xl w-[320px]"
-                  />
+                <div className="relative flex items-end justify-center gap-5">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#ff4081]/10 via-purple-500/5 to-[#00b2ff]/10 rounded-3xl blur-2xl"></div>
+                  <div className="relative z-10 mt-12 flex-shrink-0">
+                    <div className="p-[2px] rounded-2xl bg-gradient-to-b from-[#ff4081] to-[#00b2ff]">
+                      <img
+                        src="/NorthBlue-Agency.png?height=400&width=400"
+                        alt="North Blue Agency"
+                        className="rounded-[14px] w-[170px] block"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative z-20 flex-shrink-0">
+                    <img
+                      src="/Our-team.png"
+                      alt="North Blue Agency Team"
+                      className="rounded-2xl shadow-2xl w-full max-w-[400px] object-cover"
+                    />
+                  </div>
                 </div>
               </AnimatedSection>
             </div>
@@ -288,59 +304,51 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-gray-50 relative">
-          <div className="container mx-auto px-4">
-            {/* Shared gradient defs for icon strokes */}
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <linearGradient
-                  id="nb-gradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
-                  <stop offset="0%" stopColor="#ff4081" />
-                  <stop offset="50%" stopColor="#8b5cf6" />
-                  <stop offset="100%" stopColor="#00b2ff" />
-                </linearGradient>
-              </defs>
-            </svg>
+        <section className="py-24 bg-gray-900 relative overflow-hidden">
+          <svg width="0" height="0" className="absolute">
+            <defs>
+              <linearGradient id="nb-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ff4081" />
+                <stop offset="50%" stopColor="#8b5cf6" />
+                <stop offset="100%" stopColor="#00b2ff" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#ff4081]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00b2ff]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
                 Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-xy">
                   Values
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 The principles guiding our work and defining our business culture
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1640px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => {
                 const Icon = value.icon as React.ElementType;
                 return (
                   <AnimatedSection key={index} delay={index * 100}>
-                    <Card className="text-center border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-8">
-                        <div className="mx-auto mb-6 flex items-center justify-center">
+                    <div className="group relative h-full rounded-2xl p-px bg-gradient-to-b from-white/10 to-white/5 hover:from-[#ff4081]/60 hover:to-[#00b2ff]/60 transition-all duration-300">
+                      <div className="h-full rounded-[14px] bg-gray-800/80 backdrop-blur-sm p-8 flex flex-col transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-6 w-14 h-14 rounded-xl bg-gradient-to-br from-[#ff4081]/20 to-[#00b2ff]/20 border border-white/10 flex items-center justify-center">
                           <Icon
-                            className="w-12 h-12"
+                            className="w-7 h-7"
                             strokeWidth={2}
                             color="url(#nb-gradient)"
                             aria-hidden="true"
                           />
                         </div>
-                        <h3 className="text-lg font-semibold mb-3">
-                          {value.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed text-sm">
-                          {value.description}
-                        </p>
-                      </CardContent>
-                    </Card>
+                        <h3 className="text-lg font-bold text-white mb-3">{value.title}</h3>
+                        <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
+                      </div>
+                    </div>
                   </AnimatedSection>
                 );
               })}

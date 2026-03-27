@@ -176,7 +176,7 @@ export const metadata: Metadata = {
     "North Blue Agency",
   ],
   openGraph: {
-    title: "Services - North Blue Agency",
+    title: "Services | North Blue Agency",
     description:
       "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
     url: `${BASE_URL}/services`,
@@ -194,7 +194,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Services - North Blue Agency",
+    title: "Services | North Blue Agency",
     description:
       "Services de North Blue Agency: gestión de redes sociales, branding, desarrollo web, marketing digital, SEO, analytics y creación de contenido.",
   },

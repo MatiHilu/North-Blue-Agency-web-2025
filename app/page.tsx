@@ -349,6 +349,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section className="py-20 bg-gray-50" aria-label="Our team">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <AnimatedSection animation="fadeInLeft">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#ff4081] mb-3">The people behind the work</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Meet Our{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4081] via-purple-500 to-[#00b2ff] animate-gradient-y">
+                  Team
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                A passionate group of digital marketing specialists who turn strategies into results. We work side-by-side with every client to build a presence that truly stands out.
+              </p>
+              <Link href="/about">
+                <Button className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:opacity-90">
+                  Meet the team
+                  <ArrowRight className="ml-2" size={18} />
+                </Button>
+              </Link>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fadeInRight" delay={200} className="flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#ff4081]/15 to-[#00b2ff]/15 rounded-3xl transform rotate-3"></div>
+                <img
+                  src="/Our-team.png"
+                  alt="North Blue Agency Team"
+                  className="relative rounded-3xl shadow-2xl w-full max-w-[500px] object-cover"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[#ff4081] to-[#00b2ff]" aria-label="Call to action">
         <div className="container mx-auto px-4">

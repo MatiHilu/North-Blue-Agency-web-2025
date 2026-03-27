@@ -183,7 +183,7 @@ export const createServicesMetadata = (
       "North Blue Agency",
     ],
     openGraph: {
-      title: "Services - North Blue Agency",
+      title: "Services | North Blue Agency",
       description:
         "North Blue Agency Services: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
       url: canonicalUrl,
@@ -201,7 +201,7 @@ export const createServicesMetadata = (
     },
     twitter: {
       card: "summary_large_image",
-      title: "Services - North Blue Agency",
+      title: "Services | North Blue Agency",
       description:
         "North Blue Agency Services: social media management, branding, web development, digital marketing, SEO, analytics, and content creation.",
     },

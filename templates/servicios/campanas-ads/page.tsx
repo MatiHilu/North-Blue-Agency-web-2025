@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     "North Blue Agency",
   ],
   openGraph: {
-    title: `${serviceData.title} - North Blue Agency`,
+    title: `${serviceData.title} | North Blue Agency`,
     description: serviceData.description,
     url: `${BASE_URL}/services/campanas-ads`,
     type: "website",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${serviceData.title} - North Blue Agency`,
+    title: `${serviceData.title} | North Blue Agency`,
     description: serviceData.description,
     images: [`${BASE_URL}/images/og/services-campanas-ads.png`],
   },
