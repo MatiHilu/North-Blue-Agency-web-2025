@@ -492,6 +492,24 @@ export default async function BlogPostPage(props: {
                       </div>
                     </div>
                   </AnimatedSection>
+
+                  {/* General CTA Section */}
+                  <AnimatedSection delay={250}>
+                    <div className="mt-16 p-8 bg-gradient-to-r from-[#ff4081]/10 to-[#00b2ff]/10 rounded-lg border border-[#ff4081]/20">
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                        Ready to Grow Your Business?
+                      </h3>
+                      <p className="text-gray-700 mb-6">
+                        Get expert guidance tailored to your needs. Our team is here to help you achieve your digital goals.
+                      </p>
+                      <Link href="/contact">
+                        <Button className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] hover:shadow-lg transition-shadow">
+                          Get In Touch
+                          <ArrowRight size={16} className="ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </AnimatedSection>
                 </div>
 
                 <div className="lg:col-span-1">
