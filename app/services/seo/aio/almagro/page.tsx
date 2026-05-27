@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { AIOTemplate } from "@/templates/servicios/seo/aio/template";
+import AIOTemplate from "@/templates/servicios/seo/aio/template";
 
 const SERVICE_SLUG = "seo/aio";
 const LOCATION_SLUG = "almagro";

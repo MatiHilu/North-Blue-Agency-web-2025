@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { AEOTemplate } from "@/templates/servicios/seo/aeo/template";
+import AEOTemplate from "@/templates/servicios/seo/aeo/template";
 
 const SERVICE_SLUG = "seo/aeo";
 const LOCATION_SLUG = "vicente-lopez";

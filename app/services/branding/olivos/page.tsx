@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { BrandingTemplate } from "@/templates/servicios/branding/template";
+import BrandingTemplate from "@/templates/servicios/branding/template";
 
 const SERVICE_SLUG = "branding";
 const LOCATION_SLUG = "olivos";

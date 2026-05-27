@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { SEOTradicionalTemplate } from "@/templates/servicios/seo/seo-tradicional/template";
+import SEOTradicionalTemplate from "@/templates/servicios/seo/seo-tradicional/template";
 
 const SERVICE_SLUG = "seo/seo-tradicional";
 const LOCATION_SLUG = "belgrano";

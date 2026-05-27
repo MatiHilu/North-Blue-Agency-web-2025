@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { CampanasAdsTemplate } from "@/templates/servicios/campanas-ads/template";
+import CampanasAdsTemplate from "@/templates/servicios/campanas-ads/template";
 
 const SERVICE_SLUG = "campanas-ads";
 const LOCATION_SLUG = "olivos";

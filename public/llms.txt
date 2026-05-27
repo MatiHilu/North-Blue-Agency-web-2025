@@ -1,6 +1,6 @@
 # Auto-generated list of canonical URLs for LLM ingestion.
 # Source: app/sitemap.ts
-# Generated: 2026-03-24T00:00:00.000Z
+# Generated: 2026-05-27T22:15:53.957Z
 
 https://northblueagency.com
 https://northblueagency.com/nosotros
@@ -34,39 +34,3 @@ https://northblueagency.com/blog/social-media-strategies-that-work
 https://northblueagency.com/portfolio/verigoodlife
 https://northblueagency.com/portfolio/novotour
 https://northblueagency.com/portfolio/zipnova
-https://northblueagency.com/services/redes-sociales-Argentina
-https://northblueagency.com/services/redes-sociales-CABA
-https://northblueagency.com/services/redes-sociales-Buenos-Aires
-https://northblueagency.com/services/redes-sociales-Cordoba
-https://northblueagency.com/services/branding-Argentina
-https://northblueagency.com/services/branding-CABA
-https://northblueagency.com/services/branding-Buenos-Aires
-https://northblueagency.com/services/branding-Cordoba
-https://northblueagency.com/services/desarrollo-web-Argentina
-https://northblueagency.com/services/desarrollo-web-CABA
-https://northblueagency.com/services/desarrollo-web-Buenos-Aires
-https://northblueagency.com/services/desarrollo-web-Cordoba
-https://northblueagency.com/services/marketing-digital-Argentina
-https://northblueagency.com/services/marketing-digital-CABA
-https://northblueagency.com/services/marketing-digital-Buenos-Aires
-https://northblueagency.com/services/marketing-digital-Cordoba
-https://northblueagency.com/services/seo-Argentina
-https://northblueagency.com/services/seo-CABA
-https://northblueagency.com/services/seo-Buenos-Aires
-https://northblueagency.com/services/seo-Cordoba
-https://northblueagency.com/services/analytics-Argentina
-https://northblueagency.com/services/analytics-CABA
-https://northblueagency.com/services/analytics-Buenos-Aires
-https://northblueagency.com/services/analytics-Cordoba
-https://northblueagency.com/services/campanas-ads-Argentina
-https://northblueagency.com/services/campanas-ads-CABA
-https://northblueagency.com/services/campanas-ads-Buenos-Aires
-https://northblueagency.com/services/campanas-ads-Cordoba
-https://northblueagency.com/services/chatgpt-ads-Argentina
-https://northblueagency.com/services/chatgpt-ads-CABA
-https://northblueagency.com/services/chatgpt-ads-Buenos-Aires
-https://northblueagency.com/services/chatgpt-ads-Cordoba
-https://northblueagency.com/services/creacion-contenido-Argentina
-https://northblueagency.com/services/creacion-contenido-CABA
-https://northblueagency.com/services/creacion-contenido-Buenos-Aires
-https://northblueagency.com/services/creacion-contenido-Cordoba

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { ChatgptAdsTemplate } from "@/templates/servicios/chatgpt-ads/template";
+import ChatgptAdsTemplate from "@/templates/servicios/chatgpt-ads/template";
 
 const SERVICE_SLUG = "chatgpt-ads";
 const LOCATION_SLUG = "caballito";

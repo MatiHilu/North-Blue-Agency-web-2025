@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { DesarrolloWebTemplate } from "@/templates/servicios/desarrollo-web/template";
+import DesarrolloWebTemplate from "@/templates/servicios/desarrollo-web/template";
 
 const SERVICE_SLUG = "desarrollo-web";
 const LOCATION_SLUG = "belgrano";

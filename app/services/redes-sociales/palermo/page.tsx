@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { RedesSocialesTemplate } from "@/templates/servicios/redes-sociales/template";
+import RedesSocialesTemplate from "@/templates/servicios/redes-sociales/template";
 
 const SERVICE_SLUG = "redes-sociales";
 const LOCATION_SLUG = "palermo";

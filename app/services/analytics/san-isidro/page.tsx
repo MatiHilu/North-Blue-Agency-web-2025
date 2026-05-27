@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { AnalyticsTemplate } from "@/templates/servicios/analytics/template";
+import AnalyticsTemplate from "@/templates/servicios/analytics/template";
 
 const SERVICE_SLUG = "analytics";
 const LOCATION_SLUG = "san-isidro";

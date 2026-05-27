@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/jsonld";
-import { CreacionContenidoTemplate } from "@/templates/servicios/creacion-contenido/template";
+import CreacionContenidoTemplate from "@/templates/servicios/creacion-contenido/template";
 
 const SERVICE_SLUG = "creacion-contenido";
 const LOCATION_SLUG = "palermo";
