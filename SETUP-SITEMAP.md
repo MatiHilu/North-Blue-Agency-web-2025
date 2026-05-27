@@ -61,13 +61,13 @@ export async function getAllBlogPosts() {
 
 ```bash
 # Validar sitemap antes del deploy
-npm run sitemap:validate
+npx tsx -r tsconfig-paths/register scripts/validate-sitemap.ts
 
 # Build con validación automática
-npm run build:production
+npx next build
 
 # Ver estadísticas del sitemap
-npm run sitemap:generate
+npx tsx -r tsconfig-paths/register scripts/write-sitemap.ts
 ```
 
 ## 🌐 URLs Generadas
@@ -138,7 +138,7 @@ Si algo no funciona:
 1. **Errores de build**: Revisa la consola
 2. **URLs faltantes**: Verifica `lib/data.ts`
 3. **Dominio incorrecto**: Actualiza `lib/sitemap-config.ts`
-4. **Validación falla**: Ejecuta `npm run sitemap:validate`
+4. **Validación falla**: Ejecuta `npx tsx -r tsconfig-paths/register scripts/validate-sitemap.ts`
 
 ---
 

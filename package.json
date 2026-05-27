@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npm run sitemap:generate",
+    "postbuild": "npx tsx -r tsconfig-paths/register scripts/write-sitemap.ts",
     "start": "next start",
     "lint": "next lint",
-    "sitemap:generate": "tsx -r tsconfig-paths/register scripts/write-sitemap.ts"
+    "sitemap:generate": "npx tsx -r tsconfig-paths/register scripts/write-sitemap.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
