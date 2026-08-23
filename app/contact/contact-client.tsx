@@ -1,85 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Clock,
-  MessageCircle,
-  Calendar,
-  ArrowRight,
-  CheckCircle,
-} from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, CheckCircle } from "lucide-react";
 import AnimatedSection from "@/components/animated-section";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
+import WhatsAppCTA from "@/components/whatsapp-cta";
+import { DEFAULT_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
 
 export default function ContactClientPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    service: "",
-    budget: "",
-    message: "",
-    // Honeypot fields
-    website: "",
-    phone_number: "",
-    url_field: "",
-  });
-
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.error || "Error enviando mensaje");
-      setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 3000);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        budget: "",
-        message: "",
-        website: "",
-        phone_number: "",
-        url_field: "",
-      });
-    } catch (err: any) {
-      console.error("Error en handleSubmit:", err);
-      alert(err.message || "Error al enviar mensaje");
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <div className="min-h-screen">
       {/* Metadata via export metadata */}
@@ -121,17 +50,12 @@ export default function ContactClientPage() {
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
-                email: "info@northblueagency.com",
+                telephone: "+541130545828",
                 availableLanguage: ["es", "en"],
               },
             },
           }),
         }}
-      />
-      {/* Contact Modal */}
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
       />
 
       {/* Hero Section */}
@@ -155,8 +79,19 @@ export default function ContactClientPage() {
 
             <AnimatedSection delay={300}>
               <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                We are here to help you turn your vision into reality. Contact us and let's start building something extraordinary together.
+                We are here to help you turn your vision into reality. Message us on WhatsApp and let's start building something extraordinary together.
               </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={450}>
+              <WhatsAppCTA
+                message={DEFAULT_WHATSAPP_MESSAGE}
+                size="lg"
+                className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-2xl transform hover:scale-105 transition-all text-lg px-8 py-4"
+              >
+                <MessageCircle size={20} className="mr-2" />
+                Chat with us on WhatsApp
+              </WhatsAppCTA>
             </AnimatedSection>
           </div>
         </div>
@@ -166,219 +101,28 @@ export default function ContactClientPage() {
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            {/* Contact Form */}
+            {/* WhatsApp CTA */}
             <div className="lg:col-span-2">
               <AnimatedSection animation="fadeInLeft">
                 <Card className="border-0 shadow-2xl">
-                  <CardContent className="p-8 md:p-12">
-                    <div className="mb-8">
-                      <h2 className="text-3xl font-bold mb-4">
-                        Tell us about your project
-                      </h2>
-                      <p className="text-gray-600 text-lg">
-                        Fill out the form and we will get back to you within 24 hours.
-                      </p>
+                  <CardContent className="p-8 md:p-12 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center mx-auto mb-6">
+                      <MessageCircle className="text-white" size={28} />
                     </div>
-
-                    {isSubmitted && (
-                      <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3">
-                        <CheckCircle className="text-green-600" size={24} />
-                        <div>
-                          <p className="font-semibold text-green-800">
-                            Message sent successfully!
-                          </p>
-                          <p className="text-green-600">
-                            We will contact you shortly.
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Name *
-                          </label>
-                          <Input
-                            name="name"
-                            placeholder="Your full name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            className="border-gray-300 focus:border-[#ff4081] h-12"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Email *
-                          </label>
-                          <Input
-                            name="email"
-                            type="email"
-                            placeholder="your@email.com"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="border-gray-300 focus:border-[#ff4081] h-12"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Phone
-                          </label>
-                          <Input
-                            name="phone"
-                            type="tel"
-                            placeholder="+1 (555) 123-4567"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="border-gray-300 focus:border-[#ff4081] h-12"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Company
-                          </label>
-                          <Input
-                            name="company"
-                            placeholder="Company name"
-                            value={formData.company}
-                            onChange={handleChange}
-                            className="border-gray-300 focus:border-[#ff4081] h-12"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Service of interest
-                          </label>
-                          <select
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff4081] focus:border-[#ff4081]"
-                          >
-                            <option value="">Select a service</option>
-                            <option value="redes-sociales">
-                              Social Media
-                            </option>
-                            <option value="branding">Branding</option>
-                            <option value="desarrollo-web">
-                              Web Development
-                            </option>
-                            <option value="marketing-digital">
-                              Digital Marketing
-                            </option>
-                            <option value="seo">SEO</option>
-                            <option value="campanas-ads">
-                              Ad Campaigns (Ads)
-                            </option>
-                            <option value="chatgpt-ads">
-                              ChatGPT Ads & AI
-                            </option>
-                            <option value="diseno-grafico">
-                              Graphic Design
-                            </option>
-                            <option value="analytics">Analytics</option>
-                            <option value="otro">Other</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Estimated budget
-                          </label>
-                          <select
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleChange}
-                            className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff4081] focus:border-[#ff4081]"
-                          >
-                            <option value="">Select a range</option>
-                            <option value="500-1000">$500 - $1,000</option>
-                            <option value="1000-2500">$1,000 - $2,500</option>
-                            <option value="2500-5000">$2,500 - $5,000</option>
-                            <option value="5000-10000">$5,000 - $10,000</option>
-                            <option value="10000+">$10,000+</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Message *
-                        </label>
-                        <Textarea
-                          name="message"
-                          placeholder="Tell us more details about your project, goals, and any relevant information to help us better understand your needs..."
-                          rows={6}
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          className="border-gray-300 focus:border-[#ff4081]"
-                        />
-                      </div>
-
-                      {/* Honeypot fields - hidden from users but visible to bots */}
-                      <div style={{ display: "none" }} aria-hidden="true">
-                        <label htmlFor="website">Website (do not fill)</label>
-                        <input
-                          type="text"
-                          id="website"
-                          name="website"
-                          value={formData.website}
-                          onChange={handleChange}
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                        <label htmlFor="phone_number">
-                          Phone (do not fill)
-                        </label>
-                        <input
-                          type="text"
-                          id="phone_number"
-                          name="phone_number"
-                          value={formData.phone_number}
-                          onChange={handleChange}
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                        <label htmlFor="url_field">URL (do not fill)</label>
-                        <input
-                          type="url"
-                          id="url_field"
-                          name="url_field"
-                          value={formData.url_field}
-                          onChange={handleChange}
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                      </div>
-
-                      <div className="flex flex-col sm:flex-row gap-4">
-                        <Button
-                          type="submit"
-                          className="flex-1 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all h-12 text-lg"
-                        >
-                          Send message
-                          <Send size={20} className="ml-2" />
-                        </Button>
-                        {/* <Button
-                          type="button"
-                          variant="outline"
-                          className="border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white h-12"
-                          onClick={() => setIsContactModalOpen(true)}
-                        >
-                          Solicitar llamada
-                          <Phone size={16} className="ml-2" />
-                        </Button> */}
-                      </div>
-                    </form>
+                    <h2 className="text-3xl font-bold mb-4">
+                      Tell us about your project
+                    </h2>
+                    <p className="text-gray-600 text-lg mb-8">
+                      Send us a WhatsApp message with a few details about your project and we will get back to you shortly.
+                    </p>
+                    <WhatsAppCTA
+                      message={DEFAULT_WHATSAPP_MESSAGE}
+                      size="lg"
+                      className="bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all h-12 text-lg px-8"
+                    >
+                      <MessageCircle size={20} className="mr-2" />
+                      Message us on WhatsApp
+                    </WhatsAppCTA>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -395,38 +139,26 @@ export default function ContactClientPage() {
                     <div className="space-y-6">
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0">
-                          <Mail className="text-white" size={20} />
+                          <Phone className="text-white" size={20} />
                         </div>
                         <div>
-                          <p className="font-semibold">Email</p>
-                          <p className="text-gray-600">
-                            info@northblueagency.com
-                          </p>
+                          <p className="font-semibold">Phone</p>
+                          <p className="text-gray-600">+54 11 3054 5828</p>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-[#00b2ff] to-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0">
-                          <Phone className="text-white" size={20} />
+                          <MapPin className="text-white" size={20} />
                         </div>
                         <div>
-                          <p className="font-semibold">Phone</p>
-                          <p className="text-gray-600">+1 (555) 123-4567</p>
+                          <p className="font-semibold">Location</p>
+                          <p className="text-gray-600">CABA, Argentina</p>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-[#ff4081] to-[#00b2ff] rounded-full flex items-center justify-center flex-shrink-0">
-                          <MapPin className="text-white" size={20} />
-                        </div>
-                        <div>
-                          <p className="font-semibold">Location</p>
-                          <p className="text-gray-600">City, Country</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-[#00b2ff] to-[#ff4081] rounded-full flex items-center justify-center flex-shrink-0">
                           <Clock className="text-white" size={20} />
                         </div>
                         <div>
@@ -441,37 +173,6 @@ export default function ContactClientPage() {
                   </CardContent>
                 </Card>
               </AnimatedSection>
-
-              {/* <AnimatedSection animation="fadeInRight" delay={300}>
-                <Card className="border-0 shadow-xl">
-                  <CardContent className="p-8">
-                    <h4 className="text-xl font-bold mb-4">
-                      ¿Necesitas ayuda inmediata?
-                    </h4>
-                    <p className="text-gray-600 mb-6">
-                      Nuestro equipo está disponible para consultas urgentes.
-                    </p>
-                    <div className="space-y-4">
-                      <Button
-                        variant="outline"
-                        className="w-full border-[#ff4081] text-[#ff4081] hover:bg-[#ff4081] hover:text-white"
-                        onClick={() => setIsContactModalOpen(true)}
-                      >
-                        <MessageCircle size={16} className="mr-2" />
-                        Chat en vivo
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="w-full border-[#00b2ff] text-[#00b2ff] hover:bg-[#00b2ff] hover:text-white"
-                        onClick={() => setIsContactModalOpen(true)}
-                      >
-                        <Calendar size={16} className="mr-2" />
-                        Agendar reunión
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedSection> */}
 
               <AnimatedSection animation="fadeInRight" delay={400}>
                 <div className="bg-gradient-to-br from-[#ff4081]/10 to-[#00b2ff]/10 p-8 rounded-xl">
@@ -500,20 +201,6 @@ export default function ContactClientPage() {
                       />
                       <span>Expert team</span>
                     </li>
-                    {/* <li className="flex items-center space-x-3">
-                      <CheckCircle
-                        className="text-[#00b2ff] flex-shrink-0"
-                        size={20}
-                      />
-                      <span>Soporte 24/7</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <CheckCircle
-                        className="text-[#ff4081] flex-shrink-0"
-                        size={20}
-                      />
-                      <span>Precios competitivos</span>
-                    </li> */}
                   </ul>
                 </div>
               </AnimatedSection>
@@ -604,23 +291,18 @@ export default function ContactClientPage() {
               <p className="text-xl mb-8 opacity-90">
                 Don't wait any longer. Your digital transformation starts today.
               </p>
-              <Button
+              <WhatsAppCTA
+                message={DEFAULT_WHATSAPP_MESSAGE}
                 size="lg"
                 variant="outline"
                 className="bg-white text-[#ff4081] hover:bg-gray-100 border-white text-lg px-8 py-4"
-                onClick={() => setIsContactModalOpen(true)}
               >
-                Talk to an expert
-              </Button>
+                Talk to an expert on WhatsApp
+              </WhatsAppCTA>
             </AnimatedSection>
           </div>
         </div>
       </section>
-
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
     </div>
   );
 }

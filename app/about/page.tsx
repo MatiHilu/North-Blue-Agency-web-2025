@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

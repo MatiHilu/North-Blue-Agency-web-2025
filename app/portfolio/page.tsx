@@ -7,7 +7,6 @@ import ContactSection from "@/components/contact-section";
 
 import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
 import type { Metadata } from "next";
 import QuoteSection from "@/components/quote-section";
 

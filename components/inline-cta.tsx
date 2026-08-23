@@ -1,15 +1,12 @@
 import { ArrowRight, Zap } from "lucide-react";
-import Link from "next/link";
-
-type CTAType = "quote" | "contact" | "link";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 interface InlineCTAProps {
   title: string;
   description?: string;
   primaryLabel?: string;
-  type?: CTAType;
+  message?: string;
   className?: string;
-  href?: string;
   accentColor?: "pink" | "blue" | "purple";
   centered?: boolean;
 }
@@ -18,8 +15,8 @@ export default function InlineCTA({
   title,
   description,
   primaryLabel = "Comenzar",
+  message,
   className = "",
-  href = "/contact",
   accentColor = "pink",
   centered = false,
 }: InlineCTAProps) {
@@ -59,17 +56,18 @@ export default function InlineCTA({
             )}
           </div>
         </div>
-        <Link href={href}>
-          <button
-            className={`shrink-0 group/btn inline-flex items-center gap-2 px-5 py-2.5 ${buttonColors[accentColor]} text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105`}
-          >
-            <span>{primaryLabel}</span>
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover/btn:translate-x-1"
-            />
-          </button>
-        </Link>
+        <a
+          href={buildWhatsAppUrl(message ?? `Hi! I'm interested in: ${title}`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`shrink-0 group/btn inline-flex items-center gap-2 px-5 py-2.5 ${buttonColors[accentColor]} text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105`}
+        >
+          <span>{primaryLabel}</span>
+          <ArrowRight
+            size={16}
+            className="transition-transform group-hover/btn:translate-x-1"
+          />
+        </a>
       </div>
     </div>
   );

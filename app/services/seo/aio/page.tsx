@@ -187,7 +187,6 @@ export default function AIOPage() {
                   title="Diagnose your AIO maturity"
                   description="Identify processes ready for automation and boost SEO content production"
                   primaryLabel="Evaluate my strategy"
-                  type="quote"
                   accentColor="pink"
                 />
               </div>
@@ -319,7 +318,6 @@ export default function AIOPage() {
               title="I want to activate AIO in my team"
               description="Schedule a strategic session and receive a personalized implementation plan"
               primaryLabel="Design AI flow"
-              type="contact"
               accentColor="blue"
               centered
             />

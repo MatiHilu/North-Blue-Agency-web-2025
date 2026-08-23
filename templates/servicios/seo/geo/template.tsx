@@ -151,7 +151,6 @@ export default function GEOTemplate({ locationSlug }: { locationSlug: string }) 
                     title="Diagnose your GEO potential"
                     description="Identify what assets your brand needs to stand out in AI Overviews and generative engines"
                     primaryLabel="Evaluate coverage"
-                    type="quote"
                     accentColor="purple"
                   />
                 </div>
@@ -243,7 +242,6 @@ export default function GEOTemplate({ locationSlug }: { locationSlug: string }) 
                 title="I want to dominate generative engines"
                 description="Schedule a strategic session and receive a GEO plan adapted to your goals"
                 primaryLabel="Design GEO plan"
-                type="contact"
                 accentColor="purple"
                 centered
               />

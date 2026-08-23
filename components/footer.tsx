@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { MessageCircle, Phone, MapPin } from "lucide-react";
+import { buildWhatsAppUrl, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
 
 export default function Footer() {
   return (
@@ -120,13 +121,15 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-[#ff4081] flex-shrink-0" aria-hidden="true" />
+                <MessageCircle size={16} className="text-[#ff4081] flex-shrink-0" aria-hidden="true" />
                 <a
-                  href="mailto:info@northblueagency.com"
+                  href={buildWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
-                  aria-label="Email us at info@northblueagency.com"
+                  aria-label="Message us on WhatsApp (opens in new tab)"
                 >
-                  info@northblueagency.com
+                  Message us on WhatsApp
                 </a>
               </div>
               <div className="flex items-center space-x-3">

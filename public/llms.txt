@@ -1,6 +1,6 @@
 # Auto-generated list of canonical URLs for LLM ingestion.
 # Source: app/sitemap.ts
-# Generated: 2026-05-27T22:15:53.957Z
+# Generated: 2026-05-27T22:16:53.726Z
 
 https://northblueagency.com
 https://northblueagency.com/nosotros

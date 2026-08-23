@@ -1,21 +1,12 @@
-"use client";
-import type React from "react";
-
-import { useState } from "react";
 import Script from "next/script";
 import { BASE_URL } from "@/lib/jsonld";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Check, Clock, TrendingUp, Send } from "lucide-react";
+import { ArrowLeft, Check, Clock, TrendingUp, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/animated-section";
 import ContactSection from "@/components/contact-section";
 import FAQSection from "@/components/faq-section";
-import QuoteModal from "@/components/quote-modal";
-import QuoteSection from "@/components/quote-section";
-import { useToast } from "@/hooks/use-toast";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import WhatsAppCTA from "@/components/whatsapp-cta";
 import type { Metadata } from "next";
 
 /* export const metadata: Metadata = {
@@ -101,52 +92,6 @@ const faqs = [
 ];
 
 export default function RedesSocialesPage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    // Honeypot fields
-    website: "",
-    phone_number: "",
-    url_field: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, url: window.location.href }),
-      });
-      if (!res.ok) throw new Error("Error sending message");
-      toast({
-        title: "Message sent!",
-        description:
-          "Thank you for contacting us. We will reply within 24 hours.",
-      });
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-        website: "",
-        phone_number: "",
-        url_field: "",
-      });
-    } catch (error) {
-      console.error("Error sending message:", error);
-      toast({
-        title: "Error",
-        description: "There was a problem sending your message. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
   return (
     <>
       {/* Metadata via export metadata */}
@@ -186,10 +131,6 @@ export default function RedesSocialesPage() {
             },
           }),
         }}
-      />
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -232,102 +173,21 @@ export default function RedesSocialesPage() {
             <div className="container mx-auto px-4 relative z-10 ">
               <AnimatedSection animation="fadeInLeft">
                 <Card className="h-full border-0 shadow-xl max-w-[550px]">
-                  <CardContent className="p-8">
+                  <CardContent className="p-8 text-center">
                     <h3 className="text-2xl font-bold mb-6">
                       Comienza a generar contenido ya!
                     </h3>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <Input
-                        placeholder="Tu nombre"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        className="border-gray-300 focus:border-[#ff4081]"
-                        disabled={isSubmitting}
-                        required
-                      />
-                      <Input
-                        type="email"
-                        placeholder="Tu email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className="border-gray-300 focus:border-[#ff4081]"
-                        disabled={isSubmitting}
-                        required
-                      />
-                      <Textarea
-                        placeholder="Cuéntanos sobre tu proyecto"
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        className="border-gray-300 focus:border-[#ff4081]"
-                        disabled={isSubmitting}
-                        required
-                      />
-
-                      {/* Honeypot fields */}
-                      <div style={{ display: "none" }} aria-hidden="true">
-                        <input
-                          type="text"
-                          name="website"
-                          value={formData.website}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              website: e.target.value,
-                            })
-                          }
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                        <input
-                          type="text"
-                          name="phone_number"
-                          value={formData.phone_number}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              phone_number: e.target.value,
-                            })
-                          }
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                        <input
-                          type="url"
-                          name="url_field"
-                          value={formData.url_field}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              url_field: e.target.value,
-                            })
-                          }
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                      </div>
-
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? (
-                          "Enviando..."
-                        ) : (
-                          <>
-                            Enviar mensaje
-                            <Send size={16} className="ml-2" />
-                          </>
-                        )}
-                      </Button>
-                    </form>
+                    <p className="text-gray-600 mb-8">
+                      Escríbenos por WhatsApp y arrancamos hoy mismo.
+                    </p>
+                    <WhatsAppCTA
+                      message={`Hi! I'm interested in: ${serviceData.title}`}
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-[#ff4081] to-[#00b2ff] text-white hover:shadow-lg transform hover:scale-105 transition-all"
+                    >
+                      <MessageCircle size={16} className="mr-2" />
+                      Message us on WhatsApp
+                    </WhatsAppCTA>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -442,13 +302,13 @@ export default function RedesSocialesPage() {
                 digital
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
+                <WhatsAppCTA
+                  message={`Hi! I'm interested in: ${serviceData.title}`}
                   size="lg"
                   className="btn-white-hover bg-white text-[#ff4081] hover:bg-gray-100 transform hover:scale-105 transition-all"
-                  onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Solicitar cotización
-                </Button>
+                </WhatsAppCTA>
               </div>
             </AnimatedSection>
           </div>

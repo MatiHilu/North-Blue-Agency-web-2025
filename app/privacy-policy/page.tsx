@@ -1,5 +1,6 @@
 // Página server component (no 'use client'): SEO manejado con Metadata API
 import type { Metadata } from "next";
+import { buildWhatsAppUrl, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -138,12 +139,14 @@ export default function PoliticaPrivacidadPage() {
 
           <h3 className="text-xl font-semibold text-gray-900 mt-8">Contact</h3>
           <p>
-            For privacy inquiries, write to
+            For privacy inquiries, message us on
             <a
               className="underline ml-1"
-              href="mailto:info@northblueagency.com"
+              href={buildWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              info@northblueagency.com
+              WhatsApp
             </a>
             .
           </p>

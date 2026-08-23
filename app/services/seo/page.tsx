@@ -267,7 +267,6 @@ export default function SEOPage({
                     title="Request your SEO + AIO + AEO + GEO audit"
                     description="Complete site analysis + implementable quick wins"
                     primaryLabel="Get Audit"
-                    type="quote"
                     accentColor="pink"
                   />
                 </div>
@@ -344,7 +343,6 @@ export default function SEOPage({
                 title="Implement AIO, AEO & GEO in your strategy"
                 description="Integrate intelligent automation and presence in answer engines without losing control"
                 primaryLabel="Start Now"
-                type="contact"
                 accentColor="blue"
                 centered
               />
@@ -485,7 +483,6 @@ export default function SEOPage({
                 title="Optimize your content with E-E-A-T"
                 description="Build authority and trust in your niche"
                 primaryLabel="Improve Now"
-                type="quote"
                 accentColor="purple"
                 centered
               />

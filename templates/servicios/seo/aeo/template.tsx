@@ -151,7 +151,6 @@ export default function AEOTemplate({ locationSlug }: { locationSlug: string }) 
                     title="Evaluate your presence in answer engines"
                     description="Detect opportunities to win featured answers and optimize your conversational coverage"
                     primaryLabel="I want to diagnose"
-                    type="quote"
                     accentColor="blue"
                   />
                 </div>
@@ -243,7 +242,6 @@ export default function AEOTemplate({ locationSlug }: { locationSlug: string }) 
                 title="I want to master conversational responses"
                 description="Schedule a session and receive a personalized AEO roadmap"
                 primaryLabel="Optimize for AEO"
-                type="contact"
                 accentColor="blue"
                 centered
               />

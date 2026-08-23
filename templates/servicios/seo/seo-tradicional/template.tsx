@@ -151,7 +151,6 @@ export default function SEOTradicionalTemplate({ locationSlug }: { locationSlug:
                     title="Request your technical SEO audit"
                     description="Surface priority opportunities and build an actionable roadmap"
                     primaryLabel="Audit my site"
-                    type="quote"
                     accentColor="purple"
                   />
                 </div>
@@ -243,7 +242,6 @@ export default function SEOTradicionalTemplate({ locationSlug }: { locationSlug:
                 title="I want to strengthen my traditional SEO"
                 description="Schedule a strategic session and receive a roadmap of priority improvements"
                 primaryLabel="Schedule consult"
-                type="contact"
                 accentColor="purple"
                 centered
               />

@@ -20,14 +20,12 @@ import {
   Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EnhancedContactModal from "@/components/enhanced-contact-modal";
 import { usePathname } from "next/navigation";
 import ReactCountryFlag from "react-country-flag";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -224,12 +222,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Contact Modal */}
-      <EnhancedContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
